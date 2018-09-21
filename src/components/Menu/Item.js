@@ -35,7 +35,7 @@ const Item = props => {
 
           :global(svg) {
             margin: 0 ${theme.space.inset.xs} 0 0;
-            opacity: 0.3;
+            opacity: 0.6;
           }
         }
 

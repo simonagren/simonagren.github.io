@@ -9,9 +9,17 @@ const Hero = props => {
   return (
     <React.Fragment>
       <section className="hero">
+      <small>You{`'`}re visiting:</small>
         <h1>
-          This is a demo site of&nbsp;the <strong>heroBlog</strong> GatsbyJS starter
+        <strong>AgrenPoint</strong><br/>
+        development<br/>
+        with Simon
         </h1>
+        <p>
+         SharePoint, Office365, Azure...
+         <br/>
+         Me sharing what I learn along the way 
+        </p>
         <button onClick={scrollToContent} aria-label="scroll">
           <FaArrowDown />
         </button>
@@ -32,6 +40,24 @@ const Hero = props => {
           height: 100px;
           padding: ${theme.space.inset.l};
           padding-top: ${theme.header.height.homepage};
+        }
+
+        small {
+          color: ${theme.hero.h1.color};
+          font-size: ${theme.font.size.xs};
+          letter-spacing: 0.3em;
+          opacity: 1;
+          display: block;
+          margin: ${theme.space.stack.m};
+        }
+
+        p {
+          font-size: ${theme.font.size.s};
+          color: ${theme.hero.h1.color};
+          text-align: center;
+          line-height: 1.5;
+          opacity: 0.9;
+          margin: ${theme.space.stack.m};
         }
 
         h1 {
