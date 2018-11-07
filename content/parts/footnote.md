@@ -6,4 +6,3 @@ title: footnote
 * <a href="https://www.linkedin.com/in/simonaagren/" target="_blank">linkedin</a> 
 * <a href="https://www.github.com/simonagren" target="_blank">github</a> 
 * <a href="mailto:simon.agren@sogeti.se">email</a> 
-* <a href="http://www.sogeti.com" target="_blank">sogeti</a> 

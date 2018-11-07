@@ -50,6 +50,7 @@ class Header extends React.Component {
             <div className="type">
               <h1>{config.headerTitle}</h1>
               <h2>{config.headerSubTitle}</h2>
+              <h2>{config.headerSubTitle2}</h2>
             </div>
           </div>
           <FontLoadedContext.Consumer>

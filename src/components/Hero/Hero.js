@@ -9,7 +9,7 @@ const Hero = props => {
   return (
     <React.Fragment>
       <section className="hero">
-      <small>You{`'`}re visiting:</small>
+      <small className={"visiting"}>You{`'`}re visiting:</small>
         <h1>
         <strong>AgrenPoint</strong><br/>
         development<br/>
@@ -63,7 +63,7 @@ const Hero = props => {
         h1 {
           text-align: center;
           font-size: ${theme.hero.h1.size};
-          margin: ${theme.space.stack.l};
+          margin-bottom: 10px;
           color: ${theme.hero.h1.color};
           line-height: ${theme.hero.h1.lineHeight};
           text-remove-gap: both 0 "Open Sans";
@@ -127,12 +127,21 @@ const Hero = props => {
 
           h1 {
             max-width: 90%;
-            font-size: ${`calc(${theme.hero.h1.size} * 1.3)`};
+            font-size: 2em;
           }
 
           button {
-            font-size: ${theme.font.size.l};
+            font-size: ${theme.font.size.m};
+            width: 50px;
+            height: 50px;
+            margin: 0;
+            padding: 0;
           }
+
+          .visiting {
+            display: none;
+          }
+          
         }
 
         @below tablet {
@@ -150,9 +159,18 @@ const Hero = props => {
           }
 
           button {
-            font-size: ${theme.font.size.l};
+            font-size: ${theme.font.size.s};
+            width: 40px;
+            height: 40px;
+            margin: 0;
+            padding: 0;
+          }
+
+          .visiting {
+            display: none;
           }
         }
+
 
         @from-width desktop {
           .hero {

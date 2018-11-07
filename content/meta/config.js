@@ -11,7 +11,8 @@ module.exports = {
   authorTwitterAccount: "agrenpoint",
   // info
   headerTitle: "Simon Ågren",
-  headerSubTitle: "Solution Architect | SharePoint & Office365 | MCSD ",
+  headerSubTitle: "Solution Architect | MCSD ",
+  headerSubTitle2: "SharePoint & Office365", 
   // manifest.json
   manifestName: "AgrenPoint - A dev blog",
   manifestShortName: "AgrenPoint", // max 12 characters
