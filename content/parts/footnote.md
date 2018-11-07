@@ -2,9 +2,8 @@
 title: footnote
 ---
 
-* it's a demo site of the [gatsby-starter-hero-blog](https://github.com/greglobinski/gatsby-starter-hero-blog)
-* built by [greg lobinski](https://www.greglobinski.com)
-* Check [Front-end web development with Greg](https://dev.greglobinski.com)
-* delivered by [Netlify](https://www.netlify.com/)
-* photos by [unsplash.com](https://unsplash.com)
-* graphic by [pixabay.com](https://pixabay.com)
+* <a href="https://www.twitter.com/agrenpoint" target="_blank">twitter</a> 
+* <a href="https://www.linkedin.com/in/simonaagren/" target="_blank">linkedin</a> 
+* <a href="https://www.github.com/simonagren" target="_blank">github</a> 
+* <a href="mailto:simon.agren@sogeti.se">email</a> 
+* <a href="http://www.sogeti.com" target="_blank">sogeti</a> 

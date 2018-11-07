@@ -1,8 +1,9 @@
 ---
 title: Be who you are and say what you feel
 category: "sayings"
+tags: ["animals", "Chicago", "Zoos"]
 cover: photo-1489824904134-891ab64532f1.jpg
-author: greg lobinski
+author: Simon Ågren
 ---
 
 Proin suscipit luctus orci placerat fringilla. Donec hendrerit laoreet risus eget adipiscing. [Suspendisse](http://google.com) in urna ligula, a volutpat mauris. Sed enim mi, bibendum eu pulvinar vel, sodales vitae dui. Pellentesque sed sapien lorem, at lacinia urna. In hac habitasse platea dictumst. Vivamus vel justo in leo laoreet ullamcorper non vitae lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum ullamcorper rutrum.

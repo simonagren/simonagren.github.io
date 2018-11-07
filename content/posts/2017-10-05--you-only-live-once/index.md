@@ -1,8 +1,9 @@
 ---
 title: You only live once
 category: "sayings"
+tags: ["animals", "Chicago", "Zoos"]
 cover: photo-1456518563096-0ff5ee08204e.jpg
-author: greg lobinski
+author: Simon Ågren
 ---
 
 Fusce a metus eu diam varius congue nec nec sapien. Nunc convallis accumsan justo. **Pellentesque** habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec malesuada vehicula lectus, viverra sodales ipsum gravida nec. _Integer gravida_ nisi ut magna mollis molestie. Nullam [pharetra](http://google.com) accumsan sagittis. Proin tristique rhoncus orci, eget vulputate nisi sollicitudin et. Quisque lacus augue, mollis non mollis et, ullamcorper in purus. Morbi et sem orci.

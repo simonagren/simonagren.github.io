@@ -8,9 +8,9 @@ import Article from "../components/Article";
 import Headline from "../components/Article/Headline";
 import List from "../components/List";
 
-const CategoryTemplate = props => {
+const TagsTemplate = props => {
   const {
-    pathContext: { category },
+    pathContext: { tag },
     data: {
       allMarkdownRemark: { totalCount, edges },
       site: {
@@ -26,8 +26,8 @@ const CategoryTemplate = props => {
           <Article theme={theme}>
             <header>
               <Headline theme={theme}>
-                <span>Posts in category</span> <FaTag />
-                {category}
+                <span>Posts with tag</span> <FaTag />
+                {tag}
               </Headline>
               <p className="meta">
                 There {totalCount > 1 ? "are" : "is"} <strong>{totalCount}</strong> post{totalCount >
@@ -47,43 +47,43 @@ const CategoryTemplate = props => {
   );
 };
 
-CategoryTemplate.propTypes = {
+TagsTemplate.propTypes = {
   data: PropTypes.object.isRequired,
   pathContext: PropTypes.object.isRequired
 };
 
-export default CategoryTemplate;
+export default TagsTemplate;
 
-// eslint-disable-next-line no-undef
-export const categoryQuery = graphql`
-  query PostsByCategory($category: String) {
-    allMarkdownRemark(
-      limit: 1000
-      sort: { fields: [fields___prefix], order: DESC }
-      filter: { frontmatter: { category: { eq: $category } } }
-    ) {
-      totalCount
-      edges {
-        node {
-          fields {
-            slug
-          }
-          excerpt
-          timeToRead
-          frontmatter {
-            title
-            category
-            tags
-          }
+
+export const pageQuery = graphql`
+query PostsByTags ($tag: String) {
+  allMarkdownRemark(
+    limit: 1000
+    sort: { fields: [fields___prefix], order: DESC }
+    filter: { frontmatter: { tags: { in: [$tag] } } }
+  ) {
+    totalCount
+    edges {
+      node {
+        fields {
+          slug
         }
-      }
-    }
-    site {
-      siteMetadata {
-        facebook {
-          appId
+        excerpt
+        timeToRead
+        frontmatter {
+          title
+          tags
         }
       }
     }
   }
-`;
+  site {
+    siteMetadata {
+      facebook {
+        appId
+      }
+    }
+  }
+}
+`
+;

@@ -6,6 +6,8 @@ import React from "react";
 import { getScreenWidth, timeoutThrottlerHandler } from "../utils/helpers";
 import Footer from "../components/Footer/";
 import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
+
 
 export const ThemeContext = React.createContext(null);
 export const ScreenWidthContext = React.createContext(0);

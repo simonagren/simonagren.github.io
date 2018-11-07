@@ -111,8 +111,8 @@ text:
   lineHeight:
     default: *font-line-height-l
   maxWidth:
-    tablet: 650px
-    desktop: 700px
+    tablet: 700px
+    desktop: 800px
 heading:
   family: *font-family-target
   size:
@@ -145,6 +145,6 @@ blog:
 header:
   height:
     default: 80px
-    fixed: 50px;
+    fixed: 70px;
     homepage: 100px;
 

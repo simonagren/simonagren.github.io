@@ -5,6 +5,11 @@ import { ThemeContext } from "../layouts";
 import Blog from "../components/Blog";
 import Hero from "../components/Hero";
 import Seo from "../components/Seo";
+import Tags from "../components/Tags";
+import Social from "../components/Social";
+
+
+
 
 class IndexPage extends React.Component {
   separator = React.createRef();
@@ -16,7 +21,8 @@ class IndexPage extends React.Component {
   render() {
     const {
       data: {
-        posts: { edges: posts = [] },
+        posts: { edges: posts = [],
+        group: groups },
         bgDesktop: {
           resize: { src: desktop }
         },
@@ -47,14 +53,74 @@ class IndexPage extends React.Component {
         </ThemeContext.Consumer>
 
         <hr ref={this.separator} />
-
-        <ThemeContext.Consumer>
-          {theme => <Blog posts={posts} theme={theme} />}
-        </ThemeContext.Consumer>
-
+        <div className="wrapper">
+        <div className="sideBar">
+        <div className="stickyDiv">
+        <Tags groups={groups}></Tags>
+        <Social/>
+        </div>
+        </div>
+        <div className="mainContent">
+          <ThemeContext.Consumer>
+           {theme => <Blog posts={posts} theme={theme} groups={groups} />}
+         </ThemeContext.Consumer>
+         </div>
+        </div>
         <Seo facebook={facebook} />
 
         <style jsx>{`
+          .stickyDiv {
+            position: -webkit-sticky; /* Safari */
+            position: sticky;
+            top: 60px;
+            align-self: flex-start;
+          }
+          .wrapper {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+          }
+
+          .mainContent {
+            width: 100%;
+            height: 100%;
+          }
+  
+          @from-width tablet {
+            .mainContent {
+             width: 70%;
+             float: left; 
+            }
+          }
+  
+          @below tablet {
+            .mainContent {
+             width: 100%; 
+            }
+          }
+  
+          .sideBar {
+              padding-top: 60px;
+              float: left;
+              width: 30%;   
+              display: flex;
+
+          }
+
+          @below desktop { 
+            .wrapper {
+              width: 80%;
+              margin: auto;
+            }
+          }
+          
+          @below tablet { 
+            .sideBar {
+                display: none;
+            
+            }
+          }
+
           hr {
             margin: 0;
             border: 0;
@@ -78,6 +144,10 @@ export const guery = graphql`
       filter: { fileAbsolutePath: { regex: "//posts/[0-9]+.*--/" } }
       sort: { fields: [fields___prefix], order: DESC }
     ) {
+      group(field: frontmatter___tags) {
+        fieldValue
+        totalCount
+      }
       edges {
         node {
           excerpt
@@ -88,6 +158,7 @@ export const guery = graphql`
           frontmatter {
             title
             category
+            tags
             author
             cover {
               children {
@@ -102,6 +173,7 @@ export const guery = graphql`
         }
       }
     }
+
     site {
       siteMetadata {
         facebook {

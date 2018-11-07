@@ -135,6 +135,25 @@ const Hero = props => {
           }
         }
 
+        @below tablet {
+          .hero {
+            background-image: url(${backgrounds.tablet});
+          }
+
+          h1 {
+            max-width: 90%;
+            font-size: 1.5em;
+          }
+
+          p {
+            font-size: 0.75em;
+          }
+
+          button {
+            font-size: ${theme.font.size.l};
+          }
+        }
+
         @from-width desktop {
           .hero {
             background-image: url(${backgrounds.desktop});

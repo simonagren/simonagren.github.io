@@ -2,12 +2,17 @@ import Link from "gatsby-link";
 import PropTypes from "prop-types";
 import React from "react";
 import VisibilitySensor from "react-visibility-sensor";
+import FaLinkedinSquare from "react-icons/lib/fa/linkedin-square";
+import FaTwitterSquare from "react-icons/lib/fa/twitter-square";
+import FaGithubSquare from "react-icons/lib/fa/github-square";
 
 import { ScreenWidthContext, FontLoadedContext } from "../../layouts";
 import config from "../../../content/meta/config";
 import Menu from "../Menu";
-
+import {LinkedinIcon } from 'react-share';
+import GithubIcon from "!svg-react-loader!../../images/svg-icons/github.svg?name=GithubLogo";
 import avatar from "../../images/jpg/avatar.jpg";
+import { SocialIcon } from 'react-social-icons';
 
 class Header extends React.Component {
   state = {
@@ -36,15 +41,17 @@ class Header extends React.Component {
     return (
       <React.Fragment>
         <header className={`header ${this.getHeaderSize()}`}>
-          <Link to="/" className="logoType">
+          <div className="logoType">
+          <Link to="/"> 
             <div className="logo">
               <img src={avatar} alt={config.siteTitle} />
             </div>
+            </Link>  
             <div className="type">
               <h1>{config.headerTitle}</h1>
               <h2>{config.headerSubTitle}</h2>
             </div>
-          </Link>
+          </div>
           <FontLoadedContext.Consumer>
             {loaded => (
               <ScreenWidthContext.Consumer>
@@ -68,6 +75,8 @@ class Header extends React.Component {
 
         {/* --- STYLES --- */}
         <style jsx>{`
+
+          
           .header {
             align-items: center;
             justify-content: center;
@@ -79,7 +88,7 @@ class Header extends React.Component {
             width: 100%;
             align-items: center;
 
-            :global(a.logoType) {
+            :global(div.logoType) {
               align-items: center;
               display: flex;
               flex-direction: "column";
@@ -97,17 +106,34 @@ class Header extends React.Component {
             }
           }
 
+          .icon :global(svg) {
+            height: 20px;
+          }
+
+          .type  {
+            
+            :global(div) {
+              display: inline-block;
+            }
+
+            :global(div:not(:first-of-type)) {
+              margin-left: 5px;
+            }
+            
+          }
+
           h1 {
             font-size: ${theme.font.size.m};
             font-weight: ${theme.font.weight.standard};
-            margin: ${theme.space.stack.xs};
+            margin: 0 0 2.5px 0;
           }
 
           h2 {
             font-weight: ${theme.font.weight.standard};
             font-size: ${theme.font.size.xxs};
             letter-spacing: 0;
-            margin: 0;
+            margin: 2.5px 0 0 0;
+            white-space: nowrap;
           }
 
           .logo {
@@ -115,7 +141,7 @@ class Header extends React.Component {
             border: 1px solid #eee;
             display: inline-block;
             height: 44px;
-            margin: ${theme.space.inline.default};
+            margin: 0 5px 0 0;
             overflow: hidden;
             width: 44px;
             transition: all 0.5s;
@@ -123,6 +149,8 @@ class Header extends React.Component {
             .homepage & {
               height: 60px;
               width: 60px;
+              position: relative;
+              top: 4px;
             }
 
             img {
@@ -157,7 +185,7 @@ class Header extends React.Component {
                 border: none;
               }
 
-              :global(a.logoType),
+              :global(div.logoType),
               h1 {
                 color: ${theme.color.neutral.white};
               }
@@ -193,12 +221,21 @@ class Header extends React.Component {
                 }
 
                 h2 {
-                  display: none;
+                  margin: ${theme.space.stack.xxs};
                 }
+
+                :global(.twittSvg) {
+                  color: #1da1f2;
+                }
+                
+                :global(.linkSvg) {
+                  color: #0077b5;
+                }
+
               }
 
               &.homepage:not(.fixed) {
-                :global(a.logoType),
+                :global(div.logoType),
                 h1 {
                   color: ${theme.color.neutral.white};
                 }
@@ -208,7 +245,7 @@ class Header extends React.Component {
               }
             }
 
-            .header :global(a.logoType) {
+            .header :global(div.logoType) {
               text-align: left;
               flex-direction: row;
               flex-shrink: 0;
@@ -216,11 +253,13 @@ class Header extends React.Component {
             }
 
             .logo {
-              margin: ${theme.space.inline.default};
+              margin: 0 5px 0 0;
 
               .fixed & {
-                height: 36px;
-                width: 36px;
+                height: 60px;
+                width: 60px;
+                position: relative;
+                top: 4px;
               }
 
               .header.homepage:not(.fixed) & {

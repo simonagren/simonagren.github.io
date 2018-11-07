@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
 import React from "react";
-
+import Sidebar from "../Sidebar";
 import Item from "./Item";
+import Tags from "../Tags";
+
 
 const Blog = props => {
-  const { posts, theme } = props;
+  const { posts, theme, groups } = props;
 
   return (
     <React.Fragment>
@@ -19,7 +21,7 @@ const Blog = props => {
             } = post;
             return <Item key={slug} post={node} theme={theme} />;
           })}
-        </ul>
+          </ul> 
       </main>
 
       {/* --- STYLES --- */}
@@ -31,22 +33,20 @@ const Blog = props => {
         ul {
           list-style: none;
           margin: 0 auto;
+          width: 100%;
           padding: ${`calc(${theme.space.default} * 1.5) 0 calc(${theme.space.default} * 0.5)`};
+
         }
 
-        @above tablet {
+        @tablet {
           .main {
             padding: 0 ${`0 calc(${theme.space.default} * 1.5)`};
           }
-          ul {
-            max-width: ${theme.text.maxWidth.tablet};
-          }
         }
-        @above desktop {
-          ul {
-            max-width: ${theme.text.maxWidth.desktop};
-          }
-        }
+
+
+        
+        
       `}</style>
     </React.Fragment>
   );

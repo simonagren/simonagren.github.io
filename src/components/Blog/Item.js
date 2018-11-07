@@ -16,6 +16,7 @@ const Item = props => {
       frontmatter: {
         title,
         category,
+        tags,
         author,
         cover: {
           children: [{ sizes }]
@@ -32,19 +33,25 @@ const Item = props => {
           <h1>
             {title} <FaArrowRight className="arrow" />
           </h1>
+        </Link>  
           <p className="meta">
             <span>
               <FaCalendar size={18} /> {prefix}
             </span>
+          
             <span>
-              <FaUser size={18} /> {author}
+              <FaUser size={18} /> 
+              <Link className="tagslinks" to={`/about`}>{author}</Link>
             </span>
-            {category && (
-              <span>
-                <FaTag size={18} /> {category}
-              </span>
-            )}
+            <span>
+            <FaTag size={18} />
+            {tags.map(tag => (
+                    <Link key={tag} className="tagslinks" to={`/tags/${tag}`}>{tag}</Link>
+                  ))}
+            </span>
+            
           </p>
+          <Link to={slug} key={slug+'2'} className="link"> 
           <p>{excerpt}</p>
         </Link>
       </li>
@@ -54,6 +61,16 @@ const Item = props => {
         :global(.link) {
           width: 100%;
           color: ${theme.text.color.primary};
+        }
+
+        :global(a.tagslinks + a:before) {
+          color: ${theme.icon.color};
+          content: "|";
+          padding: 0 0.5em;
+        }
+
+        :global(a.tagslinks:hover) {
+          color: orange;
         }
 
         li {

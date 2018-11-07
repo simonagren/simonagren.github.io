@@ -32,6 +32,9 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     const postTemplate = path.resolve("./src/templates/PostTemplate.js");
     const pageTemplate = path.resolve("./src/templates/PageTemplate.js");
     const categoryTemplate = path.resolve("./src/templates/CategoryTemplate.js");
+    const tagTemplate = path.resolve("./src/templates/TagsTemplate.js")
+    // const testTemplate = path.resolve("./src/templates/TestTemplate.js")
+    
     resolve(
       graphql(
         `
@@ -51,6 +54,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                   frontmatter {
                     title
                     category
+                    tags
                   }
                 }
               }
@@ -64,6 +68,66 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         }
 
         const items = result.data.allMarkdownRemark.edges;
+
+      // Create Tags list
+      // const tagsSet = new Set();
+      // tagsSet = [];
+      // items.forEach(edge => {
+      //   const {
+      //     node: {
+      //       frontmatter: { tags }
+      //     }
+      //   } = edge;
+
+      //   if (tags && tags !== null) {
+      //     tags.forEach(tag => {
+      //       tagsSet.push(tag);
+      //     }) 
+      //   }
+      // });
+      
+      // Create Tags pages
+      // const tagsList = Array.from(tagsSet);
+      // tagsSet = _.uniq(tagsSet);
+      // tagsSet.forEach(tag => {
+      //   createPage({
+      //     path: `/tags/${_.kebabCase(tag)}/`,
+      //     component: tagTemplate,
+      //     context: {
+      //       tag
+      //     }
+      //   });
+      // });
+
+      // Create Tags list
+      const tagsSet = new Set();
+      items.forEach(edge => {
+        const {
+          node: {
+            frontmatter: { tags }
+          }
+        } = edge;
+
+        if (tags && tags !== null) {
+          tags.forEach(tag => {
+            tagsSet.add(tag);
+          }) 
+        }
+      });
+
+      // Create Tags pages
+      tagsList = Array.from(tagsSet);
+      tagsList = _.uniq(tagsList);
+      tagsList.forEach(tag => {
+        createPage({
+          path: `/tags/${_.kebabCase(tag)}/`,
+          component: tagTemplate,
+          context: {
+            tag
+          }
+        });
+      });
+
 
         // Create category list
         const categorySet = new Set();

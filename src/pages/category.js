@@ -99,6 +99,7 @@ export const guery = graphql`
           frontmatter {
             title
             category
+            tags
             author
             cover {
               children {

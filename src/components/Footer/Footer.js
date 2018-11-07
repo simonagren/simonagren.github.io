@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { TwitterIcon } from 'react-share';
 
 const Footer = props => {
   const { html, theme } = props;
@@ -7,10 +8,10 @@ const Footer = props => {
   return (
     <React.Fragment>
       <footer className="footer" dangerouslySetInnerHTML={{ __html: html }} />
-
       {/* --- STYLES --- */}
       <style jsx>{`
         .footer {
+          clear: both;
           background: ${theme.color.neutral.white};
           padding: ${theme.space.inset.default};
           padding-top: 0;
@@ -30,8 +31,9 @@ const Footer = props => {
 
               &::after {
                 content: "•";
-                position: absolute;
-                right: ${`calc(${theme.space.xs} * -1)`};
+                position: relative;
+                right: -10px;
+                top: 2px;
               }
               &:last-child::after {
                 content: "";

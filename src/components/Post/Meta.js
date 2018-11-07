@@ -7,7 +7,7 @@ import FaUser from "react-icons/lib/fa/user";
 import FaTag from "react-icons/lib/fa/tag";
 
 const Meta = props => {
-  const { prefix, author: authorName, category, theme } = props;
+  const { prefix, author: authorName, category, theme, tags } = props;
 
   return (
     <p className="meta">
@@ -15,14 +15,15 @@ const Meta = props => {
         <FaCalendar size={18} /> {prefix}
       </span>
       <span>
-        <FaUser size={18} /> {authorName}
+              <FaUser size={18} /> 
+              <Link className="tagslinks" to={`/about`}>{authorName}</Link>
+            </span>
+      <span>
+      <FaTag size={18} />
+      {tags && tags.map(tag => (
+              <Link className="tagslinks" to={`/tags/${tag}`}>{tag}</Link>
+            ))}
       </span>
-      {category && (
-        <span>
-          <FaTag size={18} />
-          <Link to={`/category/${category}`}>{category}</Link>
-        </span>
-      )}
 
       {/* --- STYLES --- */}
       <style jsx>{`
@@ -42,7 +43,19 @@ const Meta = props => {
             display: flex;
             text-transform: uppercase;
             margin: ${theme.space.xs} ${theme.space.s} ${theme.space.xs} 0;
+            
           }
+          :global(a.tagslinks + a:before) {
+            color: ${theme.icon.color};
+            content: "|";
+            padding: 0 0.5em;
+          }
+  
+          :global(a.tagslinks:hover) {
+            color: orange;
+          }
+  
+          
         }
         @from-width tablet {
           .meta {

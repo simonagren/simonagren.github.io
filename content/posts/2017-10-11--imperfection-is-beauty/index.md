@@ -1,7 +1,8 @@
 ---
 title: Imperfection is beauty, madness is genius
 cover: photo-1469461084727-4bfb496cf55a.jpg
-author: greg lobinski
+author: Simon Ågren
+tags: ["animals", "Chicago", "Zoos"]
 ---
 
 Proin suscipit luctus orci placerat fringilla. Donec hendrerit laoreet risus eget adipiscing. Suspendisse in urna ligula, a volutpat mauris. Sed enim mi, [bibendum](http://google.com) eu pulvinar vel, sodales vitae dui.

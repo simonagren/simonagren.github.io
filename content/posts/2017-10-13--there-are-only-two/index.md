@@ -1,7 +1,8 @@
 ---
 title: There are only two ways to live your life. 
 cover: photo-1451324119451-db0ac857463c.jpg
-author: greg lobinski
+author: Simon Ågren
+tags: ["animals", "Chicago", "Zoos"]
 ---
 
 ![unsplash.com](./photo-1451324119451-db0ac857463c.jpg)

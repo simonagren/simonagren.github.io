@@ -7,6 +7,7 @@ import Seo from "../components/Seo";
 import Article from "../components/Article";
 import Post from "../components/Post";
 import { ThemeContext } from "../layouts";
+import Back from "../components/Post/Back";
 
 const PostTemplate = props => {
   const {
@@ -25,6 +26,9 @@ const PostTemplate = props => {
       <ThemeContext.Consumer>
         {theme => (
           <Article theme={theme}>
+            <Back
+            theme={theme}
+            />
             <Post
               post={post}
               next={next}
@@ -38,7 +42,7 @@ const PostTemplate = props => {
       </ThemeContext.Consumer>
 
       <Seo data={post} facebook={facebook} />
-    </React.Fragment>
+         </React.Fragment>
   );
 };
 
@@ -63,6 +67,7 @@ export const postQuery = graphql`
         title
         author
         category
+        tags
         cover {
           childImageSharp {
             resize(width: 300) {
