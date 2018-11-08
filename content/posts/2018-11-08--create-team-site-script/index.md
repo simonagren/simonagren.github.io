@@ -208,8 +208,8 @@ Connect-PnPOnline -Url https://tenant-admin.sharepoint.com -Credential $cred
 2. Upload and add Site Script and Site Design
 ```powershell
 $scriptFromFile = Get-Content 'C:\Users\...createTeam.json' -Raw
-$siteScript = Add-PnPSiteScript -Title "Auto Create Team" -Description "Creates Team based on teamsite" -Content $siteScript
-$siteDesign = Add-PnPSiteDesign -Title "Auto Create Team" -WebTemplate "64" -SiteScriptIds $mySiteScript.Id -Description "Creates Team base on teamsite"
+$siteScript = Add-PnPSiteScript -Title "Auto Create Team" -Description "Creates Team based on teamsite" -Content $scriptFromFile
+$siteDesign = Add-PnPSiteDesign -Title "Auto Create Team" -WebTemplate "64" -SiteScriptIds $siteScript.Id -Description "Creates Team base on teamsite"
 ```
 
 ## Create Communication site and set as hub site
