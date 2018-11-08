@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url> <loc>http://simonagren.github.io//tags/flow/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://simonagren.github.io//tags/share-point-online/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://simonagren.github.io//tags/site-scripts/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://simonagren.github.io//tags/graph/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://simonagren.github.io//tags/hello/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://simonagren.github.io//tags/gatsby/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://simonagren.github.io//tags/github/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://simonagren.github.io//category/sayings/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://simonagren.github.io//create-team-site-script/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://simonagren.github.io//hello-world/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://simonagren.github.io//draft-post/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://simonagren.github.io//about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://simonagren.github.io//success/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://simonagren.github.io//category/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://simonagren.github.io//contact/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://simonagren.github.io//</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://simonagren.github.io//search/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://simonagren.github.io//tags/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/tags/flow/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/tags/share-point-online/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/tags/site-scripts/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/tags/graph/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/tags/hello/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/tags/gatsby/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/tags/github/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/category/sayings/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/create-team-site-script/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/hello-world/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/draft-post/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/success/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/category/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/contact/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/search/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/tags/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 </urlset>
