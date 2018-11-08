@@ -101,6 +101,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
       // Create Tags list
       const tagsSet = new Set();
+      debugger;
       items.forEach(edge => {
         const {
           node: {

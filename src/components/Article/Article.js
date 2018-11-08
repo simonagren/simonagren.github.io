@@ -13,6 +13,7 @@ const Article = props => {
         .article {
           padding: ${theme.space.inset.default};
           margin: 0 auto;
+          overflow: hidden;
         }
         @from-width tablet {
           .article {

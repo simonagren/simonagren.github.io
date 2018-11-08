@@ -44,7 +44,7 @@ const Item = props => {
               <Link className="tagslinks" to={`/about`}>{author}</Link>
             </span>
             <span>
-            <FaTag size={18} />
+            <FaTag style={{float: "left"}} size={18} />
             {tags.map(tag => (
                     <Link key={tag} className="tagslinks" to={`/tags/${tag}`}>{tag}</Link>
                   ))}
@@ -68,10 +68,11 @@ const Item = props => {
           content: "|";
           padding: 0 0.5em;
         }
-
         :global(a.tagslinks:hover) {
           color: orange;
         }
+
+
 
         li {
           border: 1px solid transparent;
@@ -143,6 +144,7 @@ const Item = props => {
           span {
             align-items: center;
             display: flex;
+            flex-flow: row wrap;
             text-transform: uppercase;
             margin: ${theme.space.xs} ${theme.space.s} ${theme.space.xs} 0;
           }

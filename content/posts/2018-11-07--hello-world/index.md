@@ -1,6 +1,6 @@
 ---
 title: Hello World - a first blog post
-tags: ["hello", "gatsby", "github"]
+tags: ["gatsby"]
 cover: photo-1465070845512-2b2dbdc6df66.jpg
 author: Simon Ågren
 ---
