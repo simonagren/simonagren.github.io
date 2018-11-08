@@ -1,5 +1,5 @@
 ---
-title: Create a Team using site scripts, Flow and Hub Sites 
+title: Create a Microsoft Team using site scripts, Flow and Hub Sites 
 tags: ["Flow","SharePoint Online", "Site Scripts", "Graph"]
 cover: success.jpg
 author: Simon Ågren
