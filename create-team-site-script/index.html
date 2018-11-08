@@ -1,0 +1,728 @@
+<!DOCTYPE html><html lang="en" prefix="og: http://ogp.me/ns#"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/component---src-layouts-index-js-730c783c335a3756600b.js" as="script"/><link rel="preload" href="/component---src-templates-post-template-js-5d75743e5084e9c8f660.js" as="script"/><link rel="preload" href="/path---create-team-site-script-f1f857fa13ac1de7e05a.js" as="script"/><link rel="preload" href="/app-6d1ebb591f7d94db5048.js" as="script"/><link rel="preload" href="/commons-0a1f4ee4730047f681ef.js" as="script"/><title data-react-helmet="true">Create a Team using site scripts, Flow and Hub Sites - AgrenPoint - A dev blog</title><meta data-react-helmet="true" name="description" content="AgrenPoint is development wiht Simon Ågren."/><meta data-react-helmet="true" property="og:url" content="http://simonagren.github.io//create-team-site-script/"/><meta data-react-helmet="true" property="og:title" content="Create a Team using site scripts, Flow and Hub Sites - AgrenPoint - A dev blog"/><meta data-react-helmet="true" property="og:description" content="AgrenPoint is development wiht Simon Ågren."/><meta data-react-helmet="true" property="og:image" content="[object Object]"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="fb:app_id" content="2263145610597628"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="agrenpoint"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#666"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><style id="__jsx-105041544">.item.jsx-105041544,.showItem.jsx-105041544{background:transparent;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
+.item.jsx-105041544 a,.showItem.jsx-105041544 a{padding:10px;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
+.item.jsx-105041544 svg,.showItem.jsx-105041544 svg{margin:0 5px 0 0;opacity:0.6;}
+.itemList .hideItem{display:none;}
+@media screen and (min-width:1024px){.item.jsx-105041544 a{color:#3e3e3c;padding:10px;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;border-radius:5px;}.homepage:not(.fixed) .item.jsx-105041544 a{color:#ffffff;}.item.jsx-105041544 a:hover{color:#000000;background:#ffffff;background:rgba(255,255,255,0.4);}.item.jsx-105041544 svg{-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;}.item.jsx-105041544:hover svg{fill:#000000;opacity:1;}.hero .item.jsx-105041544:hover svg svg{fill:green;}.showItem.jsx-105041544{display:none;}.hiddenItem.jsx-105041544{text-align:left;padding:5px;}.hiddenItem.jsx-105041544 a.inHiddenItem{color:#3e3e3c;}.hiddenItem.jsx-105041544 a.inHiddenItem:hover{color:#000000;}}</style><style id="__jsx-3258538958">.menu.jsx-3258538958{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background:#ffffff;bottom:0;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex:1;-ms-flex-positive:1;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;left:0;max-height:50px;padding:0 10px;position:fixed;width:100%;z-index:1;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;}
+.itemList.jsx-3258538958{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;list-style:none;margin:0;padding:0;position:relative;width:100%;}
+@media screen and (max-width:1023px){.menu.jsx-3258538958:after{position:absolute;content:"";left:20px;right:20px;top:0;height:1px;background:#000000;}.menu.open.jsx-3258538958{padding:20px;}.homepage:not(.fixed) .menu.jsx-3258538958{bottom:-100px;}}
+@media screen and (min-width:1024px){.menu.jsx-3258538958{border-top:none;background:transparent;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;-webkit-box-pack:end;-ms-flex-pack:end;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;padding-left:50px;-webkit-transition:none;-webkit-transition:none;transition:none;}.itemList.jsx-3258538958{-webkit-box-pack:end;-ms-flex-pack:end;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;padding:0;}.hiddenItemList.jsx-3258538958{list-style:none;margin:0;position:absolute;background:#ffffff;border:1px solid #ecebea;top:48px;right:10px;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:start;-ms-flex-pack:start;-webkit-box-pack:start;-webkit-justify-content:flex-start;-ms-flex-pack:start;justify-content:flex-start;padding:20px;border-radius:5px;border-top-right-radius:0;}.hiddenItemList.jsx-3258538958:after{content:"";background:#ffffff;z-index:10;top:-10px;right:-1px;width:44px;height:10px;position:absolute;border-left:1px solid #ecebea;border-right:1px solid #ecebea;}.homepage:not(.fixed) .hiddenItemList.jsx-3258538958{border:1px solid transparent;background:#ffffff;background:rgba(255,255,255,0.9);top:50px;}.homepage:not(.fixed) .hiddenItemList.jsx-3258538958:after{top:-11px;border-left:1px solid transparent;border-right:1px solid transparent;background:#ffffff;background:rgba(255,255,255,0.9);}.fixed .hiddenItemList.jsx-3258538958{top:44px;}}</style><style id="__jsx-961199269">.header.jsx-961199269{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;background-color:#ffffff;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:80px;position:relative;top:0;width:100%;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
+.header.jsx-961199269 div.logoType{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:"column";-webkit-flex-direction:"column";-ms-flex-direction:"column";flex-direction:"column";color:#3e3e3c;}
+.header.jsx-961199269 div.logoType .logo.jsx-961199269{-ms-flex-negative:0;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;}
+.header.homepage.jsx-961199269{position:absolute;background-color:transparent;height:100px;;}
+.icon.jsx-961199269 svg{height:20px;}
+.type.jsx-961199269 div{display:inline-block;}
+.type.jsx-961199269 div:not(:first-of-type){margin-left:5px;}
+h1.jsx-961199269{font-size:1.35em;font-weight:400;margin:0 0 2.5px 0;}
+h2.jsx-961199269{font-weight:400;font-size:.8em;-webkit-letter-spacing:0;-moz-letter-spacing:0;-ms-letter-spacing:0;letter-spacing:0;margin:2.5px 0 0 0;white-space:nowrap;}
+.logo.jsx-961199269{border-radius:65% 75%;border:1px solid #eee;display:inline-block;height:44px;margin:0 5px 0 0;overflow:hidden;width:44px;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;}
+.homepage.jsx-961199269 .logo.jsx-961199269{height:60px;width:60px;position:relative;top:4px;}
+.logo.jsx-961199269 img.jsx-961199269{width:100%;}
+.sensor.jsx-961199269{display:block;position:absolute;bottom:0;z-index:1;left:0;right:0;height:1px;top:80px;}
+@media screen and (min-width:768px){.header.jsx-961199269{padding:40px;}.header.homepage.jsx-961199269{height:100px;;}}
+@media screen and (max-width:1023px){.header.homepage.jsx-961199269 .logo.jsx-961199269{border:none;}.header.homepage.jsx-961199269 div.logoType,.header.homepage.jsx-961199269 h1.jsx-961199269{color:#ffffff;}.header.homepage.jsx-961199269 h2.jsx-961199269{color:#dddbda;}}
+@media screen and (min-width:1024px){.header.jsx-961199269{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:#ffffff;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:absolute;top:0;width:100%;-webkit-box-pack:justify;-ms-flex-pack:justify;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-transition:padding 0.5s;-webkit-transition:padding 0.5s;transition:padding 0.5s;}.header.fixed.jsx-961199269{height:70px;;background-color:#ffffff;left:0;padding:0 20px;position:fixed;top:0;width:100%;z-index:1;}.header.fixed.jsx-961199269 h1.jsx-961199269{margin:0 0 2px 0;}.header.fixed.jsx-961199269 h2.jsx-961199269{margin:0 0 2px 0;}.header.fixed.jsx-961199269 .twittSvg{color:#1da1f2;}.header.fixed.jsx-961199269 .linkSvg{color:#0077b5;}.header.homepage.jsx-961199269:not(.fixed) div.logoType,.header.homepage.jsx-961199269:not(.fixed) h1.jsx-961199269{color:#ffffff;}.header.homepage.jsx-961199269:not(.fixed) h2.jsx-961199269{color:#dddbda;}.header.jsx-961199269 div.logoType{text-align:left;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-ms-flex-negative:0;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;width:auto;}.logo.jsx-961199269{margin:0 5px 0 0;}.fixed.jsx-961199269 .logo.jsx-961199269{height:60px;width:60px;position:relative;top:4px;}.header.homepage.jsx-961199269:not(.fixed) .logo.jsx-961199269{border:none;}h2.jsx-961199269{-webkit-animation-duration:0.5s;-webkit-animation-duration:0.5s;animation-duration:0.5s;-webkit-animation-name:h2Entry;-webkit-animation-name:h2Entry-jsx-961199269;animation-name:h2Entry-jsx-961199269;}@-webkit-keyframes h2Entry{from.jsx-961199269{opacity:0;}to.jsx-961199269{opacity:1;}}@-webkit-keyframes h2Entry-jsx-961199269{from{opacity:0;}to{opacity:1;}}@keyframes h2Entry-jsx-961199269{from{opacity:0;}to{opacity:1;}}}</style><style id="__jsx-3171265868">h1.jsx-3171265868{font-size:2.2em;margin:0 0 40px 0;-webkit-animation-name:headlineEntry;-webkit-animation-name:headlineEntry-jsx-3171265868;animation-name:headlineEntry-jsx-3171265868;-webkit-animation-duration:1s;-webkit-animation-duration:1s;animation-duration:1s;}
+h1.jsx-3171265868 span{font-weight:400;display:block;font-size:0.5em;-webkit-letter-spacing:0;-moz-letter-spacing:0;-ms-letter-spacing:0;letter-spacing:0;margin:0 0 5px 0;}
+h1.jsx-3171265868 svg{height:0.75em;fill:#000000;}
+@-webkit-keyframes headlineEntry{from.jsx-3171265868{opacity:0.5;}to.jsx-3171265868{opacity:1;}}
+@-webkit-keyframes headlineEntry-jsx-3171265868{from{opacity:0.5;}to{opacity:1;}}
+@keyframes headlineEntry-jsx-3171265868{from{opacity:0.5;}to{opacity:1;}}
+@media screen and (min-width:768px){h1.jsx-3171265868{font-size:calc(2em * 1.2);}}
+@media screen and (min-width:1024px){h1.jsx-3171265868{font-size:calc(2em * 1.4);}}</style><style id="__jsx-3816121499">.meta.jsx-3816121499{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;-ms-flex-flow:row wrap;flex-flow:row wrap;font-size:0.8em;margin:20px 0;background:transparent;}
+.meta.jsx-3816121499 svg{fill:#000000;margin:0 5px 0 0;}
+.meta.jsx-3816121499 span.jsx-3816121499{-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;text-transform:uppercase;margin:5px 10px 5px 0;}
+.meta.jsx-3816121499 a.tagslinks + a:before{color:#000000;content:"|";padding:0 0.5em;}
+.meta.jsx-3816121499 a.tagslinks:hover{color:orange;}
+@media screen and (min-width:768px){.meta.jsx-3816121499{margin:calc(20px * 1.5) 0 20px;}}</style><style id="__jsx-4237448961">.bodytext.jsx-4237448961{-webkit-animation-name:bodytextEntry;-webkit-animation-name:bodytextEntry-jsx-4237448961;animation-name:bodytextEntry-jsx-4237448961;-webkit-animation-duration:1s;-webkit-animation-duration:1s;animation-duration:1s;}
+.bodytext.jsx-4237448961 h2,.bodytext.jsx-4237448961 h3{margin:1.5em 0 1em;}
+.bodytext.jsx-4237448961 h2{line-height:1.2;font-size:1.7em;}
+.bodytext.jsx-4237448961 h3{font-size:1.35em;line-height:1.3;}
+.bodytext.jsx-4237448961 p{font-size:1.1em;line-height:1.6;margin:0 0 1.5em;}
+.bodytext.jsx-4237448961 ul{list-style:circle;margin:0 0 1.5em;padding:0 0 0 1.5em;}
+.bodytext.jsx-4237448961 li{margin:0.7em 0;line-height:1.5;}
+.bodytext.jsx-4237448961 a{font-weight:600;color:#000000;-webkit-text-decoration:underline;text-decoration:underline;}
+.bodytext.jsx-4237448961 a.gatsby-resp-image-link{border:0;display:block;margin:2.5em 0;border-radius:10px;overflow:hidden;border:1px solid #ecebea;}
+.bodytext.jsx-4237448961 code.language-text{background:#ecebea;text-shadow:none;color:inherit;padding:0.1em 0.3em 0.2em;border-radius:0.1em;}
+@-webkit-keyframes bodytextEntry{from.jsx-4237448961{opacity:0;}to.jsx-4237448961{opacity:1;}}
+@-webkit-keyframes bodytextEntry-jsx-4237448961{from{opacity:0;}to{opacity:1;}}
+@keyframes bodytextEntry-jsx-4237448961{from{opacity:0;}to{opacity:1;}}</style><style id="__jsx-646394116">.author.jsx-646394116{margin:40px 0;padding:40px 0;border-top:1px solid #ecebea;border-bottom:1px solid #ecebea;}
+.avatar.jsx-646394116{float:left;border-radius:65% 75%;border:1px solid #ecebea;display:inline-block;height:50px;margin:5px 20px 0 0;overflow:hidden;width:50px;}
+.avatar.jsx-646394116 img.jsx-646394116{width:100%;}
+.note.jsx-646394116{font-size:0.9em;line-height:1.6;}
+@media screen and (min-width:768px){.author.jsx-646394116{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}.avatar.jsx-646394116{-webkit-box-flex:0;-ms-flex:0 0 auto;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;}}</style><style id="__jsx-126278577">.links.jsx-126278577{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;padding:0 20px 40px;border-bottom:1px solid #ecebea;margin:0 0 40px 0;}
+.links.jsx-126278577 a{display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+.links.jsx-126278577 a:nth-child(2){margin:20px 0 0;}
+.links.jsx-126278577 svg{fill:orange;width:20px;height:20px;-ms-flex-negative:0;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-box-flex:0;-ms-flex-positive:0;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;margin:0 20px 0 0;}
+h4.jsx-126278577{font-weight:600;margin:0;font-size:1.1em;}
+time.jsx-126278577{color:#969492;display:block;font-weight:400;font-size:0.8em;margin-top:0.5em;}
+@media screen and (min-width:1024px){.links.jsx-126278577{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;-webkit-flex-direction:row-reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}.links.jsx-126278577 a{-ms-flex-preferred-size:50%;-webkit-flex-basis:50%;-ms-flex-preferred-size:50%;flex-basis:50%;}.links.jsx-126278577 a:nth-child(2){margin:0;}.links.jsx-126278577 svg{-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;margin:0 10px 0 0;}@media (hover:hover){.links.jsx-126278577 a:hover svg{-webkit-transform:scale(1.5);-webkit-transform:scale(1.5);-ms-transform:scale(1.5);transform:scale(1.5);}}}</style><style id="__jsx-3595558049">.comments.jsx-3595558049{margin:0 -8px 20px;}</style><style id="__jsx-2060241101">.article.jsx-2060241101{padding:20px;margin:0 auto;}
+@media screen and (min-width:768px){.article.jsx-2060241101{padding:calc(20px) calc(20px * 2);max-width:700px;}}
+@media screen and (min-width:1024px){.article.jsx-2060241101{padding:calc(20px * 2 + 90px) 0 calc(20px * 2);max-width:800px;}}</style><style id="__jsx-1516995558">.footer.jsx-1516995558{clear:both;background:#ffffff;padding:20px;padding-top:0;padding-bottom:120px;}
+.footer.jsx-1516995558 ul{list-style:none;text-align:center;padding:0;}
+.footer.jsx-1516995558 ul li{color:#969492;font-size:.8em;padding:2px 10px;position:relative;display:inline-block;}
+.footer.jsx-1516995558 ul li:after{content:"•";position:relative;right:-10px;top:2px;}
+.footer.jsx-1516995558 ul li:last-child:after{content:"";}
+@media screen and (min-width:1024px){.footer.jsx-1516995558{padding:0 1em 1.5em;}}</style><style id="__jsx-1304903616">main.jsx-1304903616{min-height:80vh;}</style><style id="__jsx-3347019808">html{-webkit-box-sizing:border-box;box-sizing:border-box;}
+*,*:after,*:before{-webkit-box-sizing:inherit;box-sizing:inherit;margin:0;padding:0;}
+body{font-family:Arial, sans-serif;;}
+h1,h2,h3{font-weight:400;line-height:1.1;-webkit-letter-spacing:-0.03em;-moz-letter-spacing:-0.03em;-ms-letter-spacing:-0.03em;letter-spacing:-0.03em;margin:0;}
+h1{-webkit-letter-spacing:-0.04em;-moz-letter-spacing:-0.04em;-ms-letter-spacing:-0.04em;letter-spacing:-0.04em;}
+p{margin:0;}
+strong{font-weight:400;}
+a{-webkit-text-decoration:none;text-decoration:none;color:#666;}
+main{width:auto;display:block;}</style><style id="gatsby-inlined-css">@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:300;src:local("Open Sans Light "),local("Open Sans-Light"),url(/static/open-sans-latin-300.60c86674.woff2) format("woff2"),url(/static/open-sans-latin-300.521d17bc.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:300;src:local("Open Sans Light italic"),local("Open Sans-Lightitalic"),url(/static/open-sans-latin-300italic.06bbd318.woff2) format("woff2"),url(/static/open-sans-latin-300italic.8a648ff3.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:400;src:local("Open Sans Regular "),local("Open Sans-Regular"),url(/static/open-sans-latin-400.cffb686d.woff2) format("woff2"),url(/static/open-sans-latin-400.bf2d0783.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:400;src:local("Open Sans Regular italic"),local("Open Sans-Regularitalic"),url(/static/open-sans-latin-400italic.987032ea.woff2) format("woff2"),url(/static/open-sans-latin-400italic.db70d0b9.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:600;src:local("Open Sans SemiBold "),local("Open Sans-SemiBold"),url(/static/open-sans-latin-600.223a277b.woff2) format("woff2"),url(/static/open-sans-latin-600.1cd5320f.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:600;src:local("Open Sans SemiBold italic"),local("Open Sans-SemiBolditalic"),url(/static/open-sans-latin-600italic.4950a720.woff2) format("woff2"),url(/static/open-sans-latin-600italic.318ea1ad.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:700;src:local("Open Sans Bold "),local("Open Sans-Bold"),url(/static/open-sans-latin-700.d08c09f2.woff2) format("woff2"),url(/static/open-sans-latin-700.623e3205.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:700;src:local("Open Sans Bold italic"),local("Open Sans-Bolditalic"),url(/static/open-sans-latin-700italic.c02f5da6.woff2) format("woff2"),url(/static/open-sans-latin-700italic.72e19cbb.woff) format("woff")}@font-face{font-family:Open Sans;font-style:normal;font-display:swap;font-weight:800;src:local("Open Sans ExtraBold "),local("Open Sans-ExtraBold"),url(/static/open-sans-latin-800.aaeffaf2.woff2) format("woff2"),url(/static/open-sans-latin-800.c6aa0c4a.woff) format("woff")}@font-face{font-family:Open Sans;font-style:italic;font-display:swap;font-weight:800;src:local("Open Sans ExtraBold italic"),local("Open Sans-ExtraBolditalic"),url(/static/open-sans-latin-800italic.6b3973ff.woff2) format("woff2"),url(/static/open-sans-latin-800italic.79b58175.woff) format("woff")}code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#272822}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#f8f8f2}.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#f92672}.token.boolean,.token.number{color:#ae81ff}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#a6e22e}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#e6db74}.token.keyword{color:#66d9ef}.token.important,.token.regex{color:#fd971f}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.ant-form{font-family:Monospaced Number,Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.5;color:#000;color:rgba(0,0,0,.65);-webkit-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0;list-style:none}.ant-form legend{display:block;width:100%;padding:0;margin-bottom:20px;font-size:16px;line-height:inherit;color:#000;color:rgba(0,0,0,.45);border:0;border-bottom:1px solid #d9d9d9}.ant-form label{font-size:14px}.ant-form input[type=search]{-webkit-box-sizing:border-box;box-sizing:border-box}.ant-form input[type=checkbox],.ant-form input[type=radio]{line-height:normal}.ant-form input[type=file]{display:block}.ant-form input[type=range]{display:block;width:100%}.ant-form select[multiple],.ant-form select[size]{height:auto}.ant-form input[type=checkbox]:focus,.ant-form input[type=file]:focus,.ant-form input[type=radio]:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}.ant-form output{display:block;padding-top:15px;font-size:14px;line-height:1.5;color:#000;color:rgba(0,0,0,.65)}.ant-form-item-required:before{display:inline-block;margin-right:4px;content:"*";font-family:SimSun;line-height:1;font-size:14px;color:#f5222d}.ant-form-hide-required-mark .ant-form-item-required:before{display:none}.ant-checkbox-inline.disabled,.ant-checkbox-vertical.disabled,.ant-checkbox.disabled label,.ant-radio-inline.disabled,.ant-radio-vertical.disabled,.ant-radio.disabled label,input[type=checkbox].disabled,input[type=checkbox][disabled],input[type=radio].disabled,input[type=radio][disabled]{cursor:not-allowed}.ant-form-item{font-family:Monospaced Number,Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.5;color:#000;color:rgba(0,0,0,.65);-webkit-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0;list-style:none;margin-bottom:24px;vertical-align:top}.ant-form-item label{position:relative}.ant-form-item label>.anticon{vertical-align:top;font-size:14px}.ant-form-item-control>.ant-form-item:last-child,.ant-form-item [class^=ant-col-]>.ant-form-item:only-child{margin-bottom:-24px}.ant-form-item-control{line-height:39.9999px;position:relative;zoom:1}.ant-form-item-control:after,.ant-form-item-control:before{content:"";display:table}.ant-form-item-control:after{clear:both}.ant-form-item-children{position:relative}.ant-form-item-with-help{margin-bottom:5px}.ant-form-item-label{text-align:right;vertical-align:middle;line-height:39.9999px;display:inline-block;overflow:hidden;white-space:nowrap}.ant-form-item-label label{color:#000;color:rgba(0,0,0,.85)}.ant-form-item-label label:after{content:":";margin:0 8px 0 2px;position:relative;top:-.5px}.ant-form-item .ant-switch{margin:2px 0 4px}.ant-form-item-no-colon .ant-form-item-label label:after{content:" "}.ant-form-explain,.ant-form-extra{color:#000;color:rgba(0,0,0,.45);line-height:1.5;-webkit-transition:color .3s cubic-bezier(.215,.61,.355,1);transition:color .3s cubic-bezier(.215,.61,.355,1);margin-top:-2px;clear:both}.ant-form-extra{padding-top:4px}.ant-form-text{display:inline-block;padding-right:8px}.ant-form-split{display:block;text-align:center}form .has-feedback .ant-input{padding-right:24px}form .has-feedback :not(.ant-input-group-addon)>.ant-select .ant-select-arrow,form .has-feedback :not(.ant-input-group-addon)>.ant-select .ant-select-selection__clear,form .has-feedback>.ant-select .ant-select-arrow,form .has-feedback>.ant-select .ant-select-selection__clear{right:28px}form .has-feedback :not(.ant-input-group-addon)>.ant-select .ant-select-selection-selected-value,form .has-feedback>.ant-select .ant-select-selection-selected-value{padding-right:42px}form .has-feedback .ant-cascader-picker-arrow{margin-right:17px}form .has-feedback .ant-calendar-picker-clear,form .has-feedback .ant-calendar-picker-icon,form .has-feedback .ant-cascader-picker-clear,form .has-feedback .ant-input-search:not(.ant-input-search-enter-button) .ant-input-suffix,form .has-feedback .ant-time-picker-clear,form .has-feedback .ant-time-picker-icon{right:28px}form textarea.ant-input{height:auto}form .ant-upload{background:transparent}form input[type=checkbox],form input[type=radio]{width:14px;height:14px}form .ant-checkbox-inline,form .ant-radio-inline{display:inline-block;vertical-align:middle;font-weight:400;cursor:pointer;margin-left:8px}form .ant-checkbox-inline:first-child,form .ant-radio-inline:first-child{margin-left:0}form .ant-checkbox-vertical,form .ant-radio-vertical{display:block}form .ant-checkbox-vertical+.ant-checkbox-vertical,form .ant-radio-vertical+.ant-radio-vertical{margin-left:0}form .ant-input-number+.ant-form-text{margin-left:8px}form .ant-cascader-picker,form .ant-select{width:100%}form .ant-input-group .ant-cascader-picker,form .ant-input-group .ant-select{width:auto}form .ant-input-group-wrapper,form :not(.ant-input-group-wrapper)>.ant-input-group{display:inline-block;vertical-align:middle;position:relative;top:-1px}.ant-input-group-wrap .ant-select-selection{border-bottom-left-radius:0;border-top-left-radius:0}.ant-input-group-wrap .ant-select-selection:hover{border-color:#d9d9d9}.ant-input-group-wrap .ant-select-selection--single{margin-left:-1px;height:40px;background-color:#eee}.ant-input-group-wrap .ant-select-selection--single .ant-select-selection__rendered{padding-left:8px;padding-right:25px;line-height:30px}.ant-input-group-wrap .ant-select-open .ant-select-selection{border-color:#d9d9d9;-webkit-box-shadow:none;box-shadow:none}.ant-col-24.ant-form-item-label,.ant-col-xl-24.ant-form-item-label,.ant-form-vertical .ant-form-item-label{padding:0 0 8px;margin:0;display:block;text-align:left;line-height:1.5}.ant-col-24.ant-form-item-label label:after,.ant-col-xl-24.ant-form-item-label label:after,.ant-form-vertical .ant-form-item-label label:after{display:none}.ant-form-vertical .ant-form-item{padding-bottom:8px}.ant-form-vertical .ant-form-item-control{line-height:1.5}.ant-form-vertical .ant-form-explain,.ant-form-vertical .ant-form-extra{margin-top:2px;margin-bottom:-4px}@media (max-width:575px){.ant-form-item-control-wrapper,.ant-form-item-label{display:block;width:100%}.ant-form-item-label{padding:0 0 8px;margin:0;display:block;text-align:left;line-height:1.5}.ant-form-item-label label:after{display:none}.ant-col-xs-24.ant-form-item-label{padding:0 0 8px;margin:0;display:block;text-align:left;line-height:1.5}.ant-col-xs-24.ant-form-item-label label:after{display:none}}@media (max-width:767px){.ant-col-sm-24.ant-form-item-label{padding:0 0 8px;margin:0;display:block;text-align:left;line-height:1.5}.ant-col-sm-24.ant-form-item-label label:after{display:none}}@media (max-width:991px){.ant-col-md-24.ant-form-item-label{padding:0 0 8px;margin:0;display:block;text-align:left;line-height:1.5}.ant-col-md-24.ant-form-item-label label:after{display:none}}@media (max-width:1199px){.ant-col-lg-24.ant-form-item-label{padding:0 0 8px;margin:0;display:block;text-align:left;line-height:1.5}.ant-col-lg-24.ant-form-item-label label:after{display:none}}@media (max-width:1599px){.ant-col-xl-24.ant-form-item-label{padding:0 0 8px;margin:0;display:block;text-align:left;line-height:1.5}.ant-col-xl-24.ant-form-item-label label:after{display:none}}.ant-form-inline .ant-form-item{display:inline-block;margin-right:16px;margin-bottom:0}.ant-form-inline .ant-form-item-with-help{margin-bottom:24px}.ant-form-inline .ant-form-item>.ant-form-item-control-wrapper,.ant-form-inline .ant-form-item>.ant-form-item-label{display:inline-block;vertical-align:middle}.ant-form-inline .ant-form-text,.ant-form-inline .has-feedback{display:inline-block}.ant-form-inline .ant-form-explain{position:absolute}.has-error.has-feedback .ant-form-item-children:after,.has-success.has-feedback .ant-form-item-children:after,.has-warning.has-feedback .ant-form-item-children:after,.is-validating.has-feedback .ant-form-item-children:after{position:absolute;top:50%;right:0;visibility:visible;pointer-events:none;width:32px;height:20px;line-height:20px;margin-top:-10px;text-align:center;font-size:14px;-webkit-animation:zoomIn .3s cubic-bezier(.12,.4,.29,1.46);animation:zoomIn .3s cubic-bezier(.12,.4,.29,1.46);font-family:anticon;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;content:"";z-index:1}.has-success.has-feedback .ant-form-item-children:after{-webkit-animation-name:diffZoomIn1!important;animation-name:diffZoomIn1!important;content:"\E630";color:#52c41a}.has-warning .ant-form-explain,.has-warning .ant-form-split{color:#faad14}.has-warning .ant-input,.has-warning .ant-input:hover{border-color:#faad14}.has-warning .ant-input:focus{border-color:#ffc53d;outline:0;-webkit-box-shadow:0 0 0 2px rgba(250,173,20,.2);box-shadow:0 0 0 2px rgba(250,173,20,.2);border-right-width:1px!important}.has-warning .ant-input:not([disabled]):hover{border-color:#faad14}.has-warning .ant-calendar-picker-open .ant-calendar-picker-input{border-color:#ffc53d;outline:0;-webkit-box-shadow:0 0 0 2px rgba(250,173,20,.2);box-shadow:0 0 0 2px rgba(250,173,20,.2);border-right-width:1px!important}.has-warning .ant-input-prefix{color:#faad14}.has-warning .ant-input-group-addon{color:#faad14;border-color:#faad14;background-color:#fff}.has-warning .has-feedback{color:#faad14}.has-warning.has-feedback .ant-form-item-children:after{content:"\E62C";color:#faad14;-webkit-animation-name:diffZoomIn3!important;animation-name:diffZoomIn3!important}.has-warning .ant-select-selection{border-color:#faad14}.has-warning .ant-select-focused .ant-select-selection,.has-warning .ant-select-open .ant-select-selection{border-color:#ffc53d;outline:0;-webkit-box-shadow:0 0 0 2px rgba(250,173,20,.2);box-shadow:0 0 0 2px rgba(250,173,20,.2);border-right-width:1px!important}.has-warning .ant-calendar-picker-icon:after,.has-warning .ant-cascader-picker-arrow,.has-warning .ant-picker-icon:after,.has-warning .ant-select-arrow,.has-warning .ant-time-picker-icon:after{color:#faad14}.has-warning .ant-input-number,.has-warning .ant-time-picker-input{border-color:#faad14}.has-warning .ant-input-number-focused,.has-warning .ant-input-number:focus,.has-warning .ant-time-picker-input-focused,.has-warning .ant-time-picker-input:focus{border-color:#ffc53d;outline:0;-webkit-box-shadow:0 0 0 2px rgba(250,173,20,.2);box-shadow:0 0 0 2px rgba(250,173,20,.2);border-right-width:1px!important}.has-warning .ant-input-number:not([disabled]):hover,.has-warning .ant-time-picker-input:not([disabled]):hover{border-color:#faad14}.has-warning .ant-cascader-picker:focus .ant-cascader-input{border-color:#ffc53d;outline:0;-webkit-box-shadow:0 0 0 2px rgba(250,173,20,.2);box-shadow:0 0 0 2px rgba(250,173,20,.2);border-right-width:1px!important}.has-error .ant-form-explain,.has-error .ant-form-split{color:#f5222d}.has-error .ant-input,.has-error .ant-input:hover{border-color:#f5222d}.has-error .ant-input:focus{border-color:#ff4d4f;outline:0;-webkit-box-shadow:0 0 0 2px rgba(245,34,45,.2);box-shadow:0 0 0 2px rgba(245,34,45,.2);border-right-width:1px!important}.has-error .ant-input:not([disabled]):hover{border-color:#f5222d}.has-error .ant-calendar-picker-open .ant-calendar-picker-input{border-color:#ff4d4f;outline:0;-webkit-box-shadow:0 0 0 2px rgba(245,34,45,.2);box-shadow:0 0 0 2px rgba(245,34,45,.2);border-right-width:1px!important}.has-error .ant-input-prefix{color:#f5222d}.has-error .ant-input-group-addon{color:#f5222d;border-color:#f5222d;background-color:#fff}.has-error .has-feedback{color:#f5222d}.has-error.has-feedback .ant-form-item-children:after{content:"\E62E";color:#f5222d;-webkit-animation-name:diffZoomIn2!important;animation-name:diffZoomIn2!important}.has-error .ant-select-selection{border-color:#f5222d}.has-error .ant-select-focused .ant-select-selection,.has-error .ant-select-open .ant-select-selection{border-color:#ff4d4f;outline:0;-webkit-box-shadow:0 0 0 2px rgba(245,34,45,.2);box-shadow:0 0 0 2px rgba(245,34,45,.2);border-right-width:1px!important}.has-error .ant-select.ant-select-auto-complete .ant-input:focus{border-color:#f5222d}.has-error .ant-input-group-addon .ant-select-selection{border-color:transparent;-webkit-box-shadow:none;box-shadow:none}.has-error .ant-calendar-picker-icon:after,.has-error .ant-cascader-picker-arrow,.has-error .ant-picker-icon:after,.has-error .ant-select-arrow,.has-error .ant-time-picker-icon:after{color:#f5222d}.has-error .ant-input-number,.has-error .ant-time-picker-input{border-color:#f5222d}.has-error .ant-input-number-focused,.has-error .ant-input-number:focus,.has-error .ant-time-picker-input-focused,.has-error .ant-time-picker-input:focus{border-color:#ff4d4f;outline:0;-webkit-box-shadow:0 0 0 2px rgba(245,34,45,.2);box-shadow:0 0 0 2px rgba(245,34,45,.2);border-right-width:1px!important}.has-error .ant-input-number:not([disabled]):hover,.has-error .ant-mention-wrapper .ant-mention-editor,.has-error .ant-mention-wrapper .ant-mention-editor:not([disabled]):hover,.has-error .ant-time-picker-input:not([disabled]):hover{border-color:#f5222d}.has-error .ant-cascader-picker:focus .ant-cascader-input,.has-error .ant-mention-wrapper.ant-mention-active:not([disabled]) .ant-mention-editor,.has-error .ant-mention-wrapper .ant-mention-editor:not([disabled]):focus{border-color:#ff4d4f;outline:0;-webkit-box-shadow:0 0 0 2px rgba(245,34,45,.2);box-shadow:0 0 0 2px rgba(245,34,45,.2);border-right-width:1px!important}.is-validating.has-feedback .ant-form-item-children:after{display:inline-block;-webkit-animation:loadingCircle 1s infinite linear;animation:loadingCircle 1s infinite linear;content:"\E64D";color:#1890ff}.ant-advanced-search-form .ant-form-item{margin-bottom:24px}.ant-advanced-search-form .ant-form-item-with-help{margin-bottom:5px}.show-help-appear,.show-help-enter,.show-help-leave{-webkit-animation-duration:.3s;animation-duration:.3s;-webkit-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-play-state:paused;animation-play-state:paused}.show-help-appear.show-help-appear-active,.show-help-enter.show-help-enter-active{-webkit-animation-name:antShowHelpIn;animation-name:antShowHelpIn;-webkit-animation-play-state:running;animation-play-state:running}.show-help-leave.show-help-leave-active{-webkit-animation-name:antShowHelpOut;animation-name:antShowHelpOut;-webkit-animation-play-state:running;animation-play-state:running;pointer-events:none}.show-help-appear,.show-help-enter{opacity:0}.show-help-appear,.show-help-enter,.show-help-leave{-webkit-animation-timing-function:cubic-bezier(.645,.045,.355,1);animation-timing-function:cubic-bezier(.645,.045,.355,1)}@-webkit-keyframes antShowHelpIn{0%{opacity:0;-webkit-transform:translateY(-5px);transform:translateY(-5px)}to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes antShowHelpIn{0%{opacity:0;-webkit-transform:translateY(-5px);transform:translateY(-5px)}to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}@-webkit-keyframes antShowHelpOut{to{opacity:0;-webkit-transform:translateY(-5px);transform:translateY(-5px)}}@keyframes antShowHelpOut{to{opacity:0;-webkit-transform:translateY(-5px);transform:translateY(-5px)}}@-webkit-keyframes diffZoomIn1{0%{-webkit-transform:scale(0);transform:scale(0)}to{-webkit-transform:scale(1);transform:scale(1)}}@keyframes diffZoomIn1{0%{-webkit-transform:scale(0);transform:scale(0)}to{-webkit-transform:scale(1);transform:scale(1)}}@-webkit-keyframes diffZoomIn2{0%{-webkit-transform:scale(0);transform:scale(0)}to{-webkit-transform:scale(1);transform:scale(1)}}@keyframes diffZoomIn2{0%{-webkit-transform:scale(0);transform:scale(0)}to{-webkit-transform:scale(1);transform:scale(1)}}@-webkit-keyframes diffZoomIn3{0%{-webkit-transform:scale(0);transform:scale(0)}to{-webkit-transform:scale(1);transform:scale(1)}}@keyframes diffZoomIn3{0%{-webkit-transform:scale(0);transform:scale(0)}to{-webkit-transform:scale(1);transform:scale(1)}}.ant-input{font-family:Monospaced Number,Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0;list-style:none;position:relative;display:inline-block;padding:4px 11px;width:100%;height:32px;font-size:14px;line-height:1.5;color:#000;color:rgba(0,0,0,.65);background-color:#fff;background-image:none;border:1px solid #d9d9d9;border-radius:4px;-webkit-transition:all .3s;transition:all .3s}.ant-input::-moz-placeholder{color:#bfbfbf;opacity:1}.ant-input:-ms-input-placeholder{color:#bfbfbf}.ant-input::-webkit-input-placeholder{color:#bfbfbf}.ant-input:focus,.ant-input:hover{border-color:#40a9ff;border-right-width:1px!important}.ant-input:focus{outline:0;-webkit-box-shadow:0 0 0 2px rgba(24,144,255,.2);box-shadow:0 0 0 2px rgba(24,144,255,.2)}.ant-input-disabled{background-color:#f5f5f5;opacity:1;cursor:not-allowed;color:#000;color:rgba(0,0,0,.25)}.ant-input-disabled:hover{border-color:#e6d8d8;border-right-width:1px!important}textarea.ant-input{max-width:100%;height:auto;vertical-align:bottom;-webkit-transition:all .3s,height 0s;transition:all .3s,height 0s;min-height:32px}.ant-input-lg{padding:6px 11px;height:40px;font-size:16px}.ant-input-sm{padding:1px 7px;height:24px}.ant-input-group{font-family:Monospaced Number,Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.5;color:#000;color:rgba(0,0,0,.65);-webkit-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0;list-style:none;position:relative;display:table;border-collapse:separate;border-spacing:0;width:100%}.ant-input-group[class*=col-]{float:none;padding-left:0;padding-right:0}.ant-input-group>[class*=col-]{padding-right:8px}.ant-input-group>[class*=col-]:last-child{padding-right:0}.ant-input-group-addon,.ant-input-group-wrap,.ant-input-group>.ant-input{display:table-cell}.ant-input-group-addon:not(:first-child):not(:last-child),.ant-input-group-wrap:not(:first-child):not(:last-child),.ant-input-group>.ant-input:not(:first-child):not(:last-child){border-radius:0}.ant-input-group-addon,.ant-input-group-wrap{width:1px;white-space:nowrap;vertical-align:middle}.ant-input-group-wrap>*{display:block!important}.ant-input-group .ant-input{float:left;width:100%;margin-bottom:0}.ant-input-group .ant-input:focus,.ant-input-group .ant-input:hover{z-index:1;border-right-width:1px}.ant-input-group-addon{padding:0 11px;font-size:14px;font-weight:400;line-height:1;color:#000;color:rgba(0,0,0,.65);text-align:center;background-color:#fafafa;border:1px solid #d9d9d9;border-radius:4px;position:relative;-webkit-transition:all .3s;transition:all .3s}.ant-input-group-addon .ant-select{margin:-5px -11px}.ant-input-group-addon .ant-select .ant-select-selection{background-color:inherit;margin:-1px;border:1px solid transparent;-webkit-box-shadow:none;box-shadow:none}.ant-input-group-addon .ant-select-focused .ant-select-selection,.ant-input-group-addon .ant-select-open .ant-select-selection{color:#1890ff}.ant-input-group-addon>i:only-child:after{position:absolute;content:"";top:0;left:0;right:0;bottom:0}.ant-input-group-addon:first-child,.ant-input-group-addon:first-child .ant-select .ant-select-selection,.ant-input-group>.ant-input:first-child,.ant-input-group>.ant-input:first-child .ant-select .ant-select-selection{border-bottom-right-radius:0;border-top-right-radius:0}.ant-input-group>.ant-input-affix-wrapper:not(:first-child) .ant-input{border-bottom-left-radius:0;border-top-left-radius:0}.ant-input-group>.ant-input-affix-wrapper:not(:last-child) .ant-input{border-bottom-right-radius:0;border-top-right-radius:0}.ant-input-group-addon:first-child{border-right:0}.ant-input-group-addon:last-child{border-left:0}.ant-input-group-addon:last-child,.ant-input-group-addon:last-child .ant-select .ant-select-selection,.ant-input-group>.ant-input:last-child,.ant-input-group>.ant-input:last-child .ant-select .ant-select-selection{border-bottom-left-radius:0;border-top-left-radius:0}.ant-input-group-lg .ant-input,.ant-input-group-lg>.ant-input-group-addon{padding:6px 11px;height:40px;font-size:16px}.ant-input-group-sm .ant-input,.ant-input-group-sm>.ant-input-group-addon{padding:1px 7px;height:24px}.ant-input-group-lg .ant-select-selection--single{height:40px}.ant-input-group-sm .ant-select-selection--single{height:24px}.ant-input-group .ant-input-affix-wrapper{display:table-cell;width:100%;float:left}.ant-input-group.ant-input-group-compact{display:block;zoom:1}.ant-input-group.ant-input-group-compact:after,.ant-input-group.ant-input-group-compact:before{content:"";display:table}.ant-input-group.ant-input-group-compact:after{clear:both}.ant-input-group.ant-input-group-compact>*{border-radius:0;border-right-width:0;vertical-align:top;float:none;display:inline-block}.ant-input-group.ant-input-group-compact .ant-input{float:none}.ant-input-group.ant-input-group-compact>.ant-calendar-picker .ant-input,.ant-input-group.ant-input-group-compact>.ant-cascader-picker .ant-input,.ant-input-group.ant-input-group-compact>.ant-mention-wrapper .ant-mention-editor,.ant-input-group.ant-input-group-compact>.ant-select-auto-complete .ant-input,.ant-input-group.ant-input-group-compact>.ant-select>.ant-select-selection,.ant-input-group.ant-input-group-compact>.ant-time-picker .ant-time-picker-input{border-radius:0;border-right-width:0}.ant-input-group.ant-input-group-compact>.ant-calendar-picker:first-child .ant-input,.ant-input-group.ant-input-group-compact>.ant-cascader-picker:first-child .ant-input,.ant-input-group.ant-input-group-compact>.ant-mention-wrapper:first-child .ant-mention-editor,.ant-input-group.ant-input-group-compact>.ant-select-auto-complete:first-child .ant-input,.ant-input-group.ant-input-group-compact>.ant-select:first-child>.ant-select-selection,.ant-input-group.ant-input-group-compact>.ant-time-picker:first-child .ant-time-picker-input,.ant-input-group.ant-input-group-compact>:first-child{border-top-left-radius:4px;border-bottom-left-radius:4px}.ant-input-group.ant-input-group-compact>.ant-calendar-picker:last-child .ant-input,.ant-input-group.ant-input-group-compact>.ant-cascader-picker:last-child .ant-input,.ant-input-group.ant-input-group-compact>.ant-mention-wrapper:last-child .ant-mention-editor,.ant-input-group.ant-input-group-compact>.ant-select-auto-complete:last-child .ant-input,.ant-input-group.ant-input-group-compact>.ant-select:last-child>.ant-select-selection,.ant-input-group.ant-input-group-compact>.ant-time-picker:last-child .ant-time-picker-input,.ant-input-group.ant-input-group-compact>:last-child{border-top-right-radius:4px;border-bottom-right-radius:4px;border-right-width:1px}.ant-input-group-wrapper{display:inline-block;vertical-align:top;width:100%}.ant-input-affix-wrapper{font-family:Monospaced Number,Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.5;color:#000;color:rgba(0,0,0,.65);-webkit-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0;list-style:none;position:relative;display:inline-block;width:100%}.ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled){border-color:#40a9ff;border-right-width:1px!important}.ant-input-affix-wrapper .ant-input{position:static}.ant-input-affix-wrapper .ant-input-prefix,.ant-input-affix-wrapper .ant-input-suffix{position:absolute;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);line-height:0;color:#000;color:rgba(0,0,0,.65)}.ant-input-affix-wrapper .ant-input-prefix :not(.anticon),.ant-input-affix-wrapper .ant-input-suffix :not(.anticon){line-height:1.5}.ant-input-affix-wrapper .ant-input-prefix{left:12px}.ant-input-affix-wrapper .ant-input-suffix{right:12px}.ant-input-affix-wrapper .ant-input:not(:first-child){padding-left:30px}.ant-input-affix-wrapper .ant-input:not(:last-child){padding-right:30px}.ant-input-affix-wrapper .ant-input{min-height:100%}.ant-input-search-icon{color:#000;color:rgba(0,0,0,.45);cursor:pointer;-webkit-transition:all .3s;transition:all .3s}.ant-input-search-icon:hover{color:#333}.ant-input-search:not(.ant-input-search-small)>.ant-input-suffix{right:12px}.ant-input-search>.ant-input-suffix>.ant-input-search-button{border-top-left-radius:0;border-bottom-left-radius:0}.ant-input-search>.ant-input-suffix>.ant-input-search-button>.anticon-search{font-size:16px}.ant-input-search.ant-input-search-enter-button>.ant-input{padding-right:46px}.ant-input-search.ant-input-search-enter-button>.ant-input-suffix{right:0}.ant-btn{line-height:1.5;display:inline-block;font-weight:400;text-align:center;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid transparent;white-space:nowrap;padding:0 15px;font-size:14px;border-radius:4px;height:32px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-transition:all .3s cubic-bezier(.645,.045,.355,1);transition:all .3s cubic-bezier(.645,.045,.355,1);position:relative;color:#000;color:rgba(0,0,0,.65);background-color:#fff;border-color:#d9d9d9}.ant-btn>.anticon{line-height:1}.ant-btn,.ant-btn:active,.ant-btn:focus{outline:0}.ant-btn:not([disabled]):hover{text-decoration:none}.ant-btn:not([disabled]):active{outline:0;-webkit-transition:none;transition:none}.ant-btn.disabled,.ant-btn[disabled]{cursor:not-allowed}.ant-btn.disabled>*,.ant-btn[disabled]>*{pointer-events:none}.ant-btn-lg{padding:0 15px;font-size:16px;border-radius:4px;height:40px}.ant-btn-sm{padding:0 7px;font-size:14px;border-radius:4px;height:24px}.ant-btn>a:only-child{color:currentColor}.ant-btn>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn:focus,.ant-btn:hover{color:#40a9ff;background-color:#fff;border-color:#40a9ff}.ant-btn:focus>a:only-child,.ant-btn:hover>a:only-child{color:currentColor}.ant-btn:focus>a:only-child:after,.ant-btn:hover>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn.active,.ant-btn:active{color:#096dd9;background-color:#fff;border-color:#096dd9}.ant-btn.active>a:only-child,.ant-btn:active>a:only-child{color:currentColor}.ant-btn.active>a:only-child:after,.ant-btn:active>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn.disabled,.ant-btn.disabled.active,.ant-btn.disabled:active,.ant-btn.disabled:focus,.ant-btn.disabled:hover,.ant-btn[disabled],.ant-btn[disabled].active,.ant-btn[disabled]:active,.ant-btn[disabled]:focus,.ant-btn[disabled]:hover{color:#000;color:rgba(0,0,0,.25);background-color:#f5f5f5;border-color:#d9d9d9}.ant-btn.disabled.active>a:only-child,.ant-btn.disabled:active>a:only-child,.ant-btn.disabled:focus>a:only-child,.ant-btn.disabled:hover>a:only-child,.ant-btn.disabled>a:only-child,.ant-btn[disabled].active>a:only-child,.ant-btn[disabled]:active>a:only-child,.ant-btn[disabled]:focus>a:only-child,.ant-btn[disabled]:hover>a:only-child,.ant-btn[disabled]>a:only-child{color:currentColor}.ant-btn.disabled.active>a:only-child:after,.ant-btn.disabled:active>a:only-child:after,.ant-btn.disabled:focus>a:only-child:after,.ant-btn.disabled:hover>a:only-child:after,.ant-btn.disabled>a:only-child:after,.ant-btn[disabled].active>a:only-child:after,.ant-btn[disabled]:active>a:only-child:after,.ant-btn[disabled]:focus>a:only-child:after,.ant-btn[disabled]:hover>a:only-child:after,.ant-btn[disabled]>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn.active,.ant-btn:active,.ant-btn:focus,.ant-btn:hover{background:#fff;text-decoration:none}.ant-btn>i,.ant-btn>span{pointer-events:none}.ant-btn-primary{color:#fff;background-color:#1890ff;border-color:#1890ff}.ant-btn-primary>a:only-child{color:currentColor}.ant-btn-primary>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-primary:focus,.ant-btn-primary:hover{color:#fff;background-color:#40a9ff;border-color:#40a9ff}.ant-btn-primary:focus>a:only-child,.ant-btn-primary:hover>a:only-child{color:currentColor}.ant-btn-primary:focus>a:only-child:after,.ant-btn-primary:hover>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-primary.active,.ant-btn-primary:active{color:#fff;background-color:#096dd9;border-color:#096dd9}.ant-btn-primary.active>a:only-child,.ant-btn-primary:active>a:only-child{color:currentColor}.ant-btn-primary.active>a:only-child:after,.ant-btn-primary:active>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-primary.disabled,.ant-btn-primary.disabled.active,.ant-btn-primary.disabled:active,.ant-btn-primary.disabled:focus,.ant-btn-primary.disabled:hover,.ant-btn-primary[disabled],.ant-btn-primary[disabled].active,.ant-btn-primary[disabled]:active,.ant-btn-primary[disabled]:focus,.ant-btn-primary[disabled]:hover{color:#000;color:rgba(0,0,0,.25);background-color:#f5f5f5;border-color:#d9d9d9}.ant-btn-primary.disabled.active>a:only-child,.ant-btn-primary.disabled:active>a:only-child,.ant-btn-primary.disabled:focus>a:only-child,.ant-btn-primary.disabled:hover>a:only-child,.ant-btn-primary.disabled>a:only-child,.ant-btn-primary[disabled].active>a:only-child,.ant-btn-primary[disabled]:active>a:only-child,.ant-btn-primary[disabled]:focus>a:only-child,.ant-btn-primary[disabled]:hover>a:only-child,.ant-btn-primary[disabled]>a:only-child{color:currentColor}.ant-btn-primary.disabled.active>a:only-child:after,.ant-btn-primary.disabled:active>a:only-child:after,.ant-btn-primary.disabled:focus>a:only-child:after,.ant-btn-primary.disabled:hover>a:only-child:after,.ant-btn-primary.disabled>a:only-child:after,.ant-btn-primary[disabled].active>a:only-child:after,.ant-btn-primary[disabled]:active>a:only-child:after,.ant-btn-primary[disabled]:focus>a:only-child:after,.ant-btn-primary[disabled]:hover>a:only-child:after,.ant-btn-primary[disabled]>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-group .ant-btn-primary:not(:first-child):not(:last-child){border-right-color:#40a9ff;border-left-color:#40a9ff}.ant-btn-group .ant-btn-primary:not(:first-child):not(:last-child):disabled{border-color:#d9d9d9}.ant-btn-group .ant-btn-primary:first-child:not(:last-child){border-right-color:#40a9ff}.ant-btn-group .ant-btn-primary:first-child:not(:last-child)[disabled]{border-right-color:#d9d9d9}.ant-btn-group .ant-btn-primary+.ant-btn-primary,.ant-btn-group .ant-btn-primary:last-child:not(:first-child){border-left-color:#40a9ff}.ant-btn-group .ant-btn-primary+.ant-btn-primary[disabled],.ant-btn-group .ant-btn-primary:last-child:not(:first-child)[disabled]{border-left-color:#d9d9d9}.ant-btn-ghost{color:#000;color:rgba(0,0,0,.65);background-color:transparent;border-color:#d9d9d9}.ant-btn-ghost>a:only-child{color:currentColor}.ant-btn-ghost>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-ghost:focus,.ant-btn-ghost:hover{color:#40a9ff;background-color:transparent;border-color:#40a9ff}.ant-btn-ghost:focus>a:only-child,.ant-btn-ghost:hover>a:only-child{color:currentColor}.ant-btn-ghost:focus>a:only-child:after,.ant-btn-ghost:hover>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-ghost.active,.ant-btn-ghost:active{color:#096dd9;background-color:transparent;border-color:#096dd9}.ant-btn-ghost.active>a:only-child,.ant-btn-ghost:active>a:only-child{color:currentColor}.ant-btn-ghost.active>a:only-child:after,.ant-btn-ghost:active>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-ghost.disabled,.ant-btn-ghost.disabled.active,.ant-btn-ghost.disabled:active,.ant-btn-ghost.disabled:focus,.ant-btn-ghost.disabled:hover,.ant-btn-ghost[disabled],.ant-btn-ghost[disabled].active,.ant-btn-ghost[disabled]:active,.ant-btn-ghost[disabled]:focus,.ant-btn-ghost[disabled]:hover{color:#000;color:rgba(0,0,0,.25);background-color:#f5f5f5;border-color:#d9d9d9}.ant-btn-ghost.disabled.active>a:only-child,.ant-btn-ghost.disabled:active>a:only-child,.ant-btn-ghost.disabled:focus>a:only-child,.ant-btn-ghost.disabled:hover>a:only-child,.ant-btn-ghost.disabled>a:only-child,.ant-btn-ghost[disabled].active>a:only-child,.ant-btn-ghost[disabled]:active>a:only-child,.ant-btn-ghost[disabled]:focus>a:only-child,.ant-btn-ghost[disabled]:hover>a:only-child,.ant-btn-ghost[disabled]>a:only-child{color:currentColor}.ant-btn-ghost.disabled.active>a:only-child:after,.ant-btn-ghost.disabled:active>a:only-child:after,.ant-btn-ghost.disabled:focus>a:only-child:after,.ant-btn-ghost.disabled:hover>a:only-child:after,.ant-btn-ghost.disabled>a:only-child:after,.ant-btn-ghost[disabled].active>a:only-child:after,.ant-btn-ghost[disabled]:active>a:only-child:after,.ant-btn-ghost[disabled]:focus>a:only-child:after,.ant-btn-ghost[disabled]:hover>a:only-child:after,.ant-btn-ghost[disabled]>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-dashed{color:#000;color:rgba(0,0,0,.65);background-color:#fff;border-color:#d9d9d9;border-style:dashed}.ant-btn-dashed>a:only-child{color:currentColor}.ant-btn-dashed>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-dashed:focus,.ant-btn-dashed:hover{color:#40a9ff;background-color:#fff;border-color:#40a9ff}.ant-btn-dashed:focus>a:only-child,.ant-btn-dashed:hover>a:only-child{color:currentColor}.ant-btn-dashed:focus>a:only-child:after,.ant-btn-dashed:hover>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-dashed.active,.ant-btn-dashed:active{color:#096dd9;background-color:#fff;border-color:#096dd9}.ant-btn-dashed.active>a:only-child,.ant-btn-dashed:active>a:only-child{color:currentColor}.ant-btn-dashed.active>a:only-child:after,.ant-btn-dashed:active>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-dashed.disabled,.ant-btn-dashed.disabled.active,.ant-btn-dashed.disabled:active,.ant-btn-dashed.disabled:focus,.ant-btn-dashed.disabled:hover,.ant-btn-dashed[disabled],.ant-btn-dashed[disabled].active,.ant-btn-dashed[disabled]:active,.ant-btn-dashed[disabled]:focus,.ant-btn-dashed[disabled]:hover{color:#000;color:rgba(0,0,0,.25);background-color:#f5f5f5;border-color:#d9d9d9}.ant-btn-dashed.disabled.active>a:only-child,.ant-btn-dashed.disabled:active>a:only-child,.ant-btn-dashed.disabled:focus>a:only-child,.ant-btn-dashed.disabled:hover>a:only-child,.ant-btn-dashed.disabled>a:only-child,.ant-btn-dashed[disabled].active>a:only-child,.ant-btn-dashed[disabled]:active>a:only-child,.ant-btn-dashed[disabled]:focus>a:only-child,.ant-btn-dashed[disabled]:hover>a:only-child,.ant-btn-dashed[disabled]>a:only-child{color:currentColor}.ant-btn-dashed.disabled.active>a:only-child:after,.ant-btn-dashed.disabled:active>a:only-child:after,.ant-btn-dashed.disabled:focus>a:only-child:after,.ant-btn-dashed.disabled:hover>a:only-child:after,.ant-btn-dashed.disabled>a:only-child:after,.ant-btn-dashed[disabled].active>a:only-child:after,.ant-btn-dashed[disabled]:active>a:only-child:after,.ant-btn-dashed[disabled]:focus>a:only-child:after,.ant-btn-dashed[disabled]:hover>a:only-child:after,.ant-btn-dashed[disabled]>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-danger{color:#f5222d;background-color:#f5f5f5;border-color:#d9d9d9}.ant-btn-danger>a:only-child{color:currentColor}.ant-btn-danger>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-danger:hover{color:#fff;background-color:#ff4d4f;border-color:#ff4d4f}.ant-btn-danger:hover>a:only-child{color:currentColor}.ant-btn-danger:hover>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-danger:focus{color:#ff4d4f;background-color:#fff;border-color:#ff4d4f}.ant-btn-danger:focus>a:only-child{color:currentColor}.ant-btn-danger:focus>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-danger.active,.ant-btn-danger:active{color:#fff;background-color:#cf1322;border-color:#cf1322}.ant-btn-danger.active>a:only-child,.ant-btn-danger:active>a:only-child{color:currentColor}.ant-btn-danger.active>a:only-child:after,.ant-btn-danger:active>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-danger.disabled,.ant-btn-danger.disabled.active,.ant-btn-danger.disabled:active,.ant-btn-danger.disabled:focus,.ant-btn-danger.disabled:hover,.ant-btn-danger[disabled],.ant-btn-danger[disabled].active,.ant-btn-danger[disabled]:active,.ant-btn-danger[disabled]:focus,.ant-btn-danger[disabled]:hover{color:#000;color:rgba(0,0,0,.25);background-color:#f5f5f5;border-color:#d9d9d9}.ant-btn-danger.disabled.active>a:only-child,.ant-btn-danger.disabled:active>a:only-child,.ant-btn-danger.disabled:focus>a:only-child,.ant-btn-danger.disabled:hover>a:only-child,.ant-btn-danger.disabled>a:only-child,.ant-btn-danger[disabled].active>a:only-child,.ant-btn-danger[disabled]:active>a:only-child,.ant-btn-danger[disabled]:focus>a:only-child,.ant-btn-danger[disabled]:hover>a:only-child,.ant-btn-danger[disabled]>a:only-child{color:currentColor}.ant-btn-danger.disabled.active>a:only-child:after,.ant-btn-danger.disabled:active>a:only-child:after,.ant-btn-danger.disabled:focus>a:only-child:after,.ant-btn-danger.disabled:hover>a:only-child:after,.ant-btn-danger.disabled>a:only-child:after,.ant-btn-danger[disabled].active>a:only-child:after,.ant-btn-danger[disabled]:active>a:only-child:after,.ant-btn-danger[disabled]:focus>a:only-child:after,.ant-btn-danger[disabled]:hover>a:only-child:after,.ant-btn-danger[disabled]>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-circle,.ant-btn-circle-outline{width:32px;padding:0;font-size:16px;border-radius:50%;height:32px}.ant-btn-circle-outline.ant-btn-lg,.ant-btn-circle.ant-btn-lg{width:40px;padding:0;font-size:18px;border-radius:50%;height:40px}.ant-btn-circle-outline.ant-btn-sm,.ant-btn-circle.ant-btn-sm{width:24px;padding:0;font-size:14px;border-radius:50%;height:24px}.ant-btn:before{position:absolute;top:-1px;left:-1px;bottom:-1px;right:-1px;background:#fff;opacity:.35;content:"";border-radius:inherit;z-index:1;-webkit-transition:opacity .2s;transition:opacity .2s;pointer-events:none;display:none}.ant-btn .anticon{-webkit-transition:margin-left .3s cubic-bezier(.645,.045,.355,1);transition:margin-left .3s cubic-bezier(.645,.045,.355,1)}.ant-btn.ant-btn-loading:before{display:block}.ant-btn.ant-btn-loading:not(.ant-btn-circle):not(.ant-btn-circle-outline):not(.ant-btn-icon-only){padding-left:29px;pointer-events:none;position:relative}.ant-btn.ant-btn-loading:not(.ant-btn-circle):not(.ant-btn-circle-outline):not(.ant-btn-icon-only) .anticon{margin-left:-14px}.ant-btn-sm.ant-btn-loading:not(.ant-btn-circle):not(.ant-btn-circle-outline):not(.ant-btn-icon-only){padding-left:24px}.ant-btn-sm.ant-btn-loading:not(.ant-btn-circle):not(.ant-btn-circle-outline):not(.ant-btn-icon-only) .anticon{margin-left:-17px}.ant-btn-group{position:relative;display:inline-block}.ant-btn-group>.ant-btn{position:relative;line-height:30px}.ant-btn-group>.ant-btn.active,.ant-btn-group>.ant-btn:active,.ant-btn-group>.ant-btn:focus,.ant-btn-group>.ant-btn:hover{z-index:2}.ant-btn-group>.ant-btn:disabled{z-index:0}.ant-btn-group-lg>.ant-btn{padding:0 15px;font-size:16px;border-radius:4px;height:40px;line-height:38px}.ant-btn-group-sm>.ant-btn{padding:0 7px;font-size:14px;border-radius:4px;height:24px;line-height:22px}.ant-btn-group-sm>.ant-btn>.anticon{font-size:14px}.ant-btn+.ant-btn-group,.ant-btn-group+.ant-btn,.ant-btn-group+.ant-btn-group,.ant-btn-group .ant-btn+.ant-btn,.ant-btn-group .ant-btn+span,.ant-btn-group>span+span,.ant-btn-group span+.ant-btn{margin-left:-1px}.ant-btn-group .ant-btn-primary+.ant-btn:not(.ant-btn-primary):not([disabled]){border-left-color:transparent}.ant-btn-group .ant-btn:not(:first-child):not(:last-child){border-radius:0}.ant-btn-group>.ant-btn:first-child,.ant-btn-group>span:first-child>.ant-btn{margin-left:0}.ant-btn-group>.ant-btn:first-child:not(:last-child),.ant-btn-group>span:first-child:not(:last-child)>.ant-btn{border-bottom-right-radius:0;border-top-right-radius:0}.ant-btn-group>.ant-btn:last-child:not(:first-child),.ant-btn-group>span:last-child:not(:first-child)>.ant-btn{border-bottom-left-radius:0;border-top-left-radius:0}.ant-btn-group>.ant-btn-group{float:left}.ant-btn-group>.ant-btn-group:not(:first-child):not(:last-child)>.ant-btn{border-radius:0}.ant-btn-group>.ant-btn-group:first-child:not(:last-child)>.ant-btn:last-child{border-bottom-right-radius:0;border-top-right-radius:0;padding-right:8px}.ant-btn-group>.ant-btn-group:last-child:not(:first-child)>.ant-btn:first-child{border-bottom-left-radius:0;border-top-left-radius:0;padding-left:8px}.ant-btn:not(.ant-btn-circle):not(.ant-btn-circle-outline).ant-btn-icon-only{padding-left:8px;padding-right:8px}.ant-btn:active>span,.ant-btn:focus>span{position:relative}.ant-btn>.anticon+span,.ant-btn>span+.anticon{margin-left:8px}.ant-btn-clicked:after{content:"";position:absolute;top:-1px;left:-1px;bottom:-1px;right:-1px;border-radius:inherit;border:0 solid #1890ff;opacity:.4;-webkit-animation:buttonEffect .4s;animation:buttonEffect .4s;display:block}.ant-btn-danger.ant-btn-clicked:after{border-color:#f5222d}.ant-btn-background-ghost{background:transparent!important;border-color:#fff;color:#fff}.ant-btn-background-ghost.ant-btn-primary{color:#1890ff;background-color:transparent;border-color:#1890ff}.ant-btn-background-ghost.ant-btn-primary>a:only-child{color:currentColor}.ant-btn-background-ghost.ant-btn-primary>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-background-ghost.ant-btn-primary:focus,.ant-btn-background-ghost.ant-btn-primary:hover{color:#40a9ff;background-color:transparent;border-color:#40a9ff}.ant-btn-background-ghost.ant-btn-primary:focus>a:only-child,.ant-btn-background-ghost.ant-btn-primary:hover>a:only-child{color:currentColor}.ant-btn-background-ghost.ant-btn-primary:focus>a:only-child:after,.ant-btn-background-ghost.ant-btn-primary:hover>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-background-ghost.ant-btn-primary.active,.ant-btn-background-ghost.ant-btn-primary:active{color:#096dd9;background-color:transparent;border-color:#096dd9}.ant-btn-background-ghost.ant-btn-primary.active>a:only-child,.ant-btn-background-ghost.ant-btn-primary:active>a:only-child{color:currentColor}.ant-btn-background-ghost.ant-btn-primary.active>a:only-child:after,.ant-btn-background-ghost.ant-btn-primary:active>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-background-ghost.ant-btn-primary.disabled,.ant-btn-background-ghost.ant-btn-primary.disabled.active,.ant-btn-background-ghost.ant-btn-primary.disabled:active,.ant-btn-background-ghost.ant-btn-primary.disabled:focus,.ant-btn-background-ghost.ant-btn-primary.disabled:hover,.ant-btn-background-ghost.ant-btn-primary[disabled],.ant-btn-background-ghost.ant-btn-primary[disabled].active,.ant-btn-background-ghost.ant-btn-primary[disabled]:active,.ant-btn-background-ghost.ant-btn-primary[disabled]:focus,.ant-btn-background-ghost.ant-btn-primary[disabled]:hover{color:#000;color:rgba(0,0,0,.25);background-color:#f5f5f5;border-color:#d9d9d9}.ant-btn-background-ghost.ant-btn-primary.disabled.active>a:only-child,.ant-btn-background-ghost.ant-btn-primary.disabled:active>a:only-child,.ant-btn-background-ghost.ant-btn-primary.disabled:focus>a:only-child,.ant-btn-background-ghost.ant-btn-primary.disabled:hover>a:only-child,.ant-btn-background-ghost.ant-btn-primary.disabled>a:only-child,.ant-btn-background-ghost.ant-btn-primary[disabled].active>a:only-child,.ant-btn-background-ghost.ant-btn-primary[disabled]:active>a:only-child,.ant-btn-background-ghost.ant-btn-primary[disabled]:focus>a:only-child,.ant-btn-background-ghost.ant-btn-primary[disabled]:hover>a:only-child,.ant-btn-background-ghost.ant-btn-primary[disabled]>a:only-child{color:currentColor}.ant-btn-background-ghost.ant-btn-primary.disabled.active>a:only-child:after,.ant-btn-background-ghost.ant-btn-primary.disabled:active>a:only-child:after,.ant-btn-background-ghost.ant-btn-primary.disabled:focus>a:only-child:after,.ant-btn-background-ghost.ant-btn-primary.disabled:hover>a:only-child:after,.ant-btn-background-ghost.ant-btn-primary.disabled>a:only-child:after,.ant-btn-background-ghost.ant-btn-primary[disabled].active>a:only-child:after,.ant-btn-background-ghost.ant-btn-primary[disabled]:active>a:only-child:after,.ant-btn-background-ghost.ant-btn-primary[disabled]:focus>a:only-child:after,.ant-btn-background-ghost.ant-btn-primary[disabled]:hover>a:only-child:after,.ant-btn-background-ghost.ant-btn-primary[disabled]>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-background-ghost.ant-btn-danger{color:#f5222d;background-color:transparent;border-color:#f5222d}.ant-btn-background-ghost.ant-btn-danger>a:only-child{color:currentColor}.ant-btn-background-ghost.ant-btn-danger>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-background-ghost.ant-btn-danger:focus,.ant-btn-background-ghost.ant-btn-danger:hover{color:#ff4d4f;background-color:transparent;border-color:#ff4d4f}.ant-btn-background-ghost.ant-btn-danger:focus>a:only-child,.ant-btn-background-ghost.ant-btn-danger:hover>a:only-child{color:currentColor}.ant-btn-background-ghost.ant-btn-danger:focus>a:only-child:after,.ant-btn-background-ghost.ant-btn-danger:hover>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-background-ghost.ant-btn-danger.active,.ant-btn-background-ghost.ant-btn-danger:active{color:#cf1322;background-color:transparent;border-color:#cf1322}.ant-btn-background-ghost.ant-btn-danger.active>a:only-child,.ant-btn-background-ghost.ant-btn-danger:active>a:only-child{color:currentColor}.ant-btn-background-ghost.ant-btn-danger.active>a:only-child:after,.ant-btn-background-ghost.ant-btn-danger:active>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-background-ghost.ant-btn-danger.disabled,.ant-btn-background-ghost.ant-btn-danger.disabled.active,.ant-btn-background-ghost.ant-btn-danger.disabled:active,.ant-btn-background-ghost.ant-btn-danger.disabled:focus,.ant-btn-background-ghost.ant-btn-danger.disabled:hover,.ant-btn-background-ghost.ant-btn-danger[disabled],.ant-btn-background-ghost.ant-btn-danger[disabled].active,.ant-btn-background-ghost.ant-btn-danger[disabled]:active,.ant-btn-background-ghost.ant-btn-danger[disabled]:focus,.ant-btn-background-ghost.ant-btn-danger[disabled]:hover{color:#000;color:rgba(0,0,0,.25);background-color:#f5f5f5;border-color:#d9d9d9}.ant-btn-background-ghost.ant-btn-danger.disabled.active>a:only-child,.ant-btn-background-ghost.ant-btn-danger.disabled:active>a:only-child,.ant-btn-background-ghost.ant-btn-danger.disabled:focus>a:only-child,.ant-btn-background-ghost.ant-btn-danger.disabled:hover>a:only-child,.ant-btn-background-ghost.ant-btn-danger.disabled>a:only-child,.ant-btn-background-ghost.ant-btn-danger[disabled].active>a:only-child,.ant-btn-background-ghost.ant-btn-danger[disabled]:active>a:only-child,.ant-btn-background-ghost.ant-btn-danger[disabled]:focus>a:only-child,.ant-btn-background-ghost.ant-btn-danger[disabled]:hover>a:only-child,.ant-btn-background-ghost.ant-btn-danger[disabled]>a:only-child{color:currentColor}.ant-btn-background-ghost.ant-btn-danger.disabled.active>a:only-child:after,.ant-btn-background-ghost.ant-btn-danger.disabled:active>a:only-child:after,.ant-btn-background-ghost.ant-btn-danger.disabled:focus>a:only-child:after,.ant-btn-background-ghost.ant-btn-danger.disabled:hover>a:only-child:after,.ant-btn-background-ghost.ant-btn-danger.disabled>a:only-child:after,.ant-btn-background-ghost.ant-btn-danger[disabled].active>a:only-child:after,.ant-btn-background-ghost.ant-btn-danger[disabled]:active>a:only-child:after,.ant-btn-background-ghost.ant-btn-danger[disabled]:focus>a:only-child:after,.ant-btn-background-ghost.ant-btn-danger[disabled]:hover>a:only-child:after,.ant-btn-background-ghost.ant-btn-danger[disabled]>a:only-child:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:transparent}.ant-btn-two-chinese-chars:first-letter{letter-spacing:.34em}.ant-btn-two-chinese-chars>*{letter-spacing:.34em;margin-right:-.34em}@-webkit-keyframes buttonEffect{to{opacity:0;top:-6px;left:-6px;bottom:-6px;right:-6px;border-width:6px}}@keyframes buttonEffect{to{opacity:0;top:-6px;left:-6px;bottom:-6px;right:-6px;border-width:6px}}a.ant-btn{line-height:30px}a.ant-btn-lg{line-height:38px}a.ant-btn-sm{line-height:22px}</style><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="#D0E0D8"/><meta name="apple-mobile-web-app-title" content="Lazywill"/><link rel="apple-touch-icon" href="/icons/apple-icon-57x57.png" sizes="57x57"/><link rel="apple-touch-icon" href="/icons/apple-icon-60x60.png" sizes="60x60"/><link rel="apple-touch-icon" href="/icons/apple-icon-72x72.png" sizes="72x72"/><link rel="apple-touch-icon" href="/icons/apple-icon-76x76.png" sizes="76x76"/><link rel="apple-touch-icon" href="/icons/apple-icon-114x114.png" sizes="114x114"/><link rel="apple-touch-icon" href="/icons/apple-icon-120x120.png" sizes="120x120"/><link rel="apple-touch-icon" href="/icons/apple-icon-144x144.png" sizes="144x144"/><link rel="apple-touch-icon" href="/icons/apple-icon-152x152.png" sizes="152x152"/><link rel="apple-touch-icon" href="/icons/apple-icon-180x180.png" sizes="180x180"/><link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png"/><link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png"/></head><body><noscript>You need to enable JavaScript to run this app!</noscript><div id="___gatsby"><header class="jsx-961199269 header  "><div class="jsx-961199269 logoType"><a href="/"><div class="jsx-961199269 logo"><img src="data:image/jpeg;base64,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" alt="AgrenPoint - A dev blog" class="jsx-961199269"/></div></a><div class="jsx-961199269 type"><h1 class="jsx-961199269">Simon Ågren</h1><h2 class="jsx-961199269">Solution Architect | MCSD </h2><h2 class="jsx-961199269">SharePoint &amp; Office365</h2></div></div><nav rel="js-menu" class="jsx-3258538958 menu "><ul class="jsx-3258538958 itemList"><li class="jsx-105041544 item"><a class="" data-slug="/" href="/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m32.9 22.1v10.8q0 0.5-0.4 1t-1 0.4h-8.6v-8.6h-5.7v8.6h-8.6q-0.5 0-1-0.4t-0.4-1v-10.8q0 0 0 0t0-0.1l12.9-10.6 12.8 10.6q0 0.1 0 0.1z m5-1.5l-1.4 1.7q-0.2 0.2-0.4 0.2h-0.1q-0.3 0-0.5-0.2l-15.4-12.8-15.5 12.8q-0.2 0.2-0.5 0.2-0.3 0-0.5-0.2l-1.4-1.7q-0.1-0.2-0.1-0.5t0.2-0.5l16.1-13.4q0.7-0.6 1.7-0.6t1.7 0.6l5.4 4.6v-4.4q0-0.3 0.2-0.5t0.5-0.2h4.3q0.3 0 0.5 0.2t0.2 0.5v9.1l4.9 4.1q0.2 0.2 0.3 0.5t-0.2 0.5z"></path></g></svg> <!-- -->Home</a></li><li class="jsx-105041544 item"><a class="" data-slug="/tags/" href="/tags/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m13 10q0-1.2-0.8-2t-2.1-0.9-2 0.9-0.8 2 0.8 2 2 0.9 2.1-0.9 0.8-2z m23.8 12.9q0 1.1-0.8 2l-11 10.9q-0.8 0.9-2 0.9-1.2 0-2-0.9l-16-15.9q-0.8-0.9-1.4-2.3t-0.6-2.6v-9.3q0-1.1 0.8-2t2.1-0.8h9.2q1.2 0 2.7 0.5t2.2 1.5l16 15.9q0.8 0.9 0.8 2.1z"></path></g></svg> <!-- -->Tags</a></li><li class="jsx-105041544 item"><a class="" data-slug="/search/" href="/search/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m27.2 18.6q0-4.2-2.9-7.1t-7.1-2.9-7 2.9-3 7.1 2.9 7 7.1 3 7.1-3 2.9-7z m11.4 18.5q0 1.2-0.8 2.1t-2 0.8q-1.2 0-2-0.8l-7.7-7.7q-4 2.8-8.9 2.8-3.2 0-6.1-1.3t-5-3.3-3.4-5-1.2-6.1 1.2-6.1 3.4-5.1 5-3.3 6.1-1.2 6.1 1.2 5 3.3 3.4 5.1 1.2 6.1q0 4.9-2.7 8.9l7.6 7.6q0.8 0.9 0.8 2z"></path></g></svg> <!-- -->Search</a></li><li class="jsx-105041544 item"><a class="" data-slug="/about/" href="/about/"> <!-- -->About</a></li></ul></nav></header><div class="jsx-961199269 sensor"></div><main class="jsx-1304903616 jsx-3347019808"><article class="jsx-2060241101 article"><header><h1 class="jsx-3171265868">Create a Team using site scripts, Flow and Hub Sites</h1><p class="jsx-3816121499 meta"><span class="jsx-3816121499"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="18" width="18" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m4.4 37.1h6.4v-6.4h-6.4v6.4z m7.8 0h7.2v-6.4h-7.2v6.4z m-7.8-7.8h6.4v-7.2h-6.4v7.2z m7.8 0h7.2v-7.2h-7.2v7.2z m-7.8-8.6h6.4v-6.4h-6.4v6.4z m16.4 16.4h7.1v-6.4h-7.1v6.4z m-8.6-16.4h7.2v-6.4h-7.2v6.4z m17.2 16.4h6.4v-6.4h-6.4v6.4z m-8.6-7.8h7.1v-7.2h-7.1v7.2z m-7.9-19.3v-6.4q0-0.3-0.2-0.5t-0.5-0.2h-1.4q-0.3 0-0.5 0.2t-0.2 0.5v6.4q0 0.3 0.2 0.5t0.5 0.2h1.4q0.3 0 0.5-0.2t0.2-0.5z m16.5 19.3h6.4v-7.2h-6.4v7.2z m-8.6-8.6h7.1v-6.4h-7.1v6.4z m8.6 0h6.4v-6.4h-6.4v6.4z m0.7-10.7v-6.4q0-0.3-0.2-0.5t-0.5-0.2h-1.5q-0.3 0-0.5 0.2t-0.2 0.5v6.4q0 0.3 0.2 0.5t0.5 0.2h1.5q0.2 0 0.5-0.2t0.2-0.5z m8.5-1.4v28.5q0 1.2-0.8 2.1t-2 0.8h-31.4q-1.2 0-2.1-0.9t-0.8-2v-28.5q0-1.2 0.8-2t2.1-0.9h2.8v-2.1q0-1.5 1.1-2.6t2.5-1h1.4q1.5 0 2.5 1.1t1.1 2.5v2.1h8.6v-2.1q0-1.5 1-2.6t2.5-1h1.5q1.4 0 2.5 1.1t1 2.5v2.1h2.9q1.1 0 2 0.9t0.8 2z"></path></g></svg> <!-- -->2018-11-08</span><span class="jsx-3816121499"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="18" width="18" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m35.9 31.4q0 2.6-1.6 4.2t-4.3 1.5h-19.5q-2.7 0-4.4-1.5t-1.6-4.2q0-1.2 0.1-2.3t0.3-2.5 0.6-2.4 0.9-2.2 1.4-1.8 1.9-1.2 2.5-0.4q0.2 0 1 0.5t1.6 1 2.4 1.1 3 0.5 3-0.5 2.4-1.1 1.7-1 0.9-0.5q1.4 0 2.5 0.4t1.9 1.2 1.4 1.8 0.9 2.2 0.6 2.4 0.4 2.5 0 2.3z m-7.1-20q0 3.6-2.5 6.1t-6.1 2.5-6-2.5-2.6-6.1 2.6-6 6-2.5 6.1 2.5 2.5 6z"></path></g></svg><a class="tagslinks" href="/about">Simon Ågren</a></span><span class="jsx-3816121499"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="18" width="18" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m13 10q0-1.2-0.8-2t-2.1-0.9-2 0.9-0.8 2 0.8 2 2 0.9 2.1-0.9 0.8-2z m23.8 12.9q0 1.1-0.8 2l-11 10.9q-0.8 0.9-2 0.9-1.2 0-2-0.9l-16-15.9q-0.8-0.9-1.4-2.3t-0.6-2.6v-9.3q0-1.1 0.8-2t2.1-0.8h9.2q1.2 0 2.7 0.5t2.2 1.5l16 15.9q0.8 0.9 0.8 2.1z"></path></g></svg><a class="tagslinks" href="/tags/Flow">Flow</a><a class="tagslinks" href="/tags/SharePoint Online">SharePoint Online</a><a class="tagslinks" href="/tags/Site Scripts">Site Scripts</a><a class="tagslinks" href="/tags/Graph">Graph</a></span></p></header><div class="jsx-4237448961 bodytext"><p>I was asked a few days ago if we could automate <code class="language-text">Microsoft Teams</code> creation when a Modern Team Site is created in SharePoint Online. I got to think about it and came up with one way at least. This is using an <code class="language-text">Graph Beta endpoint</code> for the Team creation, so it’s not advisable to use this in production scenarios before it’s in <code class="language-text">v1.0</code></p>
+<ul>
+<li>
+<p>We are going to create a Site Script that calls a Flow</p>
+</li>
+<li>
+<p>The Flow utilizes the Office365 Group(Unified) after the site is created and creates a Team via the Graph.</p>
+</li>
+<li>
+<p>Since we are calling the Graph via Flow I’m setting up App Only permissions in the Azure AD for the application. </p>
+</li>
+<li>
+<p>Via PnP PowerShell we will:</p>
+<ul>
+<li>Register the Hub Site</li>
+<li>Upload the Site Script and register withing Site Designs</li>
+<li>Create a Communication Site and make it a Hub Site</li>
+<li>Create a new Team Site and associate it to the Hub</li>
+</ul>
+</li>
+</ul>
+<h2>Setup App Permissions in Azure</h2>
+<ol>
+<li>
+<p>Open a new Notepad </p>
+</li>
+<li>
+<p>Go to the Azure Portal -> select Azure AD -> properties.
+Copy the <code class="language-text">Directory ID</code> to Notepad
+
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/appid-7b01a536371e72e5a59010a71c7a73f2-9e89d.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 40.569395017793596%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAIABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAEFBv/EABUBAQEAAAAAAAAAAAAAAAAAAAAD/9oADAMBAAIQAxAAAAG9kM8Kx//EABcQAAMBAAAAAAAAAAAAAAAAAAECAxD/2gAIAQEAAQUCyrOK/wD/xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAgBAwEBPwFX/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQIBAT8BR//EABkQAAEFAAAAAAAAAAAAAAAAAAABAhAiMf/aAAgBAQAGPwKHXXT/xAAYEAEBAAMAAAAAAAAAAAAAAAABADFBgf/aAAgBAQABPyELkZ4dG//aAAwDAQACAAMAAAAQgA//xAAWEQEBAQAAAAAAAAAAAAAAAAAAARH/2gAIAQMBAT8QWtf/xAAWEQEBAQAAAAAAAAAAAAAAAAAAARH/2gAIAQIBAT8QSMf/xAAZEAEBAQADAAAAAAAAAAAAAAABEQAxYYH/2gAIAQEAAT8QOqkbuKBnRimAoCAeXf/Z'); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;"
+        alt="appid"
+        title=""
+        src="/static/appid-7b01a536371e72e5a59010a71c7a73f2-78f2b.jpg"
+        srcset="/static/appid-7b01a536371e72e5a59010a71c7a73f2-dce19.jpg 200w,
+/static/appid-7b01a536371e72e5a59010a71c7a73f2-c1413.jpg 400w,
+/static/appid-7b01a536371e72e5a59010a71c7a73f2-78f2b.jpg 800w,
+/static/appid-7b01a536371e72e5a59010a71c7a73f2-9e89d.jpg 843w"
+        sizes="(max-width: 800px) 100vw, 800px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p>
+</li>
+<li>
+<p>Select App Registrations -> Create new App and name it whatever you want -> then copy the <code class="language-text">Application ID</code> to Notepad
+
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/appreg-092ffc7cfa45af8f794eca3b9627e38d-2183c.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; ; max-width: 721px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 55.20110957004161%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAUGAv/EABUBAQEAAAAAAAAAAAAAAAAAAAAD/9oADAMBAAIQAxAAAAFdUTFeJzJSX//EABsQAAEEAwAAAAAAAAAAAAAAAAABBBNBAgMz/9oACAEBAAEFArh1DhYs7HnX/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAEh/9oACAEDAQE/AVuv/8QAFREBAQAAAAAAAAAAAAAAAAAAAAH/2gAIAQIBAT8BSP/EAB0QAAICAQUAAAAAAAAAAAAAAAABAhEQEjNRcZH/2gAIAQEABj8CRtx8NMKSrgWF0f/EABwQAAMAAQUAAAAAAAAAAAAAAAABESFRcaGx8P/aAAgBAQABPyGLXyKj6w1KcpEguch7dz//2gAMAwEAAgADAAAAEAAv/8QAFxEBAAMAAAAAAAAAAAAAAAAAAAERIf/aAAgBAwEBPxBNbX//xAAWEQEBAQAAAAAAAAAAAAAAAAAAARH/2gAIAQIBAT8QQx//xAAeEAEAAgIBBQAAAAAAAAAAAAABABEhMbFBUWGh8P/aAAgBAQABPxAqEpTeesUDs+sRhPGEWr4iVHt5JS7rM9BzH//Z'); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;"
+        alt="appreg"
+        title=""
+        src="/static/appreg-092ffc7cfa45af8f794eca3b9627e38d-2183c.jpg"
+        srcset="/static/appreg-092ffc7cfa45af8f794eca3b9627e38d-aab2e.jpg 200w,
+/static/appreg-092ffc7cfa45af8f794eca3b9627e38d-31a15.jpg 400w,
+/static/appreg-092ffc7cfa45af8f794eca3b9627e38d-2183c.jpg 721w"
+        sizes="(max-width: 721px) 100vw, 721px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p>
+</li>
+<li>
+<p>Go to Settings -> Keys.
+Create a new Key and Save to get the value. Copy the <code class="language-text">Value</code> to Notepad
+
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/key-67201d6b9cedff8ff3ed3c46f57ad769-d4c43.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 34.39550140581068%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAHABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB3qAH/8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQABBQJ//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQAGPwJ//8QAFhAAAwAAAAAAAAAAAAAAAAAAARAR/9oACAEBAAE/IRX/AP/aAAwDAQACAAMAAAAQAA//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAbEAACAQUAAAAAAAAAAAAAAAAAAUERITFRof/aAAgBAQABPxBEtSdibldMwf/Z'); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;"
+        alt="key"
+        title=""
+        src="/static/key-67201d6b9cedff8ff3ed3c46f57ad769-78f2b.jpg"
+        srcset="/static/key-67201d6b9cedff8ff3ed3c46f57ad769-dce19.jpg 200w,
+/static/key-67201d6b9cedff8ff3ed3c46f57ad769-c1413.jpg 400w,
+/static/key-67201d6b9cedff8ff3ed3c46f57ad769-78f2b.jpg 800w,
+/static/key-67201d6b9cedff8ff3ed3c46f57ad769-d4c43.jpg 1067w"
+        sizes="(max-width: 800px) 100vw, 800px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p>
+</li>
+<li>
+<p>Go to Required Permissions -> Add Permission -> Select API -> Microsoft Graph -> under Application Permissions - Select <code class="language-text">Read And Write All Groups</code>
+
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/permissions-c2296145f1939413df167d238fc327f3-27152.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 46.48148148148149%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB3lgB/8QAFBABAAAAAAAAAAAAAAAAAAAAIP/aAAgBAQABBQJf/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAIP/aAAgBAQAGPwJf/8QAFxABAQEBAAAAAAAAAAAAAAAAARAAYf/aAAgBAQABPyEHmKT/2gAMAwEAAgADAAAAEDPP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAHBAAAgICAwAAAAAAAAAAAAAAAAERcRAxIUFR/9oACAEBAAE/EEG54UPvwmsd7Fo//9k='); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;"
+        alt="permissions"
+        title=""
+        src="/static/permissions-c2296145f1939413df167d238fc327f3-78f2b.jpg"
+        srcset="/static/permissions-c2296145f1939413df167d238fc327f3-dce19.jpg 200w,
+/static/permissions-c2296145f1939413df167d238fc327f3-c1413.jpg 400w,
+/static/permissions-c2296145f1939413df167d238fc327f3-78f2b.jpg 800w,
+/static/permissions-c2296145f1939413df167d238fc327f3-27152.jpg 1080w"
+        sizes="(max-width: 800px) 100vw, 800px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p>
+</li>
+<li>
+<p>Grant permissions
+
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/grant-466411b2ce248c2bc6495d39c73123c4-26122.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; ; max-width: 744px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 35.34946236559139%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAHABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAMF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB2qCAP//EABYQAQEBAAAAAAAAAAAAAAAAAAEQIf/aAAgBAQABBQI1n//EABURAQEAAAAAAAAAAAAAAAAAAAEQ/9oACAEDAQE/ASf/xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAgEBPwFn/8QAFBABAAAAAAAAAAAAAAAAAAAAEP/aAAgBAQAGPwJ//8QAGhAAAgIDAAAAAAAAAAAAAAAAAREAECFBUf/aAAgBAQABPyEmLRmeiv/aAAwDAQACAAMAAAAQA8//xAAWEQEBAQAAAAAAAAAAAAAAAAABEBH/2gAIAQMBAT8QWk//xAAWEQEBAQAAAAAAAAAAAAAAAAABERD/2gAIAQIBAT8QMZn/xAAZEAEAAwEBAAAAAAAAAAAAAAABABFxUZH/2gAIAQEAAT8QA7pqbId+E1Fyf//Z'); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;"
+        alt="grant"
+        title=""
+        src="/static/grant-466411b2ce248c2bc6495d39c73123c4-26122.jpg"
+        srcset="/static/grant-466411b2ce248c2bc6495d39c73123c4-11c12.jpg 200w,
+/static/grant-466411b2ce248c2bc6495d39c73123c4-453ee.jpg 400w,
+/static/grant-466411b2ce248c2bc6495d39c73123c4-26122.jpg 744w"
+        sizes="(max-width: 744px) 100vw, 744px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p>
+</li>
+</ol>
+<h2>Create Flow</h2>
+<ol>
+<li>
+<p>Go to the Microsoft Flow site -> select Create from Blank</p>
+</li>
+<li>
+<p>Search for Request and select Request - When A HTTP Request is received
+
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/http-b3585e1e5b1cdd86bc853b0c949b0c1a-6c150.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; ; max-width: 792px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 55.17676767676768%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHbdNJGL//EABcQAAMBAAAAAAAAAAAAAAAAAAABEiD/2gAIAQEAAQUClE5//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAGBAAAgMAAAAAAAAAAAAAAAAAADEBESD/2gAIAQEABj8CpDnP/8QAGRAAAgMBAAAAAAAAAAAAAAAAAREAECFh/9oACAEBAAE/IUABjlBKCjP/2gAMAwEAAgADAAAAEDzP/8QAFhEAAwAAAAAAAAAAAAAAAAAAARAR/9oACAEDAQE/EIF//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGxAAAwACAwAAAAAAAAAAAAAAAAEREDFh0fH/2gAIAQEAAT8QS0w0J8uhTid5aEreNj//2Q=='); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;"
+        alt="http"
+        title=""
+        src="/static/http-b3585e1e5b1cdd86bc853b0c949b0c1a-6c150.jpg"
+        srcset="/static/http-b3585e1e5b1cdd86bc853b0c949b0c1a-c1b29.jpg 200w,
+/static/http-b3585e1e5b1cdd86bc853b0c949b0c1a-ce23b.jpg 400w,
+/static/http-b3585e1e5b1cdd86bc853b0c949b0c1a-6c150.jpg 792w"
+        sizes="(max-width: 792px) 100vw, 792px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p>
+</li>
+<li>
+<p>Copy the HTTP POST URL to Notepad -> then enter this JSON in the request body</p>
+<div class="gatsby-highlight" data-language="javascript">
+      <pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
+<span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"object"</span><span class="token punctuation">,</span>
+<span class="token string">"properties"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"webUrl"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"string"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"webDescription"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"string"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"webTitle"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"string"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"creatorName"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"string"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"creatorEmail"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"string"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"createdTimeUTC"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"string"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"parameters"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"object"</span><span class="token punctuation">,</span>
+        <span class="token string">"properties"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+      </div>
+</li>
+<li>
+<p>Create new action - Search for Initialize and select Initialize Variable. Create three of these, rename them and enter the values from Notepad.
+
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/variables-c0e0871c53fe8144c2021ef7c26a0a83-3e4dc.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; ; max-width: 777px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 96.01029601029602%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAATABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHs7mqCKAD/xAAZEAACAwEAAAAAAAAAAAAAAAABIRAREiD/2gAIAQEAAQUCGaUArn//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAZEAABBQAAAAAAAAAAAAAAAAABECAhMaH/2gAIAQEABj8Cg6tF3//EAB0QAAECBwAAAAAAAAAAAAAAAAEAIRARIDFhcYH/2gAIAQEAAT8hbvCAyAbLYU8Fco//2gAMAwEAAgADAAAAEMTvAP/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8QH//EABYRAAMAAAAAAAAAAAAAAAAAAAEgMf/aAAgBAgEBPxA1P//EAB8QAQACAQMFAAAAAAAAAAAAAAEAETEhYaEQQVGR8P/aAAgBAQABPxAgAsabPfXW4b+YeLzBaBvFLmfIl7vUyV0Z/9k='); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;"
+        alt="variables"
+        title=""
+        src="/static/variables-c0e0871c53fe8144c2021ef7c26a0a83-3e4dc.jpg"
+        srcset="/static/variables-c0e0871c53fe8144c2021ef7c26a0a83-0d8a7.jpg 200w,
+/static/variables-c0e0871c53fe8144c2021ef7c26a0a83-1843c.jpg 400w,
+/static/variables-c0e0871c53fe8144c2021ef7c26a0a83-3e4dc.jpg 777w"
+        sizes="(max-width: 777px) 100vw, 777px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p>
+</li>
+<li>
+<p>Create new action - Search and select HTTP. Rename it and enter the values:</p>
+</li>
+</ol>
+<p><em>Method</em>: <code class="language-text">POST</code></p>
+<p><em>Uri</em>: <code class="language-text">https://login.windows.net/@{variables(&#39;TenantID&#39;)}/oauth2/token</code></p>
+<p><em>Headers</em>: <code class="language-text">content-type: application/json;odata=verbose</code>
+<br>
+<em>Body</em>: <code class="language-text">client_id=@{variables(&#39;ClientID&#39;)}&amp;client_Secret=@{variables(&#39;SecretID&#39;)}&amp;resource=https://graph.microsoft.com&amp;grant_type=client_credentials</code>
+
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/httptoken-703ea33e07db7d2cf3cae63b8fa7a6e8-e84e7.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; ; max-width: 761px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 57.16162943495401%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAQAF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAdtGCo//xAAWEAEBAQAAAAAAAAAAAAAAAAABESD/2gAIAQEAAQUCgGf/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAZEAEBAQEBAQAAAAAAAAAAAAABABEhQVH/2gAIAQEAAT8hCcLO+SEO8bD4Tf/aAAwDAQACAAMAAAAQq8//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAVEQEBAAAAAAAAAAAAAAAAAAAQIf/aAAgBAgEBPxCH/8QAGhABAAMBAQEAAAAAAAAAAAAAAQAhMRFBYf/aAAgBAQABPxA8MCcnqOVyGcIgoTmJKgoMqNEPk//Z'); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;"
+        alt="httptoken"
+        title=""
+        src="/static/httptoken-703ea33e07db7d2cf3cae63b8fa7a6e8-e84e7.jpg"
+        srcset="/static/httptoken-703ea33e07db7d2cf3cae63b8fa7a6e8-02fd0.jpg 200w,
+/static/httptoken-703ea33e07db7d2cf3cae63b8fa7a6e8-2fe4f.jpg 400w,
+/static/httptoken-703ea33e07db7d2cf3cae63b8fa7a6e8-e84e7.jpg 761w"
+        sizes="(max-width: 761px) 100vw, 761px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p>
+<ol start="6">
+<li>
+<p>Create a new action - Parse JSON. Select body as content and enter this in the body:</p>
+<div class="gatsby-highlight" data-language="javascript">
+      <pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
+<span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"object"</span><span class="token punctuation">,</span>
+<span class="token string">"properties"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"token_type"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"string"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"expires_in"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"string"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"ext_expires_in"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"string"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"expires_on"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"string"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"not_before"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"string"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"resource"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"string"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"access_token"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"string"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+      </div>
+<p>
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/parsetoken-a9d21e8a509e8593a91a30b1795cab8a-2cfcb.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; ; max-width: 760px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 54.868421052631575%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIBBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHt3FUYP//EABgQAAIDAAAAAAAAAAAAAAAAAAARARIg/9oACAEBAAEFAqwkLH//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAXEAEBAQEAAAAAAAAAAAAAAAABABFR/9oACAEBAAE/IQABljkjlray3//aAAwDAQACAAMAAAAQoC//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAXEQEAAwAAAAAAAAAAAAAAAAAAAREh/9oACAECAQE/EJtr/8QAGhAAAwADAQAAAAAAAAAAAAAAAAEhETFhkf/aAAgBAQABPxDFlKw5vDOiCUlTsMb2f//Z'); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;"
+        alt="parsetoken"
+        title=""
+        src="/static/parsetoken-a9d21e8a509e8593a91a30b1795cab8a-2cfcb.jpg"
+        srcset="/static/parsetoken-a9d21e8a509e8593a91a30b1795cab8a-ee2d2.jpg 200w,
+/static/parsetoken-a9d21e8a509e8593a91a30b1795cab8a-53b66.jpg 400w,
+/static/parsetoken-a9d21e8a509e8593a91a30b1795cab8a-2cfcb.jpg 760w"
+        sizes="(max-width: 760px) 100vw, 760px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p>
+</li>
+<li>
+<p>Create another HTTP action. Here we filter the groups based on the current site that triggered the flow. Which should be the modern Team Site we created.</p>
+</li>
+</ol>
+<p><em>Method</em>: <code class="language-text">GET</code></p>
+<p><em>Uri</em>: <code class="language-text">https://graph.microsoft.com/v1.0/groups?$filter=displayName%20eq%20&#39;@{triggerBody()?[&#39;webTitle&#39;]}&#39;</code></p>
+<p><em>Headers</em>: <code class="language-text">Authorization: Bearer @{body(&#39;Parse_and_get_Access_Token&#39;)?[&#39;access_token&#39;]}</code></p>
+<ol start="8">
+<li>
+<p>Create another Parse JSON. Select body as content. And enter this body:</p>
+<div class="gatsby-highlight" data-language="javascript">
+      <pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
+<span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"object"</span><span class="token punctuation">,</span>
+<span class="token string">"properties"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"@@odata.context"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"string"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"value"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"array"</span><span class="token punctuation">,</span>
+        <span class="token string">"items"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"object"</span><span class="token punctuation">,</span>
+            <span class="token string">"properties"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                    <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"string"</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token string">"required"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"id"</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+      </div>
+</li>
+<li>
+<p>Create Action Apply to each, which loops through all the items. We should only have one group, but anyways. Then inside it create a new HTTP action.</p>
+</li>
+</ol>
+<p><em>Method</em>: <code class="language-text">PUT</code></p>
+<p><em>Uri</em>: <code class="language-text">https://graph.microsoft.com/beta/groups/@{items(&#39;Apply_to_each&#39;)?[&#39;id&#39;]}/team</code></p>
+<p><em>Headers</em>: <code class="language-text">Authorization: Bearer @{body(&#39;Parse_and_get_Access_Token&#39;)?[&#39;access_token&#39;]}</code></p>
+<p><em>Body</em>: </p>
+<div class="gatsby-highlight" data-language="javascript">
+      <pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
+  <span class="token string">"memberSettings"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"allowCreateUpdateChannels"</span><span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"messagingSettings"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"allowUserEditMessages"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string">"allowUserDeleteMessages"</span><span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"funSettings"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"allowGiphy"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string">"giphyContentRating"</span><span class="token punctuation">:</span> <span class="token string">"strict"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+      </div>
+<p>
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/createteam-5c22edf11239db875dec153aae1931f9-0b939.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; ; max-width: 794px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 103.27455919395467%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAVABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHta0MqiioI/8QAGBABAQEBAQAAAAAAAAAAAAAAAQBBECH/2gAIAQEAAQUCDzmTYTf/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAXEAADAQAAAAAAAAAAAAAAAAAQETEg/9oACAEBAAY/AohN/wD/xAAcEAACAgIDAAAAAAAAAAAAAAAAERAxASFxgZH/2gAIAQEAAT8hRork6x7InstChY//2gAMAwEAAgADAAAAEEMnPP/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8QH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8QH//EABwQAAMAAgMBAAAAAAAAAAAAAAABESExYYGxof/aAAgBAQABPxDFMQ3FGqVLaKHFv6JgQ6yU6E4D8kaKHkf/2Q=='); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;"
+        alt="createteam"
+        title=""
+        src="/static/createteam-5c22edf11239db875dec153aae1931f9-0b939.jpg"
+        srcset="/static/createteam-5c22edf11239db875dec153aae1931f9-0185e.jpg 200w,
+/static/createteam-5c22edf11239db875dec153aae1931f9-36ebe.jpg 400w,
+/static/createteam-5c22edf11239db875dec153aae1931f9-0b939.jpg 794w"
+        sizes="(max-width: 794px) 100vw, 794px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p>
+<h2>Create Site Script</h2>
+<p>So one of the actions in Site Scripts is <code class="language-text">triggerFlow</code>. Since we are associating this Site Script to a Hub Site it will be run everytime a site is associated to the hub, for that site. The Flow will start and create the Team</p>
+<ol>
+<li>Create a .json file in Visual Studio Code. Use the following json and paste the HTTPPostUrl that we copied in to Notepad from the Flow</li>
+</ol>
+<div class="gatsby-highlight" data-language="javascript">
+      <pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
+<span class="token string">"actions"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">"verb"</span><span class="token punctuation">:</span> <span class="token string">"triggerFlow"</span><span class="token punctuation">,</span>
+        <span class="token string">"url"</span><span class="token punctuation">:</span> <span class="token string">"https://prod-31.westeurope.logic.azure.com..."</span><span class="token punctuation">,</span>
+        <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Create Team"</span>
+    <span class="token punctuation">}</span>
+    
+	<span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
+      </div>
+<h2>Login and Create Site Design</h2>
+<p>As I stated earlier we’re going to use PnP PowerShell Commands to the extent it’s possible. They are doing an awesome job updating these, so it won’t be long until we can do all of this with PnP.</p>
+<ol>
+<li>
+<p>Connect to Tenant as Admin </p>
+<div class="gatsby-highlight" data-language="powershell">
+      <pre class="language-powershell"><code class="language-powershell"><span class="token variable">$admin</span>=<span class="token string">"user.name@tenant.onmicrosoft.com"</span>
+<span class="token variable">$cred</span> = Get<span class="token operator">-</span>Credential <span class="token operator">-</span>UserName <span class="token variable">$admin</span> <span class="token operator">-</span>Message <span class="token string">"Admin"</span>
+Connect<span class="token operator">-</span>PnPOnline <span class="token operator">-</span>Url https:<span class="token operator">/</span><span class="token operator">/</span>tenant<span class="token operator">-</span>admin<span class="token punctuation">.</span>sharepoint<span class="token punctuation">.</span>com <span class="token operator">-</span>Credential <span class="token variable">$cred</span></code></pre>
+      </div>
+</li>
+<li>
+<p>Upload and add Site Script and Site Design</p>
+<div class="gatsby-highlight" data-language="powershell">
+      <pre class="language-powershell"><code class="language-powershell"><span class="token variable">$scriptFromFile</span> = <span class="token function">Get-Content</span> <span class="token string">'C:\Users\...createTeam.json'</span> <span class="token operator">-</span>Raw
+<span class="token variable">$siteScript</span> = Add<span class="token operator">-</span>PnPSiteScript <span class="token operator">-</span>Title <span class="token string">"Auto Create Team"</span> <span class="token operator">-</span>Description <span class="token string">"Creates Team based on teamsite"</span> <span class="token operator">-</span>Content <span class="token variable">$siteScript</span>
+<span class="token variable">$siteDesign</span> = Add<span class="token operator">-</span>PnPSiteDesign <span class="token operator">-</span>Title <span class="token string">"Auto Create Team"</span> <span class="token operator">-</span>WebTemplate <span class="token string">"64"</span> <span class="token operator">-</span>SiteScriptIds <span class="token variable">$mySiteScript</span><span class="token punctuation">.</span>Id <span class="token operator">-</span>Description <span class="token string">"Creates Team base on teamsite"</span></code></pre>
+      </div>
+</li>
+</ol>
+<h2>Create Communication site and set as hub site</h2>
+<ol>
+<li>
+<p>Create CommunicationSite</p>
+<div class="gatsby-highlight" data-language="powershell">
+      <pre class="language-powershell"><code class="language-powershell"><span class="token variable">$hub</span> =  New<span class="token operator">-</span>PnPSite <span class="token operator">-</span><span class="token function">Type</span> CommunicationSite <span class="token operator">-</span>Title <span class="token string">"Project Hub"</span> <span class="token operator">-</span>Url <span class="token string">"https://tenant.sharepoint.com/sites/projecthub"</span></code></pre>
+      </div>
+</li>
+<li>
+<p>Register as Hub Site</p>
+<div class="gatsby-highlight" data-language="powershell">
+      <pre class="language-powershell"><code class="language-powershell">Register<span class="token operator">-</span>PnPHubSite <span class="token operator">-</span>Site <span class="token variable">$hub</span></code></pre>
+      </div>
+</li>
+</ol>
+<h2>Associate Site Design with Hub Site</h2>
+<p>Right now Set-PnPHubSite doesn’t seem to have the ability to set Site Design, so I’m using Set-SpOHubSite instead.</p>
+<ol>
+<li>
+<p>Connect again, but via SPO (Sorry for this)</p>
+<div class="gatsby-highlight" data-language="powershell">
+      <pre class="language-powershell"><code class="language-powershell"><span class="token variable">$admin</span>=<span class="token string">"user.name@tenant.onmicrosoft.com"</span>
+<span class="token variable">$cred</span> = Get<span class="token operator">-</span>Credential <span class="token operator">-</span>UserName <span class="token variable">$admin</span> <span class="token operator">-</span>Message <span class="token string">"Admin"</span>
+Connect<span class="token operator">-</span>SpOService <span class="token operator">-</span>Url https:<span class="token operator">/</span><span class="token operator">/</span>tenant<span class="token operator">-</span>admin<span class="token punctuation">.</span>sharepoint<span class="token punctuation">.</span>com <span class="token operator">-</span>Credential <span class="token variable">$cred</span></code></pre>
+      </div>
+</li>
+<li>
+<p>Add default Site Design to Hub</p>
+<div class="gatsby-highlight" data-language="powershell">
+      <pre class="language-powershell"><code class="language-powershell"><span class="token function">Set</span><span class="token operator">-</span>SpOHubSite <span class="token operator">-</span>Identity <span class="token variable">$hub</span><span class="token punctuation">.</span>ID <span class="token operator">-</span>SiteDesignId <span class="token variable">$siteDesign</span><span class="token punctuation">.</span>Id</code></pre>
+      </div>
+</li>
+</ol>
+<h2>Create Modern Team Site and associate to hubsite</h2>
+<ol>
+<li>
+<p>Create Team Site</p>
+<div class="gatsby-highlight" data-language="powershell">
+      <pre class="language-powershell"><code class="language-powershell"><span class="token variable">$teamSite</span> = New<span class="token operator">-</span>PnPSite <span class="token operator">-</span><span class="token function">Type</span> TeamSite <span class="token operator">-</span>Title <span class="token string">"Project 1"</span> <span class="token operator">-</span>Alias <span class="token string">"project1"</span></code></pre>
+      </div>
+</li>
+<li>
+<p>Associate to Hub Site</p>
+<div class="gatsby-highlight" data-language="powershell">
+      <pre class="language-powershell"><code class="language-powershell">Add<span class="token operator">-</span>PnPHubSiteAssociation <span class="token operator">-</span>Site <span class="token variable">$teamSite</span> <span class="token operator">-</span>HubSite <span class="token string">"https://tenant.sharepoint.com/sites/projecthub"</span></code></pre>
+      </div>
+</li>
+</ol>
+<h2>Now let the Flow Do It’s Work</h2>
+<p>
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/success-b3efa29ae13967ac3136f9727b3cd824-f3f84.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 63.33865814696487%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAdxYBJ//xAAWEAEBAQAAAAAAAAAAAAAAAAABEDH/2gAIAQEAAQUCcjf/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAYEAADAQEAAAAAAAAAAAAAAAAAARARQf/aAAgBAQABPyGS6JqmH//aAAwDAQACAAMAAAAQE/8A/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFhEAAwAAAAAAAAAAAAAAAAAAAAER/9oACAECAQE/EIiI/8QAHBAAAwACAwEAAAAAAAAAAAAAAAEhEWExUXGB/9oACAEBAAE/EIfEq49EX9ELaZhdCS7P/9k='); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;"
+        alt="success"
+        title=""
+        src="/static/success-b3efa29ae13967ac3136f9727b3cd824-78f2b.jpg"
+        srcset="/static/success-b3efa29ae13967ac3136f9727b3cd824-dce19.jpg 200w,
+/static/success-b3efa29ae13967ac3136f9727b3cd824-c1413.jpg 400w,
+/static/success-b3efa29ae13967ac3136f9727b3cd824-78f2b.jpg 800w,
+/static/success-b3efa29ae13967ac3136f9727b3cd824-ab4c4.jpg 1200w,
+/static/success-b3efa29ae13967ac3136f9727b3cd824-f3f84.jpg 1252w"
+        sizes="(max-width: 800px) 100vw, 800px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p></div><footer><div>Loading...</div><div class="jsx-646394116 author"><div class="jsx-646394116 avatar"><img src="data:image/jpeg;base64,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" alt="AgrenPoint - A dev blog" class="jsx-646394116"/></div><div class="jsx-646394116 note"><p><strong>Simon Ågren</strong> Passionate about SharePoint and Office365. Solution Architect working as a consultant for Sogeti in Umeå, Sweden.</p></div></div><div class="jsx-126278577 links"><a href="/hello-world/"><svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="1em" width="1em" viewBox="0 0 40 40" style="vertical-align:middle"><g><path d="m36.3 20v2.9q0 1.1-0.7 2t-1.9 0.8h-15.7l6.5 6.6q0.9 0.8 0.9 2t-0.9 2l-1.7 1.7q-0.8 0.8-2 0.8-1.1 0-2-0.8l-14.5-14.6q-0.9-0.8-0.9-2 0-1.1 0.9-2l14.5-14.5q0.8-0.9 2-0.9 1.2 0 2 0.9l1.7 1.6q0.9 0.9 0.9 2.1t-0.9 2l-6.5 6.5h15.7q1.1 0 1.9 0.9t0.7 2z"></path></g></svg><h4 class="jsx-126278577">Hello World - a first blog post<!-- --> <time class="jsx-126278577">2018-11-07</time></h4></a></div><div id="post-comments" class="jsx-3595558049 comments"><div><div class="fb-comments" data-href="http://simonagren.github.io//create-team-site-script/" data-width="100%"></div></div></div></footer></article></main><footer class="jsx-1516995558 footer"><ul>
+<li><a href="https://www.twitter.com/agrenpoint" target="_blank">twitter</a> </li>
+<li><a href="https://www.linkedin.com/in/simonaagren/" target="_blank">linkedin</a> </li>
+<li><a href="https://www.github.com/simonagren" target="_blank">github</a> </li>
+<li><a href="mailto:simon.agren@sogeti.se">email</a> </li>
+</ul></footer></div><script id="webpack-manifest">/*<![CDATA[*/window.webpackManifest={"0":"0-8c412ec1b0483da16ba8.js","231608221292675":"app-6d1ebb591f7d94db5048.js","99219681209289":"component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js","215303740077764":"component---src-templates-tags-template-js-1944f5117b0ff9b0c23e.js","78839606078735":"component---src-templates-category-template-js-ccbdb357ea067077af6d.js","198517197184460":"component---src-templates-post-template-js-5d75743e5084e9c8f660.js","235131596041995":"component---src-templates-page-template-js-277489605b32655c14af.js","162898551421021":"component---src-pages-404-js-cf325d2e9bf981eec2f6.js","118442821920679":"component---src-pages-category-js-bbb34571e9395b2ce79b.js","70144966829960":"component---src-pages-contact-js-d58c2cb3f0cb03914d20.js","35783957827783":"component---src-pages-index-js-a7a69f7acb7c26e6efcf.js","142807904292071":"component---src-pages-search-js-9eb51a291fcd270c8c2b.js","195850678278728":"component---src-pages-tags-js-ee95b59890837315bfce.js","60335399758886":"path----fec3dbc2ca6d4424b78c.js","210333531512890":"path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js","195721700418347":"path---tags-flow-091c3de3a868517d0e7b.js","43238768760984":"path---tags-share-point-online-fd52a400f3a73ef69453.js","243902903070386":"path---tags-site-scripts-db5ff3fd27e93b4d1372.js","146952444864261":"path---tags-graph-13090a4df02ae21dde38.js","45302896962622":"path---tags-hello-1dbd7ae6ee2b9a68b93d.js","134928267902561":"path---tags-gatsby-8ee8ea9bff6fe68e7928.js","260759634830010":"path---tags-github-28d73e71fec4feed4570.js","272822664802534":"path---category-sayings-9d88829e1a6338b48790.js","221964924166240":"path---create-team-site-script-f1f857fa13ac1de7e05a.js","144342403179678":"path---hello-world-88c68c47f91c7871983d.js","190060841767333":"path---draft-post-d9345460aeb02d157c39.js","273950069227526":"path---about-68394863fb5f83e71b29.js","170786371021445":"path---success-795fd6b2364df2b3b8d1.js","254022195166212":"path---404-a0e39f21c11f6a62c5ab.js","115052432080904":"path---category-9dd4fd94c2ea63a19711.js","184662623972074":"path---contact-df2b21822e3063deaa00.js","142629428675168":"path---index-a9473370f20694de307c.js","254572558124955":"path---search-5d06f52ffcf66bed92ab.js","55702396619907":"path---tags-e79a4f6fe62fa65b531b.js","178698757827068":"path---404-html-a0e39f21c11f6a62c5ab.js","114276838955818":"component---src-layouts-index-js-730c783c335a3756600b.js"}/*]]>*/</script><script>
+            
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'UA-128887135-1', 'auto');
+      }
+      </script><script>/*<![CDATA[*/["/commons-0a1f4ee4730047f681ef.js","/app-6d1ebb591f7d94db5048.js","/path---create-team-site-script-f1f857fa13ac1de7e05a.js","/component---src-templates-post-template-js-5d75743e5084e9c8f660.js","/component---src-layouts-index-js-730c783c335a3756600b.js"].forEach(function(s){document.write('<script src="'+s+'" defer></'+'script>')})/*]]>*/</script></body></html>
