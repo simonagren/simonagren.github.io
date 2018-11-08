@@ -1,8 +1,8 @@
 module.exports = {
   siteTitle: "AgrenPoint - A dev blog", // <title>
   shortSiteTitle: "AgrenPoint - A dev blog", // <title> ending for posts and pages
-  siteDescription: "AgrenPoint is development wiht Simon Ågren.",
-  siteUrl: "http://simonagren.github.io/",
+  siteDescription: "AgrenPoint is development with Simon Ågren.",
+  siteUrl: "http://simonagren.github.io",
   pathPrefix: "",
   siteImage: "preview.jpg",
   siteLanguage: "en",
