@@ -12,7 +12,7 @@ const Seo = props => {
 
   const title = postTitle ? `${postTitle} - ${config.shortSiteTitle}` : config.siteTitle;
   const description = postDescription ? postDescription : config.siteDescription;
-  const image = postCover ? postCover : config.siteImage;
+  const image = postCover ? config.siteUrl + postCover : config.siteUrl + config.siteImage;
   const url = config.siteUrl + config.pathPrefix + postSlug;
   debugger;
   return (
@@ -40,10 +40,11 @@ const Seo = props => {
       /> */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content={config.authorTwitterAccount ? config.authorTwitterAccount : ""}/>
-      <meta name="twitter:title" content={postTitle}></meta>
+      <meta name="twitter:site" content={config.authorTwitterAccount ? config.authorTwitterAccount : ""} />
+      {/* <meta name="twitter:title" content={postTitle}></meta>
       <meta name="twitter:description" content={description}></meta>
       <meta name="twitter:image" content={image}
-        />
+        /> */}
     </Helmet>
   );
 };
