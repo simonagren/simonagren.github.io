@@ -93,6 +93,7 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          `gatsby-remark-social-cards`,
           `gatsby-plugin-sharp`,
           {
             resolve: `gatsby-remark-images`,
