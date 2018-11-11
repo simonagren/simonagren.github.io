@@ -1,13 +1,13 @@
 webpackJsonp([1],{
 
-/***/ 473:
+/***/ 471:
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _style = __webpack_require__(223);
+	var _style = __webpack_require__(222);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -19,9 +19,9 @@ webpackJsonp([1],{
 
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
-	var _reactShare = __webpack_require__(271);
+	var _reactShare = __webpack_require__(270);
 
-	var _config = __webpack_require__(335);
+	var _config = __webpack_require__(330);
 
 	var _config2 = _interopRequireDefault(_config);
 

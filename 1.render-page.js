@@ -1,7 +1,7 @@
 exports.ids = [1];
 exports.modules = {
 
-/***/ 456:
+/***/ 455:
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22,7 +22,7 @@ exports.modules = {
 	
 	var _reactShare = __webpack_require__(225);
 	
-	var _config = __webpack_require__(300);
+	var _config = __webpack_require__(296);
 	
 	var _config2 = _interopRequireDefault(_config);
 	

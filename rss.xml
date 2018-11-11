@@ -1,4 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>http://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Sun, 11 Nov 2018 15:40:59 GMT</lastBuildDate><item><title><![CDATA[Azure Functions V2 + VS Code + PnPJs === true]]></title><description><![CDATA[As the title may hint, you’re up for some JavaScript! Today I had a few moments over and decided to have look at Azure Functions V2. In all…]]></description><link>http://simonagren.github.io/azurefunction-v2-pnpjs/</link><guid isPermaLink="false">http://simonagren.github.io/azurefunction-v2-pnpjs/</guid><content:encoded>&lt;p&gt;As the title may hint, you’re up for some JavaScript!&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>http://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Sun, 11 Nov 2018 18:27:36 GMT</lastBuildDate><item><title><![CDATA[Azure Functions V2 + VS Code + PnPJs === true]]></title><description><![CDATA[As the title may hint, you’re up for some JavaScript! Today I had a few moments over and decided to have look at Azure Functions V2. In all…]]></description><link>http://simonagren.github.io/azurefunction-v2-pnpjs/</link><guid isPermaLink="false">http://simonagren.github.io/azurefunction-v2-pnpjs/</guid><content:encoded>&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/funcpnp-dfec975154c30531070e5894527e0e5f-48538.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAABJ0AAASdAHeZh94AAABeUlEQVQoz51RyUoDQRCdj/OiFxXEL/Csd485e4kHBS85iBoVPUQUQoIahGQSIzEbWXCyzZJlMklm61l6usdKJhcFIfh4dDdFVb2ueoz/Nyj1CaUB4f2LAGaZF1zEoliHZH81MAsFAumelrFy66gWpvPIvNtrfRzNilescJ0TWW4iTS1eQZ0x0IRTtfC8WLfdbBeZXAizGx2hUe4bEESuF4o19yKfu6cf+xflcKIFwbemcpbqlHjNwqQ9RgxycKI+FuWuW9xG6U23FWHbSlWawZyHd7W1o8zBZWXnJH+c5KA4/TVJVOUirxqOB+IMPzHuC4JPNU95MvNbvlbqzUi8KniEPhaHyap8kxPDCe48zb/U5HhlBPVD1eZG5lwZ+tX70xSHyOSZStGR4SdrEibEwaTRN0zHq/d1GD5WGDwUB7fvEstNB6oNsj3FYoKlDzWEhkmfIsV0DQcH+7ccolue7RK88CowzPUodATC15ilTxT7WP9h24pW/RvfPtkqnjlJHokAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;funcpnp&quot;
+        title=&quot;&quot;
+        src=&quot;/static/funcpnp-dfec975154c30531070e5894527e0e5f-48538.png&quot;
+        srcset=&quot;/static/funcpnp-dfec975154c30531070e5894527e0e5f-bed0f.png 200w,
+/static/funcpnp-dfec975154c30531070e5894527e0e5f-5fd34.png 400w,
+/static/funcpnp-dfec975154c30531070e5894527e0e5f-48538.png 800w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;As the title may hint, you’re up for some JavaScript!&lt;/p&gt;
 &lt;p&gt;Today I had a few moments over and decided to have look at Azure Functions V2. In all honesty It’s been quite some time since I played around with Azure Functions, and back then I only made one or two PnP PowerShell scripts. It felt really interesting digging in to this again.&lt;/p&gt;
 &lt;p&gt;Anyways, I started to think about using PnPJs in the JavaScript function, and this might not be news to some of you, but for me this was exciting!&lt;/p&gt;
 &lt;p&gt;This first blog post will be a lot about setup and getting PnPJs to work with an Azure Function. Next post will include some deployment, local vs production variables, the Azure Storage Emulator etc. Then in the third post I will write some about Ochestrations and how we can utilize the strengths of functions vs more classic approaches.&lt;/p&gt;
@@ -278,7 +311,40 @@ context&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;res &lt;spa
 &lt;/ol&gt;
 &lt;p&gt;Congrats, you have now made a working Azure Function V2, that you could deploy to Azure. Just make sure the dependencies follow along.&lt;/p&gt;
 &lt;h2&gt;Next steps&lt;/h2&gt;
-&lt;p&gt;As I mentioned in the beginning of the post I will soon create another post on this subject, so stay tuned!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Update managed metadata fields with PnPJs]]></title><description><![CDATA[Last night I was helping out with an issue in the PnPJs repository on GitHub where the user wanted to update a managed metadata column. I…]]></description><link>http://simonagren.github.io/pnpjs-update-managed-metadata/</link><guid isPermaLink="false">http://simonagren.github.io/pnpjs-update-managed-metadata/</guid><content:encoded>&lt;p&gt;Last night I was helping out with an issue in the PnPJs repository on GitHub where the user wanted to update a managed metadata column. I really love PnPJs because it makes difficult rest calls really simple and intuitive to execute. The user was still hoping for a more simple solution than what I provided - and I don’t blame him.&lt;/p&gt;
+&lt;p&gt;As I mentioned in the beginning of the post I will soon create another post on this subject, so stay tuned!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Update managed metadata fields with PnPJs]]></title><description><![CDATA[Last night I was helping out with an issue in the PnPJs repository on GitHub where the user wanted to update a managed metadata column. I…]]></description><link>http://simonagren.github.io/pnpjs-update-managed-metadata/</link><guid isPermaLink="false">http://simonagren.github.io/pnpjs-update-managed-metadata/</guid><content:encoded>&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/pnp-pnpjs-600-558bcf95ded30b225148cfbca1a4ed0c-b75b8.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 600px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 43.50000000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAACi6AAAougGFEgAmAAABkUlEQVQoz12SO0sDQRRGkyAGUolgEWx2g8FCSKNFSASNMfiCGI3RFOIDfFaKuhsDggQ0WCmCCHbaiGBlveMDwcbCRvwDgiAIFlYKCeuZ7CAxC2e/2XtnvntnZl167sYO5O9tffPW1nPXtm4KWzdEObD1gFqvfGcgqRlWivgw41F0kFwanUGTxEY0Q/Shly5e2ySK6Af8wDvk4QQeXTUPBku6afnJHbMuUZ2jaEEaDsA0mFRZJLjPeAxm4Q4aiLnBQ74Ok1NirXxfMJ53igivMtyThpPwSfAAlZ2uwxp8wTN4/rqT2zXFEXjBgKuaDnfkpFJL4UmeXQnKGH/LcwzuvsjYG5M0tEmRgBCxZuZNMG6DRvDTvQ8OpeGq6iinqlY61EyxLLeNRtFOiEC7IophCO2CXlUowvme/z9w06qHoKwI43QyhS6oBRllvAHytlNV69zOlkWxxlD4IA0dMMdEw1GR1RyjLJ2tKONo7R+AYeWWw7QaR2PQLStrzs0nWNyvtjWkVP5rPRBXc2MVnPVhOPsF3/EKP28MRjYAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;pnp pnpjs 600&quot;
+        title=&quot;&quot;
+        src=&quot;/static/pnp-pnpjs-600-558bcf95ded30b225148cfbca1a4ed0c-b75b8.png&quot;
+        srcset=&quot;/static/pnp-pnpjs-600-558bcf95ded30b225148cfbca1a4ed0c-e10ab.png 200w,
+/static/pnp-pnpjs-600-558bcf95ded30b225148cfbca1a4ed0c-f8041.png 400w,
+/static/pnp-pnpjs-600-558bcf95ded30b225148cfbca1a4ed0c-b75b8.png 600w&quot;
+        sizes=&quot;(max-width: 600px) 100vw, 600px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Last night I was helping out with an issue in the PnPJs repository on GitHub where the user wanted to update a managed metadata column. I really love PnPJs because it makes difficult rest calls really simple and intuitive to execute. The user was still hoping for a more simple solution than what I provided - and I don’t blame him.&lt;/p&gt;
 &lt;p&gt;So I made a few methods where the user can send in a term och terms, directly from the termset. So we will be able to update both multi and single valued managed metadata columns quite easily.&lt;/p&gt;
 &lt;h3&gt;Updating a single valued&lt;/h3&gt;
 &lt;p&gt;Here we send in a term (with types from PnPJs), the list name, the field name, and the Id of the item we wish to update.&lt;/p&gt;
@@ -383,7 +449,42 @@ context&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;res &lt;spa
     &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; list&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;items&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getById&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;itemId&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;data&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-      &lt;/div&gt;</content:encoded></item><item><title><![CDATA[Create a Microsoft Team using site scripts, Flow and Hub Sites]]></title><description><![CDATA[I was asked a few days ago if we could automate   creation when a Modern Team Site is created in SharePoint Online. I got to think about it…]]></description><link>http://simonagren.github.io/create-team-site-script/</link><guid isPermaLink="false">http://simonagren.github.io/create-team-site-script/</guid><content:encoded>&lt;p&gt;I was asked a few days ago if we could automate &lt;code class=&quot;language-text&quot;&gt;Microsoft Teams&lt;/code&gt; creation when a Modern Team Site is created in SharePoint Online. I got to think about it and came up with one way at least. This is using an &lt;code class=&quot;language-text&quot;&gt;Graph Beta endpoint&lt;/code&gt; for the Team creation, so it’s not advisable to use this in production scenarios before it’s in &lt;code class=&quot;language-text&quot;&gt;v1.0&lt;/code&gt;&lt;/p&gt;
+      &lt;/div&gt;</content:encoded></item><item><title><![CDATA[Create a Microsoft Team using site scripts, Flow and Hub Sites]]></title><description><![CDATA[I was asked a few days ago if we could automate   creation when a Modern Team Site is created in SharePoint Online. I got to think about it…]]></description><link>http://simonagren.github.io/create-team-site-script/</link><guid isPermaLink="false">http://simonagren.github.io/create-team-site-script/</guid><content:encoded>&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/success-b3efa29ae13967ac3136f9727b3cd824-f3f84.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 63.33865814696487%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAdxYBJ//xAAWEAEBAQAAAAAAAAAAAAAAAAABEDH/2gAIAQEAAQUCcjf/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAYEAADAQEAAAAAAAAAAAAAAAAAARARQf/aAAgBAQABPyGS6JqmH//aAAwDAQACAAMAAAAQE/8A/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFhEAAwAAAAAAAAAAAAAAAAAAAAER/9oACAECAQE/EIiI/8QAHBAAAwACAwEAAAAAAAAAAAAAAAEhEWExUXGB/9oACAEBAAE/EIfEq49EX9ELaZhdCS7P/9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;success&quot;
+        title=&quot;&quot;
+        src=&quot;/static/success-b3efa29ae13967ac3136f9727b3cd824-78f2b.jpg&quot;
+        srcset=&quot;/static/success-b3efa29ae13967ac3136f9727b3cd824-dce19.jpg 200w,
+/static/success-b3efa29ae13967ac3136f9727b3cd824-c1413.jpg 400w,
+/static/success-b3efa29ae13967ac3136f9727b3cd824-78f2b.jpg 800w,
+/static/success-b3efa29ae13967ac3136f9727b3cd824-ab4c4.jpg 1200w,
+/static/success-b3efa29ae13967ac3136f9727b3cd824-f3f84.jpg 1252w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;I was asked a few days ago if we could automate &lt;code class=&quot;language-text&quot;&gt;Microsoft Teams&lt;/code&gt; creation when a Modern Team Site is created in SharePoint Online. I got to think about it and came up with one way at least. This is using an &lt;code class=&quot;language-text&quot;&gt;Graph Beta endpoint&lt;/code&gt; for the Team creation, so it’s not advisable to use this in production scenarios before it’s in &lt;code class=&quot;language-text&quot;&gt;v1.0&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;We are going to create a Site Script that calls a Flow&lt;/p&gt;
