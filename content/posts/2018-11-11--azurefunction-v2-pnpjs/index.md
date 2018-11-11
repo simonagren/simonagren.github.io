@@ -5,6 +5,9 @@ cover: funcpnp.png
 author: Simon Ågren
 ---
 
+![](./funcpnp.png)
+
+
 As the title may hint, you're up for some JavaScript!
 
 Today I had a few moments over and decided to have look at Azure Functions V2. In all honesty It's been quite some time since I played around with Azure Functions, and back then I only made one or two PnP PowerShell scripts. It felt really interesting digging in to this again.

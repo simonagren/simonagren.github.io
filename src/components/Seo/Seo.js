@@ -33,18 +33,6 @@ const Seo = props => {
       <meta property="og:type" content="website" />
       <meta property="fb:app_id" content={facebook.appId} />
       {/* Twitter Card tags */}
-      {/* <meta name="twitter:card" content="summary" />
-      <meta
-        name="twitter:creator"
-        content={config.authorTwitterAccount ? config.authorTwitterAccount : ""}
-      /> */}
-      {/* <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:creator" content={config.authorTwitterAccount ? config.authorTwitterAccount : ""}/>
-      <meta name="twitter:site" content={config.authorTwitterAccount ? config.authorTwitterAccount : ""} /> */}
-      {/* <meta name="twitter:title" content={postTitle}></meta>
-      <meta name="twitter:description" content={description}></meta>
-      <meta name="twitter:image" content={image}
-        /> */}
       <meta name="twitter:card" content="summary_large_image"/>
       <meta name="twitter:site" content="@agrenpoint"/>
       <meta name="twitter:creator" content="@agrenpoint"/>

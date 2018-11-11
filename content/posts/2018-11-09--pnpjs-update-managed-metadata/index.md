@@ -5,6 +5,8 @@ cover: pnp-pnpjs-600.png
 author: Simon Ågren
 ---
 
+![](./pnp-pnpjs-600.png)
+
 Last night I was helping out with an issue in the PnPJs repository on GitHub where the user wanted to update a managed metadata column. I really love PnPJs because it makes difficult rest calls really simple and intuitive to execute. The user was still hoping for a more simple solution than what I provided - and I don't blame him.
 
 

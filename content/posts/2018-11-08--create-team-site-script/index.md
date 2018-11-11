@@ -5,6 +5,8 @@ cover: success.jpg
 author: Simon Ågren
 ---
 
+![](./success.jpg)
+
 I was asked a few days ago if we could automate `Microsoft Teams` creation when a Modern Team Site is created in SharePoint Online. I got to think about it and came up with one way at least. This is using an `Graph Beta endpoint` for the Team creation, so it's not advisable to use this in production scenarios before it's in `v1.0`
 
 * We are going to create a Site Script that calls a Flow
