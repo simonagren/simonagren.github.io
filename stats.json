@@ -4,9 +4,17 @@
       "component---src-pages-index-js-b662d2405e653e890cd5.js",
       "component---src-pages-index-js-b662d2405e653e890cd5.js.map"
     ],
+    "path---tags-nodejs": [
+      "path---tags-nodejs-23a2daa4c27ed8cf6846.js",
+      "path---tags-nodejs-23a2daa4c27ed8cf6846.js.map"
+    ],
     "path---tags": [
-      "path---tags-097a1e0ea955bb7ad4eb.js",
-      "path---tags-097a1e0ea955bb7ad4eb.js.map"
+      "path---tags-d3416dc1b5076c6aeae2.js",
+      "path---tags-d3416dc1b5076c6aeae2.js.map"
+    ],
+    "path---azurefunction-v-2-pnpjs": [
+      "path---azurefunction-v-2-pnpjs-b82e51491d3faa672a50.js",
+      "path---azurefunction-v-2-pnpjs-b82e51491d3faa672a50.js.map"
     ],
     "path---": [
       "path----fec3dbc2ca6d4424b78c.js",
@@ -15,6 +23,10 @@
     "component---src-pages-contact-js": [
       "component---src-pages-contact-js-d58c2cb3f0cb03914d20.js",
       "component---src-pages-contact-js-d58c2cb3f0cb03914d20.js.map"
+    ],
+    "path---tags-azurefunctions": [
+      "path---tags-azurefunctions-9bcc57ee4aa0b7cd5d7e.js",
+      "path---tags-azurefunctions-9bcc57ee4aa0b7cd5d7e.js.map"
     ],
     "path---tags-sitescripts": [
       "path---tags-sitescripts-ac35494824ec03ffc658.js",
@@ -29,16 +41,16 @@
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "path---tags-sharepoint": [
-      "path---tags-sharepoint-f6d7a8d92a5d90a7cb50.js",
-      "path---tags-sharepoint-f6d7a8d92a5d90a7cb50.js.map"
+      "path---tags-sharepoint-39a54abf21c004bf05db.js",
+      "path---tags-sharepoint-39a54abf21c004bf05db.js.map"
     ],
     "component---src-layouts-index-js": [
       "component---src-layouts-index-js-730c783c335a3756600b.js",
       "component---src-layouts-index-js-730c783c335a3756600b.js.map"
     ],
     "path---category": [
-      "path---category-2e2c55c346bf853882b2.js",
-      "path---category-2e2c55c346bf853882b2.js.map"
+      "path---category-d4240ad6e90c6004ef3c.js",
+      "path---category-d4240ad6e90c6004ef3c.js.map"
     ],
     "component---src-pages-category-js": [
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js",
@@ -49,12 +61,12 @@
       "path---tags-gatsby-74044d2b80c247ab0d41.js.map"
     ],
     "path---tags-pnp": [
-      "path---tags-pnp-3f65517dfeb7bc750fde.js",
-      "path---tags-pnp-3f65517dfeb7bc750fde.js.map"
+      "path---tags-pnp-14464ab9ea14cf02d848.js",
+      "path---tags-pnp-14464ab9ea14cf02d848.js.map"
     ],
     "path---index": [
-      "path---index-0fef9b03d5bad5135911.js",
-      "path---index-0fef9b03d5bad5135911.js.map"
+      "path---index-78afda545f8e540c41d9.js",
+      "path---index-78afda545f8e540c41d9.js.map"
     ],
     "component---src-pages-search-js": [
       "component---src-pages-search-js-9eb51a291fcd270c8c2b.js",
@@ -69,9 +81,9 @@
       "component---src-pages-404-js-cf325d2e9bf981eec2f6.js.map"
     ],
     "commons": [
-      "commons-24279f8ecc76ca9e5126.js",
+      "commons-25a4fc18a9c7d7653c3a.js",
       "build-js-styles.css",
-      "commons-24279f8ecc76ca9e5126.js.map",
+      "commons-25a4fc18a9c7d7653c3a.js.map",
       "build-js-styles.css.map"
     ],
     "path---success": [
@@ -87,8 +99,8 @@
       "path---contact-df2b21822e3063deaa00.js.map"
     ],
     "path---pnpjs-update-managed-metadata": [
-      "path---pnpjs-update-managed-metadata-389abce3d1c3490ac45a.js",
-      "path---pnpjs-update-managed-metadata-389abce3d1c3490ac45a.js.map"
+      "path---pnpjs-update-managed-metadata-b6b71841e2afca5a7181.js",
+      "path---pnpjs-update-managed-metadata-b6b71841e2afca5a7181.js.map"
     ],
     "path---draft-post": [
       "path---draft-post-28e944b1cf4ebbb1402f.js",
@@ -119,9 +131,9 @@
       "path---create-team-site-script-6657d362b7646efcdb08.js.map"
     ],
     "app": [
-      "app-e454bd1ff6bb6078ceb7.js",
+      "app-f7f78ae96f228d934749.js",
       "build-js-styles.css",
-      "app-e454bd1ff6bb6078ceb7.js.map",
+      "app-f7f78ae96f228d934749.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-templates-page-template-js": [
