@@ -40,7 +40,8 @@ const Bodytext = props => {
           }
           :global(li) {
             margin: 0.7em 0;
-            line-height: 1.5;
+            font-size: ${theme.font.size.s};
+            line-height: ${theme.font.lineHeight.xxl};
           }
           :global(a) {
             font-weight: ${theme.font.weight.bold};

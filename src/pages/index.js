@@ -117,7 +117,10 @@ class IndexPage extends React.Component {
           @below tablet { 
             .sideBar {
                 display: none;
-            
+            }
+            .wrapper {
+              width: 100%;
+              margin: auto;
             }
           }
 

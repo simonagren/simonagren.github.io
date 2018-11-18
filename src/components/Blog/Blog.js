@@ -44,6 +44,12 @@ const Blog = props => {
           }
         }
 
+        @below tablet {
+          .main {
+            padding: 0;
+          }
+        }
+
 
         
         

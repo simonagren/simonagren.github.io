@@ -1,5 +1,5 @@
 ---
-title: Azure Functions V2 + VS Code + PnPJs === true 
+title: Part 1 - Azure Functions V2 + VS Code + PnPJs === true 
 tags: ["sharepoint", "pnp", "azurefunctions", "nodejs"]
 cover: funcpnp.png
 author: Simon Ågren

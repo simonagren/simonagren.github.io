@@ -14,7 +14,6 @@ const Seo = props => {
   const description = postDescription ? postDescription : config.siteDescription;
   const image = postCover ? config.siteUrl + postCover.childImageSharp.resize.src : config.siteUrl + config.siteImage;
   const url = config.siteUrl + config.pathPrefix + postSlug;
-  debugger;
   return (
     <Helmet
       htmlAttributes={{

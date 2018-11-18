@@ -89,7 +89,7 @@ const Hero = props => {
           background: ${theme.background.color.brand};
           border: 0;
           border-radius: 50%;
-          font-size: ${theme.font.size.m};
+          font-size: ${theme.font.size.l};
           padding: ${theme.space.s} ${theme.space.m};
           cursor: pointer;
           width: ${theme.space.xl};
@@ -124,31 +124,17 @@ const Hero = props => {
           .hero {
             background-image: url(${backgrounds.tablet});
           }
-
-          h1 {
-            max-width: 90%;
-            font-size: 2em;
-          }
-
-          button {
-            font-size: ${theme.font.size.m};
-            width: 50px;
-            height: 50px;
-            margin: 0;
-            padding: 0;
-          }
-
-          .visiting {
-            display: none;
-          }
           
         }
 
-        @below tablet {
-          .hero {
-            background-image: url(${backgrounds.tablet});
+        @media screen and (max-width: 768px) and (orientation:landscape) {
+          button {
+            font-size: ${theme.font.size.s};
+            width: 40px;
+            height: 40px;
+            margin: 0;
+            padding: 0;
           }
-
           h1 {
             max-width: 90%;
             font-size: 1.5em;
@@ -158,34 +144,50 @@ const Hero = props => {
             font-size: 0.75em;
           }
 
+          .visiting {
+            display: none;
+          }
+          
+       }
+
+       @from-width tablet {
+        .hero {
+          background-image: url(${backgrounds.desktop});
+        }
+        h1 {
+          font-size: ${`calc(${theme.hero.h1.size} * 1.5)`};
+        }
+      }
+
+        @media screen and (min-width: 769px) and (max-width: 824px) and (orientation:landscape) {
           button {
-            font-size: ${theme.font.size.s};
-            width: 40px;
-            height: 40px;
+            font-size: ${theme.font.size.m};
+            width: 60px;
+            height: 60px;
             margin: 0;
             padding: 0;
+          }
+
+          h1 {
+            max-width: 80%;
+            font-size: 2em;
           }
 
           .visiting {
             display: none;
           }
-        }
+       }
+       
 
-
-        @from-width desktop {
+        @below tablet {
           .hero {
-            background-image: url(${backgrounds.desktop});
+            background-image: url(${backgrounds.tablet});
           }
 
-          h1 {
-            max-width: 80%;
-            font-size: ${`calc(${theme.hero.h1.size} * 1.5)`};
-          }
-
-          button {
-            font-size: ${theme.font.size.xl};
-          }
         }
+
+
+        
       `}</style>
     </React.Fragment>
   );
