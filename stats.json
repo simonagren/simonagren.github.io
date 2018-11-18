@@ -1,20 +1,20 @@
 {
   "assetsByChunkName": {
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-b662d2405e653e890cd5.js",
-      "component---src-pages-index-js-b662d2405e653e890cd5.js.map"
+      "component---src-pages-index-js-6a78fae0e43733d3caa1.js",
+      "component---src-pages-index-js-6a78fae0e43733d3caa1.js.map"
     ],
     "path---tags-nodejs": [
-      "path---tags-nodejs-23a2daa4c27ed8cf6846.js",
-      "path---tags-nodejs-23a2daa4c27ed8cf6846.js.map"
+      "path---tags-nodejs-49f1b8babc6af40f09be.js",
+      "path---tags-nodejs-49f1b8babc6af40f09be.js.map"
     ],
     "path---tags": [
-      "path---tags-d3416dc1b5076c6aeae2.js",
-      "path---tags-d3416dc1b5076c6aeae2.js.map"
+      "path---tags-56a53387c81faa2f368b.js",
+      "path---tags-56a53387c81faa2f368b.js.map"
     ],
     "path---azurefunction-v-2-pnpjs": [
-      "path---azurefunction-v-2-pnpjs-826c3982494cbfd59676.js",
-      "path---azurefunction-v-2-pnpjs-826c3982494cbfd59676.js.map"
+      "path---azurefunction-v-2-pnpjs-85258ce9e8d6551a9725.js",
+      "path---azurefunction-v-2-pnpjs-85258ce9e8d6551a9725.js.map"
     ],
     "path---": [
       "path----fec3dbc2ca6d4424b78c.js",
@@ -25,8 +25,8 @@
       "component---src-pages-contact-js-d58c2cb3f0cb03914d20.js.map"
     ],
     "path---tags-azurefunctions": [
-      "path---tags-azurefunctions-9bcc57ee4aa0b7cd5d7e.js",
-      "path---tags-azurefunctions-9bcc57ee4aa0b7cd5d7e.js.map"
+      "path---tags-azurefunctions-d379095b61b4c2f7476d.js",
+      "path---tags-azurefunctions-d379095b61b4c2f7476d.js.map"
     ],
     "path---tags-sitescripts": [
       "path---tags-sitescripts-ac35494824ec03ffc658.js",
@@ -41,32 +41,36 @@
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "path---tags-sharepoint": [
-      "path---tags-sharepoint-39a54abf21c004bf05db.js",
-      "path---tags-sharepoint-39a54abf21c004bf05db.js.map"
+      "path---tags-sharepoint-1db1017a161553601d51.js",
+      "path---tags-sharepoint-1db1017a161553601d51.js.map"
     ],
     "component---src-layouts-index-js": [
       "component---src-layouts-index-js-730c783c335a3756600b.js",
       "component---src-layouts-index-js-730c783c335a3756600b.js.map"
     ],
     "path---category": [
-      "path---category-d4240ad6e90c6004ef3c.js",
-      "path---category-d4240ad6e90c6004ef3c.js.map"
+      "path---category-af258bc2b2a7cf8d419b.js",
+      "path---category-af258bc2b2a7cf8d419b.js.map"
     ],
     "component---src-pages-category-js": [
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js",
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js.map"
+    ],
+    "path---part-2-azurefunction": [
+      "path---part-2-azurefunction-12a5cad0a50b7fc680af.js",
+      "path---part-2-azurefunction-12a5cad0a50b7fc680af.js.map"
     ],
     "path---tags-gatsby": [
       "path---tags-gatsby-74044d2b80c247ab0d41.js",
       "path---tags-gatsby-74044d2b80c247ab0d41.js.map"
     ],
     "path---tags-pnp": [
-      "path---tags-pnp-14464ab9ea14cf02d848.js",
-      "path---tags-pnp-14464ab9ea14cf02d848.js.map"
+      "path---tags-pnp-80a709e21e90e072b503.js",
+      "path---tags-pnp-80a709e21e90e072b503.js.map"
     ],
     "path---index": [
-      "path---index-78afda545f8e540c41d9.js",
-      "path---index-78afda545f8e540c41d9.js.map"
+      "path---index-40915afc01dfdbeeb0ce.js",
+      "path---index-40915afc01dfdbeeb0ce.js.map"
     ],
     "component---src-pages-search-js": [
       "component---src-pages-search-js-9eb51a291fcd270c8c2b.js",
@@ -81,9 +85,9 @@
       "component---src-pages-404-js-cf325d2e9bf981eec2f6.js.map"
     ],
     "commons": [
-      "commons-1d94efb1e0d715061c2f.js",
+      "commons-d5b7da6030ae32e256fb.js",
       "build-js-styles.css",
-      "commons-1d94efb1e0d715061c2f.js.map",
+      "commons-d5b7da6030ae32e256fb.js.map",
       "build-js-styles.css.map"
     ],
     "path---success": [
@@ -99,8 +103,8 @@
       "path---contact-df2b21822e3063deaa00.js.map"
     ],
     "path---pnpjs-update-managed-metadata": [
-      "path---pnpjs-update-managed-metadata-2b80cfccfb994c1dc06d.js",
-      "path---pnpjs-update-managed-metadata-2b80cfccfb994c1dc06d.js.map"
+      "path---pnpjs-update-managed-metadata-345cab312183e7a8c171.js",
+      "path---pnpjs-update-managed-metadata-345cab312183e7a8c171.js.map"
     ],
     "path---draft-post": [
       "path---draft-post-28e944b1cf4ebbb1402f.js",
@@ -115,30 +119,30 @@
       "component---src-pages-tags-js-ee95b59890837315bfce.js.map"
     ],
     "component---src-templates-post-template-js": [
-      "component---src-templates-post-template-js-9495bad45ff2de0e45b4.js",
-      "component---src-templates-post-template-js-9495bad45ff2de0e45b4.js.map"
+      "component---src-templates-post-template-js-ea4989d52b178141ae82.js",
+      "component---src-templates-post-template-js-ea4989d52b178141ae82.js.map"
     ],
     "path---offline-plugin-app-shell-fallback": [
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js",
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
     "component---src-templates-tags-template-js": [
-      "component---src-templates-tags-template-js-7ccacc24e39258ad270b.js",
-      "component---src-templates-tags-template-js-7ccacc24e39258ad270b.js.map"
+      "component---src-templates-tags-template-js-84349de3e32fe2fa0ad8.js",
+      "component---src-templates-tags-template-js-84349de3e32fe2fa0ad8.js.map"
     ],
     "path---create-team-site-script": [
       "path---create-team-site-script-3741d83dcbe092a6c88e.js",
       "path---create-team-site-script-3741d83dcbe092a6c88e.js.map"
     ],
     "app": [
-      "app-f7f78ae96f228d934749.js",
+      "app-7f140acb496da997250c.js",
       "build-js-styles.css",
-      "app-f7f78ae96f228d934749.js.map",
+      "app-7f140acb496da997250c.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-templates-page-template-js": [
-      "component---src-templates-page-template-js-37b9840be4e9263f4f57.js",
-      "component---src-templates-page-template-js-37b9840be4e9263f4f57.js.map"
+      "component---src-templates-page-template-js-5d6a5556bcd7b82fb8ab.js",
+      "component---src-templates-page-template-js-5d6a5556bcd7b82fb8ab.js.map"
     ],
     "path---404": [
       "path---404-a0e39f21c11f6a62c5ab.js",
