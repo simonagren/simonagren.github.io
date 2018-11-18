@@ -47,6 +47,8 @@ const Bodytext = props => {
             font-weight: ${theme.font.weight.bold};
             color: ${theme.color.brand.primary};
             text-decoration: underline;
+            word-break: break-word;
+            overflow: hidden;
           }
           :global(a.gatsby-resp-image-link) {
             border: 0;

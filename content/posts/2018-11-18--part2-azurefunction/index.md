@@ -18,7 +18,7 @@ Have a look at the first post if you want to install the prerequisites and build
 <a href="https://simonagren.github.io/azurefunction-v2-pnpjs/" target="_blank">Part 1: Azure Functions V2 + VS Code + PnPJs === true</a>
 
 You could also clone it from my Github and follow the instructions (please have a look at the readme):
-<a href="https://github.com/simonagren/azurefuncpnpjsgetlists" target="_blank">https://github.com/simonagren/azurefuncpnpjsgetlists</a>
+<a href="https://github.com/simonagren/azurefuncpnpjsgetlists" target="_blank">Link to GitHub Repository</a>
 
 # Deploy with VS Code and Azure Function Extensions
 As I mentioned earlier there are multiple ways for us to deploy this function. In the last blogpost we utilized the VS Code extension so let's go with that first.
