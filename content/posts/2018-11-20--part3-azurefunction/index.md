@@ -66,11 +66,11 @@ az keyvault secret set --vault-name "simonsfuncvault" --name "graphSecret" --val
 <br/>
 
 # Some code to work with
-- Open a Node console and get the prepared <a href="https://github.com/simonagren/keyvaultazurefuncpnpjs.git" target="_blank">solution</a> from my Github and I'll walk you through the code, in just a moment.
+- Open a Node console and get the prepared <a href="https://github.com/simonagren/keyvaultfunc.git" target="_blank">solution</a> from my Github and I'll walk you through the code, in just a moment.
 
 
 ```json
-git clone https://github.com/simonagren/keyvaultazurefuncpnpjs.git
+git clone https://github.com/simonagren/keyvaultfunc.git
 ```
 - cd into folder and restore dependencies
 
@@ -120,6 +120,10 @@ Let's deploy with our local settings:
 func azure functionapp publish pnptesting --publish-local-settings -i --overwrite-settings -y
 ```
 Success!
+
+## If you do get any errors
+With missing connectionstring etc. Try to deploy via the VS Code extension UI then, that should work.
+
 <br/>
 <br/>
 
