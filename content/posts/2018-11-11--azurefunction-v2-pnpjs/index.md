@@ -5,8 +5,12 @@ cover: funcpnp.png
 author: Simon Ågren
 ---
 
-![](./funcpnp.png)
+![pnp and azurefunc](./funcpnp.png)
 
+# The posts in this serie
+- Part 1 - Azure Functions V2 + VS Code + PnPJs === true
+- <a href="https://simonagren.github.io/part2-azurefunction/" target="_blank">Part 2 - Azure Functions V2 + VS Code + PnPJs === true</a>
+- <a href="https://simonagren.github.io/part3-azurefunction/" target="_blank">Part 3 - Azure Functions V2 + VS Code + PnPJs === true</a>
 
 As the title may hint, you're up for some JavaScript!
 
@@ -17,6 +21,7 @@ Anyways, I started to think about using PnPJs in the JavaScript function, and th
 This first blog post will be a lot about setup and getting PnPJs to work with an Azure Function. Next post will include some deployment, local vs production variables, the Azure Storage Emulator etc. Then in the third post I will write some about Ochestrations and how we can utilize the strengths of functions vs more classic approaches.
 
 So I ended up creating everything from Visual Studio code (you could use the CLI), and I want to share how I did it. 
+
 
 ## Installing prerequisites
 

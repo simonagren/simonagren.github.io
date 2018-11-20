@@ -7,11 +7,18 @@ author: Simon Ågren
 
 ![pnp and azure func](./funcpnp2.png)
 
+# The posts in this serie
+- <a href="https://simonagren.github.io/azurefunction-v2-pnpjs/" target="_blank">Part 1 - Azure Functions V2 + VS Code + PnPJs === true</a>
+- Part 2 - Azure Functions V2 + VS Code + PnPJs === true
+- <a href="https://simonagren.github.io/part3-azurefunction/" target="_blank">Part 3 - Azure Functions V2 + VS Code + PnPJs === true</a>
+
 Let's deploy the Function to Azure and watch it call SharePoint!
 
 This is the second post about Azure Functions V2, with PnPJs and Visual Studio code. I decided to split this post in two. The next post will focus on using the Azure Key Vault with our JavaScript Solution. 
 
 This post is about deploying our app, and while we do that we have a look at the local vs productions variables.
+
+
 
 # An Azure Function to work with
 Have a look at the first post if you want to install the prerequisites and build the function from scratch:
