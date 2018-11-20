@@ -1,4 +1,302 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>http://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Sun, 18 Nov 2018 11:27:08 GMT</lastBuildDate><item><title><![CDATA[Part 2 - Azure Functions V2 + VS Code + PnPJs === true]]></title><description><![CDATA[Let’s deploy the Function to Azure and watch it call SharePoint! This is the second post about Azure Functions V2, with PnPJs and Visual…]]></description><link>http://simonagren.github.io/part2-azurefunction/</link><guid isPermaLink="false">http://simonagren.github.io/part2-azurefunction/</guid><content:encoded>&lt;p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>http://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Tue, 20 Nov 2018 21:45:43 GMT</lastBuildDate><item><title><![CDATA[Part 3 - Azure Functions V2 + VS Code + PnPJs === true]]></title><description><![CDATA[The posts in this serie Part 1 - Azure Functions V2 + VS Code + PnPJs === true Part 2 - Azure Functions V2 + VS Code + PnPJs === true Part…]]></description><link>http://simonagren.github.io/part3-azurefunction/</link><guid isPermaLink="false">http://simonagren.github.io/part3-azurefunction/</guid><content:encoded>&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/funcpnp3-c7aa3f5193d2ac45392b4291dbd280fc-48538.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAABwUlEQVQoz5WSu2/TUBTG/bcxILHQBf4CZsTOCBtTGUBMMCCqgmCgUlXRgCIh5KRk6MMlaYvdpnk5ie2UxPEjtq9/XN+oIe1UjvTpnofPd47v/bQ8zymsOBc+V02InHQJmZh/K66hyGnXyUQWyUSI5zqYpsnQGZInETc1TSgioYJ0XCXcuU3cWKVIO5LM931Khs36Tpe1aof38qxaI7qjiJYXcuYEC4zDZL5hnCRUmgGB+YS0coez1gmHdqCGxGnO040THrzZ4/7LGg/fGaxuW6r2/djlVbnJQXtMlGSKVAtnCaWGQ8c5J9lfIdBXSKzXVE9dDrsX6r4ef6xz65nOozWDey9qPC+dKkLd9Pj6a8hea0wwy2i6krDlTfm025HlCZm3xbR2F/wDepOcLaOtCDf3+6rxw8+uJLN4q7f5Vnf4YgzQf3v0/8SYg+l8w2LSsT2ibMWIix/kvXUGIZTqHfVQs1RwZPtqg0bPp3zk8HnXZkOiGFAxR4qwIDt3w8tHgeEkJOxvS2+GO00kUbaQUyjJJlGq7inNxEIihSUyDuJMofgbrVCdULVUPnZ0RYOXTf9jWj7vVDL55y+JfCm+Cf4C5TjvvoVSdYEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;pnp and azure func&quot;
+        title=&quot;&quot;
+        src=&quot;/static/funcpnp3-c7aa3f5193d2ac45392b4291dbd280fc-48538.png&quot;
+        srcset=&quot;/static/funcpnp3-c7aa3f5193d2ac45392b4291dbd280fc-bed0f.png 200w,
+/static/funcpnp3-c7aa3f5193d2ac45392b4291dbd280fc-5fd34.png 400w,
+/static/funcpnp3-c7aa3f5193d2ac45392b4291dbd280fc-48538.png 800w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h1&gt;The posts in this serie&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://simonagren.github.io/azurefunction-v2-pnpjs/&quot; target=&quot;_blank&quot;&gt;Part 1 - Azure Functions V2 + VS Code + PnPJs === true&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://simonagren.github.io/part2-azurefunction/&quot; target=&quot;_blank&quot;&gt;Part 2 - Azure Functions V2 + VS Code + PnPJs === true&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Part 3 - Azure Functions V2 + VS Code + PnPJs === true&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I this post we will use the Azure CLI to create an Azure Key Vault, register our secrets in the vault, create the permissions required for us to access the keys.&lt;/p&gt;
+&lt;p&gt;After everything is set up we will call both SharePoint and the Graph via PNPJs to create a Microsoft Team based on the Group of an Modern Team site.&lt;/p&gt;
+&lt;p&gt;As we will be using Application Permissions to call the Graph we need to have an registered “app” in our Azure AD, so we get an Id and Secret. Have a look in &lt;a href=&quot;https://simonagren.github.io/create-team-site-script/&quot; target=&quot;_blank&quot;&gt;This&lt;/a&gt; blogpost of mine to see how you could register one.&lt;/p&gt;
+&lt;p&gt;Let’s get to it!&lt;/p&gt;
+&lt;h1&gt;Prerequisites&lt;/h1&gt;
+&lt;p&gt;Install Azure CLI globally
+&lt;code class=&quot;language-text&quot;&gt;npm install -g azure-cli&lt;/code&gt;&lt;/p&gt;
+&lt;h1&gt;Azure Key Vault&lt;/h1&gt;
+&lt;p&gt;Now let’s use a best practices approach, the Azure Key Vault for getting our &lt;code class=&quot;language-text&quot;&gt;secrets&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Create a Key vault with Azure CLI&lt;/h2&gt;
+&lt;h3&gt;Login to Azure with:&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az login&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;(Optional) You could create a new Resource Group by running:&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az group create --name myResourceGroup --location northeurope&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;I’m using the same resource group we created earlier with the app. So let’s get the name by using:&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az group list&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;Create an Azure Key Vault&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az keyvault create --name &lt;span class=&quot;token string&quot;&gt;&quot;simonsfuncvault&quot;&lt;/span&gt; --resource-group &lt;span class=&quot;token string&quot;&gt;&quot;funcresourcegroup&quot;&lt;/span&gt; --location &lt;span class=&quot;token string&quot;&gt;&quot;North Europe&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;Add our secrets to the vault&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az keyvault secret set --vault-name &lt;span class=&quot;token string&quot;&gt;&quot;simonsfuncvault&quot;&lt;/span&gt; --name &lt;span class=&quot;token string&quot;&gt;&quot;spSecret&quot;&lt;/span&gt; --value &lt;span class=&quot;token string&quot;&gt;&quot;&amp;lt;SECRET&gt;&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az keyvault secret set --vault-name &lt;span class=&quot;token string&quot;&gt;&quot;simonsfuncvault&quot;&lt;/span&gt; --name &lt;span class=&quot;token string&quot;&gt;&quot;graphSecret&quot;&lt;/span&gt; --value &lt;span class=&quot;token string&quot;&gt;&quot;&amp;lt;SECRET&gt;&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;h1&gt;Some code to work with&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Open a Node console and get the prepared &lt;a href=&quot;https://github.com/simonagren/keyvaultazurefuncpnpjs.git&quot; target=&quot;_blank&quot;&gt;solution&lt;/a&gt; from my Github and I’ll walk you through the code, in just a moment.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;git clone https&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;//github.com/simonagren/keyvaultazurefuncpnpjs.git&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;cd into folder and restore dependencies&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;npm install&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Open in Visual Studio Code&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;code .&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;If you look in the package.json you can see that we have added three additional dependencies we need for our project. Note that it includes the &lt;code class=&quot;language-text&quot;&gt;@pnp/graph&lt;/code&gt; package since we will be calling the Graph aswell. These are those we added:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;ms-rest-azure
+@pnp/graph
+azure-keyvault &lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;h1&gt;Create an app and publish via CLI&lt;/h1&gt;
+&lt;p&gt;We could ofcourse like in &lt;a href=&quot;https://simonagren.github.io/part2-azurefunction/&quot; target=&quot;_blank&quot;&gt;Part 2&lt;/a&gt; deploy via the Extension in VS Code. But I wanted to show you how it’s done via CLI.&lt;/p&gt;
+&lt;h3&gt;We already know/created an resource group. But let’s find our storage Account:&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az storage account list&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;Create the app&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az functionapp create --name pnptesting --storage-account pnphttptrigger98d7 --consumption-plan-location northeurope --resource-group &lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;Publish app&lt;/h3&gt;
+&lt;p&gt;As I mentioned earlier we need to have both an app registered in SharePoint, and an app registerd in our Azure AD with read/write permissions to Groups in the Graph.&lt;/p&gt;
+&lt;p&gt;Edit the &lt;code class=&quot;language-text&quot;&gt;local.settings.json&lt;/code&gt; and enter your:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;spId&lt;/li&gt;
+&lt;li&gt;spTenantUrl&lt;/li&gt;
+&lt;li&gt;graphTenant&lt;/li&gt;
+&lt;li&gt;graphId&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Let’s deploy with our local settings:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;func azure functionapp publish pnptesting --publish-local-settings -i --overwrite-settings -y&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;Success!
+&lt;br/&gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;Enable managed service identity on our Azure Function App&lt;/h1&gt;
+&lt;p&gt;We do this for our specific Function App that we created&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az functionapp identity assign --name pnptesting --resource-group &lt;span class=&quot;token string&quot;&gt;&quot;funcresourcegroup&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;We get a response, make sure to save the &lt;code class=&quot;language-text&quot;&gt;principalId&lt;/code&gt; that we get.
+&lt;br/&gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;Set permission policy for the app&lt;/h1&gt;
+&lt;p&gt;Now we use our principalid to give the Function App permissions to get secrets from the Key vault&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az keyvault set-policy --name &lt;span class=&quot;token string&quot;&gt;&quot;simonsfuncvault&quot;&lt;/span&gt; --object-id &amp;lt;PrincipalId&gt; --secret-permissions get&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;h1&gt;Let’s go through the code and test our Azure Function&lt;/h1&gt;
+&lt;h2&gt;Our imports&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;const sp = require(&amp;quot;@pnp/sp&amp;quot;).sp;
+const SPFetchClient = require(&amp;quot;@pnp/nodejs&amp;quot;).SPFetchClient;
+
+const graph = require(&amp;quot;@pnp/graph&amp;quot;).graph;
+const AdalFetchClient = require(&amp;quot;@pnp/nodejs&amp;quot;).AdalFetchClient;
+
+const KeyVault = require(&amp;#39;azure-keyvault&amp;#39;);
+const msRestAzure = require(&amp;#39;ms-rest-azure&amp;#39;);&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;Getting the secrets&lt;/h2&gt;
+&lt;p&gt;Here we first get a token from the general vault endpoint. Instanciate an KeyvaultClient and gets both the SharePoint and Graph secrets.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; vaultUri &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;https://simonsfuncvault.vault.azure.net/&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// Should always be https://vault.azure.net&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; credentials &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; msRestAzure&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;loginWithAppServiceMSI&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;resource&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;https://vault.azure.net&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; keyVaultClient &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;KeyVault&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;KeyVaultClient&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;credentials&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Get SharePoint key value&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; spVaultSecret &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; keyVaultClient&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getSecret&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;vaultUri&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;spSecret&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; spSecret &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; spVaultSecret&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;value&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Get Graph key value&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; graphVaultSecret &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; keyVaultClient&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getSecret&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;vaultUri&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;graphSecret&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; graphSecret &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; graphVaultSecret&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;value&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;Setting up Graph like we have done with SP before&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Setup PnPJs Graph with graphSecret from Key Vault&lt;/span&gt;
+graph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    graph&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        fetchClientFactory&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;AdalFetchClient&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+                process&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;env&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;graphTenant&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+                process&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;env&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;graphId&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+                graphSecret
+            &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;Create a Microsoft Team from the Team Site Group&lt;/h2&gt;
+&lt;p&gt;First we get the web and select the Title. Then we get and filter all groups to find the one with the same displayName as our Modern Team Site.&lt;/p&gt;
+&lt;p&gt;We then get that specific group by Id and creates a Microsoft Team via the new &lt;code class=&quot;language-text&quot;&gt;createTeam()&lt;/code&gt; &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Get the web and select only Title&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; web &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; sp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;web&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Title&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Filter Office365 groups for any with the same displayName as the web title&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; filtGroups &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; graph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;groups&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`displayName eq &apos;&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;web&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Title&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; createdTeam&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// If only one group. It should only be one&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;filtGroups&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// Get the group from the array&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; group &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; filtGroups&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// Create a Team based on that Group&lt;/span&gt;
+    createdTeam &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; graph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;groups&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getById&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;group&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;id&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;createTeam&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token string&quot;&gt;&quot;memberSettings&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;token string&quot;&gt;&quot;allowCreateUpdateChannels&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token string&quot;&gt;&quot;messagingSettings&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;token string&quot;&gt;&quot;allowUserEditMessages&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token string&quot;&gt;&quot;allowUserDeleteMessages&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token string&quot;&gt;&quot;funSettings&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;token string&quot;&gt;&quot;allowGiphy&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token string&quot;&gt;&quot;giphyContentRating&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;strict&quot;&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;h1&gt;Lets call the Azure Function and see what happens&lt;/h1&gt;
+&lt;h2&gt;Before&lt;/h2&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/preteams-cb93dada3357d45c8f450ad2180eba97-8a4eb.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 529px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 93.19470699432891%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAATABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAIEBQP/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAABne4atUV4ZeqQB//EABsQAAEFAQEAAAAAAAAAAAAAAAMAAgQQFDIz/9oACAEBAAEFAow2kblGsglD4qB5V//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABYRAQEBAAAAAAAAAAAAAAAAABEAEP/aAAgBAgEBPwFnf//EAB0QAAECBwAAAAAAAAAAAAAAAAAQkQECIjFBcYH/2gAIAQEABj8CqLRcy51Ztr//xAAbEAEAAgMBAQAAAAAAAAAAAAABABEQYfAhQf/aAAgBAQABPyF4i2/jol8GiDVe8DPTrP8A/9oADAMBAAIAAwAAABDbyID/xAAVEQEBAAAAAAAAAAAAAAAAAAARIP/aAAgBAwEBPxAj/8QAGREAAgMBAAAAAAAAAAAAAAAAAAEQETFR/9oACAECAQE/EG16W6PY/8QAHRABAAICAgMAAAAAAAAAAAAAAQARECExgWHw8f/aAAgBAQABPxBAWgIlAnHcvWjH00MXRVmm+iGPd8M//9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;beforeteams&quot;
+        title=&quot;&quot;
+        src=&quot;/static/preteams-cb93dada3357d45c8f450ad2180eba97-8a4eb.jpg&quot;
+        srcset=&quot;/static/preteams-cb93dada3357d45c8f450ad2180eba97-d3183.jpg 200w,
+/static/preteams-cb93dada3357d45c8f450ad2180eba97-57d1f.jpg 400w,
+/static/preteams-cb93dada3357d45c8f450ad2180eba97-8a4eb.jpg 529w&quot;
+        sizes=&quot;(max-width: 529px) 100vw, 529px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h2&gt;Make the call in the browser or Postman&lt;/h2&gt;
+&lt;p&gt;Make sure that the name of the site you use is a Modern Team Site&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;https&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;//pnptesting.azurewebsites.net/api/PnPHttpTrigger?site=pnpazurefunc&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;In the browser you should now have received a message that the Team have been created.&lt;/p&gt;
+&lt;h2&gt;After&lt;/h2&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/postteams-6b81eb9e7a683b06f2c63835a9d89a5a-acc57.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 533px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 87.6172607879925%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAASABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAQFA//EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHrZy06hXDM0yQF/8QAGxAAAQUBAQAAAAAAAAAAAAAAAgADBBAUMjP/2gAIAQEAAQUCjtAY5G1kaUTiofhX/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFhEBAQEAAAAAAAAAAAAAAAAAEQAQ/9oACAECAQE/AWd//8QAGhAAAQUBAAAAAAAAAAAAAAAAABAgIUGRgf/aAAgBAQAGPwKS9L1nV//EABwQAQABBAMAAAAAAAAAAAAAAAFBABARMSFRcf/aAAgBAQABPyHKyrl01li0S7yz5RzqwIzv/9oADAMBAAIAAwAAABCwz3z/xAAXEQEAAwAAAAAAAAAAAAAAAAAQARFB/9oACAEDAQE/EJo0/8QAGREAAwADAAAAAAAAAAAAAAAAAAEREDFR/9oACAECAQE/EG1K6PeP/8QAHRABAQABBAMAAAAAAAAAAAAAAREAECFhwTFRgf/aAAgBAQABPxC7x3BkEO8uqGOLA4E3wnL0evuIFVNILFhZyYAECGn/2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;afterteam&quot;
+        title=&quot;&quot;
+        src=&quot;/static/postteams-6b81eb9e7a683b06f2c63835a9d89a5a-acc57.jpg&quot;
+        srcset=&quot;/static/postteams-6b81eb9e7a683b06f2c63835a9d89a5a-aa6f4.jpg 200w,
+/static/postteams-6b81eb9e7a683b06f2c63835a9d89a5a-4c9d2.jpg 400w,
+/static/postteams-6b81eb9e7a683b06f2c63835a9d89a5a-acc57.jpg 533w&quot;
+        sizes=&quot;(max-width: 533px) 100vw, 533px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h1&gt;Finishing words&lt;/h1&gt;
+&lt;p&gt;I have been looking into durable orchestrations in the node version of Azure Functions. You can’t do everything yet.
+So I might postpone that blogpost, not really sure yet.&lt;/p&gt;
+&lt;p&gt;Thank you for following along in this series!
+/Simon&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Part 2 - Azure Functions V2 + VS Code + PnPJs === true]]></title><description><![CDATA[The posts in this serie Part 1 - Azure Functions V2 + VS Code + PnPJs === true Part 2 - Azure Functions V2 + VS Code + PnPJs === true Part…]]></description><link>http://simonagren.github.io/part2-azurefunction/</link><guid isPermaLink="false">http://simonagren.github.io/part2-azurefunction/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/funcpnp2-55add6717461e76d8487682f8791bdf0-48538.png&quot;
@@ -31,6 +329,12 @@
   
   &lt;/a&gt;
     &lt;/p&gt;
+&lt;h1&gt;The posts in this serie&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://simonagren.github.io/azurefunction-v2-pnpjs/&quot; target=&quot;_blank&quot;&gt;Part 1 - Azure Functions V2 + VS Code + PnPJs === true&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Part 2 - Azure Functions V2 + VS Code + PnPJs === true&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://simonagren.github.io/part3-azurefunction/&quot; target=&quot;_blank&quot;&gt;Part 3 - Azure Functions V2 + VS Code + PnPJs === true&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Let’s deploy the Function to Azure and watch it call SharePoint!&lt;/p&gt;
 &lt;p&gt;This is the second post about Azure Functions V2, with PnPJs and Visual Studio code. I decided to split this post in two. The next post will focus on using the Azure Key Vault with our JavaScript Solution. &lt;/p&gt;
 &lt;p&gt;This post is about deploying our app, and while we do that we have a look at the local vs productions variables.&lt;/p&gt;
@@ -265,7 +569,7 @@ We don’t need to get these before we deploy, I’m just showing you that you c
 &lt;li&gt;Run &lt;code class=&quot;language-text&quot;&gt;func azure functionapp publish &amp;lt;FuncApp&amp;gt; --publish-local-settings -i --overwrite-settings -y&lt;/code&gt;
 And you would be done!&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Anyways the next post will be using the Azure CLI and Azure Key Vault!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Part 1 - Azure Functions V2 + VS Code + PnPJs === true]]></title><description><![CDATA[As the title may hint, you’re up for some JavaScript! Today I had a few moments over and decided to have look at Azure Functions V2. In all…]]></description><link>http://simonagren.github.io/azurefunction-v2-pnpjs/</link><guid isPermaLink="false">http://simonagren.github.io/azurefunction-v2-pnpjs/</guid><content:encoded>&lt;p&gt;
+&lt;p&gt;Anyways the next post will be using the Azure CLI and Azure Key Vault!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Part 1 - Azure Functions V2 + VS Code + PnPJs === true]]></title><description><![CDATA[The posts in this serie Part 1 - Azure Functions V2 + VS Code + PnPJs === true Part 2 - Azure Functions V2 + VS Code + PnPJs === true Part…]]></description><link>http://simonagren.github.io/azurefunction-v2-pnpjs/</link><guid isPermaLink="false">http://simonagren.github.io/azurefunction-v2-pnpjs/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/funcpnp-dfec975154c30531070e5894527e0e5f-48538.png&quot;
@@ -285,7 +589,7 @@ And you would be done!&lt;/li&gt;
       &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
-        alt=&quot;funcpnp&quot;
+        alt=&quot;pnp and azurefunc&quot;
         title=&quot;&quot;
         src=&quot;/static/funcpnp-dfec975154c30531070e5894527e0e5f-48538.png&quot;
         srcset=&quot;/static/funcpnp-dfec975154c30531070e5894527e0e5f-bed0f.png 200w,
@@ -298,6 +602,12 @@ And you would be done!&lt;/li&gt;
   
   &lt;/a&gt;
     &lt;/p&gt;
+&lt;h1&gt;The posts in this serie&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Part 1 - Azure Functions V2 + VS Code + PnPJs === true&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://simonagren.github.io/part2-azurefunction/&quot; target=&quot;_blank&quot;&gt;Part 2 - Azure Functions V2 + VS Code + PnPJs === true&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://simonagren.github.io/part3-azurefunction/&quot; target=&quot;_blank&quot;&gt;Part 3 - Azure Functions V2 + VS Code + PnPJs === true&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;As the title may hint, you’re up for some JavaScript!&lt;/p&gt;
 &lt;p&gt;Today I had a few moments over and decided to have look at Azure Functions V2. In all honesty It’s been quite some time since I played around with Azure Functions, and back then I only made one or two PnP PowerShell scripts. It felt really interesting digging in to this again.&lt;/p&gt;
 &lt;p&gt;Anyways, I started to think about using PnPJs in the JavaScript function, and this might not be news to some of you, but for me this was exciting!&lt;/p&gt;
