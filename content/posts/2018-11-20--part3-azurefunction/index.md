@@ -24,7 +24,9 @@ Let's get to it!
 
 # Prerequisites
 Install Azure CLI globally
-`npm install -g azure-cli`
+```json
+npm install -g azure-cli
+```
 
 # Azure Key Vault
 Now let's use a best practices approach, the Azure Key Vault for getting our `secrets`.
