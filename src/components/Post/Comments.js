@@ -1,17 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FacebookProvider, { Comments as FBComments } from "react-facebook";
+import { FacebookProvider, Comments } from 'react-facebook';
 
 import config from "../../../content/meta/config";
 
-const Comments = props => {
+const FbComments = props => {
   const { facebook, slug, theme } = props;
 
   return (
     <React.Fragment>
       <div id="post-comments" className="comments">
         <FacebookProvider appId={facebook.appId}>
-          <FBComments href={`${config.siteUrl}${slug}`} width="100%" colorscheme="light" />
+          <Comments href={`${config.siteUrl}${slug}`} width="100%" colorscheme="light" />
         </FacebookProvider>
       </div>
 
@@ -31,4 +31,4 @@ Comments.propTypes = {
   theme: PropTypes.object.isRequired
 };
 
-export default Comments;
+export default FbComments;
