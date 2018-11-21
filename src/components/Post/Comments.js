@@ -25,7 +25,7 @@ const FbComments = props => {
   );
 };
 
-Comments.propTypes = {
+FbComments.propTypes = {
   slug: PropTypes.string.isRequired,
   facebook: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired

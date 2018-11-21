@@ -21,7 +21,7 @@ const Meta = props => {
       <span>
       <FaTag size={18} />
       {tags && tags.map(tag => (
-              <Link className="tagslinks" to={`/tags/${tag}`}>{tag}</Link>
+              <Link key={tag} className="tagslinks" to={`/tags/${tag}`}>{tag}</Link>
             ))}
       </span>
 
