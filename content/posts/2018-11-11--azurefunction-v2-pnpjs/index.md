@@ -11,6 +11,7 @@ author: Simon Ågren
 - Part 1 - Azure Functions V2 + VS Code + PnPJs === true
 - <a href="https://simonagren.github.io/part2-azurefunction/" target="_blank">Part 2 - Azure Functions V2 + VS Code + PnPJs === true</a>
 - <a href="https://simonagren.github.io/part3-azurefunction/" target="_blank">Part 3 - Azure Functions V2 + VS Code + PnPJs === true</a>
+- <a href="https://simonagren.github.io/part4-azurefunction/" target="_blank">Part 4 - Azure Functions V2 + VS Code + PnPJs === true</a>
 
 As the title may hint, you're up for some JavaScript!
 

@@ -11,13 +11,14 @@ author: Simon Ågren
 - <a href="https://simonagren.github.io/azurefunction-v2-pnpjs/" target="_blank">Part 1 - Azure Functions V2 + VS Code + PnPJs === true</a>
 - Part 2 - Azure Functions V2 + VS Code + PnPJs === true
 - <a href="https://simonagren.github.io/part3-azurefunction/" target="_blank">Part 3 - Azure Functions V2 + VS Code + PnPJs === true</a>
+- <a href="https://simonagren.github.io/part4-azurefunction/" target="_blank">Part 4 - Azure Functions V2 + VS Code + PnPJs === true</a>
+
 
 Let's deploy the Function to Azure and watch it call SharePoint!
 
 This is the second post about Azure Functions V2, with PnPJs and Visual Studio code. I decided to split this post in two. The next post will focus on using the Azure Key Vault with our JavaScript Solution. 
 
 This post is about deploying our app, and while we do that we have a look at the local vs productions variables.
-
 
 
 # An Azure Function to work with
@@ -83,12 +84,16 @@ func azure functionapp publish <FuncApp> --publish-local-settings -i --overwrite
 And let's try it in the browser:
 ![azure test](./azuretest.jpg)
 
+## Change settings from the Extension
+We could also change the settings from the UI in the VS Code extension. Really smooth!
+![settings](./settings.jpg)
+
 # Recap
-So deploying an Azure Function from Visual Studio Code is really easy, I really like the Functions Extension. The only catch I could think of is that we manually must set the applications settings in Azure afterwards.
+So deploying an Azure Function from Visual Studio Code is really easy, I really like the Functions Extension. And I really like that we could change the Application Settings easily from the extension
 
 As you saw in other example, we created a new Function App to receive the settings from Azure. You don't have to do that, you could fetch settings from any of your Function Apps.
 
-An really easy way to deploy this function would be to:
+Another really easy way to deploy this function would be to:
 1. Create an Function App in the Azure Portal
 2. Clone my repository from GitHub
 3. Fill in the values in local.setting.json

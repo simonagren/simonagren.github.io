@@ -11,7 +11,7 @@ author: Simon Ågren
 - <a href="https://simonagren.github.io/azurefunction-v2-pnpjs/" target="_blank">Part 1 - Azure Functions V2 + VS Code + PnPJs === true</a>
 - <a href="https://simonagren.github.io/part2-azurefunction/" target="_blank">Part 2 - Azure Functions V2 + VS Code + PnPJs === true</a>
 - Part 3 - Azure Functions V2 + VS Code + PnPJs === true
-
+- <a href="https://simonagren.github.io/part4-azurefunction/" target="_blank">Part 4 - Azure Functions V2 + VS Code + PnPJs === true</a>
 
 I this post we will use the Azure CLI to create an Azure Key Vault, register our secrets in the vault, create the permissions required for us to access the keys.
 
@@ -62,9 +62,6 @@ az keyvault secret set --vault-name "simonsfuncvault" --name "spSecret" --value 
 az keyvault secret set --vault-name "simonsfuncvault" --name "graphSecret" --value "<SECRET>"
 ```
 
-<br/>
-<br/>
-
 # Some code to work with
 - Open a Node console and get the prepared <a href="https://github.com/simonagren/keyvaultfunc.git" target="_blank">solution</a> from my Github and I'll walk you through the code, in just a moment.
 
@@ -90,8 +87,6 @@ ms-rest-azure
 @pnp/graph
 azure-keyvault 
 ```
-<br/>
-<br/>
 
 # Create an app and publish via CLI
 We could ofcourse like in <a href="https://simonagren.github.io/part2-azurefunction/" target="_blank">Part 2</a> deploy via the Extension in VS Code. But I wanted to show you how it's done via CLI.
@@ -122,10 +117,7 @@ func azure functionapp publish pnptesting --publish-local-settings -i --overwrit
 Success!
 
 ## If you do get any errors
-With missing connectionstring etc. Try to deploy via the VS Code extension UI then, that should work.
-
-<br/>
-<br/>
+With missing connectionstring etc. Try to deploy via the VS Code extension UI then, and set the App Settings via the extension as well.
 
 # Enable managed service identity on our Azure Function App
 We do this for our specific Function App that we created
@@ -134,8 +126,6 @@ We do this for our specific Function App that we created
 az functionapp identity assign --name pnptesting --resource-group "funcresourcegroup"
 ```
 We get a response, make sure to save the `principalId` that we get.
-<br/>
-<br/>
 
 # Set permission policy for the app
 Now we use our principalid to give the Function App permissions to get secrets from the Key vault
@@ -143,8 +133,6 @@ Now we use our principalid to give the Function App permissions to get secrets f
 ```json
 az keyvault set-policy --name "simonsfuncvault" --object-id <PrincipalId> --secret-permissions get
 ```
-<br/>
-<br/>
 
 # Let's go through the code and test our Azure Function
 
@@ -225,8 +213,6 @@ if (filtGroups.length === 1) {
     });
 }
 ```
-<br/>
-<br/>
 
 # Lets call the Azure Function and see what happens
 ## Before
@@ -244,8 +230,4 @@ In the browser you should now have received a message that the Team have been cr
 ![afterteam](./postteams.jpg)
 
 # Finishing words
-I have been looking into durable orchestrations in the node version of Azure Functions. You can't do everything yet.
-So I might postpone that blogpost, not really sure yet.
-
-Thank you for following along in this series!
-/Simon
+Next post will be about securing the Function App with Azure AD.
