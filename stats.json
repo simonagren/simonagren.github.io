@@ -5,16 +5,16 @@
       "component---src-pages-index-js-6a78fae0e43733d3caa1.js.map"
     ],
     "path---tags-nodejs": [
-      "path---tags-nodejs-445739fdba77bc1e6880.js",
-      "path---tags-nodejs-445739fdba77bc1e6880.js.map"
+      "path---tags-nodejs-656f0806cb8c3d5f11d0.js",
+      "path---tags-nodejs-656f0806cb8c3d5f11d0.js.map"
     ],
     "path---tags": [
-      "path---tags-fb1ae010d61350641a92.js",
-      "path---tags-fb1ae010d61350641a92.js.map"
+      "path---tags-fded5ab3c9c407e851db.js",
+      "path---tags-fded5ab3c9c407e851db.js.map"
     ],
     "path---azurefunction-v-2-pnpjs": [
-      "path---azurefunction-v-2-pnpjs-145b41e0b6b2a7a8229b.js",
-      "path---azurefunction-v-2-pnpjs-145b41e0b6b2a7a8229b.js.map"
+      "path---azurefunction-v-2-pnpjs-19ef0b9bf5c14a35e13c.js",
+      "path---azurefunction-v-2-pnpjs-19ef0b9bf5c14a35e13c.js.map"
     ],
     "path---": [
       "path----fec3dbc2ca6d4424b78c.js",
@@ -25,8 +25,8 @@
       "component---src-pages-contact-js-d58c2cb3f0cb03914d20.js.map"
     ],
     "path---tags-azurefunctions": [
-      "path---tags-azurefunctions-b06160cfd8a712d9d901.js",
-      "path---tags-azurefunctions-b06160cfd8a712d9d901.js.map"
+      "path---tags-azurefunctions-ae2d5f1952fc0b84c137.js",
+      "path---tags-azurefunctions-ae2d5f1952fc0b84c137.js.map"
     ],
     "path---tags-sitescripts": [
       "path---tags-sitescripts-ac35494824ec03ffc658.js",
@@ -41,36 +41,36 @@
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "path---tags-sharepoint": [
-      "path---tags-sharepoint-c52657538135a90492fc.js",
-      "path---tags-sharepoint-c52657538135a90492fc.js.map"
+      "path---tags-sharepoint-fc33e3f408092fad0d7c.js",
+      "path---tags-sharepoint-fc33e3f408092fad0d7c.js.map"
     ],
     "component---src-layouts-index-js": [
       "component---src-layouts-index-js-730c783c335a3756600b.js",
       "component---src-layouts-index-js-730c783c335a3756600b.js.map"
     ],
     "path---category": [
-      "path---category-1d0dc047fc28646ed535.js",
-      "path---category-1d0dc047fc28646ed535.js.map"
+      "path---category-1056331e46f32665a428.js",
+      "path---category-1056331e46f32665a428.js.map"
     ],
     "component---src-pages-category-js": [
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js",
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js.map"
     ],
     "path---part-2-azurefunction": [
-      "path---part-2-azurefunction-638acde3876387f121d6.js",
-      "path---part-2-azurefunction-638acde3876387f121d6.js.map"
+      "path---part-2-azurefunction-579e353ea5610a2b4c3a.js",
+      "path---part-2-azurefunction-579e353ea5610a2b4c3a.js.map"
     ],
     "path---tags-gatsby": [
       "path---tags-gatsby-74044d2b80c247ab0d41.js",
       "path---tags-gatsby-74044d2b80c247ab0d41.js.map"
     ],
     "path---tags-pnp": [
-      "path---tags-pnp-26afb109d65ddd223988.js",
-      "path---tags-pnp-26afb109d65ddd223988.js.map"
+      "path---tags-pnp-387305c2924b1fbf9ba5.js",
+      "path---tags-pnp-387305c2924b1fbf9ba5.js.map"
     ],
     "path---index": [
-      "path---index-c2f72b8b3d2631c03ad9.js",
-      "path---index-c2f72b8b3d2631c03ad9.js.map"
+      "path---index-f73b5b1fdff918928001.js",
+      "path---index-f73b5b1fdff918928001.js.map"
     ],
     "component---src-pages-search-js": [
       "component---src-pages-search-js-9eb51a291fcd270c8c2b.js",
@@ -79,6 +79,10 @@
     "path---hello-world": [
       "path---hello-world-ab5bb3de41d393affd39.js",
       "path---hello-world-ab5bb3de41d393affd39.js.map"
+    ],
+    "path---part-4-azurefunction": [
+      "path---part-4-azurefunction-ccd92b623ed72e664957.js",
+      "path---part-4-azurefunction-ccd92b623ed72e664957.js.map"
     ],
     "component---src-pages-404-js": [
       "component---src-pages-404-js-cf325d2e9bf981eec2f6.js",
@@ -95,8 +99,8 @@
       "path---success-795fd6b2364df2b3b8d1.js.map"
     ],
     "path---part-3-azurefunction": [
-      "path---part-3-azurefunction-5e18fae9f3d7b9780dd9.js",
-      "path---part-3-azurefunction-5e18fae9f3d7b9780dd9.js.map"
+      "path---part-3-azurefunction-70787c63b8cd60d0378c.js",
+      "path---part-3-azurefunction-70787c63b8cd60d0378c.js.map"
     ],
     "path---404-html": [
       "path---404-html-a0e39f21c11f6a62c5ab.js",
@@ -139,9 +143,9 @@
       "path---create-team-site-script-3741d83dcbe092a6c88e.js.map"
     ],
     "app": [
-      "app-0c70c3ec758baf9b033c.js",
+      "app-869cc0ffaa140286672b.js",
       "build-js-styles.css",
-      "app-0c70c3ec758baf9b033c.js.map",
+      "app-869cc0ffaa140286672b.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-templates-page-template-js": [
