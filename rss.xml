@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>http://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Wed, 28 Nov 2018 20:11:41 GMT</lastBuildDate><item><title><![CDATA[Part 4 - Azure Functions V2 + VS Code + PnPJs === true]]></title><description><![CDATA[The posts in this serie Part 1 - Azure Functions V2 + VS Code + PnPJs === true Part 2 - Azure Functions V2 + VS Code + PnPJs === true Part…]]></description><link>http://simonagren.github.io/part4-azurefunction/</link><guid isPermaLink="false">http://simonagren.github.io/part4-azurefunction/</guid><content:encoded>&lt;p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>http://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Thu, 29 Nov 2018 09:04:13 GMT</lastBuildDate><item><title><![CDATA[Part 4 - Azure Functions V2 + VS Code + PnPJs === true]]></title><description><![CDATA[The posts in this serie Part 1 - Azure Functions V2 + VS Code + PnPJs === true Part 2 - Azure Functions V2 + VS Code + PnPJs === true Part…]]></description><link>http://simonagren.github.io/part4-azurefunction/</link><guid isPermaLink="false">http://simonagren.github.io/part4-azurefunction/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/funcpnp4-9eba6bc91f2af79fc88248378c1ecef4-48538.png&quot;
@@ -1085,8 +1085,9 @@ graph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span clas
 &lt;h1&gt;Deploy with VS Code and Azure Function Extensions&lt;/h1&gt;
 &lt;p&gt;As I mentioned earlier there are multiple ways for us to deploy this function. In the last blogpost we utilized the VS Code extension so let’s go with that first.&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Press the &lt;code class=&quot;language-text&quot;&gt;Deploy to Function App&lt;/code&gt;
-
+&lt;li&gt;Press the &lt;code class=&quot;language-text&quot;&gt;Deploy to Function App&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/deploy-8b2629525822b6a6b07b2c1aa0da63a5-204ad.jpg&quot;
@@ -1118,20 +1119,48 @@ graph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span clas
   &lt;/span&gt;
   
   &lt;/a&gt;
-    &lt;/li&gt;
+    &lt;/p&gt;
+&lt;ol start=&quot;2&quot;&gt;
 &lt;li&gt;Select or create a new Function App&lt;/li&gt;
 &lt;li&gt;Select or create a new Resource Group&lt;/li&gt;
 &lt;li&gt;Select or create a new Storage Account&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Let the extension run it’s magic. After some time you should receive a message that the function has been deployed.
-Right now we don’t have any production variables, so we need to go into Azure to fix this:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Log in to the Azure Portal -&gt; Go to Azure -&gt; Function Apps -&gt; select the app we just created&lt;/li&gt;
-&lt;li&gt;Create and enter values for the &lt;code class=&quot;language-text&quot;&gt;spId&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;spSecret&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;spTenantUrl&lt;/code&gt;, save!&lt;/li&gt;
-&lt;li&gt;Run &lt;code class=&quot;language-text&quot;&gt;https://&amp;lt;AppName&amp;gt;.azurewebsites.net/api/PnPHttpTrigger?site=&amp;lt;SiteName&amp;gt;&lt;/code&gt; &lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;It should now work in Azure, awesome!
-
+Right now we don’t have any production variables, so we will use an awesome feature in the extension for this. We could also change the settings from the UI in the VS Code extension. Really smooth!&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/settings-445adab8cd4140989bfc0870e03ef948-a7845.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 315px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 68.88888888888889%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAOABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAIF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAc2JIB//xAAVEAEBAAAAAAAAAAAAAAAAAAABIP/aAAgBAQABBQIK/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFhAAAwAAAAAAAAAAAAAAAAAAACAx/9oACAEBAAY/Air/AP/EABoQAQACAwEAAAAAAAAAAAAAAAEAERAxQXH/2gAIAQEAAT8hBNkSuI+y8//aAAwDAQACAAMAAAAQbz//xAAXEQADAQAAAAAAAAAAAAAAAAAAARFR/9oACAEDAQE/EI9If//EABYRAAMAAAAAAAAAAAAAAAAAAAEQEf/aAAgBAgEBPxChf//EABsQAQACAgMAAAAAAAAAAAAAAAEAERAxIWHx/9oACAEBAAE/EOZk6lGhzryC3SCNKYZ//9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;settings&quot;
+        title=&quot;&quot;
+        src=&quot;/static/settings-445adab8cd4140989bfc0870e03ef948-a7845.jpg&quot;
+        srcset=&quot;/static/settings-445adab8cd4140989bfc0870e03ef948-368b4.jpg 200w,
+/static/settings-445adab8cd4140989bfc0870e03ef948-a7845.jpg 315w&quot;
+        sizes=&quot;(max-width: 315px) 100vw, 315px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;It should now work in Azure, awesome!&lt;/p&gt;
+&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/appsettings-22702125a72fef46dda1d7ddcc402350-57d66.jpg&quot;
@@ -1297,12 +1326,21 @@ We don’t need to get these before we deploy, I’m just showing you that you c
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;h2&gt;Change settings from the Extension&lt;/h2&gt;
-&lt;p&gt;We could also change the settings from the UI in the VS Code extension. Really smooth!
-
+&lt;h1&gt;Recap&lt;/h1&gt;
+&lt;p&gt;So deploying an Azure Function from Visual Studio Code is really easy, I really like the Functions Extension. And I really like that we could change the Application Settings easily from the extension.&lt;/p&gt;
+&lt;p&gt;As you saw in other example, we created a new Function App to receive the settings from Azure. You don’t have to do that, you could fetch settings from any of your Function Apps.&lt;/p&gt;
+&lt;p&gt;Another really easy way to deploy this function would be to:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create an Function App in the Azure Portal&lt;/li&gt;
+&lt;li&gt;Clone my repository from GitHub&lt;/li&gt;
+&lt;li&gt;Fill in the values in local.setting.json&lt;/li&gt;
+&lt;li&gt;Run &lt;code class=&quot;language-text&quot;&gt;func azure functionapp publish &amp;lt;FuncApp&amp;gt; --publish-local-settings -i --overwrite-settings -y&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;And of course we could both get the settings, and set from local settings via the Extension in VS Code.&lt;/p&gt;
+&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/settings-445adab8cd4140989bfc0870e03ef948-a7845.jpg&quot;
+    href=&quot;/static/local-58e4c26ddc6d592de87d028aae22db4d-710f9.jpg&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -1310,38 +1348,29 @@ We don’t need to get these before we deploy, I’m just showing you that you c
   
   &lt;span
     class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block; ; max-width: 315px; margin-left: auto; margin-right: auto;&quot;
+    style=&quot;position: relative; display: block; ; max-width: 416px; margin-left: auto; margin-right: auto;&quot;
   &gt;
     &lt;span
       class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 68.88888888888889%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAOABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAIF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAc2JIB//xAAVEAEBAAAAAAAAAAAAAAAAAAABIP/aAAgBAQABBQIK/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFhAAAwAAAAAAAAAAAAAAAAAAACAx/9oACAEBAAY/Air/AP/EABoQAQACAwEAAAAAAAAAAAAAAAEAERAxQXH/2gAIAQEAAT8hBNkSuI+y8//aAAwDAQACAAMAAAAQbz//xAAXEQADAQAAAAAAAAAAAAAAAAAAARFR/9oACAEDAQE/EI9If//EABYRAAMAAAAAAAAAAAAAAAAAAAEQEf/aAAgBAgEBPxChf//EABsQAQACAgMAAAAAAAAAAAAAAAEAERAxIWHx/9oACAEBAAE/EOZk6lGhzryC3SCNKYZ//9k=&apos;); background-size: cover; display: block;&quot;
+      style=&quot;padding-bottom: 63.46153846153847%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHMmaRCF//EABgQAAIDAAAAAAAAAAAAAAAAAAEQERJB/9oACAEBAAEFAsh2K//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEABj8CX//EABoQAAICAwAAAAAAAAAAAAAAAAABEBFBYYH/2gAIAQEAAT8hpZqHSzZH/9oADAMBAAIAAwAAABCs7//EABURAQEAAAAAAAAAAAAAAAAAABAh/9oACAEDAQE/EKf/xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAgEBPxAn/8QAGxABAQEAAgMAAAAAAAAAAAAAAREAMWEhUfH/2gAIAQEAAT8QrbTs1S8nWh8apKz1vABAE4yq13//2Q==&apos;); background-size: cover; display: block;&quot;
     &gt;
       &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
-        alt=&quot;settings&quot;
+        alt=&quot;local&quot;
         title=&quot;&quot;
-        src=&quot;/static/settings-445adab8cd4140989bfc0870e03ef948-a7845.jpg&quot;
-        srcset=&quot;/static/settings-445adab8cd4140989bfc0870e03ef948-368b4.jpg 200w,
-/static/settings-445adab8cd4140989bfc0870e03ef948-a7845.jpg 315w&quot;
-        sizes=&quot;(max-width: 315px) 100vw, 315px&quot;
+        src=&quot;/static/local-58e4c26ddc6d592de87d028aae22db4d-710f9.jpg&quot;
+        srcset=&quot;/static/local-58e4c26ddc6d592de87d028aae22db4d-cc172.jpg 200w,
+/static/local-58e4c26ddc6d592de87d028aae22db4d-f7989.jpg 400w,
+/static/local-58e4c26ddc6d592de87d028aae22db4d-710f9.jpg 416w&quot;
+        sizes=&quot;(max-width: 416px) 100vw, 416px&quot;
       /&gt;
     &lt;/span&gt;
   &lt;/span&gt;
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;h1&gt;Recap&lt;/h1&gt;
-&lt;p&gt;So deploying an Azure Function from Visual Studio Code is really easy, I really like the Functions Extension. And I really like that we could change the Application Settings easily from the extension&lt;/p&gt;
-&lt;p&gt;As you saw in other example, we created a new Function App to receive the settings from Azure. You don’t have to do that, you could fetch settings from any of your Function Apps.&lt;/p&gt;
-&lt;p&gt;Another really easy way to deploy this function would be to:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Create an Function App in the Azure Portal&lt;/li&gt;
-&lt;li&gt;Clone my repository from GitHub&lt;/li&gt;
-&lt;li&gt;Fill in the values in local.setting.json&lt;/li&gt;
-&lt;li&gt;Run &lt;code class=&quot;language-text&quot;&gt;func azure functionapp publish &amp;lt;FuncApp&amp;gt; --publish-local-settings -i --overwrite-settings -y&lt;/code&gt;
-And you would be done!&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;And you would be done!&lt;/p&gt;
 &lt;p&gt;Anyways the next post will be using the Azure CLI and Azure Key Vault!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Part 1 - Azure Functions V2 + VS Code + PnPJs === true]]></title><description><![CDATA[The posts in this serie Part 1 - Azure Functions V2 + VS Code + PnPJs === true Part 2 - Azure Functions V2 + VS Code + PnPJs === true Part…]]></description><link>http://simonagren.github.io/azurefunction-v2-pnpjs/</link><guid isPermaLink="false">http://simonagren.github.io/azurefunction-v2-pnpjs/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
