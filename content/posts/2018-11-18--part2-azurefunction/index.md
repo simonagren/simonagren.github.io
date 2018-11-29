@@ -32,19 +32,20 @@ You could also clone it from my Github and follow the instructions (please have 
 As I mentioned earlier there are multiple ways for us to deploy this function. In the last blogpost we utilized the VS Code extension so let's go with that first.
 
 1. Press the `Deploy to Function App`
+
 ![deploy azure app](./deploy.jpg)
+
 2. Select or create a new Function App
 3. Select or create a new Resource Group
 4. Select or create a new Storage Account
 
 Let the extension run it's magic. After some time you should receive a message that the function has been deployed.
-Right now we don't have any production variables, so we need to go into Azure to fix this:
+Right now we don't have any production variables, so we will use an awesome feature in the extension for this. We could also change the settings from the UI in the VS Code extension. Really smooth!
 
-1. Log in to the Azure Portal -> Go to Azure -> Function Apps -> select the app we just created
-2. Create and enter values for the `spId`, `spSecret` and `spTenantUrl`, save!
-3. Run `https://<AppName>.azurewebsites.net/api/PnPHttpTrigger?site=<SiteName>` 
+![settings](./settings.jpg)
 
 It should now work in Azure, awesome!
+
 ![app settings](./appsettings.jpg)
 
 # Deploy via Azure Function Core Tools (CLI)
@@ -84,12 +85,10 @@ func azure functionapp publish <FuncApp> --publish-local-settings -i --overwrite
 And let's try it in the browser:
 ![azure test](./azuretest.jpg)
 
-## Change settings from the Extension
-We could also change the settings from the UI in the VS Code extension. Really smooth!
-![settings](./settings.jpg)
+
 
 # Recap
-So deploying an Azure Function from Visual Studio Code is really easy, I really like the Functions Extension. And I really like that we could change the Application Settings easily from the extension
+So deploying an Azure Function from Visual Studio Code is really easy, I really like the Functions Extension. And I really like that we could change the Application Settings easily from the extension.
 
 As you saw in other example, we created a new Function App to receive the settings from Azure. You don't have to do that, you could fetch settings from any of your Function Apps.
 
@@ -98,6 +97,12 @@ Another really easy way to deploy this function would be to:
 2. Clone my repository from GitHub
 3. Fill in the values in local.setting.json
 4. Run `func azure functionapp publish <FuncApp> --publish-local-settings -i --overwrite-settings -y`
+
+And of course we could both get the settings, and set from local settings via the Extension in VS Code.
+
+![local](./local.jpg)
+
+
 And you would be done!
 
 
