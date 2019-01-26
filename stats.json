@@ -5,12 +5,12 @@
       "component---src-pages-index-js-6a78fae0e43733d3caa1.js.map"
     ],
     "path---tags-nodejs": [
-      "path---tags-nodejs-656f0806cb8c3d5f11d0.js",
-      "path---tags-nodejs-656f0806cb8c3d5f11d0.js.map"
+      "path---tags-nodejs-aef66f933e3a8aa3ae0f.js",
+      "path---tags-nodejs-aef66f933e3a8aa3ae0f.js.map"
     ],
     "path---tags": [
-      "path---tags-fded5ab3c9c407e851db.js",
-      "path---tags-fded5ab3c9c407e851db.js.map"
+      "path---tags-af31f19c0ae9c36f6eeb.js",
+      "path---tags-af31f19c0ae9c36f6eeb.js.map"
     ],
     "path---azurefunction-v-2-pnpjs": [
       "path---azurefunction-v-2-pnpjs-19ef0b9bf5c14a35e13c.js",
@@ -25,8 +25,8 @@
       "component---src-pages-contact-js-d58c2cb3f0cb03914d20.js.map"
     ],
     "path---tags-azurefunctions": [
-      "path---tags-azurefunctions-ae2d5f1952fc0b84c137.js",
-      "path---tags-azurefunctions-ae2d5f1952fc0b84c137.js.map"
+      "path---tags-azurefunctions-6bca9c0b9b8fa9a6a12c.js",
+      "path---tags-azurefunctions-6bca9c0b9b8fa9a6a12c.js.map"
     ],
     "path---tags-sitescripts": [
       "path---tags-sitescripts-ac35494824ec03ffc658.js",
@@ -41,16 +41,16 @@
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "path---tags-sharepoint": [
-      "path---tags-sharepoint-fc33e3f408092fad0d7c.js",
-      "path---tags-sharepoint-fc33e3f408092fad0d7c.js.map"
+      "path---tags-sharepoint-a847183a98ca93d7d1da.js",
+      "path---tags-sharepoint-a847183a98ca93d7d1da.js.map"
     ],
     "component---src-layouts-index-js": [
       "component---src-layouts-index-js-730c783c335a3756600b.js",
       "component---src-layouts-index-js-730c783c335a3756600b.js.map"
     ],
     "path---category": [
-      "path---category-1056331e46f32665a428.js",
-      "path---category-1056331e46f32665a428.js.map"
+      "path---category-8ff39a45a7c397672a77.js",
+      "path---category-8ff39a45a7c397672a77.js.map"
     ],
     "component---src-pages-category-js": [
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js",
@@ -65,33 +65,33 @@
       "path---tags-gatsby-74044d2b80c247ab0d41.js.map"
     ],
     "path---tags-pnp": [
-      "path---tags-pnp-387305c2924b1fbf9ba5.js",
-      "path---tags-pnp-387305c2924b1fbf9ba5.js.map"
+      "path---tags-pnp-b794cfa1a1e3fc03c5bb.js",
+      "path---tags-pnp-b794cfa1a1e3fc03c5bb.js.map"
     ],
     "path---index": [
-      "path---index-f73b5b1fdff918928001.js",
-      "path---index-f73b5b1fdff918928001.js.map"
+      "path---index-89b13a959ab8b2a82a47.js",
+      "path---index-89b13a959ab8b2a82a47.js.map"
     ],
     "component---src-pages-search-js": [
       "component---src-pages-search-js-9eb51a291fcd270c8c2b.js",
       "component---src-pages-search-js-9eb51a291fcd270c8c2b.js.map"
     ],
     "path---hello-world": [
-      "path---hello-world-ab5bb3de41d393affd39.js",
-      "path---hello-world-ab5bb3de41d393affd39.js.map"
+      "path---hello-world-67cb64f3359133750876.js",
+      "path---hello-world-67cb64f3359133750876.js.map"
     ],
     "path---part-4-azurefunction": [
-      "path---part-4-azurefunction-ccd92b623ed72e664957.js",
-      "path---part-4-azurefunction-ccd92b623ed72e664957.js.map"
+      "path---part-4-azurefunction-1ca8623f2c27f3a23557.js",
+      "path---part-4-azurefunction-1ca8623f2c27f3a23557.js.map"
     ],
     "component---src-pages-404-js": [
       "component---src-pages-404-js-cf325d2e9bf981eec2f6.js",
       "component---src-pages-404-js-cf325d2e9bf981eec2f6.js.map"
     ],
     "commons": [
-      "commons-d5b7da6030ae32e256fb.js",
+      "commons-0504afa7bbfeeac41fa8.js",
       "build-js-styles.css",
-      "commons-d5b7da6030ae32e256fb.js.map",
+      "commons-0504afa7bbfeeac41fa8.js.map",
       "build-js-styles.css.map"
     ],
     "path---success": [
@@ -115,8 +115,8 @@
       "path---pnpjs-update-managed-metadata-345cab312183e7a8c171.js.map"
     ],
     "path---draft-post": [
-      "path---draft-post-28e944b1cf4ebbb1402f.js",
-      "path---draft-post-28e944b1cf4ebbb1402f.js.map"
+      "path---draft-post-ed40b42f5cead7135c60.js",
+      "path---draft-post-ed40b42f5cead7135c60.js.map"
     ],
     "path---tags-flow": [
       "path---tags-flow-75e3f4ea8261aadce357.js",
@@ -143,14 +143,18 @@
       "path---create-team-site-script-3741d83dcbe092a6c88e.js.map"
     ],
     "app": [
-      "app-869cc0ffaa140286672b.js",
+      "app-6f072ce1011cbbb8477c.js",
       "build-js-styles.css",
-      "app-869cc0ffaa140286672b.js.map",
+      "app-6f072ce1011cbbb8477c.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-templates-page-template-js": [
       "component---src-templates-page-template-js-8f54313ac038e5c71d2a.js",
       "component---src-templates-page-template-js-8f54313ac038e5c71d2a.js.map"
+    ],
+    "path---continueing-durable": [
+      "path---continueing-durable-ec6c6b93801057dfa97c.js",
+      "path---continueing-durable-ec6c6b93801057dfa97c.js.map"
     ],
     "path---404": [
       "path---404-a0e39f21c11f6a62c5ab.js",
@@ -159,6 +163,10 @@
     "path---search": [
       "path---search-5d06f52ffcf66bed92ab.js",
       "path---search-5d06f52ffcf66bed92ab.js.map"
+    ],
+    "path---intro-durable": [
+      "path---intro-durable-45326057c0aaf311eef1.js",
+      "path---intro-durable-45326057c0aaf311eef1.js.map"
     ],
     "path---category-sayings": [
       "path---category-sayings-9d88829e1a6338b48790.js",
