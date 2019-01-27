@@ -28,9 +28,9 @@ return(
             <h1>Follow</h1>
           </header>
           <div className="social-btns">
-            <a className="btn twitter" href="https://twitter.com/agrenpoint" target="_blank"><FaTwitter/></a>
-            <a className="btn linkedin" href="https://www.linkedin.com/in/simonaagren" target="_blank"><FaLinkedin/></a>
-            <a className="btn github" href="https://github.com/simonagren" target="_blank"><FaGithub/></a>
+            <a className="btn twitter" href="https://twitter.com/agrenpoint" target="_blank" rel="noopener"><FaTwitter/></a>
+            <a className="btn linkedin" href="https://www.linkedin.com/in/simonaagren" target="_blank" rel="noopener"><FaLinkedin/></a>
+            <a className="btn github" href="https://github.com/simonagren" target="_blank" rel="noopener"><FaGithub/></a>
             <a className="btn rss" href="/rss"><FaRssSquare/></a>
          </div>
           <style jsx>{`
