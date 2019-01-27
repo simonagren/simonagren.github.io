@@ -1,7 +1,7 @@
 ---
 title: Intro to Durable Functions in Node.js with PnPJs 
 tags: ["sharepoint", "pnp", "azurefunctions", "nodejs"]
-cover: function-chaining.png
+cover: architecture.jpg
 author: Simon Ågren
 ---
 
@@ -358,5 +358,3 @@ ___
 In the next post we will look the fan-out fan-in pattern, were we will do a lot in parallel. This means we also need to talk about throttling in SharePoint and how we could handle this.
 
 We will also extend our example with something called suborchestrations, which could be really useful in more complex orchestrations.
-
-We will deploy and utilize the new improved keyvault syntax for enviroment variables in our Function App.
