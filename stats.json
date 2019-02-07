@@ -9,8 +9,8 @@
       "path---tags-nodejs-ef7f2f4236b4c9541ed5.js.map"
     ],
     "path---tags": [
-      "path---tags-af31f19c0ae9c36f6eeb.js",
-      "path---tags-af31f19c0ae9c36f6eeb.js.map"
+      "path---tags-309c08c6cde382b15f8a.js",
+      "path---tags-309c08c6cde382b15f8a.js.map"
     ],
     "path---azurefunction-v-2-pnpjs": [
       "path---azurefunction-v-2-pnpjs-19ef0b9bf5c14a35e13c.js",
@@ -41,16 +41,16 @@
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "path---tags-sharepoint": [
-      "path---tags-sharepoint-4cd67f99c8a73493923b.js",
-      "path---tags-sharepoint-4cd67f99c8a73493923b.js.map"
+      "path---tags-sharepoint-28a490dc343343d6a887.js",
+      "path---tags-sharepoint-28a490dc343343d6a887.js.map"
     ],
     "component---src-layouts-index-js": [
       "component---src-layouts-index-js-6d3be58eceba994aebde.js",
       "component---src-layouts-index-js-6d3be58eceba994aebde.js.map"
     ],
     "path---category": [
-      "path---category-64b8b5ad397cc2f55b79.js",
-      "path---category-64b8b5ad397cc2f55b79.js.map"
+      "path---category-63f6b9c3fe05e0ad0081.js",
+      "path---category-63f6b9c3fe05e0ad0081.js.map"
     ],
     "component---src-pages-category-js": [
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js",
@@ -65,20 +65,24 @@
       "path---tags-gatsby-74044d2b80c247ab0d41.js.map"
     ],
     "path---tags-pnp": [
-      "path---tags-pnp-47742eda49f46e2e3589.js",
-      "path---tags-pnp-47742eda49f46e2e3589.js.map"
+      "path---tags-pnp-525cf4756668c224aee1.js",
+      "path---tags-pnp-525cf4756668c224aee1.js.map"
     ],
     "path---index": [
-      "path---index-00008cc36562a73bb03f.js",
-      "path---index-00008cc36562a73bb03f.js.map"
+      "path---index-cb51882bd50d02294ebc.js",
+      "path---index-cb51882bd50d02294ebc.js.map"
+    ],
+    "path---sp-starter-footer": [
+      "path---sp-starter-footer-2d705e1185e0093900a0.js",
+      "path---sp-starter-footer-2d705e1185e0093900a0.js.map"
     ],
     "component---src-pages-search-js": [
       "component---src-pages-search-js-9eb51a291fcd270c8c2b.js",
       "component---src-pages-search-js-9eb51a291fcd270c8c2b.js.map"
     ],
     "path---hello-world": [
-      "path---hello-world-ab5bb3de41d393affd39.js",
-      "path---hello-world-ab5bb3de41d393affd39.js.map"
+      "path---hello-world-67cb64f3359133750876.js",
+      "path---hello-world-67cb64f3359133750876.js.map"
     ],
     "path---part-4-azurefunction": [
       "path---part-4-azurefunction-1ca8623f2c27f3a23557.js",
@@ -115,8 +119,8 @@
       "path---pnpjs-update-managed-metadata-345cab312183e7a8c171.js.map"
     ],
     "path---draft-post": [
-      "path---draft-post-bbcfba539098740949d4.js",
-      "path---draft-post-bbcfba539098740949d4.js.map"
+      "path---draft-post-ed40b42f5cead7135c60.js",
+      "path---draft-post-ed40b42f5cead7135c60.js.map"
     ],
     "path---tags-flow": [
       "path---tags-flow-75e3f4ea8261aadce357.js",
@@ -142,19 +146,27 @@
       "path---create-team-site-script-3741d83dcbe092a6c88e.js",
       "path---create-team-site-script-3741d83dcbe092a6c88e.js.map"
     ],
+    "path---tags-spstarterkit": [
+      "path---tags-spstarterkit-483184b580930a7a4a2b.js",
+      "path---tags-spstarterkit-483184b580930a7a4a2b.js.map"
+    ],
     "app": [
-      "app-1eadac0ee4b2cd93fb21.js",
+      "app-78905f184ca40cf19d25.js",
       "build-js-styles.css",
-      "app-1eadac0ee4b2cd93fb21.js.map",
+      "app-78905f184ca40cf19d25.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-templates-page-template-js": [
       "component---src-templates-page-template-js-8f54313ac038e5c71d2a.js",
       "component---src-templates-page-template-js-8f54313ac038e5c71d2a.js.map"
     ],
+    "path---sp-starter-xml-links": [
+      "path---sp-starter-xml-links-cae6909ba5ad828abec2.js",
+      "path---sp-starter-xml-links-cae6909ba5ad828abec2.js.map"
+    ],
     "path---continueing-durable": [
-      "path---continueing-durable-1f1109b87b6f51b34e69.js",
-      "path---continueing-durable-1f1109b87b6f51b34e69.js.map"
+      "path---continueing-durable-ec6c6b93801057dfa97c.js",
+      "path---continueing-durable-ec6c6b93801057dfa97c.js.map"
     ],
     "path---404": [
       "path---404-a0e39f21c11f6a62c5ab.js",
@@ -165,8 +177,8 @@
       "path---search-5d06f52ffcf66bed92ab.js.map"
     ],
     "path---intro-durable": [
-      "path---intro-durable-65855bd50eff1f034d93.js",
-      "path---intro-durable-65855bd50eff1f034d93.js.map"
+      "path---intro-durable-099148ca13c7e1279676.js",
+      "path---intro-durable-099148ca13c7e1279676.js.map"
     ],
     "path---category-sayings": [
       "path---category-sayings-9d88829e1a6338b48790.js",

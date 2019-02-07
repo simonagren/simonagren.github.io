@@ -2,12 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 <url> <loc>http://simonagren.github.io/tags/sharepoint/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://simonagren.github.io/tags/pnp/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/tags/spstarterkit/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://simonagren.github.io/tags/azurefunctions/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://simonagren.github.io/tags/nodejs/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://simonagren.github.io/tags/flow/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://simonagren.github.io/tags/sitescripts/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://simonagren.github.io/tags/gatsby/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://simonagren.github.io/category/sayings/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/sp-starter-xml-links/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/sp-starter-footer/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://simonagren.github.io/intro-durable/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://simonagren.github.io/part4-azurefunction/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://simonagren.github.io/part3-azurefunction/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -16,8 +19,8 @@
 <url> <loc>http://simonagren.github.io/pnpjs-update-managed-metadata/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://simonagren.github.io/create-team-site-script/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://simonagren.github.io/hello-world/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>http://simonagren.github.io/draft-post/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://simonagren.github.io/continueing-durable/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>http://simonagren.github.io/draft-post/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://simonagren.github.io/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://simonagren.github.io/success/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>http://simonagren.github.io/category/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
