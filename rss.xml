@@ -1,4 +1,417 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>http://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Thu, 07 Feb 2019 22:21:57 GMT</lastBuildDate><item><title><![CDATA[Extending My Links in SharePoint Starter Kit]]></title><description><![CDATA[I made two posts at once and here is the previous:  Findings from issues with SharePoint Starter Kit Another post about SharePoint Starter…]]></description><link>http://simonagren.github.io/sp-starter-xml-links/</link><guid isPermaLink="false">http://simonagren.github.io/sp-starter-xml-links/</guid><content:encoded>&lt;p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>http://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Mon, 25 Feb 2019 01:18:19 GMT</lastBuildDate><item><title><![CDATA[Modern SharePoint site creation with site designs and REST]]></title><description><![CDATA[In this post I will show you some REST operations to create modern SharePoint sites along with site designs, similar to the creation from…]]></description><link>http://simonagren.github.io/sites-sitedesign-rest/</link><guid isPermaLink="false">http://simonagren.github.io/sites-sitedesign-rest/</guid><content:encoded>&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/sitescript-ff2b8fa9eecd9eb3cb337dceccaf0bb5-28890.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 57.91583166332666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAACHVAAAh1QEEnLSdAAACfklEQVQoz4VSS08TURTub0MXLtS4cKUrF7rQhT/AuMG4MkFipfRJ3wXbTmkFYkgjNAxpRUqMRIwpQSojnWnpY2g7zz4+z731ucGbfDlnzj3z3e88HNcSMVxNRHFjKY5LkSCmwguYIsv9/4DlXI6GcIX+vx4L45brBRzrX86BsQ3dMGFbFizDwGAwpNgYF57RaJJDGJM/JmsPBnDIqo4hObZtT0C+RdYi8t8xm8X+hUEC6ooCRZahkFVVlYQQYadRQ6fTgtbvkjoNFrO6BpNgWwZsikV3z/DojYzpvIInhMfkl6sqTNNEVzOJ3OAi2OMOURQhS0foqm1OpItFmK0mKbXQPlNQOznGTKGOu+lTPMzV8GC5htsJCYVKGwNTg3re44TD4XCi0J9I4eDTLr4eVlD5WMb34yN82CmhXBQhbm0hEo7h6bqEOykF95dl3MsouBk5Qf6ggbGlodlsod/v87ZywmczsyjkV7G5lsF6LonSdgHJaASryTg23m5AELJYLn+DW5QQ2Jbg3jyEv1jDfrUBQ+uhXm/w/rFyOeHMrBPZVAKR59OIh0NYy2UR8PkQ8bqQSacQC0fxbjuPvVIe+3sipGoF8mkVnXYTuq6jRe3p9Xo09NGEcG4hDiG5iIDXjaXFOFZe5+B0OvGSIKTTVHIIPo+THqFvYQkrK1ksJsL4fLDP+8bIWMmsj3wo/kAAQb8XbpcTnvk5+L0euObId88jGAwiFArB63EhSgssZASkUq8wT7nvd4q8b5qmcTI2cbZqjn6vC51WxTZ0GDRllsBK0X/6DEwBw5+7CcGve7bUrGSuULfHkFQbp90hVGPEt56VctFhvWI5jITh7/gPaOxDmJDdiuQAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;extend&quot;
+        title=&quot;&quot;
+        src=&quot;/static/sitescript-ff2b8fa9eecd9eb3cb337dceccaf0bb5-48538.png&quot;
+        srcset=&quot;/static/sitescript-ff2b8fa9eecd9eb3cb337dceccaf0bb5-bed0f.png 200w,
+/static/sitescript-ff2b8fa9eecd9eb3cb337dceccaf0bb5-5fd34.png 400w,
+/static/sitescript-ff2b8fa9eecd9eb3cb337dceccaf0bb5-48538.png 800w,
+/static/sitescript-ff2b8fa9eecd9eb3cb337dceccaf0bb5-28890.png 998w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;In this post I will show you some REST operations to create modern SharePoint sites along with site designs, similar to the creation from the SharePoint UI. &lt;/p&gt;
+&lt;p&gt;I will show you how I used this in a &lt;a href=&quot;https://github.com/simonagren/SPFxCreateSiteSiteDesigns&quot;&gt;simple SPFx web part&lt;/a&gt; and how I did some quick work in Flow to create a Modern Team Site.&lt;/p&gt;
+&lt;h2&gt;Background&lt;/h2&gt;
+&lt;p&gt;Recently I have been experimenting with some SharePoint site provisioning from the Node.js Durable Functions. I’m currently just playing around with it, but I will share it with you later if I find it useful.&lt;/p&gt;
+&lt;p&gt;On Twitter I saw a discussion between &lt;a href=&quot;https://twitter.com/Beau__Cameron&quot;&gt;Beau&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/dmadelung&quot;&gt;Drew&lt;/a&gt; regarding provisioning, and then Beau, &lt;a href=&quot;https://twitter.com/sebastienlevert&quot;&gt;Sébastien&lt;/a&gt; and I discussed it a bit further.&lt;/p&gt;
+&lt;p&gt;The main takeaway - which aligns with my general standpoint - was that if we do custom provisioning solutions it might be better to just use the PnP provisioning templates. And from the UI only use site designs when sufficient, and for when they arent fill in the blanks with PnP templates. &lt;/p&gt;
+&lt;p&gt;This discussion got me thinking: “Why shouldn’t we be able to create with a site design from custom solutions?“. So I began dissecting how Microsoft has done while creating from the UI, and I found some cool stuff. Hopefully this will be news to some of you, I have not seen anything about this.&lt;/p&gt;
+&lt;h2&gt;The rest operations&lt;/h2&gt;
+&lt;p&gt;If you are familiar with the site creation in the SharePoint UI you should know that you first select if it’s a Modern Team Site or a Collaboration Site you should create. &lt;/p&gt;
+&lt;p&gt;A lot of REST calls are made, and I’m only going to talk about the ones I decided to use for this simplified scenario.&lt;/p&gt;
+&lt;h3&gt;Get all site designs&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;_api/Microsoft.Sharepoint.Utilities.WebTemplateExtensions.SiteScriptUtility.GetSiteDesigns&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;First off they get all available site designs. The &lt;code class=&quot;language-text&quot;&gt;WebTemplate&lt;/code&gt; property is &lt;code class=&quot;language-text&quot;&gt;64&lt;/code&gt;for a modern team site and &lt;code class=&quot;language-text&quot;&gt;68&lt;/code&gt; for a collaboration site.
+So the right site designs will be available according to what site you choose to create.
+We are going to use the &lt;code class=&quot;language-text&quot;&gt;Id&lt;/code&gt; of the site design in the site creation process, more on that later.&lt;/p&gt;
+&lt;h3&gt;Check the group alias&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;_api/SP.Directory.DirectorySession/ValidateGroupName(displayName=&apos;Alias&apos;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;%&lt;span class=&quot;token number&quot;&gt;20&lt;/span&gt;alias=&apos;Alias&apos;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;When we create a modern team site we make a REST call to see if the alias is available. If this returns false then the group already exists.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If the group already exists, we don’t make any additional calls to check the site url.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/createteam2-26a7e0a8ff79e74ad550e55e07df8479-bb1e5.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 70.57291666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAOABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAgAF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB2mUKo//EABcQAAMBAAAAAAAAAAAAAAAAAAABEBH/2gAIAQEAAQUCxiqn/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFRABAQAAAAAAAAAAAAAAAAAAIEH/2gAIAQEABj8Ci//EABkQAAIDAQAAAAAAAAAAAAAAAAARARAhMf/aAAgBAQABPyFGtDjKZCv/2gAMAwEAAgADAAAAEDPP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGxABAAMAAwEAAAAAAAAAAAAAAQARITFBYaH/2gAIAQEAAT8QDNLlaOfYmmEhfc9EsBMlT//Z&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;createteam2&quot;
+        title=&quot;&quot;
+        src=&quot;/static/createteam2-26a7e0a8ff79e74ad550e55e07df8479-78f2b.jpg&quot;
+        srcset=&quot;/static/createteam2-26a7e0a8ff79e74ad550e55e07df8479-dce19.jpg 200w,
+/static/createteam2-26a7e0a8ff79e74ad550e55e07df8479-c1413.jpg 400w,
+/static/createteam2-26a7e0a8ff79e74ad550e55e07df8479-78f2b.jpg 800w,
+/static/createteam2-26a7e0a8ff79e74ad550e55e07df8479-bb1e5.jpg 1152w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h3&gt;Check valid URL&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;_api/GroupSiteManager/GetValidSiteUrlFromAlias?alias=&apos;Alias&apos;&amp;amp;isTeamSite=&lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;If the alias check is returned ok, then we check for a valid URL. In team site creation scenarios we should pobably only get back the URL that is equal to the alias.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/createteam1-1569ca27d8ba2b15e66dfae4618062c8-2104a.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 74.39134355275023%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIDBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe1cjQH/xAAYEAADAQEAAAAAAAAAAAAAAAAAAREQIf/aAAgBAQABBQKMW3p//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFxAAAwEAAAAAAAAAAAAAAAAAEBEgQf/aAAgBAQAGPwLIQ//EABgQAQADAQAAAAAAAAAAAAAAABEAARBB/9oACAEBAAE/IR6JbGVQdCZ//9oADAMBAAIAAwAAABAwz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABwQAQACAwADAAAAAAAAAAAAAAEAESExUUFh0f/aAAgBAQABPxAuPQLf2IAFS3kQ7tHZ6hytYFPFzM//2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;createteam1&quot;
+        title=&quot;&quot;
+        src=&quot;/static/createteam1-1569ca27d8ba2b15e66dfae4618062c8-78f2b.jpg&quot;
+        srcset=&quot;/static/createteam1-1569ca27d8ba2b15e66dfae4618062c8-dce19.jpg 200w,
+/static/createteam1-1569ca27d8ba2b15e66dfae4618062c8-c1413.jpg 400w,
+/static/createteam1-1569ca27d8ba2b15e66dfae4618062c8-78f2b.jpg 800w,
+/static/createteam1-1569ca27d8ba2b15e66dfae4618062c8-2104a.jpg 1109w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;But in communication site scenarios - as you might have seen before - we could get back another suggested URL if it’s already taken. &lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/createcomm1-04169409ea9e8aea5ea7eba8331f3d0f-dfda0.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 71.11913357400721%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAOABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIDBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAetvNFA//8QAGBAAAgMAAAAAAAAAAAAAAAAAARAAEUH/2gAIAQEAAQUCuBYF/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAIP/aAAgBAQAGPwJf/8QAGxAAAgIDAQAAAAAAAAAAAAAAAREAECExYXH/2gAIAQEAAT8h3CAL9jUUUgdxX//aAAwDAQACAAMAAAAQA8//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAcEAADAQACAwAAAAAAAAAAAAAAAREhMUFRcZH/2gAIAQEAAT8QTpNbjVT3mDIlPBvcE5FUeo1ipJv0h//Z&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;createcomm1&quot;
+        title=&quot;&quot;
+        src=&quot;/static/createcomm1-04169409ea9e8aea5ea7eba8331f3d0f-78f2b.jpg&quot;
+        srcset=&quot;/static/createcomm1-04169409ea9e8aea5ea7eba8331f3d0f-dce19.jpg 200w,
+/static/createcomm1-04169409ea9e8aea5ea7eba8331f3d0f-c1413.jpg 400w,
+/static/createcomm1-04169409ea9e8aea5ea7eba8331f3d0f-78f2b.jpg 800w,
+/static/createcomm1-04169409ea9e8aea5ea7eba8331f3d0f-dfda0.jpg 1108w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h3&gt;Create a Modern Team Site&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;_api/GroupSiteManager/CreateGroupEx&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;While looking around in fiddler when you create a Modern Team Site I a saw this in the requests body &lt;code class=&quot;language-text&quot;&gt;CreationOptions&lt;/code&gt; &lt;code class=&quot;language-text&quot;&gt;implicit_formula_292aa8a00786498a87a5ca52d9f4214a_7c13ef32-45f0-4282-a3c7-2d05ff0a9189&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/createteam3-6f03d3165ee8d26a2aef2b8b3fa1acd6-f7588.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 767px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 42.63363754889179%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHatKwD/8QAFRABAQAAAAAAAAAAAAAAAAAAASD/2gAIAQEAAQUCK//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEABj8CX//EABgQAQEAAwAAAAAAAAAAAAAAAAERACCB/9oACAEBAAE/IaFJc5r/AP/aAAwDAQACAAMAAAAQcM//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAcEAEAAgEFAAAAAAAAAAAAAAABABFRECFBYXH/2gAIAQEAAT8QohG9nEFcfWHZU51//9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;createteam3&quot;
+        title=&quot;&quot;
+        src=&quot;/static/createteam3-6f03d3165ee8d26a2aef2b8b3fa1acd6-f7588.jpg&quot;
+        srcset=&quot;/static/createteam3-6f03d3165ee8d26a2aef2b8b3fa1acd6-7d595.jpg 200w,
+/static/createteam3-6f03d3165ee8d26a2aef2b8b3fa1acd6-bf4b3.jpg 400w,
+/static/createteam3-6f03d3165ee8d26a2aef2b8b3fa1acd6-f7588.jpg 767w&quot;
+        sizes=&quot;(max-width: 767px) 100vw, 767px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;I then realized that the last part of that string is the Site Design Id, and the first part seems to be the same in other tenants as well. &lt;/p&gt;
+&lt;p&gt;This means that by changing that last part of the string to the Id of our site design of choice (Team Site Site Design) we could create Team sites with that site design, in a similar way Microsoft is doing it from the UI.&lt;/p&gt;
+&lt;h3&gt;Create a communication site&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;_api/SPSiteManager/Create&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;For this I also looked around in fiddler and I saw that when you create a communication site they are actually not using the &lt;code class=&quot;language-text&quot;&gt;SiteDesignId&lt;/code&gt; other than the OOT templates, for the custom they are using the &lt;code class=&quot;language-text&quot;&gt;WebTemplateExtesionId&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/createcomm2-d93f6a4978d241f72dba495b03027f6c-c33da.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 515px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 61.94174757281553%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHZdKygD//EABgQAAMBAQAAAAAAAAAAAAAAAAEQEQAh/9oACAEBAAEFAjw1S6L/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAcEAEAAgEFAAAAAAAAAAAAAAABABEQITFBYXH/2gAIAQEAAT8hWzPWEq9YE5ZXc//aAAwDAQACAAMAAAAQUA//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAcEAEBAQACAwEAAAAAAAAAAAABEQAxYUFRccH/2gAIAQEAAT8QcRQSvepL+Mcc3GEhPTlKV7biPJ+7/9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;createcomm2&quot;
+        title=&quot;&quot;
+        src=&quot;/static/createcomm2-d93f6a4978d241f72dba495b03027f6c-c33da.jpg&quot;
+        srcset=&quot;/static/createcomm2-d93f6a4978d241f72dba495b03027f6c-03eed.jpg 200w,
+/static/createcomm2-d93f6a4978d241f72dba495b03027f6c-cbcc6.jpg 400w,
+/static/createcomm2-d93f6a4978d241f72dba495b03027f6c-c33da.jpg 515w&quot;
+        sizes=&quot;(max-width: 515px) 100vw, 515px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;This also means that we could create a communication site with the site design of our choice.&lt;/p&gt;
+&lt;h2&gt;SPFx Web Part&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/simonagren/SPFxCreateSiteSiteDesigns&quot;&gt;simple SPFx web part&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This is a web part I threw together just to show you the main concepts. Feel free to use it and maybe do something better with the code, create some components etc.&lt;/p&gt;
+&lt;p&gt;If you are familiar with me you know I do most of my work with the help of PnPJs. But since we would need to make a PR and change some things it the methods I would use, I decided to make this with normal SPFx spHttpClient calls.&lt;/p&gt;
+&lt;img src=&quot;/webpart-a224c604fc18a506a8f4a1b22dfdec19.gif&quot;&gt;
+&lt;h3&gt;Selecting a site design&lt;/h3&gt;
+&lt;p&gt;The web part gets all site designs when it mounts, adds them to the state and then populates the drop down. Then depending on Team Site or Communication the inputs are shown/behaves differently.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Get all available site designs&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;_getSiteDesigns&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token builtin&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;props&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`https://agrendev.sharepoint.com/_api/Microsoft.Sharepoint.Utilities.WebTemplateExtensions.SiteScriptUtility.GetSiteDesigns`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+      SPHttpClient&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;configurations&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;v1&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;response&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; SPHttpClientResponse&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; response&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;result &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; result&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;value&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;Validating the Group Alias&lt;/h3&gt;
+&lt;p&gt;As I said before while creating a Team Site the entered text is validated as a Group Alias, this is being done by this method.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Validate the alias to make sure the group does not exist&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;_validateGroupName&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;groupName&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token builtin&quot;&gt;boolean&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;props&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`https://agrendev.sharepoint.com/_api/SP.Directory.DirectorySession/ValidateGroupName(displayName=&apos;&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;groupName&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;,%20alias=&apos;&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;groupName&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;)`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+    SPHttpClient&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;configurations&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;v1&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;response&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; SPHttpClientResponse&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; response&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;result &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; result&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;IsValidName&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;Validating Site Url&lt;/h3&gt;
+&lt;p&gt;This method is being used by both Team Site and Communication site creation. It returns a valid URL, either the same you entered or a suggestion for another.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Get a valid site url. Returns suggestion if it already exists. Like in the UI&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;_getValidSiteUrl&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;siteName&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;props&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`https://agrendev.sharepoint.com/_api/GroupSiteManager/GetValidSiteUrlFromAlias?alias=&apos;&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;siteName&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&amp;amp;isTeamSite=true`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 
+      SPHttpClient&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;configurations&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;v1&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;response&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; SPHttpClientResponse&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; response&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;result &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; result&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;value&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;Creating a Modern Team Site&lt;/h3&gt;
+&lt;p&gt;  This method creates a modern team site and uses the Site Design what we chose. I needed to use the
+&lt;code class=&quot;language-text&quot;&gt;&amp;#39;Accept&amp;#39;: &amp;#39;application/json;odata.metadata=minimal&amp;#39;&lt;/code&gt; in the Header, someone might have a better idea.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Create modern team time&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;createTeamSite&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;displayName&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; alias&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; isPublic &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; lcid &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1033&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; description &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; classification &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; owners&lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; siteDesignId&lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token builtin&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; creationOptions &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`SPSiteLanguage:&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;lcid&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;siteDesignId&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    creationOptions&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`implicit_formula_292aa8a00786498a87a5ca52d9f4214a_&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;siteDesignId&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; postBody &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    alias&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; alias&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    displayName&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; displayName&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    isPublic&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; isPublic&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    optionalParams&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      Classification&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; classification&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      CreationOptions&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; creationOptions&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      Description&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; description&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      Owners&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; owners &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt; owners &lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; opt&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; ISPHttpClientOptions &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  opt&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;headers &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token string&quot;&gt;&apos;Accept&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;application/json;odata.metadata=minimal&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  opt&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;body &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;postBody&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;props&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`https://agrendev.sharepoint.com/_api/GroupSiteManager/CreateGroupEx`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; SPHttpClient&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;configurations&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;v1&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; opt&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;response&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; SPHttpClientResponse&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; response&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;result &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; result&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;Create Communication Site&lt;/h3&gt;
+&lt;p&gt;This method creates a communication site with the site design we chose. In this case I also had to use the &lt;code class=&quot;language-text&quot;&gt;&amp;#39;Accept&amp;#39;: &amp;#39;application/json;odata.metadata=minimal&amp;#39;&lt;/code&gt; in the Header.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Create communication site&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;createCommunicationSite&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;title&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; lcid&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; url&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; webTemplateExtensionId&lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; description&lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; classification&lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; shareByEmailEnabled&lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;boolean&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    siteDesignId&lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token builtin&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; postBody &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token string&quot;&gt;&quot;request&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        WebTemplate&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;SITEPAGEPUBLISHING#0&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        Title&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; title&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        Url&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; url&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        Description&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; description &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt; description &lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        Classification&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; classification &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt; classification &lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        SiteDesignId&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; siteDesignId &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt; siteDesignId &lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;00000000-0000-0000-0000-000000000000&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        Lcid&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; lcid &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt; lcid &lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1033&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        ShareByEmailEnabled&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; shareByEmailEnabled &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt; shareByEmailEnabled &lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        WebTemplateExtensionId&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; webTemplateExtensionId &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt; webTemplateExtensionId &lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;00000000-0000-0000-0000-000000000000&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        HubSiteId&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;00000000-0000-0000-0000-000000000000&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; opt&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; ISPHttpClientOptions &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    opt&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;headers &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token string&quot;&gt;&quot;Accept&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;application/json;odata.metadata=minimal&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    opt&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;body &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;postBody&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;props&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;client&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`https://agrendev.sharepoint.com/_api/SPSiteManager/Create`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; SPHttpClient&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;configurations&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;v1&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; opt&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;response&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; SPHttpClientResponse&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; response&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;result &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; result&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;Flow&lt;/h2&gt;
+&lt;p&gt;I just tried some Modern Team Site Creation in Flow, with a hardcoded site design id.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/flow-fdbc32d5bf9cbf587039601ce52a4674-9f4a0.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 791px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 101.51706700379266%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHt3RMKpSMiv//EABkQAAMAAwAAAAAAAAAAAAAAAAABERASQf/aAAgBAQABBQLVSEODKXH/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAUEAEAAAAAAAAAAAAAAAAAAAAw/9oACAEBAAY/Ah//xAAaEAACAwEBAAAAAAAAAAAAAAAAARAxUREh/9oACAEBAAE/IUihxg0yKfhaR2f/2gAMAwEAAgADAAAAEIzIwP/EABURAQEAAAAAAAAAAAAAAAAAABEg/9oACAEDAQE/ECP/xAAWEQADAAAAAAAAAAAAAAAAAAABESD/2gAIAQIBAT8QZj//xAAcEAEAAwACAwAAAAAAAAAAAAABABEhMVFxseH/2gAIAQEAAT8QwG1vnuBZVhHKR9IdPk4vEEAZkt0RrZZ//9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;flow&quot;
+        title=&quot;&quot;
+        src=&quot;/static/flow-fdbc32d5bf9cbf587039601ce52a4674-9f4a0.jpg&quot;
+        srcset=&quot;/static/flow-fdbc32d5bf9cbf587039601ce52a4674-5d624.jpg 200w,
+/static/flow-fdbc32d5bf9cbf587039601ce52a4674-9367a.jpg 400w,
+/static/flow-fdbc32d5bf9cbf587039601ce52a4674-9f4a0.jpg 791w&quot;
+        sizes=&quot;(max-width: 791px) 100vw, 791px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h2&gt;Final words&lt;/h2&gt;
+&lt;p&gt;Hopefully you learned something. &lt;/p&gt;
+&lt;p&gt;Now go and make nice-looking web parts an custom solutions!&lt;/p&gt;
+&lt;p&gt;I’m open to feedback or suggestions to make these things in a better manner. Feel free to reach out.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Extending My Links in SharePoint Starter Kit]]></title><description><![CDATA[I made two posts at once and here is the previous:  Findings from issues with SharePoint Starter Kit Another post about SharePoint Starter…]]></description><link>http://simonagren.github.io/sp-starter-xml-links/</link><guid isPermaLink="false">http://simonagren.github.io/sp-starter-xml-links/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/extend-8a14189f90fa0cda77481a083fa52391-6b05b.jpg&quot;
@@ -2553,7 +2966,7 @@ context&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;res &lt;spa
     &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; list&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;items&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getById&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;itemId&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;data&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-      &lt;/div&gt;</content:encoded></item><item><title><![CDATA[Create a Microsoft Team using site scripts, Flow and Hub Sites]]></title><description><![CDATA[I was asked a few days ago if we could automate   creation when a Modern Team Site is created in SharePoint Online. I got to think about it…]]></description><link>http://simonagren.github.io/create-team-site-script/</link><guid isPermaLink="false">http://simonagren.github.io/create-team-site-script/</guid><content:encoded>&lt;p&gt;
+      &lt;/div&gt;</content:encoded></item><item><title><![CDATA[Create a Microsoft Team using site designs, Flow and Hub Sites]]></title><description><![CDATA[I was asked a few days ago if we could automate   creation when a Modern Team Site is created in SharePoint Online. I got to think about it…]]></description><link>http://simonagren.github.io/create-team-site-script/</link><guid isPermaLink="false">http://simonagren.github.io/create-team-site-script/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/success-b3efa29ae13967ac3136f9727b3cd824-f3f84.jpg&quot;
@@ -3307,7 +3720,7 @@ Connect&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;SpOService &lt
 Today we will expand what we built and have a look at the fan-out fan-in pattern, were we will do a lot in parallel. This means we also need to talk about throttling in SharePoint and how we could handle this.
 We will also extend our example with something called suborchestrations, which could be really useful in more complex orchestrations.&lt;/p&gt;
 &lt;p&gt;We will deploy and utilize the new improved keyvault syntax for enviroment variables in our Function App.&lt;/p&gt;
-&lt;p&gt;I think this stuff is really cool, and in the next post we will go in to some of the different commans you could use with the Orchestration Client - or as I have called it earlier: just &lt;code class=&quot;language-text&quot;&gt;client&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;I think this stuff is really cool, and in the next post we will go in to some of the different commands you could use with the Orchestration Client - or as I have called it earlier: just &lt;code class=&quot;language-text&quot;&gt;client&lt;/code&gt;&lt;/p&gt;
 &lt;h2&gt;Give me some code, bro&lt;/h2&gt;
 &lt;p&gt;If you would like to follow along, &lt;a href=&quot;https://github.com/simonagren/durable-step2&quot;&gt;here&lt;/a&gt; is the code.&lt;/p&gt;
 &lt;hr&gt;
@@ -3331,7 +3744,7 @@ We will also extend our example with something called suborchestrations, which c
 &lt;p&gt;Retry after is the fastest way to handle being throttled because SharePoint Online dynamically determines the right time to try again. In other words, aggressive retries work against you because even though the calls fail, they still accrue against your usage limits. Following the retry header will ensure the shortest delay.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h2&gt;Extending the Project and changing patterns&lt;/h2&gt;
+&lt;h2&gt;Extending the Project and changing pattern&lt;/h2&gt;
 &lt;p&gt;We will use a common pattern called “Fan out Fan in”. It’s really about doing a lot of stuff in parallel. To some extent we care about the order of things, that is when we &lt;code class=&quot;language-text&quot;&gt;yield&lt;/code&gt; and wait for an activity. But in many other parts of the code we just run asynchronous calls in parallel and they are finished when they are. We also introduce subOrchestrators, which is basicly an orchestrator started by another orchestrator. We will run plenty of these in parallel.&lt;/p&gt;
 &lt;p&gt;
   &lt;a

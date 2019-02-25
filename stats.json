@@ -1,16 +1,20 @@
 {
   "assetsByChunkName": {
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-6469eb08d77c8122640b.js",
-      "component---src-pages-index-js-6469eb08d77c8122640b.js.map"
+      "component---src-pages-index-js-4127f3283e6e81c053e9.js",
+      "component---src-pages-index-js-4127f3283e6e81c053e9.js.map"
+    ],
+    "path---tags-spfx": [
+      "path---tags-spfx-132b331a82a88d13521b.js",
+      "path---tags-spfx-132b331a82a88d13521b.js.map"
     ],
     "path---tags-nodejs": [
       "path---tags-nodejs-ef7f2f4236b4c9541ed5.js",
       "path---tags-nodejs-ef7f2f4236b4c9541ed5.js.map"
     ],
     "path---tags": [
-      "path---tags-309c08c6cde382b15f8a.js",
-      "path---tags-309c08c6cde382b15f8a.js.map"
+      "path---tags-7fdd1a06e2db9bce1474.js",
+      "path---tags-7fdd1a06e2db9bce1474.js.map"
     ],
     "path---azurefunction-v-2-pnpjs": [
       "path---azurefunction-v-2-pnpjs-19ef0b9bf5c14a35e13c.js",
@@ -28,10 +32,6 @@
       "path---tags-azurefunctions-270e56d57d1cef105857.js",
       "path---tags-azurefunctions-270e56d57d1cef105857.js.map"
     ],
-    "path---tags-sitescripts": [
-      "path---tags-sitescripts-ac35494824ec03ffc658.js",
-      "path---tags-sitescripts-ac35494824ec03ffc658.js.map"
-    ],
     "component---src-templates-category-template-js": [
       "component---src-templates-category-template-js-ccbdb357ea067077af6d.js",
       "component---src-templates-category-template-js-ccbdb357ea067077af6d.js.map"
@@ -41,16 +41,16 @@
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "path---tags-sharepoint": [
-      "path---tags-sharepoint-28a490dc343343d6a887.js",
-      "path---tags-sharepoint-28a490dc343343d6a887.js.map"
+      "path---tags-sharepoint-e12d399e7cf309d4b643.js",
+      "path---tags-sharepoint-e12d399e7cf309d4b643.js.map"
     ],
     "component---src-layouts-index-js": [
       "component---src-layouts-index-js-6d3be58eceba994aebde.js",
       "component---src-layouts-index-js-6d3be58eceba994aebde.js.map"
     ],
     "path---category": [
-      "path---category-63f6b9c3fe05e0ad0081.js",
-      "path---category-63f6b9c3fe05e0ad0081.js.map"
+      "path---category-9e0e3af712334e7836af.js",
+      "path---category-9e0e3af712334e7836af.js.map"
     ],
     "component---src-pages-category-js": [
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js",
@@ -65,12 +65,12 @@
       "path---tags-gatsby-74044d2b80c247ab0d41.js.map"
     ],
     "path---tags-pnp": [
-      "path---tags-pnp-525cf4756668c224aee1.js",
-      "path---tags-pnp-525cf4756668c224aee1.js.map"
+      "path---tags-pnp-1f334e508ee88dcee1e7.js",
+      "path---tags-pnp-1f334e508ee88dcee1e7.js.map"
     ],
     "path---index": [
-      "path---index-cb51882bd50d02294ebc.js",
-      "path---index-cb51882bd50d02294ebc.js.map"
+      "path---index-8a0068d02da1149999d4.js",
+      "path---index-8a0068d02da1149999d4.js.map"
     ],
     "path---sp-starter-footer": [
       "path---sp-starter-footer-2d705e1185e0093900a0.js",
@@ -81,12 +81,16 @@
       "component---src-pages-search-js-9eb51a291fcd270c8c2b.js.map"
     ],
     "path---hello-world": [
-      "path---hello-world-67cb64f3359133750876.js",
-      "path---hello-world-67cb64f3359133750876.js.map"
+      "path---hello-world-b5e6dc83998fbfa0a887.js",
+      "path---hello-world-b5e6dc83998fbfa0a887.js.map"
     ],
     "path---part-4-azurefunction": [
       "path---part-4-azurefunction-1ca8623f2c27f3a23557.js",
       "path---part-4-azurefunction-1ca8623f2c27f3a23557.js.map"
+    ],
+    "path---tags-sitedesigns": [
+      "path---tags-sitedesigns-71c8a3acb9265879b2f5.js",
+      "path---tags-sitedesigns-71c8a3acb9265879b2f5.js.map"
     ],
     "component---src-pages-404-js": [
       "component---src-pages-404-js-cf325d2e9bf981eec2f6.js",
@@ -115,58 +119,62 @@
       "path---contact-df2b21822e3063deaa00.js.map"
     ],
     "path---pnpjs-update-managed-metadata": [
-      "path---pnpjs-update-managed-metadata-345cab312183e7a8c171.js",
-      "path---pnpjs-update-managed-metadata-345cab312183e7a8c171.js.map"
+      "path---pnpjs-update-managed-metadata-98907fe8d8da7f8a4039.js",
+      "path---pnpjs-update-managed-metadata-98907fe8d8da7f8a4039.js.map"
     ],
     "path---draft-post": [
       "path---draft-post-ed40b42f5cead7135c60.js",
       "path---draft-post-ed40b42f5cead7135c60.js.map"
     ],
     "path---tags-flow": [
-      "path---tags-flow-75e3f4ea8261aadce357.js",
-      "path---tags-flow-75e3f4ea8261aadce357.js.map"
+      "path---tags-flow-72bced2e0f0f91b67b47.js",
+      "path---tags-flow-72bced2e0f0f91b67b47.js.map"
     ],
     "component---src-pages-tags-js": [
       "component---src-pages-tags-js-ee95b59890837315bfce.js",
       "component---src-pages-tags-js-ee95b59890837315bfce.js.map"
     ],
     "component---src-templates-post-template-js": [
-      "component---src-templates-post-template-js-91a842ad13110746ee66.js",
-      "component---src-templates-post-template-js-91a842ad13110746ee66.js.map"
+      "component---src-templates-post-template-js-0370fc7e666d77f7ab25.js",
+      "component---src-templates-post-template-js-0370fc7e666d77f7ab25.js.map"
     ],
     "path---offline-plugin-app-shell-fallback": [
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js",
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
     "component---src-templates-tags-template-js": [
-      "component---src-templates-tags-template-js-84349de3e32fe2fa0ad8.js",
-      "component---src-templates-tags-template-js-84349de3e32fe2fa0ad8.js.map"
+      "component---src-templates-tags-template-js-bbe97f4173e9e05cc56b.js",
+      "component---src-templates-tags-template-js-bbe97f4173e9e05cc56b.js.map"
     ],
     "path---create-team-site-script": [
-      "path---create-team-site-script-3741d83dcbe092a6c88e.js",
-      "path---create-team-site-script-3741d83dcbe092a6c88e.js.map"
+      "path---create-team-site-script-d18c5410cb523575f027.js",
+      "path---create-team-site-script-d18c5410cb523575f027.js.map"
     ],
     "path---tags-spstarterkit": [
       "path---tags-spstarterkit-483184b580930a7a4a2b.js",
       "path---tags-spstarterkit-483184b580930a7a4a2b.js.map"
     ],
     "app": [
-      "app-78905f184ca40cf19d25.js",
+      "app-9bfed4eed65f4f7bcd0b.js",
       "build-js-styles.css",
-      "app-78905f184ca40cf19d25.js.map",
+      "app-9bfed4eed65f4f7bcd0b.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-templates-page-template-js": [
-      "component---src-templates-page-template-js-8f54313ac038e5c71d2a.js",
-      "component---src-templates-page-template-js-8f54313ac038e5c71d2a.js.map"
+      "component---src-templates-page-template-js-9fe0be849450997dc3bc.js",
+      "component---src-templates-page-template-js-9fe0be849450997dc3bc.js.map"
+    ],
+    "path---sites-sitedesign-rest": [
+      "path---sites-sitedesign-rest-667a6af088f495f47dbe.js",
+      "path---sites-sitedesign-rest-667a6af088f495f47dbe.js.map"
     ],
     "path---sp-starter-xml-links": [
-      "path---sp-starter-xml-links-9e10e7f38755d0dbd47d.js",
-      "path---sp-starter-xml-links-9e10e7f38755d0dbd47d.js.map"
+      "path---sp-starter-xml-links-4c4ee9579e99d9c40a40.js",
+      "path---sp-starter-xml-links-4c4ee9579e99d9c40a40.js.map"
     ],
     "path---continueing-durable": [
-      "path---continueing-durable-ec6c6b93801057dfa97c.js",
-      "path---continueing-durable-ec6c6b93801057dfa97c.js.map"
+      "path---continueing-durable-6cc0c7ef2a99bdeac1a5.js",
+      "path---continueing-durable-6cc0c7ef2a99bdeac1a5.js.map"
     ],
     "path---404": [
       "path---404-a0e39f21c11f6a62c5ab.js",
