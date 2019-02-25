@@ -29,6 +29,7 @@ const Blog = props => {
         .main {
           padding: 0 ${theme.space.inset.default};
         }
+        
 
         ul {
           list-style: none;

@@ -13,6 +13,10 @@ const Bodytext = props => {
           animation-name: bodytextEntry;
           animation-duration: ${theme.time.duration.long};
 
+          :global(img) {
+            max-width: 100%;
+          }
+
           :global(h2),
           :global(h3) {
             margin: 1.5em 0 1em;

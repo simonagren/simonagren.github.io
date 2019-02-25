@@ -1,6 +1,6 @@
 ---
-title: Create a Microsoft Team using site scripts, Flow and Hub Sites 
-tags: ["flow","sharepoint", "sitescripts", "pnp"]
+title: Create a Microsoft Team using site designs, Flow and Hub Sites 
+tags: ["flow","sharepoint", "sitedesigns", "pnp"]
 cover: success.jpg
 author: Simon Ågren
 ---

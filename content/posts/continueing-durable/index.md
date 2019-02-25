@@ -13,7 +13,7 @@ We will also extend our example with something called suborchestrations, which c
 
 We will deploy and utilize the new improved keyvault syntax for enviroment variables in our Function App.
 
-I think this stuff is really cool, and in the next post we will go in to some of the different commans you could use with the Orchestration Client - or as I have called it earlier: just `client`
+I think this stuff is really cool, and in the next post we will go in to some of the different commands you could use with the Orchestration Client - or as I have called it earlier: just `client`
 
 ## Give me some code, bro
 
@@ -47,7 +47,7 @@ Well there seem to be a few options. What we will utilize is the retry-capabilit
 
 ___
 
-## Extending the Project and changing patterns
+## Extending the Project and changing pattern
 We will use a common pattern called "Fan out Fan in". It's really about doing a lot of stuff in parallel. To some extent we care about the order of things, that is when we `yield` and wait for an activity. But in many other parts of the code we just run asynchronous calls in parallel and they are finished when they are. We also introduce subOrchestrators, which is basicly an orchestrator started by another orchestrator. We will run plenty of these in parallel.
 
 ![architecture](./architecture.jpg)
