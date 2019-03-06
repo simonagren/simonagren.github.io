@@ -5,16 +5,16 @@
       "component---src-pages-index-js-4127f3283e6e81c053e9.js.map"
     ],
     "path---tags-spfx": [
-      "path---tags-spfx-132b331a82a88d13521b.js",
-      "path---tags-spfx-132b331a82a88d13521b.js.map"
+      "path---tags-spfx-9627969f881dcf0c4f57.js",
+      "path---tags-spfx-9627969f881dcf0c4f57.js.map"
     ],
     "path---tags-nodejs": [
       "path---tags-nodejs-ef7f2f4236b4c9541ed5.js",
       "path---tags-nodejs-ef7f2f4236b4c9541ed5.js.map"
     ],
     "path---tags": [
-      "path---tags-7fdd1a06e2db9bce1474.js",
-      "path---tags-7fdd1a06e2db9bce1474.js.map"
+      "path---tags-30bed079621840959892.js",
+      "path---tags-30bed079621840959892.js.map"
     ],
     "path---azurefunction-v-2-pnpjs": [
       "path---azurefunction-v-2-pnpjs-19ef0b9bf5c14a35e13c.js",
@@ -41,16 +41,16 @@
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "path---tags-sharepoint": [
-      "path---tags-sharepoint-e12d399e7cf309d4b643.js",
-      "path---tags-sharepoint-e12d399e7cf309d4b643.js.map"
+      "path---tags-sharepoint-f0bd39889899c8ac4697.js",
+      "path---tags-sharepoint-f0bd39889899c8ac4697.js.map"
     ],
     "component---src-layouts-index-js": [
       "component---src-layouts-index-js-6d3be58eceba994aebde.js",
       "component---src-layouts-index-js-6d3be58eceba994aebde.js.map"
     ],
     "path---category": [
-      "path---category-9e0e3af712334e7836af.js",
-      "path---category-9e0e3af712334e7836af.js.map"
+      "path---category-d31aff86dec3561462f6.js",
+      "path---category-d31aff86dec3561462f6.js.map"
     ],
     "component---src-pages-category-js": [
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js",
@@ -65,16 +65,16 @@
       "path---tags-gatsby-74044d2b80c247ab0d41.js.map"
     ],
     "path---tags-pnp": [
-      "path---tags-pnp-1f334e508ee88dcee1e7.js",
-      "path---tags-pnp-1f334e508ee88dcee1e7.js.map"
+      "path---tags-pnp-d183d55f00818d5a1432.js",
+      "path---tags-pnp-d183d55f00818d5a1432.js.map"
     ],
     "path---index": [
-      "path---index-8a0068d02da1149999d4.js",
-      "path---index-8a0068d02da1149999d4.js.map"
+      "path---index-3ef09ace54a82a1a985d.js",
+      "path---index-3ef09ace54a82a1a985d.js.map"
     ],
     "path---sp-starter-footer": [
-      "path---sp-starter-footer-2d705e1185e0093900a0.js",
-      "path---sp-starter-footer-2d705e1185e0093900a0.js.map"
+      "path---sp-starter-footer-a32904132878b6215314.js",
+      "path---sp-starter-footer-a32904132878b6215314.js.map"
     ],
     "component---src-pages-search-js": [
       "component---src-pages-search-js-9eb51a291fcd270c8c2b.js",
@@ -89,8 +89,8 @@
       "path---part-4-azurefunction-1ca8623f2c27f3a23557.js.map"
     ],
     "path---tags-sitedesigns": [
-      "path---tags-sitedesigns-71c8a3acb9265879b2f5.js",
-      "path---tags-sitedesigns-71c8a3acb9265879b2f5.js.map"
+      "path---tags-sitedesigns-71d94fe19e1bf1b51b3b.js",
+      "path---tags-sitedesigns-71d94fe19e1bf1b51b3b.js.map"
     ],
     "component---src-pages-404-js": [
       "component---src-pages-404-js-cf325d2e9bf981eec2f6.js",
@@ -127,8 +127,8 @@
       "path---draft-post-ed40b42f5cead7135c60.js.map"
     ],
     "path---tags-flow": [
-      "path---tags-flow-72bced2e0f0f91b67b47.js",
-      "path---tags-flow-72bced2e0f0f91b67b47.js.map"
+      "path---tags-flow-14ddd4baf3b454876c3b.js",
+      "path---tags-flow-14ddd4baf3b454876c3b.js.map"
     ],
     "component---src-pages-tags-js": [
       "component---src-pages-tags-js-ee95b59890837315bfce.js",
@@ -151,13 +151,13 @@
       "path---create-team-site-script-d18c5410cb523575f027.js.map"
     ],
     "path---tags-spstarterkit": [
-      "path---tags-spstarterkit-483184b580930a7a4a2b.js",
-      "path---tags-spstarterkit-483184b580930a7a4a2b.js.map"
+      "path---tags-spstarterkit-b36d51f5c8580a42c26b.js",
+      "path---tags-spstarterkit-b36d51f5c8580a42c26b.js.map"
     ],
     "app": [
-      "app-9bfed4eed65f4f7bcd0b.js",
+      "app-44e3a9b04089c35a54c2.js",
       "build-js-styles.css",
-      "app-9bfed4eed65f4f7bcd0b.js.map",
+      "app-44e3a9b04089c35a54c2.js.map",
       "build-js-styles.css.map"
     ],
     "component---src-templates-page-template-js": [
@@ -165,12 +165,12 @@
       "component---src-templates-page-template-js-9fe0be849450997dc3bc.js.map"
     ],
     "path---sites-sitedesign-rest": [
-      "path---sites-sitedesign-rest-667a6af088f495f47dbe.js",
-      "path---sites-sitedesign-rest-667a6af088f495f47dbe.js.map"
+      "path---sites-sitedesign-rest-859efe70bc585928d9df.js",
+      "path---sites-sitedesign-rest-859efe70bc585928d9df.js.map"
     ],
     "path---sp-starter-xml-links": [
-      "path---sp-starter-xml-links-4c4ee9579e99d9c40a40.js",
-      "path---sp-starter-xml-links-4c4ee9579e99d9c40a40.js.map"
+      "path---sp-starter-xml-links-4ec0a0ae6e49f2e5fabd.js",
+      "path---sp-starter-xml-links-4ec0a0ae6e49f2e5fabd.js.map"
     ],
     "path---continueing-durable": [
       "path---continueing-durable-6cc0c7ef2a99bdeac1a5.js",
@@ -185,8 +185,8 @@
       "path---search-5d06f52ffcf66bed92ab.js.map"
     ],
     "path---intro-durable": [
-      "path---intro-durable-099148ca13c7e1279676.js",
-      "path---intro-durable-099148ca13c7e1279676.js.map"
+      "path---intro-durable-0c553fb505f08e6fcd33.js",
+      "path---intro-durable-0c553fb505f08e6fcd33.js.map"
     ],
     "path---category-sayings": [
       "path---category-sayings-9d88829e1a6338b48790.js",
