@@ -8,7 +8,8 @@ author: Simon Ågren
 ![extend](./bot-keyvault.png)
 
 # Introduction
-This post assumes that you already have generated your Bot and you have available ARM Templates to deploy with. Follow the steps in [This](https://simonagren.github.io/azurebot-nodejs-part1) post.
+This post assumes that you already have generated your Bot and you have available ARM Templates to deploy with. Follow the steps in I broke this out to its own post here: 
+<a href="https://simonagren.github.io/azurebot-nodejs-part1" target="_blank">This</a> post.
 
 # Prerequisites 
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)

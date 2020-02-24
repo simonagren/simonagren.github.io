@@ -164,7 +164,8 @@ You could either go with the Microsoft post explaining how to do a "normal" ARM 
 
 ## ARM Templates deployment with key vault
 
-I broke this out to its own post here: [https://simonagren.github.io/azurebot-armtemplates-keyvault](https://simonagren.github.io/azurebot-armtemplates-keyvault)
+I broke this out to its own post here: 
+<a href="https://simonagren.github.io/azurebot-armtemplate-keyvault" target="_blank">Bot Framework 4 ARM template Deploy with Key Vault</a>
 
 
 ## ARM Templates deployment 
