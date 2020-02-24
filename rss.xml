@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Mon, 24 Feb 2020 11:02:04 GMT</lastBuildDate><item><title><![CDATA[Bot Framework 4 ARM template Deploy with Key Vault]]></title><description><![CDATA[Introduction This post assumes that you already have generated your Bot and you have available ARM Templates to deploy with. Follow the…]]></description><link>https://simonagren.github.io/azurebot-armtemplate-keyvault/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-armtemplate-keyvault/</guid><content:encoded>&lt;p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Mon, 24 Feb 2020 11:20:52 GMT</lastBuildDate><item><title><![CDATA[Bot Framework 4 ARM template Deploy with Key Vault]]></title><description><![CDATA[Introduction This post assumes that you already have generated your Bot and you have available ARM Templates to deploy with. Follow the…]]></description><link>https://simonagren.github.io/azurebot-armtemplate-keyvault/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-armtemplate-keyvault/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/bot-keyvault-02ab72bfc11ec5246486d7c87731014f-b70ec.png&quot;
@@ -33,7 +33,8 @@
   &lt;/a&gt;
     &lt;/p&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;This post assumes that you already have generated your Bot and you have available ARM Templates to deploy with. Follow the steps in &lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part1&quot;&gt;This&lt;/a&gt; post.&lt;/p&gt;
+&lt;p&gt;This post assumes that you already have generated your Bot and you have available ARM Templates to deploy with. Follow the steps in I broke this out to its own post here:
+&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part1&quot; target=&quot;_blank&quot;&gt;This&lt;/a&gt; post.&lt;/p&gt;
 &lt;h1&gt;Prerequisites&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/cli/azure/install-azure-cli&quot;&gt;Azure CLI&lt;/a&gt;&lt;/li&gt;
@@ -612,7 +613,8 @@ You could select a message to inspect the JSON.
 &lt;h1&gt;Azure Deployment.&lt;/h1&gt;
 &lt;p&gt;You could either go with the Microsoft post explaining how to do a “normal” ARM template deployment, or mine with a twist - using keyvault in the deployment process.&lt;/p&gt;
 &lt;h2&gt;ARM Templates deployment with key vault&lt;/h2&gt;
-&lt;p&gt;I broke this out to its own post here: &lt;a href=&quot;https://simonagren.github.io/azurebot-armtemplates-keyvault&quot;&gt;https://simonagren.github.io/azurebot-armtemplates-keyvault&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I broke this out to its own post here:
+&lt;a href=&quot;https://simonagren.github.io/azurebot-armtemplate-keyvault&quot; target=&quot;_blank&quot;&gt;Bot Framework 4 ARM template Deploy with Key Vault&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;ARM Templates deployment&lt;/h2&gt;
 &lt;p&gt;You could follow along &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-deploy-az-cli?view=azure-bot-service-4.0&amp;#x26;tabs=csharp&quot;&gt;This&lt;/a&gt; blogpost from Microsoft explaining how to deploy.&lt;/p&gt;
 &lt;h1&gt;Next step&lt;/h1&gt;
