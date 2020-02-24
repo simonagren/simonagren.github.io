@@ -1,5 +1,5 @@
 ---
-title: Bot ARM template deploy with key vault
+title: Bot Framework 4 ARM template Deploy with Key Vault
 tags: ["botframework", "azure"]
 cover: bot-keyvault.png
 author: Simon Ågren

@@ -52,7 +52,7 @@ Run this command to start the generator
 yo botbuilder
 ```
 Select the echo bot for this example, and fill in the information.
-![extend](./1yo.png)
+![yo](./1yo.png)
 
 
 When the Bot is generated you could "cd" into the new folder and open the project in Visual Studio Code by using the command
@@ -75,13 +75,13 @@ You get a lot of things for free from the generator.
 ## Slight change
 Create a new folder in `src` named `bots` and then you could just drag the `bot.ts` file to the `bots` folder inside of VS Code. And if you get prompted to make import-adjustments, select `yes`.
 
-![extend](./newstruct.png)
+![newstruct](./newstruct.png)
 
 I also changed the Bot class name already to something more generic, since it will not be an Echo Bot for long.
 
 ## bot.ts
 
-![extend](./botts.png)
+![bots](./botts.png)
 As you can see the bot class extends activityHandler, and we have two methods that derives from activityHandler:
 ### onMessage
 ```typescript
@@ -145,15 +145,15 @@ By using nodemon we have the opportunity to hot-reload the application upon save
 
 ## Debug in Visual Studio Code
 Set a breakpoint and press F5. Then select Node.js from the available options.
-![extend](./debug.png)
+![debug](./debug.png)
 
 ## Connect to the bot via emulator
 1. Press connect and then enter the localhost http://localhost:3978/api/messages
-![extend](./emuopen.png)
+![emuopen](./emuopen.png)
 2. Write something in the chat and watch it get echoed back to you.
-![extend](./emuecho.png)
+![emuecho](./emuecho.png)
 You could select a message to inspect the JSON.
-![extend](./emuinspect.png)
+![emuinspect](./emuinspect.png)
 
 
 Now we have everything working for a development scenario. If you want you could follow along in the Azure Deployment step as well.
