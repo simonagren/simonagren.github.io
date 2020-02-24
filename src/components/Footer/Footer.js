@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { TwitterIcon } from 'react-share';
 
 const Footer = props => {
   const { html, theme } = props;

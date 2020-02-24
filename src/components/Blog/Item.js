@@ -33,25 +33,28 @@ const Item = props => {
           <h1>
             {title} <FaArrowRight className="arrow" />
           </h1>
-        </Link>  
-          <p className="meta">
-            <span>
-              <FaCalendar size={18} /> {prefix}
-            </span>
-          
-            <span>
-              <FaUser size={18} /> 
-              <Link className="tagslinks" to={`/about`}>{author}</Link>
-            </span>
-            <span>
-            <FaTag style={{float: "left"}} size={18} />
+        </Link>
+        <p className="meta">
+          <span>
+            <FaCalendar size={18} /> {prefix}
+          </span>
+
+          <span>
+            <FaUser size={18} />
+            <Link className="tagslinks" to={`/about`}>
+              {author}
+            </Link>
+          </span>
+          <span>
+            <FaTag style={{ float: "left" }} size={18} />
             {tags.map(tag => (
-                    <Link key={tag} className="tagslinks" to={`/tags/${tag}`}>{tag}</Link>
-                  ))}
-            </span>
-            
-          </p>
-          <Link to={slug} key={slug+'2'} className="link"> 
+              <Link key={tag} className="tagslinks" to={`/tags/${tag}`}>
+                {tag}
+              </Link>
+            ))}
+          </span>
+        </p>
+        <Link to={slug} key={slug + "2"} className="link">
           <p>{excerpt}</p>
         </Link>
       </li>
@@ -72,8 +75,6 @@ const Item = props => {
           color: orange;
         }
 
-
-        
         li {
           border: 1px solid transparent;
           border-radius: ${theme.size.radius.default};

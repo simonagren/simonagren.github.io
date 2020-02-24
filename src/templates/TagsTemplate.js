@@ -12,7 +12,7 @@ const TagsTemplate = props => {
   const {
     pathContext: { tag },
     data: {
-    allMarkdownRemark: { totalCount, edges, group },
+      allMarkdownRemark: { totalCount, edges, group },
       site: {
         siteMetadata: { facebook }
       }
@@ -21,7 +21,7 @@ const TagsTemplate = props => {
 
   return (
     <React.Fragment>
-        <ThemeContext.Consumer>
+      <ThemeContext.Consumer>
         {theme => (
           <Article theme={theme}>
             <header>
@@ -30,18 +30,14 @@ const TagsTemplate = props => {
                 {tag}
               </Headline>
               <p className="meta">
-                There {totalCount > 1 ? "are" : "is"} <strong>{totalCount}</strong> post{totalCount >
-                1
-                  ? "s"
-                  : ""}{" "}
-                in the category.
+                There {totalCount > 1 ? "are" : "is"} <strong>{totalCount}</strong> post
+                {totalCount > 1 ? "s" : ""} in the category.
               </p>
-              <Blog posts={edges} theme={theme} groups={group}  />
-              </header>
-              </Article>
-            
-            )}
-        </ThemeContext.Consumer>
+              <Blog posts={edges} theme={theme} groups={group} />
+            </header>
+          </Article>
+        )}
+      </ThemeContext.Consumer>
       <Seo facebook={facebook} />
     </React.Fragment>
   );
@@ -54,36 +50,36 @@ TagsTemplate.propTypes = {
 
 export default TagsTemplate;
 
-
 export const pageQuery = graphql`
-query PostsByTags2 ($tag: String) {
+  query PostsByTags2($tag: String) {
     allMarkdownRemark(
-    limit: 1000
-    sort: { fields: [fields___prefix], order: DESC }
-    filter: { frontmatter: { tags: { in: [$tag] } } }
-  ) {
-    group(field: frontmatter___tags) {
-      fieldValue
+      limit: 1000
+      sort: { fields: [fields___prefix], order: DESC }
+      filter: { frontmatter: { tags: { in: [$tag] } } }
+    ) {
+      group(field: frontmatter___tags) {
+        fieldValue
+        totalCount
+      }
       totalCount
-    }
-    totalCount
-    edges {
-      node {
-        excerpt
-        fields {
-          slug
-          prefix
-        }
-        frontmatter {
-          title
-          category
-          tags
-          author
-          cover {
-            children {
-              ... on ImageSharp {
-                sizes(maxWidth: 800, maxHeight: 360) {
-                  ...GatsbyImageSharpSizes_withWebp
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+            prefix
+          }
+          frontmatter {
+            title
+            category
+            tags
+            author
+            cover {
+              children {
+                ... on ImageSharp {
+                  sizes(maxWidth: 800, maxHeight: 360) {
+                    ...GatsbyImageSharpSizes_withWebp
+                  }
                 }
               }
             }
@@ -91,14 +87,12 @@ query PostsByTags2 ($tag: String) {
         }
       }
     }
-  }
-  site {
-    siteMetadata {
-      facebook {
-        appId
+    site {
+      siteMetadata {
+        facebook {
+          appId
+        }
       }
     }
   }
-}
-`
-;
+`;

@@ -1,6 +1,6 @@
 import FaTag from "react-icons/lib/fa/tag";
 import PropTypes from "prop-types";
-import React from "react"
+import React from "react";
 import { ThemeContext } from "../../layouts";
 import Article from "../Article/";
 import Headline from "../Article/Headline";
@@ -9,47 +9,71 @@ import Link from "gatsby-link";
 const _ = require("lodash");
 
 const Tags = props => {
-    const { groups } = props;
+  const { groups } = props;
 
-return(
-  <React.Fragment>
-    <ThemeContext.Consumer>
-      {theme => (
-        <div id={"tags"}>
-          <header>
-            {/* <Headline title="Tags" theme={theme} /> */}
-            <h1>Tags</h1>
-          </header>
-          {groups.map(tag => (
-            <section key={tag.fieldValue}>
-            <Link to={`/tags/${_.kebabCase(tag.fieldValue)}/`}>
-            <h2>
-              <FaTag /> {tag.fieldValue} ({tag.totalCount})  
-            </h2>
-            </Link>
-            </section>
-          ))}
-          <style jsx>{`
-              #tags {
-                padding: ${theme.space.inset.default};
-                margin: 0 auto;
-              }
-              @from-width tablet {
-                #tags {
-                  padding: ${`calc(${theme.space.default}) calc(${theme.space.default} * 2)`};
-                  max-width: ${theme.text.maxWidth.tablet};
-                }
-              }
-              @from-width desktop {
-                #tags {
-                  padding: ${`calc(${theme.space.default} * 1.5) 0 calc(${
-                    theme.space.default
-                  } * 1.5)`};
-                  max-width: ${theme.text.maxWidth.desktop};
+  return (
+    <React.Fragment>
+      <ThemeContext.Consumer>
+        {theme => (
+          <div id={"tags"}>
+            <header>
+              {/* <Headline title="Tags" theme={theme} /> */}
+              <h1>Tags</h1>
+            </header>
+            <ul className={"tagCloud"}>
+              {groups.map(tag => (
+                <li key={tag.fieldValue}>
+                  <Link to={`/tags/${_.kebabCase(tag.fieldValue)}/`}>
+                    <FaTag /> {tag.fieldValue} <div className={"number"}>{tag.totalCount}</div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <style jsx>{`
+              .tagCloud {
+                list-style: none;
+                padding: 0px;
+
+                li {
+                  display: inline-block;
+                  margin: 0;
+                  padding: 0;
+
+                  :global(a) {
+                    display: inline-block;
+                    padding: 8px;
+                    text-shadow: 1px 0.01px rgba(0, 0, 0, 0.15);
+                    border-radius: 6px;
+                    margin-bottom: 2px;
+                    font-size: 16px;
+                    text-decoration: none;
+                    color: #fff;
+                    transition: 0.2s;
+                    outline: 0;
+                    margin: 1px;
+                    background: #000;
+                  }
+                  :global(a:hover) {
+                    color: orange;
+                  }
+
+                  :global(.number) {
+                    height: 20px;
+                    width: 20px;
+                    padding: 1.5px;
+                    border-radius: 50%;
+                    text-align: center;
+                    background: white;
+                    color: black;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-left: 10px;
+                    font-size: 12px;
+                  }
                 }
               }
               h1 {
-                font-size: 2.5em;
+                font-size: 2.25em;
                 padding: 20px 0;
               }
               h2 {
@@ -60,16 +84,12 @@ return(
                 height: 0.8em;
                 fill: ${theme.color.brand.primary};
               }
-              :global(.arrow) {
-                display: inline-block;
-                fill: ${theme.color.special.attention};
-              }
             `}</style>
           </div>
-      )}
-    </ThemeContext.Consumer>
-  </React.Fragment>
-);
+        )}
+      </ThemeContext.Consumer>
+    </React.Fragment>
+  );
 };
 
 export default Tags;

@@ -7,9 +7,7 @@ import Hero from "../components/Hero";
 import Seo from "../components/Seo";
 import Tags from "../components/Tags";
 import Social from "../components/Social";
-
-
-
+import Badges from "../components/Badges";
 
 class IndexPage extends React.Component {
   separator = React.createRef();
@@ -21,8 +19,12 @@ class IndexPage extends React.Component {
   render() {
     const {
       data: {
-        posts: { edges: posts = [],
-        group: groups },
+        posts: { edges: posts = [], group: groups },
+        azDevOps: { sizes: devops },
+        azAdmin: { sizes: admin },
+        azure: { sizes: azure },
+        msMcsd: { sizes: mcsd },
+        msMcsa: { sizes: mcsa },
         bgDesktop: {
           resize: { src: desktop }
         },
@@ -44,6 +46,13 @@ class IndexPage extends React.Component {
       mobile
     };
 
+    const badges = {
+      devops,
+      admin,
+      azure,
+      mcsd,
+      mcsa
+    }
     return (
       <React.Fragment>
         <ThemeContext.Consumer>
@@ -54,17 +63,18 @@ class IndexPage extends React.Component {
 
         <hr ref={this.separator} />
         <div className="wrapper">
-        <div className="sideBar">
-        <div className="stickyDiv">
-        <Tags groups={groups}></Tags>
-        <Social/>
-        </div>
-        </div>
-        <div className="mainContent">
-          <ThemeContext.Consumer>
-           {theme => <Blog posts={posts} theme={theme} groups={groups} />}
-         </ThemeContext.Consumer>
-         </div>
+          <div className="sideBar">
+            <div className="stickyDiv">
+              <Badges badges={badges} />
+              <Tags groups={groups} />
+              <Social />
+            </div>
+          </div>
+          <div className="mainContent">
+            <ThemeContext.Consumer>
+              {theme => <Blog posts={posts} theme={theme} groups={groups} />}
+            </ThemeContext.Consumer>
+          </div>
         </div>
         <Seo facebook={facebook} />
 
@@ -72,7 +82,7 @@ class IndexPage extends React.Component {
           .stickyDiv {
             position: -webkit-sticky; /* Safari */
             position: sticky;
-            top: 60px;
+            top: 50px;
             align-self: flex-start;
           }
           .wrapper {
@@ -85,38 +95,37 @@ class IndexPage extends React.Component {
             width: 100%;
             height: 100%;
           }
-  
+
           @from-width tablet {
             .mainContent {
-             width: 70%;
-             float: left; 
+              width: 70%;
+              float: left;
             }
           }
-  
+
           @below tablet {
             .mainContent {
-             width: 100%; 
+              width: 100%;
             }
           }
-  
-          .sideBar {
-              padding-top: 60px;
-              float: left;
-              width: 30%;   
-              display: flex;
 
+          .sideBar {
+            padding-top: 60px;
+            float: left;
+            width: 30%;
+            display: flex;
           }
 
-          @below desktop { 
+          @below desktop {
             .wrapper {
               width: 80%;
               margin: auto;
             }
           }
-          
-          @below tablet { 
+
+          @below tablet {
             .sideBar {
-                display: none;
+              display: none;
             }
             .wrapper {
               width: 100%;
@@ -182,6 +191,31 @@ export const guery = graphql`
         facebook {
           appId
         }
+      }
+    }
+    azDevOps: imageSharp(id: { regex: "/devops/" }) {
+      sizes(maxWidth: 100) {
+        ...GatsbyImageSharpSizes_withWebp
+      }
+    }
+    azAdmin: imageSharp(id: { regex: "/admin/" }) {
+      sizes(maxWidth: 100) {
+        ...GatsbyImageSharpSizes_withWebp
+      }
+    }
+    azure: imageSharp(id: { regex: "/azure/" }) {
+      sizes(maxWidth: 100) {
+        ...GatsbyImageSharpSizes_withWebp
+      }
+    }
+    msMcsd: imageSharp(id: { regex: "/mcsd/" }) {
+      sizes(maxWidth: 100) {
+        ...GatsbyImageSharpSizes_withWebp
+      }
+    }
+    msMcsa: imageSharp(id: { regex: "/mcsa/" }) {
+      sizes(maxWidth: 100) {
+        ...GatsbyImageSharpSizes_withWebp
       }
     }
     bgDesktop: imageSharp(id: { regex: "/hero-background/" }) {

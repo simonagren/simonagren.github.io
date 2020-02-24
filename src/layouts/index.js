@@ -8,7 +8,6 @@ import Footer from "../components/Footer/";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 
-
 export const ThemeContext = React.createContext(null);
 export const ScreenWidthContext = React.createContext(0);
 export const FontLoadedContext = React.createContext(false);
@@ -80,7 +79,8 @@ class Layout extends React.Component {
     const { children, data } = this.props;
     const {
       footnote: { html: footnoteHTML },
-      pages: { edges: pages }
+      pages: { edges: pages },
+      mvpavatar: { sizes: mvp }
     } = data;
 
     return (
@@ -88,7 +88,12 @@ class Layout extends React.Component {
         <FontLoadedContext.Provider value={this.state.font400loaded}>
           <ScreenWidthContext.Provider value={this.state.screenWidth}>
             <React.Fragment>
-              <Header path={this.props.location.pathname} pages={pages} theme={this.state.theme} />
+              <Header
+                path={this.props.location.pathname}
+                pages={pages}
+                theme={this.state.theme}
+                mvp={mvp}
+              />
               <main>{children()}</main>
               <Footer html={footnoteHTML} theme={this.state.theme} />
 
@@ -139,62 +144,62 @@ class Layout extends React.Component {
                   width: auto;
                   display: block;
                 }
-                blockquote{
-                  display:block;
+                blockquote {
+                  display: block;
                   background: #fff;
                   padding: 15px 20px 15px 45px;
                   margin: 0 0 20px;
                   position: relative;
-                  
+
                   /*Font*/
                   font-size: 16px;
                   line-height: 1.2;
                   color: #666;
                   font-style: italic;
                   text-align: justify;
-                  
+
                   /*Borders - (Optional)*/
                   border-left: 15px solid orange;
                   border-right: 2px solid orange;
-                  
+
                   /*Box Shadow - (Optional)*/
                   -moz-box-shadow: 2px 2px 15px #ccc;
                   -webkit-box-shadow: 2px 2px 15px #ccc;
                   box-shadow: 2px 2px 15px #ccc;
                 }
-                
-                blockquote::before{
+
+                blockquote::before {
                   content: '"'; /*Unicode for Left Double Quote*/
-                  
+
                   /*Font*/
                   font-size: 60px;
                   font-weight: bold;
                   color: #999;
-                  
+
                   /*Positioning*/
                   position: absolute;
                   left: 10px;
-                  top:5px;
+                  top: 5px;
                 }
-                
-                blockquote::after{
+
+                blockquote::after {
                   /*Reset to make sure*/
                   content: "";
                 }
-                
-                blockquote a{
+
+                blockquote a {
                   text-decoration: none;
                   background: #eee;
                   cursor: pointer;
                   padding: 0 3px;
                   color: #c76c0c;
                 }
-                
-                blockquote a:hover{
-                 color: #666;
+
+                blockquote a:hover {
+                  color: #666;
                 }
-                
-                blockquote em{
+
+                blockquote em {
                   font-style: italic;
                 }
               `}</style>
@@ -232,6 +237,11 @@ export const postQuery = graphql`
             menuTitle
           }
         }
+      }
+    }
+    mvpavatar: imageSharp(id: { regex: "/mvp/" }) {
+      sizes(maxWidth: 150) {
+        ...GatsbyImageSharpSizes_withWebp
       }
     }
     footnote: markdownRemark(id: { regex: "/footnote/" }) {

@@ -17,11 +17,15 @@ const Bodytext = props => {
             max-width: 100%;
           }
 
+          :global(h1),
           :global(h2),
           :global(h3) {
             margin: 1.5em 0 1em;
           }
-
+          :global(h1) {
+            line-height: ${theme.font.lineHeight.xs};
+            font-size: ${theme.font.size.xl};
+          }
           :global(h2) {
             line-height: ${theme.font.lineHeight.s};
             font-size: ${theme.font.size.l};
@@ -39,6 +43,10 @@ const Bodytext = props => {
           }
           :global(ul) {
             list-style: circle;
+            margin: 0 0 1.5em;
+            padding: 0 0 0 1.5em;
+          }
+          :global(ol) {
             margin: 0 0 1.5em;
             padding: 0 0 0 1.5em;
           }

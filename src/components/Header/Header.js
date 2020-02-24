@@ -7,6 +7,7 @@ import { ScreenWidthContext, FontLoadedContext } from "../../layouts";
 import config from "../../../content/meta/config";
 import Menu from "../Menu";
 import avatar from "../../images/jpg/avatar.jpg";
+import Img from "gatsby-image";
 
 class Header extends React.Component {
   state = {
@@ -29,23 +30,28 @@ class Header extends React.Component {
   };
 
   render() {
-    const { pages, path, theme } = this.props;
+    const { pages, path, theme, mvp } = this.props;
     const { fixed } = this.state;
 
     return (
       <React.Fragment>
         <header className={`header ${this.getHeaderSize()}`}>
           <div className="logoType">
-          <Link to="/"> 
-            <div className="logo">
-              <img src={avatar} alt={config.siteTitle} />
-            </div>
-            </Link>  
+            <Link to="/">
+              <div className="logo">
+                <img src={avatar} alt={config.siteTitle} />
+              </div>
+            </Link>
             <div className="type">
               <h1>{config.headerTitle}</h1>
               <h2>{config.headerSubTitle}</h2>
               <h2>{config.headerSubTitle2}</h2>
             </div>
+            <Link to="/">
+              <div className="logo2">
+                <Img sizes={mvp} />
+              </div>
+            </Link>
           </div>
           <FontLoadedContext.Consumer>
             {loaded => (
@@ -70,8 +76,6 @@ class Header extends React.Component {
 
         {/* --- STYLES --- */}
         <style jsx>{`
-
-          
           .header {
             align-items: center;
             justify-content: center;
@@ -105,8 +109,7 @@ class Header extends React.Component {
             height: 20px;
           }
 
-          .type  {
-            
+          .type {
             :global(div) {
               display: inline-block;
             }
@@ -114,7 +117,6 @@ class Header extends React.Component {
             :global(div:not(:first-of-type)) {
               margin-left: 5px;
             }
-            
           }
 
           h1 {
@@ -144,6 +146,27 @@ class Header extends React.Component {
             .homepage & {
               height: 60px;
               width: 60px;
+              position: relative;
+              top: 4px;
+            }
+
+            img {
+              width: 100%;
+            }
+          }
+
+          .logo2 {
+            border-radius: 5%;
+            display: inline-block;
+            height: 56px;
+            margin: 0 0 0 5px;
+            overflow: hidden;
+            width: 140px;
+            transition: all 0.5s;
+
+            .homepage & {
+              height: 56px;
+              width: 140px;
               position: relative;
               top: 4px;
             }
@@ -222,11 +245,10 @@ class Header extends React.Component {
                 :global(.twittSvg) {
                   color: #1da1f2;
                 }
-                
+
                 :global(.linkSvg) {
                   color: #0077b5;
                 }
-
               }
 
               &.homepage:not(.fixed) {
@@ -285,7 +307,8 @@ class Header extends React.Component {
 Header.propTypes = {
   pages: PropTypes.array.isRequired,
   path: PropTypes.string.isRequired,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object.isRequired,
+  mvp: PropTypes.object.isRequired
 };
 
 export default Header;

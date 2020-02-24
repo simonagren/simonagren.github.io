@@ -2,7 +2,7 @@ module.exports = {
   siteTitle: "AgrenPoint - A dev blog", // <title>
   shortSiteTitle: "AgrenPoint - A dev blog", // <title> ending for posts and pages
   siteDescription: "AgrenPoint is development with Simon Ågren.",
-  siteUrl: "http://simonagren.github.io",
+  siteUrl: "https://simonagren.github.io",
   pathPrefix: "",
   siteImage: "preview.jpg",
   siteLanguage: "en",
@@ -11,8 +11,8 @@ module.exports = {
   authorTwitterAccount: "agrenpoint",
   // info
   headerTitle: "Simon Ågren",
-  headerSubTitle: "Solution Architect | MCSD ",
-  headerSubTitle2: "SharePoint & Office365", 
+  headerSubTitle: "Microsoft MVP",
+  headerSubTitle2: "Cloud Architect",
   // manifest.json
   manifestName: "AgrenPoint - A dev blog",
   manifestShortName: "AgrenPoint", // max 12 characters
