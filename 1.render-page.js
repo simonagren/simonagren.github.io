@@ -20,9 +20,9 @@ exports.modules = {
 	
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 	
-	var _reactShare = __webpack_require__(225);
+	var _reactShare = __webpack_require__(309);
 	
-	var _config = __webpack_require__(296);
+	var _config = __webpack_require__(239);
 	
 	var _config2 = _interopRequireDefault(_config);
 	

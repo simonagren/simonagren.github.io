@@ -19,9 +19,9 @@ webpackJsonp([1],{
 
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
-	var _reactShare = __webpack_require__(270);
+	var _reactShare = __webpack_require__(314);
 
-	var _config = __webpack_require__(330);
+	var _config = __webpack_require__(276);
 
 	var _config2 = _interopRequireDefault(_config);
 
