@@ -1,4 +1,213 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Mon, 24 Feb 2020 11:20:52 GMT</lastBuildDate><item><title><![CDATA[Bot Framework 4 ARM template Deploy with Key Vault]]></title><description><![CDATA[Introduction This post assumes that you already have generated your Bot and you have available ARM Templates to deploy with. Follow the…]]></description><link>https://simonagren.github.io/azurebot-armtemplate-keyvault/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-armtemplate-keyvault/</guid><content:encoded>&lt;p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Wed, 26 Feb 2020 10:03:29 GMT</lastBuildDate><item><title><![CDATA[A brief introduction to Azure Functions 3.x]]></title><description><![CDATA[Introduction In this post, I will talk about Azure Functions 3.0 that has become generally available (GA) and was announced almost a month…]]></description><link>https://simonagren.github.io/azfunc-v3/</link><guid isPermaLink="false">https://simonagren.github.io/azfunc-v3/</guid><content:encoded>&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/azfunc3-52663bc6c0010d24966d5439cdc6f172-b70ec.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 46.916666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABiUlEQVQoz6WRS0tCQRSAbdmuFrVoEYg9FxloSSEUhL8ii6KSsBe0bdM/aB3Yol3Rxl2YCD7QvGhadh9WVj6qmwWWj7zadO+cpjGtRbs+Zjgz5/ANczgqIGCgYCVlVUImXBXJBaF3SZKKpVL5izdyJkGiVCqVmqDC1OSf5OjtCYSa82cbzkSZZB7FhyDDuFyuaDTq9/t9Pp/b7fG43acUhNCXTPbVc2E38lZIbYK3CWKzHo49vCqKD3fHgcA5ywqCEA6HAwE/eeUiHk+mkvSX+FveCd65Ei8AEcSPATeNFNjypq8zIsfGOF4Q4nGW5Sgsz/O5XI66dflDVmxB8fIpD+l1WbrfDWWzVTjY3+sZ0BnGJoaM44Zxk94wotNqNRqNw+EgiizLtGfa+msVbjJBKHpKCBLZPMls23ba1H09utGuweFuvVHd29/X2dHe2mK3239kqHeAP14Ao0bhyOk0z8wtLq9ZllYsS6vzCxarZW7KPMkwDKkqitKQa/PCtaFh+JX7WX+ggn/wCf7aw2OddxeOAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;extend&quot;
+        title=&quot;&quot;
+        src=&quot;/static/azfunc3-52663bc6c0010d24966d5439cdc6f172-48538.png&quot;
+        srcset=&quot;/static/azfunc3-52663bc6c0010d24966d5439cdc6f172-bed0f.png 200w,
+/static/azfunc3-52663bc6c0010d24966d5439cdc6f172-5fd34.png 400w,
+/static/azfunc3-52663bc6c0010d24966d5439cdc6f172-48538.png 800w,
+/static/azfunc3-52663bc6c0010d24966d5439cdc6f172-b70ec.png 1200w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;In this post, I will talk about Azure Functions 3.0 that has become generally available (GA) and was announced almost a month ago &lt;a href=&quot;https://azure.microsoft.com/en-us/updates/azure-functions-runtime-30-is-now-available/&quot;&gt;here&lt;/a&gt;. I feel that this is a nice update, allowing for newer function runtime and also some performance improvements. The new capabilities in the release include support for &lt;code class=&quot;language-text&quot;&gt;Node 12&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;.Net Core 3.2&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;If you are familiar with me, you know I will focus on &lt;code class=&quot;language-text&quot;&gt;Node.js&lt;/code&gt; and TypeScript today.&lt;/p&gt;
+&lt;h1&gt;Speaking of versions&lt;/h1&gt;
+&lt;p&gt;As you can see in the table below, the runtime you use gives you different options regarding which versions of the available platform. So if we have a Node.js &lt;code class=&quot;language-text&quot;&gt;Function App&lt;/code&gt; running &lt;code class=&quot;language-text&quot;&gt;Node 6&lt;/code&gt;, we cannot just upgrade to a &lt;code class=&quot;language-text&quot;&gt;2.x&lt;/code&gt; or &lt;code class=&quot;language-text&quot;&gt;3.x&lt;/code&gt;, since that Node version is not supported.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Language&lt;/th&gt;
+&lt;th&gt;1.x&lt;/th&gt;
+&lt;th&gt;2.X&lt;/th&gt;
+&lt;th&gt;3.x&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;JavaScript&lt;/td&gt;
+&lt;td&gt;Node 6&lt;/td&gt;
+&lt;td&gt;Node 8 &amp;#x26; 10&lt;/td&gt;
+&lt;td&gt;Node 10 &amp;#x26; 12&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;C#&lt;/td&gt;
+&lt;td&gt;.Net 4.7&lt;/td&gt;
+&lt;td&gt;.Net Core 2.2&lt;/td&gt;
+&lt;td&gt;.Net Core 3.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PowerShell&lt;/td&gt;
+&lt;td&gt;N/A&lt;/td&gt;
+&lt;td&gt;PS Core 6&lt;/td&gt;
+&lt;td&gt;PS Core 6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TypeScript&lt;/td&gt;
+&lt;td&gt;N/A&lt;/td&gt;
+&lt;td&gt;GA&lt;/td&gt;
+&lt;td&gt;GA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;And just to clarify, TypeScript transpiles to JavaScript, so TypeScript versions have the same options regarding Node versions as JavaScript does.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.microsoft.com/sv-se/azure/azure-functions/functions-versions#languages&quot;&gt;Table source&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;Backward compatibility&lt;/h1&gt;
+&lt;p&gt;Microsoft claims that previous versions of Azure Functions should be able to run in the version 3.x runtime without changing the code. They claim the latest release to be very backward compatible.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Users running on earlier versions of Azure Functions will continue to be supported and we’re not deprecating either 1.0 or 2.0 at this time. Customers running Azure Functions targeting 1.0 or 2.0 will also continue to receive security updates and patches moving forward—to both the Azure Functions runtime and the underlying .NET runtime—for apps running in Azure. &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1&gt;Possibility to move between versions&lt;/h1&gt;
+&lt;p&gt;The default version for creating Function Apps via &lt;code class=&quot;language-text&quot;&gt;Azure CLI&lt;/code&gt; or the &lt;code class=&quot;language-text&quot;&gt;Azure Portal&lt;/code&gt; is the &lt;code class=&quot;language-text&quot;&gt;3.x&lt;/code&gt; version. If you look at this picture from the &lt;code class=&quot;language-text&quot;&gt;Function app settings&lt;/code&gt; you can see that &lt;code class=&quot;language-text&quot;&gt;1.x is grayed out&lt;/code&gt;, but both 2.x and 3.x is available.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/runtime2-71fab03e81d8c582d9f0d0d4a13d8ccd-7ad69.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 82.53223915592028%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAAA7DAAAOwwHHb6hkAAACLklEQVQ4y52UbW/TMBDH89n4dHydwSsktlcdkxDSNo11G2XAWlbaJvFDHNtxnPjP2VHbUKnaxEm/2L6zz47vzlnXSlgr4BqB3ssd1g76SOuirkLnGJwt0ZgiYfWAdxyhq9K6DCTSAqrBP1KZAK4DWB1g3KDzvoXSGkJUkFKBc5loXJvsfQAyITgqKVBVgiYKMFbSZEnmgNB3hEffeXRECAHHJNoiWVwcHXHOUdc1/aKlxR0E6T+enmJyfo7JZIKzszNoOt148ZitZJzHUzEYYxH1W5P3Pm0UN9xuGjc65nB3whUz+FNqlKqF0D0af/y3XnI2OFytkecFypLDOZ/o+jByMAIvS2YtQ63WUGJB/EbF59DVM5zZEGv0LaOUiGkjRvCD8Z4M8xOox/col19QzD8hX1wgn19g/XSeEOtLqPIWmk+JuwOmu9aIe2hxh6xjV5CrSyxXM7D8AbJ4QM1nZPxOE2epXxX3MPIHWr2A03O0ZpH6sY3jnY5IiX1yVePN2wU+P5p0sb7rMdzYmH5PGHGgyzilzPOqxN2vEst1SXnoUsb3fUB4TRQOgyIkoyohRyqHkhsKUAmtWGobqufQW6oUM+D1QX/LXkdBeQc7/wBRTFGXN6jy64TcXKeAVMXNcOF0+TW7Tf2aTRPb4GzHcW7WkhOdf6WUeQLPZ+Cbb1D8J514kXBmSa/M5tVkLVVTQx/nXErwmOhK1fhfyYzRFAhDhU8Pg4lR7l9VYsf4C6M8IYXK7yA2AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;runtime&quot;
+        title=&quot;&quot;
+        src=&quot;/static/runtime2-71fab03e81d8c582d9f0d0d4a13d8ccd-48538.png&quot;
+        srcset=&quot;/static/runtime2-71fab03e81d8c582d9f0d0d4a13d8ccd-bed0f.png 200w,
+/static/runtime2-71fab03e81d8c582d9f0d0d4a13d8ccd-5fd34.png 400w,
+/static/runtime2-71fab03e81d8c582d9f0d0d4a13d8ccd-48538.png 800w,
+/static/runtime2-71fab03e81d8c582d9f0d0d4a13d8ccd-7ad69.png 853w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;We can ONLY move to 1.x version if we have a &lt;code class=&quot;language-text&quot;&gt;Function app&lt;/code&gt; with no &lt;code class=&quot;language-text&quot;&gt;functions&lt;/code&gt; created. Moving between &lt;code class=&quot;language-text&quot;&gt;2.x&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;3.x&lt;/code&gt; is possible even with &lt;code class=&quot;language-text&quot;&gt;Function apps&lt;/code&gt; that already have functions.&lt;/p&gt;
+&lt;h1&gt;Seeing current runtime and versions&lt;/h1&gt;
+&lt;h2&gt;Azure Portal&lt;/h2&gt;
+&lt;p&gt;From the Azure portal, you could move into your Function App and then &lt;code class=&quot;language-text&quot;&gt;Configuration&lt;/code&gt; where you get to see your application settings. And if you click on the value for &lt;code class=&quot;language-text&quot;&gt;FUNCTION_EXTENSION_VERSION&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;WEBSITE_NODE_DEFAULT_VERSION&lt;/code&gt; you will be able to see the current versions. &lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/appsetting-b082563117c3e175cbb3532b1b075c90-33242.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 45.02564102564102%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA4ElEQVQoz32Ri5KDIAxF/f+/VeQpkHLSxiLb2cycQSTc3ITNOSc5Z7muS1pr0kWk9f6ldRmLeB8kpTTyquZC+axQx13yN5L2fVdijFJrfQv3foNiKk3c6SWEoHjwXmGPKGY2RHB5nqccx6EgSNyCI2Kukssl/0U3h1YJ2HdttT0EU6nDVXycsa7dqCAuIUxt4LiUYqXHvNo4j3eu5QPftExs/OCyMVdbHbpx7uFT0GBvxVWQudkcgYf5M8MhmHL5WfDRMuoIIoQo+18OozqcXnmau72yOpyHuw54Zc5bsZwXa5fDLqhBFmcAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;appsetting&quot;
+        title=&quot;&quot;
+        src=&quot;/static/appsetting-b082563117c3e175cbb3532b1b075c90-48538.png&quot;
+        srcset=&quot;/static/appsetting-b082563117c3e175cbb3532b1b075c90-bed0f.png 200w,
+/static/appsetting-b082563117c3e175cbb3532b1b075c90-5fd34.png 400w,
+/static/appsetting-b082563117c3e175cbb3532b1b075c90-48538.png 800w,
+/static/appsetting-b082563117c3e175cbb3532b1b075c90-33242.png 975w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h2&gt;Azure CLI&lt;/h2&gt;
+&lt;p&gt;From the Azure CLI, we could run the following commands&lt;/p&gt;
+&lt;h3&gt;All Application Settings&lt;/h3&gt;
+&lt;p&gt;Here we use the &lt;code class=&quot;language-text&quot;&gt;az functionapp config appsettings list&lt;/code&gt; and then we give the &lt;code class=&quot;language-text&quot;&gt;name&lt;/code&gt; and the &lt;code class=&quot;language-text&quot;&gt;resource-group&lt;/code&gt; of the function app. And this lists all the application settings.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az functionapp config appsettings list -n funcappsimon -g rgfuncappsimon&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;Get runtime version&lt;/h3&gt;
+&lt;p&gt;To get the runtime version, we make a &lt;code class=&quot;language-text&quot;&gt;--query&lt;/code&gt; and get the &lt;code class=&quot;language-text&quot;&gt;value&lt;/code&gt; of &lt;code class=&quot;language-text&quot;&gt;FUNCTIONS_EXTENSION_VERSION&lt;/code&gt; and then pipe the value from the result array.  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az functionapp config appsettings list --query &lt;span class=&quot;token string&quot;&gt;&quot;[?name==&apos;FUNCTIONS_EXTENSION_VERSION&apos;].value | [0]&quot;&lt;/span&gt; -n funcappsimon -g rgfuncappsimon&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;Get node.js version&lt;/h3&gt;
+&lt;p&gt;To get the Node.js version, we make a &lt;code class=&quot;language-text&quot;&gt;--query&lt;/code&gt; and get the &lt;code class=&quot;language-text&quot;&gt;value&lt;/code&gt; of &lt;code class=&quot;language-text&quot;&gt;WEBSITE_NODE_DEFAULT_VERSION&lt;/code&gt; and then pipe the value from the result array.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az functionapp config appsettings list --query &lt;span class=&quot;token string&quot;&gt;&quot;[?name==&apos;WEBSITE_NODE_DEFAULT_VERSION&apos;].value | [0]&quot;&lt;/span&gt; -n funcappsimon -g rgfuncappsimon&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;Azure Functions VS Code Extension&lt;/h2&gt;
+&lt;p&gt;I love this extension, you could do so much. We could see application settings from here.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/extension-1076ee9bd0850b0b8e9c5b725e074c84-89b2b.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 505px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 159.80198019801978%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAgCAYAAAASYli2AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAErUlEQVRIx5VWya4bVRD1JgRlwZINgTwPPdk9ud3u6fbgttsvgxIliCwTgViwIWGBlC0iEuK3D6fKz5Yfb0AsSrdv+/apU1Wn6npkWTaiKMZqtUIcJ0i4JsmK+xS27UB+n84s7OsYoe+ibA2CIIAXZ7Adl99GcL0FyqLieRujGQ+HYYzlMoHvBwgJHoaROpHfJpMpnlxM0OYBAn+OJR3O5ws48xAWHQZBqIBZlqvzkePMEQUuXvWPySpDWVZYr3OYyqDIC/XcdRvkZQ1/4ePiYqyOZtOZrtOrdTye6DoSL647R20WMGaFqmpQmQZtu4GpG/UsjBdk7zDEGVkIk9mVWafVISAZWrMpPB5MkpCMEhTrDG1dY9M0ZFmiprmWxTN0zBxZ0+m9NrpwI0wWSzhRhrjsEeUt1u0eab1Darao9y+RdU9Rbp9jxf3Y4/l5rDY+mne0CKMv97/hqxe/4+vXn/DNm0+w33/G+pe/Ef70Gfa7P+C8+xPRz38h+PEzHu0/4sH2A76gPdj+ioe7j/r8cEcbPuLR8AGjb4MSF7HBd2GFsHmKdPsK5eVrlM++h3nxFtn+NfL9Gxjuw/Y5vOoScf8Sy/4VvHKPqHsBtxzgFgMe+zlzOBnDsy3IWqxTlFmGuiw0j0O/4WqYT+a0bXA57NBUhdrltkfL/HamgslzZKsE9nQsOrThuJ5Was2K5kWJpm4pF4O26VDLc2nQtB3aTY9GimVqdNxvRE55STV0iKljaQAVtktAi5VM07XKpKIWCx5sm1Y/FmsIvum3KOiwppwaRtBwXSUp+n7HLotVkzcBKebtdksddvqxCL3tWnTKtlHbErgWpiKvvifTnkQyWOcMZV1TgxJCz9xJaDnBlVFzYGNE8GQtpo7otDKGERnEbFVtvXNACVcAhmHAbrfTw7U5sJCcdWTSXjGt2JLDcKnnBTAKb4RsK6AURULuOoZckh1ZNW2LnL8JcM0wo3iJDQvUsiiGTsuqUuAzQBcTbpZJRtCCIR+qKQelIBKesiRITYCeq7AtJR2m1b1UeXbMoW27CIMF9s1KPWmeWskTw+HUEUAdaWSmKy3ms4wuGXNJchh9J8AZJ0W2ivDDZaKVFsk0KhlzVelS5+LBZqdnCVHW8dXzCdCyXKTLAG/3SwJmJ/EKYF4ULEh7mt732QnQ4ViaRytM2acyWIfdgJKSkcII4yMj/VAiUhLXga4Binc/iJAUtVbzoLlaKykhyx2zTA5Jn93B7DpDDlhJal6mBMxUe5pLguUqpUIldR+z6wzZdn6convDUItcO0TujidPLk4m+2MRxM5BrgHajoc0ZkGeZUivLqmiqlRnpjq03Gaz1ckiaRDR9zTf99XBDYby4HkeimytYApIk+IseMt53lxNuklMdOjrheXcHbLHe9X3Q8Rhcro2ZYTJhwI6Xyx0PAnw5Exzt4Z8LIrHq9SeCtNCB4EIeyfyqQ69KtpcsjuOYd5ZFJmDspF/A/L3Qye2TGSRDCt7XozznMmkv1U2x5dyWEB1pHPCSL8K67s0d68OjxuHFZeiSDUF8Ngdt4HcCXj+0mXStcoMW4R8nq//BXj+YjyeXuvd/2L37+//ATv55xxVnTUnAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;extension&quot;
+        title=&quot;&quot;
+        src=&quot;/static/extension-1076ee9bd0850b0b8e9c5b725e074c84-89b2b.png&quot;
+        srcset=&quot;/static/extension-1076ee9bd0850b0b8e9c5b725e074c84-50b18.png 200w,
+/static/extension-1076ee9bd0850b0b8e9c5b725e074c84-275e6.png 400w,
+/static/extension-1076ee9bd0850b0b8e9c5b725e074c84-89b2b.png 505w&quot;
+        sizes=&quot;(max-width: 505px) 100vw, 505px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h1&gt;Next steps&lt;/h1&gt;
+&lt;p&gt;I’m planning another post showing a couple of ways to migrate from 2.x to 3.x. &lt;/p&gt;</content:encoded></item><item><title><![CDATA[Bot Framework 4 ARM template Deploy with Key Vault]]></title><description><![CDATA[Introduction This post assumes that you already have generated your Bot and you have available ARM Templates to deploy with. Follow the…]]></description><link>https://simonagren.github.io/azurebot-armtemplate-keyvault/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-armtemplate-keyvault/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/bot-keyvault-02ab72bfc11ec5246486d7c87731014f-b70ec.png&quot;
@@ -33,7 +242,7 @@
   &lt;/a&gt;
     &lt;/p&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;This post assumes that you already have generated your Bot and you have available ARM Templates to deploy with. Follow the steps in I broke this out to its own post here:
+&lt;p&gt;This post assumes that you already have generated your Bot and you have available ARM Templates to deploy with. Follow the steps in I broke this out to another post here:
 &lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part1&quot; target=&quot;_blank&quot;&gt;This&lt;/a&gt; post.&lt;/p&gt;
 &lt;h1&gt;Prerequisites&lt;/h1&gt;
 &lt;ul&gt;
@@ -42,13 +251,13 @@
 &lt;/ul&gt;
 &lt;h1&gt;Login Azure CLI and Create Azure AD App&lt;/h1&gt;
 &lt;ol&gt;
-&lt;li&gt;First log in to Azure &lt;/li&gt;
+&lt;li&gt;First, log in to Azure&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az login&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
 &lt;ol start=&quot;2&quot;&gt;
-&lt;li&gt;Set a default location so you don’t have to enter it all the time &lt;/li&gt;
+&lt;li&gt;Set a default location so you don’t have to enter it all the time&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az configure --default location=northeurope&lt;/code&gt;&lt;/pre&gt;
@@ -61,19 +270,19 @@
       &lt;/div&gt;
 &lt;h1&gt;Create Resource Group and Key Vault to be used in ARM deployment&lt;/h1&gt;
 &lt;ol&gt;
-&lt;li&gt;Create resource group &lt;/li&gt;
+&lt;li&gt;Create a resource group&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az group create --name RGSimonBot&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
 &lt;ol start=&quot;2&quot;&gt;
-&lt;li&gt;In this exanple we will create Key Vault and give us the possibility to use it in ARM deployment.&lt;/li&gt;
+&lt;li&gt;In this example, we will create Key Vault and give us the possibility to use it in ARM deployment.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az keyvault create --enabled-for-template-deployment &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt; --name &lt;span class=&quot;token string&quot;&gt;&quot;VaultSimonBot&quot;&lt;/span&gt; --resource-group &lt;span class=&quot;token string&quot;&gt;&quot;RGSimonBot&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
 &lt;ol start=&quot;3&quot;&gt;
-&lt;li&gt;Add the AAD App secret to the keyvault &lt;/li&gt;
+&lt;li&gt;Add the AAD App secret to the key vault&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az keyvault secret set --vault-name &lt;span class=&quot;token string&quot;&gt;&quot;VaultSimonBot&quot;&lt;/span&gt; --name &lt;span class=&quot;token string&quot;&gt;&quot;SecretSimonBot&quot;&lt;/span&gt; --value &lt;span class=&quot;token string&quot;&gt;&quot;SimonBlogBotDemoStuff1!&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
@@ -82,63 +291,61 @@
 &lt;p&gt;We will use the parameters file in this case to input the values, and then use it in the template deployment. We could also pass in the parameters in the Azure CLI command if we wanted to (as they do in the Microsoft article I linked to).&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;appId&lt;/code&gt; - here we use the appId value of the Azure AD app registration we did&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;appSecret&lt;/code&gt; - here we use a reference to the Key Vault we created and the specific secret we created. For the secretName we will use the name of the secret we added to the Key Vault. As the id for the Key Vault we use this syntax:&lt;/p&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;appSecret&lt;/code&gt; - here we use a reference to the Key Vault we created and the specific secret we created. For the &lt;code class=&quot;language-text&quot;&gt;secretName&lt;/code&gt;, we will use the name of the secret we added to the Key Vault. As the id for the Key Vault we use this syntax:&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;/subscriptions/&amp;lt;SubscriptionId&gt;/resourceGroups/&amp;lt;ResourceGroup&gt;/providers/Microsoft.KeyVault/vaults/&amp;lt;KeyVaultName&gt;&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 &lt;p&gt;The rest is quite self explanatory. We have also added values for &lt;code class=&quot;language-text&quot;&gt;botId&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;botSku&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;newAppServicePlanName&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;appServicePlanLocation&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;newWebAppName&lt;/code&gt; in the parameter file and now it looks like this:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token property&quot;&gt;&quot;$schema&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token property&quot;&gt;&quot;contentVersion&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;1.0.0.0&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token property&quot;&gt;&quot;parameters&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;token property&quot;&gt;&quot;appId&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;token property&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;198eb0c2-33e1-4808-a7b4-d326043e839b&quot;&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&quot;$schema&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&quot;contentVersion&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;1.0.0.0&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token property&quot;&gt;&quot;parameters&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;appId&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token property&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;198eb0c2-33e1-4808-a7b4-d326043e839b&quot;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;appSecret&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token property&quot;&gt;&quot;reference&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token property&quot;&gt;&quot;keyVault&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;token property&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;/subscriptions/4866dad4-d39c-4a12-9466-de00b6a66718/resourceGroups/RGSimonBot/providers/Microsoft.KeyVault/vaults/VaultSimonBot&quot;&lt;/span&gt;
         &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;token property&quot;&gt;&quot;appSecret&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;token property&quot;&gt;&quot;reference&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;token property&quot;&gt;&quot;keyVault&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-                  &lt;span class=&quot;token property&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;/subscriptions/4866dad4-d39c-4a12-9466-de00b6a66718/resourceGroups/RGSimonBot/providers/Microsoft.KeyVault/vaults/VaultSimonBot&quot;&lt;/span&gt;
-                &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;token property&quot;&gt;&quot;secretName&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;SecretSimonBot&quot;&lt;/span&gt;
-              &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;token property&quot;&gt;&quot;botId&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;token property&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;BotSimonBot&quot;&lt;/span&gt;
-        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;token property&quot;&gt;&quot;botSku&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;token property&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;F0&quot;&lt;/span&gt;
-        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;token property&quot;&gt;&quot;newAppServicePlanName&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;token property&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;SPSimonBot&quot;&lt;/span&gt;
-        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;token property&quot;&gt;&quot;newAppServicePlanSku&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;token property&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;token property&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;S1&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;token property&quot;&gt;&quot;tier&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Standard&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;token property&quot;&gt;&quot;size&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;S1&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;token property&quot;&gt;&quot;family&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;S&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;token property&quot;&gt;&quot;capacity&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
-            &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;token property&quot;&gt;&quot;appServicePlanLocation&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;token property&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;northeurope&quot;&lt;/span&gt;
-        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;token property&quot;&gt;&quot;existingAppServicePlan&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;token property&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;
-        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;token property&quot;&gt;&quot;newWebAppName&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;token property&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;WASimonBot&quot;&lt;/span&gt;
-        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;token property&quot;&gt;&quot;secretName&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;SecretSimonBot&quot;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;botId&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token property&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;BotSimonBot&quot;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;botSku&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token property&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;F0&quot;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;newAppServicePlanName&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token property&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;SPSimonBot&quot;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;newAppServicePlanSku&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token property&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token property&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;S1&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token property&quot;&gt;&quot;tier&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Standard&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token property&quot;&gt;&quot;size&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;S1&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token property&quot;&gt;&quot;family&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;S&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;token property&quot;&gt;&quot;capacity&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;appServicePlanLocation&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token property&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;northeurope&quot;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;existingAppServicePlan&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token property&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;newWebAppName&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token property&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;WASimonBot&quot;&lt;/span&gt;
     &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
 &lt;h1&gt;Deploy using ARM template and parameter file&lt;/h1&gt;
 &lt;ol&gt;
-&lt;li&gt;Make sure you cd into the folder where the &lt;code class=&quot;language-text&quot;&gt;DeploymentTemplates&lt;/code&gt; reside. Using &lt;code class=&quot;language-text&quot;&gt;template-with-preexisting-rg.json&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;preexisting-rg-parameters.json&lt;/code&gt; will create a new App service plan, App Service (Web application), and a Bot Channel registration into our already created resource group.&lt;/li&gt;
+&lt;li&gt;Make sure you cd into the folder where the &lt;code class=&quot;language-text&quot;&gt;DeploymentTemplates&lt;/code&gt; reside. Using &lt;code class=&quot;language-text&quot;&gt;template-with-preexisting-rg.json&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;preexisting-rg-parameters.json&lt;/code&gt; will create a new App Service plan, App Service (Web application), and a Bot Channel registration into our already created resource group.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az group deployment create --name &lt;span class=&quot;token string&quot;&gt;&quot;DeploySimonBot&quot;&lt;/span&gt; --resource-group &lt;span class=&quot;token string&quot;&gt;&quot;RGSimonBot&quot;&lt;/span&gt; --template-file template-with-preexisting-rg.json --parameters @preexisting-rg-parameters.json&lt;/code&gt;&lt;/pre&gt;
@@ -194,7 +401,7 @@
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az webapp deployment source config-zip --resource-group &lt;span class=&quot;token string&quot;&gt;&quot;RGSimonBot&quot;&lt;/span&gt; --name &lt;span class=&quot;token string&quot;&gt;&quot;WASimonBot&quot;&lt;/span&gt; --src &lt;span class=&quot;token string&quot;&gt;&quot;nameOfZip.zip&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
 &lt;ol start=&quot;5&quot;&gt;
-&lt;li&gt;And now we can can test the web chat. We have our Bot running and working in Azure - nothing runs locally anymore!&lt;/li&gt;
+&lt;li&gt;And now we can test the webchat. We have our Bot running and working in Azure - nothing runs locally anymore!&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;
   &lt;a
@@ -263,20 +470,20 @@
   &lt;/a&gt;
     &lt;/p&gt;
 &lt;p&gt;This is the first of a series of blog-posts regarding Bot Framework 4, Node.js and TypeScript. There’s a lot of material out there and it might seem redundant to start with the basics.
-I will take you on a journey where we begin with the most simple concepts, and in each post we develop the Bot a bit further while introducing some new concepts. And it’s going to be my ways of doing things, with workarounds and both simple and creative ways to get things done.&lt;/p&gt;
+I will take you on a journey where we begin with the most simple concepts, and in each post, we develop the Bot a bit further while introducing some new concepts. And it’s going to be my ways of doing things, with workarounds and both simple and creative ways to get things done.&lt;/p&gt;
 &lt;h1&gt;Planned topics&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;As of right now these are the intended topics that we will go trough:&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Generating a Bot, run it locally with the emulator and deploy to azure using Azure CLI and Azure Resource Manager (ARM) templates + key vault integration.&lt;/li&gt;
-&lt;li&gt;Running the Bot in Microft Teams using ngrok&lt;/li&gt;
-&lt;li&gt;Dialogs, prompts and validation&lt;/li&gt;
+&lt;li&gt;Generating a Bot, run it locally with the emulator and deploy to Azure using Azure CLI and Azure Resource Manager (ARM) templates + key vault integration.&lt;/li&gt;
+&lt;li&gt;Running the Bot in Microsoft Teams using ngrok&lt;/li&gt;
+&lt;li&gt;Creating dialogs, prompts, and validation&lt;/li&gt;
 &lt;li&gt;OAuth prompt, Microsoft Graph and more on validation&lt;/li&gt;
 &lt;li&gt;Adaptive Cards in Prompts and Microsoft Teams&lt;/li&gt;
 &lt;li&gt;Proactive messages and token validation using HMAC&lt;/li&gt;
 &lt;li&gt;LUIS Natural Language Processing&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;In this first post I will show you how to easily create a Bot in Node.js using the Bot Framework 4 Yeoman generator. As usual we will work with TypeScript, and I will walk you briefly trough some of the project structure.
+&lt;p&gt;In this first post, I will show you how to easily create a Bot in Node.js using the Bot Framework 4 Yeoman generator. As usual, we will work with TypeScript, and I will briefly walk you through some of the project structure.
 We will run and debug the Bot locally by using the Bot Emulator, and we will also deploy the bot to Azure using my Azure CLI and ARM templates.&lt;/p&gt;
 &lt;h1&gt;Sourcecode&lt;/h1&gt;
 &lt;p&gt;Here is the link to the Github repository for the finished Bot code from this post: &lt;a href=&quot;https://github.com/simonagren/simon-blog-bot-v1&quot;&gt;https://github.com/simonagren/simon-blog-bot-v1&lt;/a&gt;&lt;/p&gt;
@@ -337,15 +544,15 @@ We will run and debug the Bot locally by using the Bot Emulator, and we will als
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;code .&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
-&lt;p&gt;I suggest you run the command &lt;code class=&quot;language-text&quot;&gt;npm start&lt;/code&gt; just to see that the Bot is able to build and start, then you could just shut it down again.&lt;/p&gt;
+&lt;p&gt;I suggest you run the command &lt;code class=&quot;language-text&quot;&gt;npm start&lt;/code&gt; just to see that the Bot can build and start, then you could just shut it down again.&lt;/p&gt;
 &lt;h2&gt;Initial project structure&lt;/h2&gt;
 &lt;p&gt;You get a lot of things for free from the generator. &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;deploymentScripts&lt;/code&gt;: we will use it later for generating a &lt;code class=&quot;language-text&quot;&gt;web.config&lt;/code&gt; for the Azure Deployment&lt;/li&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;deploymentTemplates&lt;/code&gt;: various Azure Resource Manager (ARM) templates that you could use for provisioning Azure Resources needed.&lt;/li&gt;
-&lt;li&gt;And in &lt;code class=&quot;language-text&quot;&gt;src&lt;/code&gt;we have two files: &lt;code class=&quot;language-text&quot;&gt;index.ts&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;bot.ts&lt;/code&gt;. &lt;/li&gt;
+&lt;li&gt;And in &lt;code class=&quot;language-text&quot;&gt;src&lt;/code&gt; we have two files: &lt;code class=&quot;language-text&quot;&gt;index.ts&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;bot.ts&lt;/code&gt;. &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1&gt;Project walktrough&lt;/h1&gt;
+&lt;h1&gt;Project walkthrough&lt;/h1&gt;
 &lt;h2&gt;Slight change&lt;/h2&gt;
 &lt;p&gt;Create a new folder in &lt;code class=&quot;language-text&quot;&gt;src&lt;/code&gt; named &lt;code class=&quot;language-text&quot;&gt;bots&lt;/code&gt; and then you could just drag the &lt;code class=&quot;language-text&quot;&gt;bot.ts&lt;/code&gt; file to the &lt;code class=&quot;language-text&quot;&gt;bots&lt;/code&gt; folder inside of VS Code. And if you get prompted to make import-adjustments, select &lt;code class=&quot;language-text&quot;&gt;yes&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;
@@ -416,7 +623,7 @@ We will run and debug the Bot locally by using the Bot Emulator, and we will als
   
   &lt;/a&gt;
     
-As you can see the bot class extends activityHandler, and we have two methods that derives from activityHandler:&lt;/p&gt;
+As you can see the bot class extends activityHandler, and we have two methods that derive from activityHandler:&lt;/p&gt;
 &lt;h3&gt;onMessage&lt;/h3&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
       &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;onMessage&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; next&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
@@ -425,7 +632,7 @@ As you can see the bot class extends activityHandler, and we have two methods th
   &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt; next&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
-&lt;p&gt;When the bot receives a message it will be handled in the &lt;code class=&quot;language-text&quot;&gt;onMessage&lt;/code&gt; method. And normal user input text could be reached from the &lt;code class=&quot;language-text&quot;&gt;context.activity.text&lt;/code&gt;, and then you could do whatever you want with that text. In this case the bot just sends back, or Echoes what you wrote to the Bot.&lt;/p&gt;
+&lt;p&gt;When the bot receives a message it will be handled in the &lt;code class=&quot;language-text&quot;&gt;onMessage&lt;/code&gt; method. And normal user input text could be reached from the &lt;code class=&quot;language-text&quot;&gt;context.activity.text&lt;/code&gt;, and then you could do whatever you want with that text. In this case, the bot just sends back or Echoes what you wrote to the Bot.&lt;/p&gt;
 &lt;h3&gt;onMembersAdded&lt;/h3&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
       &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;onMembersAdded&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt; &lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; next&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
@@ -441,7 +648,7 @@ As you can see the bot class extends activityHandler, and we have two methods th
       &lt;/div&gt;
 &lt;p&gt;This one sends a welcome message to the user(s) when the bot first is added&lt;/p&gt;
 &lt;h2&gt;index.ts&lt;/h2&gt;
-&lt;p&gt;The index.ts contain a lot of thing, but we will quickly have a look at this.&lt;/p&gt;
+&lt;p&gt;The index.ts contain a lot of things, but we will quickly have a look at this.&lt;/p&gt;
 &lt;p&gt;We have imported the Bot at the top of the file, and now creating an instance of the class.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
       &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; myBot &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;SimonBot&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
@@ -611,14 +818,14 @@ You could select a message to inspect the JSON.
 &lt;/ol&gt;
 &lt;p&gt;Now we have everything working for a development scenario. If you want you could follow along in the Azure Deployment step as well.&lt;/p&gt;
 &lt;h1&gt;Azure Deployment.&lt;/h1&gt;
-&lt;p&gt;You could either go with the Microsoft post explaining how to do a “normal” ARM template deployment, or mine with a twist - using keyvault in the deployment process.&lt;/p&gt;
+&lt;p&gt;You could either go with the Microsoft post explaining how to do a “normal” ARM template deployment, or mine with a twist - using key vault in the deployment process.&lt;/p&gt;
 &lt;h2&gt;ARM Templates deployment with key vault&lt;/h2&gt;
 &lt;p&gt;I broke this out to its own post here:
 &lt;a href=&quot;https://simonagren.github.io/azurebot-armtemplate-keyvault&quot; target=&quot;_blank&quot;&gt;Bot Framework 4 ARM template Deploy with Key Vault&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;ARM Templates deployment&lt;/h2&gt;
-&lt;p&gt;You could follow along &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-deploy-az-cli?view=azure-bot-service-4.0&amp;#x26;tabs=csharp&quot;&gt;This&lt;/a&gt; blogpost from Microsoft explaining how to deploy.&lt;/p&gt;
+&lt;p&gt;You could follow along &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-deploy-az-cli?view=azure-bot-service-4.0&amp;#x26;tabs=csharp&quot;&gt;This&lt;/a&gt; blog post from Microsoft explaining how to deploy.&lt;/p&gt;
 &lt;h1&gt;Next step&lt;/h1&gt;
-&lt;p&gt;In the next post we will run the Bot in Microsoft Teams both from locally and hosted in Azure&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Modern SharePoint site creation with site designs and REST]]></title><description><![CDATA[In this post I will show you some REST operations to create modern SharePoint sites along with site designs, similar to the creation from…]]></description><link>https://simonagren.github.io/sites-sitedesign-rest/</link><guid isPermaLink="false">https://simonagren.github.io/sites-sitedesign-rest/</guid><content:encoded>&lt;p&gt;
+&lt;p&gt;In the next post, we will run the Bot in Microsoft Teams both from locally and hosted in Azure&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Modern SharePoint site creation with site designs and REST]]></title><description><![CDATA[In this post I will show you some REST operations to create modern SharePoint sites along with site designs, similar to the creation from…]]></description><link>https://simonagren.github.io/sites-sitedesign-rest/</link><guid isPermaLink="false">https://simonagren.github.io/sites-sitedesign-rest/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/sitescript-ff2b8fa9eecd9eb3cb337dceccaf0bb5-28890.png&quot;
