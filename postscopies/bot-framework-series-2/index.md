@@ -21,6 +21,10 @@ In this second post we will continue with the Bot and run it from within Microso
 - [Office 365 dev tenant](https://developer.microsoft.com/office/dev-program) - for Microsoft Teams
 - [Ngrok](https://ngrok.com/download)
 
+
+TODO https://docs.microsoft.com/en-us/azure/bot-service/bot-service-activities-entities?view=azure-bot-service-4.0&tabs=js#mention-entities
+
+
 # Bot Registration
 Last time we created a resource group in Azure which contains the service plan, the web service that runs the Bot, the Bot channels registrations and the Key vault.
 

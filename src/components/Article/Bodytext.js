@@ -16,6 +16,22 @@ const Bodytext = props => {
           :global(img) {
             max-width: 100%;
           }
+          :global(table) {
+            display: block;
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+
+            :global(tr) {
+              background-color: #fff;
+              border-top: 1px solid #c6cbd1;
+            }
+            :global(th),
+            :global(td) {
+              padding: 6px 13px;
+              border: 1px solid #dfe2e5;
+            }
+          }
 
           :global(h1),
           :global(h2),
