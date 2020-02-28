@@ -1,5 +1,5 @@
 ---
-title: Bot Framework in Node.js - Let's begin 
+title: Bot Framework in Node.js - Let's begin (Part 1)
 tags: ["botframework", "nodejs", "azure"]
 cover: botframework1.png
 author: Simon Ågren
