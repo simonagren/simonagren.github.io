@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Fri, 28 Feb 2020 08:24:13 GMT</lastBuildDate><item><title><![CDATA[Bot Framework in Node.js - Microsoft Teams (Part 2)]]></title><description><![CDATA[Introduction In the  previous post , we built the Bot, tested it locally in the emulator, created all resources in Azure and also deployed…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part2/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part2/</guid><content:encoded>&lt;p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Fri, 28 Feb 2020 08:37:47 GMT</lastBuildDate><item><title><![CDATA[Bot Framework in Node.js - Microsoft Teams (Part 2)]]></title><description><![CDATA[Introduction In the  previous post , we built the Bot, tested it locally in the emulator, created all resources in Azure and also deployed…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part2/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part2/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/botframework2-a7f5cecfbea0980063335fbf2dda403f-b70ec.png&quot;
@@ -33,7 +33,7 @@
   &lt;/a&gt;
     &lt;/p&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;In the &lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part1&quot; target=&quot;_blank&quot;&gt;previous post&lt;/a&gt;, we built the Bot, tested it locally in the emulator, created all resources in Azure and also deployed the Bot to the web service in Azure using ARM templates and Key Vault (separate post).&lt;/p&gt;
+&lt;p&gt;In the &lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part1&quot; target=&quot;_blank&quot;&gt;previous post&lt;/a&gt;, we built the Bot, tested it locally in the emulator, created all resources in Azure and also deployed the Bot to the web service in Azure using ARM templates and Key Vault (&lt;a href=&quot;https://simonagren.github.io/azurebot-armtemplate-keyvault&quot; target=&quot;_blank&quot;&gt;separate post&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;In this second post, we will continue with the Bot and run it from within &lt;strong&gt;Microsoft Teams&lt;/strong&gt;. From localhost with the help of &lt;strong&gt;ngrok&lt;/strong&gt; and, from the &lt;strong&gt;Azure deployment&lt;/strong&gt;. &lt;/p&gt;
 &lt;p&gt;Just for fun, we will add an &lt;strong&gt;@mention&lt;/strong&gt; in the &lt;strong&gt;echo&lt;/strong&gt; when the Bot is in Microsoft Teams.&lt;/p&gt;
 &lt;h1&gt;Sourcecode&lt;/h1&gt;
@@ -480,7 +480,7 @@
   &lt;/a&gt;
     &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;And if we start up the &lt;strong&gt;emulator&lt;/strong&gt; again and connect to localhost using the &lt;strong&gt;appId&lt;/strong&gt; and &lt;strong&gt;secret&lt;/strong&gt; (remember the .env file?) we could that, as expected, it’s only in Teams that we get then mention.&lt;/li&gt;
+&lt;li&gt;And if we start up the &lt;strong&gt;emulator&lt;/strong&gt; again and connect to localhost using the &lt;strong&gt;appId&lt;/strong&gt; and &lt;strong&gt;secret&lt;/strong&gt; (remember the .env file?) we could see that, as expected, it’s only in Teams that we get then mention.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
   &lt;a
