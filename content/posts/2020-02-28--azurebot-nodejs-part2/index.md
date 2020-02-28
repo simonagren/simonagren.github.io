@@ -9,7 +9,7 @@ author: Simon Ågren
 
 # Introduction
 
-In the <a href="https://simonagren.github.io/azurebot-nodejs-part1" target="_blank">previous post</a>, we built the Bot, tested it locally in the emulator, created all resources in Azure and also deployed the Bot to the web service in Azure using ARM templates and Key Vault (separate post).
+In the <a href="https://simonagren.github.io/azurebot-nodejs-part1" target="_blank">previous post</a>, we built the Bot, tested it locally in the emulator, created all resources in Azure and also deployed the Bot to the web service in Azure using ARM templates and Key Vault (<a href="https://simonagren.github.io/azurebot-armtemplate-keyvault" target="_blank">separate post</a>).
 
 In this second post, we will continue with the Bot and run it from within **Microsoft Teams**. From localhost with the help of **ngrok** and, from the **Azure deployment**. 
 
@@ -167,7 +167,7 @@ Now it should be working fine within the context of Teams. The Bot is running lo
 
 ![mentioninteams](./mentioninteams.png)
 
-- And if we start up the **emulator** again and connect to localhost using the **appId** and **secret** (remember the .env file?) we could that, as expected, it's only in Teams that we get then mention.
+- And if we start up the **emulator** again and connect to localhost using the **appId** and **secret** (remember the .env file?) we could see that, as expected, it's only in Teams that we get then mention.
 
 ![compare](./mentioncomparasing.png)
 
