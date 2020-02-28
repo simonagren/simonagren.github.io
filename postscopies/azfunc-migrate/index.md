@@ -8,9 +8,9 @@ author: Simon Ågren
 ![extend](./sitescript.png)
 
 # Introduction
-Last time we visited Azure Functions, I did a brief introduction of Azure Fuctions 3.0 that it now supports `Node 12`. The function app runtime you select gives you different options when it comes to platform versions. Go and check out that post if you want to know more.
+Last time we visited Azure Functions, I did a brief introduction of Azure Functions 3.0 that now supports `Node 12`. The function app runtime you select gives you different options when it comes to platform versions. Go and check out that post if you want to know more.
 
-I have created an Function App and a Function with version 2.x. And today we are going to have a look at the different options when it comes to migrating from 2.x to 3.x. There's not a lot of steps. I will give you a few options and try to clarify a few things.
+I have created a **Function App and** a **Function** with version 2.x. And today we are going to have a look at the different options when it comes to migrating from 2.x to 3.x. There's not a lot of steps, I will give you a few options and try to clarify a few things.
 
 # Prerequisites 
 - [Azure Cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
@@ -30,39 +30,39 @@ We could move into the `Function app settings` and from there just change from `
 
 ![runtime3](./runtime3.png)
 
-This will actually change the `Application settings` to have runtime `~3` and Node version `~12`. And this means that changing the application settings also forces a `runtime` change. We could go either path.
+This will change the `Application settings` to have runtime `~3` and Node version `~12`. And this means that changing the application settings also forces a `runtime` change. We could go either path.
 
 ## Using Azure CLI
-In the previous post we had a look at how to use Azure CLI to get all appsettings, and even query for specific settings. Now we will look at how to change the settings. And as mentioned earlier, this makes the same changes as if we would change the `runtime` in the portal.
+In the previous post, we had a look at how to use Azure CLI to get all app settings and even query for specific settings. Now we will look at how to change the settings. As mentioned earlier, this makes the same changes as if we would change the `runtime` in the portal.
 
-### Change runtime in appsettings
+### Change runtime in app settings
 Here we use the command `az functionapp config appsettings set` to set the runtime for the function app. we also use the name of the `function app` and the name of the `resource-group`.
 
 ```json
 az functionapp config appsettings set -n funcappsimon -g rgfuncappsimon -s FUNCTIONS_EXTENSION_VERSION=~3
 ```
 
-### Change Node version in appsettings
-Here we use the command `az functionapp config appsettings set` to set the Node verions for the function app. we also use the name of the `function app` and the name of the `resource-group`.
+### Change Node version in app settings
+Here we use the command `az functionapp config appsettings set` to set the Node versions for the function app. we also use the name of the `function app` and the name of the `resource-group`.
 
 ```json
 az functionapp config appsettings set -n funcappsimon -g rgfuncappsimon -s WEBSITE_NODE_DEFAULT_VERSION=~12
 ```
 
 ## Using Azure Functions Extension
-Using Azure Functions Extension we could just use the available application settings, right click and edit the setting.
+Using Azure Functions Extension we could just use the available application settings, right-click and edit the setting.
 
 ![editsett](./editsetting.png)
 
 # Changes in Visual Studio Code
-Many times we only need to make changes in Azure, if there's no breaking changes or we don't need to deploy anything else.
+Many times we only need to make changes in Azure, if there are no breaking changes or we don't need to deploy anything else.
 
 ## Breaking changes
 Even though the migration is often smooth there are still some breaking changes:
 https://docs.microsoft.com/sv-se/azure/azure-functions/functions-versions#javascript
 
 ## Settings in Azure Functions Extension for creating new
-I'm primarilly using the extension when it comes to creation, deployment and changing settings. This is not the first time I'm mentioning the extension. In an old post of mine I'm walking you trough the steps on how to generate a `Function App` and `functions` using the `Azure Functions Extension` for `Visual Studio Code`. 
+I'm primarily using the extension when it comes to creation, deployment and changing settings. This is not the first time I'm mentioning the extension. In an old post of mine, I'm walking you through the steps on how to generate a `Function App` and `functions` using the `Azure Functions Extension` for `Visual Studio Code`. 
 
 ![extsett](./azurefuncsetting.png)
 
@@ -73,17 +73,17 @@ I used the extension to deploy the `Function App` to Azure as a 2.x. And if we h
 
 ![nomatch](./doesnotmatch.png)
 
-So go in to you code project, `.vscode`, and then in `settings.json` change the `azureFunctions.projectRuntime` to `~3`.
+So go into your code project, `.vscode`, and then in `settings.json` change the `azureFunctions.projectRuntime` to `~3`.
 
 ![psett](./projectsetting.png)
 
-Beware that changing the local project setting to `~3` and then deploying to a `already deployed function app` does NOT change the runtime in Azure.
+Beware that changing the local project setting to `~3` and then deploying to an `already deployed function app` does NOT change the runtime in Azure.
 
 # Conclusion
-My preferred way would be to use the Azure Functions Extension all the way. Rmember to change the default version to `~3`. And the approach for migration would be:
+My preferred way would be to use the Azure Functions Extension all the way. Remember to change the default version to `~3`. And the approach for migration would be:
 1. Change to `~3` in the `settings.json`. 
-2. Do a `npm start` and try the function locally in the emulator. Make sure it works
-3. Via the `Azure Function Extension` change the appsettings of the `function app` to use runtime `~3` and node `~12`.
+2. Do an `npm start` and try the function locally in the emulator. Make sure it works
+3. Via the `Azure Function Extension` change the app settings of the `function app` to use runtime `~3` and node `~12`.
 4. Deploy the functions to the function app via the extension.
 5. Drink a preferred beverage while waiting.
 

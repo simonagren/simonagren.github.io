@@ -7,13 +7,13 @@ author: Simon Ågren
 
 ![durable](./function-chaining.png)
 
-Durable functions is what Microsoft is calling "orchestrator functions". It's an extension of Azure Functions and takes a series of functions and wraps them as a single, long transaction. It let's you write stateful functions and workflows on top of the normally stateless Azure Functions. 
+Durable function sare what Microsoft is calling "orchestrator functions". It's an extension of Azure Functions and takes a series of functions and wraps them as a single, long transaction. It lets you write stateful functions and workflows on top of the normally stateless Azure Functions. 
 
-I've been playing around with Durable Functions in Node.js now and then for a few months now, and it has really been awesome for quite some time. Now with the recent updates I feel the maturity has come to another level.
+I've been playing around with Durable Functions in Node.js now and then for a few months now, and it has been awesome for quite some time. Now with the recent updates, I feel the maturity has come to another level.
 
 [Katy Shimizu](https://twitter.com/kashimizMSFT) has done an amazing job fixing a lot of bugs and implementing a lot of new functionality, kudos! 
 
-In this post we will create some code and have a quick look at what I find to be some of the core concepts. The focus will be on getting something up and running, so we could debug locally. In the next post I will further discuss some of the briefly mentioned topics.
+In this post, we will create some code and have a quick look at what I find to be some of the core concepts. The focus will be on getting something up and running, so we could debug locally. In the next post, I will further discuss some of the briefly mentioned topics.
 
 We will touch on:
  - The different types of Azure Functions a Durable Function consists of
@@ -45,7 +45,7 @@ It is important to remember how an Orchestrator function operates differently th
 ### Client
 Is the entry point for creating an instance of a durable orchestration.
 
-> The orchestration client binding enables you to write functions which interact with orchestrator functions. For example, you can act on orchestration instances in the following ways:
+> The orchestration client binding enables you to write functions that interact with orchestrator functions. For example, you can act on orchestration instances in the following ways:
 >
 > - Start them.
 > - Query their status.
@@ -53,13 +53,13 @@ Is the entry point for creating an instance of a durable orchestration.
 > - Send events to them while they're running.
 > - Purge instance history.
 
-In another blog post we will discuss more about the Client usage, how we could poll etc.
+In another blog post, we will discuss the Client usage, how we could poll, etc.
 
 ___
 
 ## Yield vs Await
 
-You will see me using `yield`instead of await in most cases, the exception is when I'm working directly with PnPJs. `yield` is being used in the durable functions, and here's an explanation:
+You will see me using **yield** instead of **await** in most cases, the exception is when I'm working directly with PnPJs. **yield** is being used in the durable functions, and here's an explanation:
 
 > In C# Durable Functions, the framework will terminate an orchestrator function before it completes if it needs to schedule async work and sleep. JavaScript does not have this capability, so we took advantage of using generators to move step-by-step through a function to achieve a similar "termination before completion" effect. Because the shim library in this repository uses generators, it uses the "yield" keyword.
 
@@ -76,15 +76,15 @@ All of these are not essential for this post, but they are when it comes to the 
 ___
 
 ## Creating the Project and adding dependencies
-We will use a simple pattern called "Function Chaining", which is executing a sequence of functions in a particular order. For our fictional use case there is no real reason to do things in specific order, it's more common in scenarios where you pass the returned values into the next step. But for the sake of things, let's just go with it.
+We will use a simple pattern called "Function Chaining", which is executing a sequence of functions in a particular order. For our fictional use case, there is no real reason to do things in a specific order, it's more common in scenarios where you pass the returned values into the next step. But for the sake of things, let's just go with it.
 
 ![architecture](./architecture.jpg)
 
 
-I will use [this](https://simonagren.github.io/azurefunction-v2-pnpjs/) post as reference for some installation here.
+I will use [this](https://simonagren.github.io/azurefunction-v2-pnpjs/) post as a reference for some installation here.
 You could also have a look at the documentation in the durable functions repository [here](https://github.com/Azure/azure-functions-durable-js)
 
-After all the prerequisites are installed create a new folder via the Node.js console, then cd into the new folder and open Visual Studio code by writing `code .`.
+After all the prerequisites are installed, create a new folder via the Node.js console, then cd into the new folder and open Visual Studio code by writing `code .`.
 Then create a New Project (not a new Function) via the Azure Functions extension, you could get some inspiration from the post.
 
 Now we need to install the Durable Functions Extension, and you do this via the console again:
@@ -93,9 +93,9 @@ Now we need to install the Durable Functions Extension, and you do this via the 
 func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0
 ```
 
-And I like to put all my dependecies into a package.json, so we need to do a `npm init` and then install the PnPJs dependencies. Look how I did in the linked post.
+And I like to put all my dependencies into a package.json, so we need to do an `npm init` and then install the PnPJs dependencies. Look how I did in the linked post.
 
-Now we also need to add the durable functions dependencies:
+Now we also need to add the dependencies of the durable function:
 
 ```Node
 npm install durable-functions --save
@@ -103,20 +103,20 @@ npm install durable-functions --save
 ___
 
 ## Creating the Timer Trigger
-In the linked post I'm showing how to create a Http Trigger via the extension, but now we will create a Timer Trigger. In this timer trigger we will include a "Client" that are capable of starting an orchestrator.
+In the linked post I'm showing how to create an Http Trigger via the extension, but now we will create a Timer Trigger. In this timer trigger, we will include a "Client" that is capable of starting an orchestrator.
 
-While selecting the function template, you could change the template filter to `All`, then you will see that there is provided templates of a durable function scenario (the ones starting with durable). 
+While selecting the function template, you could change the template filter to `All`, then you will see that there are provided templates of a durable function scenario (the ones starting with durable). 
 
 ![all](./javascriptall.jpg)
 
-Feel free to look at them if you want to, but for this we are going with the Timer Trigger, I named mine `PnPTimerTrigger`.
+Feel free to look at them if you want to, but for this, we are going with the Timer Trigger, I named mine `PnPTimerTrigger`.
 
 As always we get two files:
  - function.json
  - index.js
 
 ### function.json
-In the function.json we need to set the schedule and and some bindings for the Client. So for this example I have set the timer to run every two minutes.
+In the function.json we need to set the schedule and add some bindings for the Client. For this example, I have set the timer to run every two minutes.
 
 ```json
 {
@@ -241,7 +241,7 @@ module.exports = df.orchestrator(function* (context) {
 
 ## Creating the Get Lists Activity (AGetLists)
 
-In this activity we actually just perform one task and return the values, for this we are using PnPJs. I like to keep an A in the function name if it's an activity.
+In this activity we just perform one task and return the values, for this we are using PnPJs. I like to keep an A in the function name if it's an activity.
 
 ### function.json
 
@@ -283,7 +283,7 @@ module.exports = async function (context) {
 
 ## Creating the Get Unique Items Activity
 
-It's similar as the previous function.
+It's similar to the previous function.
 
 ### function.json
 ```json
@@ -325,10 +325,10 @@ ___
 
 ## Debug
 
-In a previous post we used to emulator for debugging, and that is fully possible in this scenario aswell.
+In a previous post, we used the emulator for debugging, and that is fully possible in this scenario as well.
 
 ### Azure Storage Emulator
-First make sure that you have started Azure Storage Emulator and that you are using version 5.9 or later (in this moment 5.9 is the latest).
+First, make sure that you have started Azure Storage Emulator and that you are using version 5.9 or later (this moment 5.9 is the latest).
 
 ### local.settings.json
 Then make sure your local.settings.json is configured in the right way for our scenario. We need to use development storage and we also need to provide the SharePoint values for PnPJs to work. Have a look at mine:
@@ -355,6 +355,6 @@ If everything works out you should see some logging of all the items with unique
 ___
 
 ## Next Steps
-In the next post we will look the fan-out fan-in pattern, were we will do a lot in parallel. This means we also need to talk about throttling in SharePoint and how we could handle this.
+In the next post, we will look at the fan-out fan-in pattern, where we will do a lot in parallel. This means we also need to talk about throttling in SharePoint and how we could handle this.
 
-We will also extend our example with something called suborchestrations, which could be really useful in more complex orchestrations.
+We will also extend our example with something called sub orchestrations, which could be very useful in more complex orchestrations.
