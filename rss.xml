@@ -1,4 +1,292 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Fri, 28 Feb 2020 09:58:34 GMT</lastBuildDate><item><title><![CDATA[Bot Framework in Node.js - Microsoft Teams (Part 2)]]></title><description><![CDATA[Introduction In the  previous post , we built the Bot, tested it locally in the emulator, created all resources in Azure and also deployed…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part2/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part2/</guid><content:encoded>&lt;p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Mon, 02 Mar 2020 17:42:37 GMT</lastBuildDate><item><title><![CDATA[Azure Function migration from 2.0 to 3.0]]></title><description><![CDATA[Introduction Last time we visited Azure Functions, I did a brief introduction of Azure Functions 3.0 that now supports  . The function app…]]></description><link>https://simonagren.github.io/azfunc-migrate/</link><guid isPermaLink="false">https://simonagren.github.io/azfunc-migrate/</guid><content:encoded>&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/azfuncmigrate3-af01378f495ff5b799014c0a3b4f66e3-b70ec.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 46.916666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAA7CAAAOwgEVKEqAAAABzUlEQVQoz42RTWsTQRjHc/Qmgl48GIvYF9BKKEqpon6OFERrkPp28Sj4BfwCUlFvIl5yEUILrU2F1by03WoTE2TX7MYkdbOlG1NIrZvMz9ndSDfiwQeemWeG//zmP89EkNHrCf5E15jFzVwFYWPZO5TLJSqVCqZpouu6XJcxDIN6o0GhsImmaayvr2Hb2/75SE8EsKLVZVVfhdwhHPUhi1/3cbYtPheL5PN5stkMiqKQTqfJ5XJ8yGRYWlqkJC9QVZVm0w6A3vDF+sGL/C4t4xEiLbc+Xmd58xNvSi1ftNfpsLGhSqcGjXods1pFk24dxyEcQprzgXNKlXf6jqzW+Fm4LO1O+4LHbytUGk2+VU22tr5Tl7BareanB/ae3m63CdrWO3Do9XDufY2y/QuMB7h7Fs+zFtY+vH71kqHRs8QmL3HuwhSxqSuMxyY4MzZKNBollUoFve92B3vYcUEzFdhdoS25mhU858nTZxw9OcJwbJJT4+c5PXGRoeExRk4c59iRwySTSV/num7IYR+KaB3UBPP8wgLxaze4dec+idt3Zd5j5maC2cQM0/G4/zkDDkUf4M39yq89sBCC/4mwLhLeECHI3xcNZF/3L/1vA3l13Ikf+fwAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;extend&quot;
+        title=&quot;&quot;
+        src=&quot;/static/azfuncmigrate3-af01378f495ff5b799014c0a3b4f66e3-48538.png&quot;
+        srcset=&quot;/static/azfuncmigrate3-af01378f495ff5b799014c0a3b4f66e3-bed0f.png 200w,
+/static/azfuncmigrate3-af01378f495ff5b799014c0a3b4f66e3-5fd34.png 400w,
+/static/azfuncmigrate3-af01378f495ff5b799014c0a3b4f66e3-48538.png 800w,
+/static/azfuncmigrate3-af01378f495ff5b799014c0a3b4f66e3-b70ec.png 1200w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Last time we visited Azure Functions, I did a brief introduction of Azure Functions 3.0 that now supports &lt;code class=&quot;language-text&quot;&gt;Node 12&lt;/code&gt;. The function app runtime you select gives you different options when it comes to platform versions. Go and check out that post if you want to know more.&lt;/p&gt;
+&lt;p&gt;I have created a &lt;strong&gt;Function App and&lt;/strong&gt; a &lt;strong&gt;Function&lt;/strong&gt; with version 2.x. And today we are going to have a look at the different options when it comes to migrating from 2.x to 3.x. There’s not a lot of steps, I will give you a few options and try to clarify a few things.&lt;/p&gt;
+&lt;h1&gt;Prerequisites&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/cli/azure/install-azure-cli&quot;&gt;Azure Cli&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://azure.microsoft.com/free/&quot;&gt;An Azure Account&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions&quot;&gt;Azure Functions Extension&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Changes in Azure&lt;/h1&gt;
+&lt;h2&gt;Using Azure Portal&lt;/h2&gt;
+&lt;p&gt;As I mentioned in the previous post, if there’s a &lt;code class=&quot;language-text&quot;&gt;function&lt;/code&gt; added to the &lt;code class=&quot;language-text&quot;&gt;function app&lt;/code&gt; we could only change the runtime between 2.x and 3.x. Changing to 1.x is only possible if there’s no &lt;code class=&quot;language-text&quot;&gt;function&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/runtime2-71fab03e81d8c582d9f0d0d4a13d8ccd-7ad69.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 82.53223915592028%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAAA7DAAAOwwHHb6hkAAACLklEQVQ4y52UbW/TMBDH89n4dHydwSsktlcdkxDSNo11G2XAWlbaJvFDHNtxnPjP2VHbUKnaxEm/2L6zz47vzlnXSlgr4BqB3ssd1g76SOuirkLnGJwt0ZgiYfWAdxyhq9K6DCTSAqrBP1KZAK4DWB1g3KDzvoXSGkJUkFKBc5loXJvsfQAyITgqKVBVgiYKMFbSZEnmgNB3hEffeXRECAHHJNoiWVwcHXHOUdc1/aKlxR0E6T+enmJyfo7JZIKzszNoOt148ZitZJzHUzEYYxH1W5P3Pm0UN9xuGjc65nB3whUz+FNqlKqF0D0af/y3XnI2OFytkecFypLDOZ/o+jByMAIvS2YtQ63WUGJB/EbF59DVM5zZEGv0LaOUiGkjRvCD8Z4M8xOox/col19QzD8hX1wgn19g/XSeEOtLqPIWmk+JuwOmu9aIe2hxh6xjV5CrSyxXM7D8AbJ4QM1nZPxOE2epXxX3MPIHWr2A03O0ZpH6sY3jnY5IiX1yVePN2wU+P5p0sb7rMdzYmH5PGHGgyzilzPOqxN2vEst1SXnoUsb3fUB4TRQOgyIkoyohRyqHkhsKUAmtWGobqufQW6oUM+D1QX/LXkdBeQc7/wBRTFGXN6jy64TcXKeAVMXNcOF0+TW7Tf2aTRPb4GzHcW7WkhOdf6WUeQLPZ+Cbb1D8J514kXBmSa/M5tVkLVVTQx/nXErwmOhK1fhfyYzRFAhDhU8Pg4lR7l9VYsf4C6M8IYXK7yA2AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;runtime2&quot;
+        title=&quot;&quot;
+        src=&quot;/static/runtime2-71fab03e81d8c582d9f0d0d4a13d8ccd-48538.png&quot;
+        srcset=&quot;/static/runtime2-71fab03e81d8c582d9f0d0d4a13d8ccd-bed0f.png 200w,
+/static/runtime2-71fab03e81d8c582d9f0d0d4a13d8ccd-5fd34.png 400w,
+/static/runtime2-71fab03e81d8c582d9f0d0d4a13d8ccd-48538.png 800w,
+/static/runtime2-71fab03e81d8c582d9f0d0d4a13d8ccd-7ad69.png 853w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h3&gt;Changing runtime from Function app settings&lt;/h3&gt;
+&lt;p&gt;We could move into the &lt;code class=&quot;language-text&quot;&gt;Function app settings&lt;/code&gt; and from there just change from &lt;code class=&quot;language-text&quot;&gt;~2&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;~3&lt;/code&gt;. This takes a few moments and then we have successfully changed the runtime.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/runtime3-2421b3b6816c37296181031a95ffe037-3524b.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 54.42546583850931%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABVklEQVQoz6WT707CMBTF9/6v4kv4URM+aWQQNsEoKIxttOv/tT3ebYBERYne9Jfmru3JPd1t4r0HExZSO/jWwTgP1QIuoA9jFJqmAeccQoj+W4zxLInWGru6Amc7CDqotUKezZCOx8jzHJ/jJ7FeUBmLouKQxiP0BwLqukZZlmCMXSTScYhESIO3LQMXBvbg84/RV+h1AbYagW8nUFUKVkzRVBmsXMKp1ffoEyhv9SticEOFUa/hNjd4Xk7xML1DU6YknvazYhlMM/+K2LPPrXwiQTsI2jbAtRGjTODqtvm/ZaM4yvUcrCKLcgPZFDCqQms5wX7FO47oJYn5vWW6K7O8JsEZ6vU92R3THU7IyiOsWBztWXFitc+HNSsX8OaFLJtBMAQPZw01L1VaFgi+7Yqn0f3xS0Bf3aF1EkWN3b0Eax1CCPQyzHExnmPfdt1+KdXHfprfAUTDV/sflvuwAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;runtime3&quot;
+        title=&quot;&quot;
+        src=&quot;/static/runtime3-2421b3b6816c37296181031a95ffe037-48538.png&quot;
+        srcset=&quot;/static/runtime3-2421b3b6816c37296181031a95ffe037-bed0f.png 200w,
+/static/runtime3-2421b3b6816c37296181031a95ffe037-5fd34.png 400w,
+/static/runtime3-2421b3b6816c37296181031a95ffe037-48538.png 800w,
+/static/runtime3-2421b3b6816c37296181031a95ffe037-b70ec.png 1200w,
+/static/runtime3-2421b3b6816c37296181031a95ffe037-3524b.png 1288w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;This will change the &lt;code class=&quot;language-text&quot;&gt;Application settings&lt;/code&gt; to have runtime &lt;code class=&quot;language-text&quot;&gt;~3&lt;/code&gt; and Node version &lt;code class=&quot;language-text&quot;&gt;~12&lt;/code&gt;. And this means that changing the application settings also forces a &lt;code class=&quot;language-text&quot;&gt;runtime&lt;/code&gt; change. We could go either path.&lt;/p&gt;
+&lt;h2&gt;Using Azure CLI&lt;/h2&gt;
+&lt;p&gt;In the previous post, we had a look at how to use Azure CLI to get all app settings and even query for specific settings. Now we will look at how to change the settings. As mentioned earlier, this makes the same changes as if we would change the &lt;code class=&quot;language-text&quot;&gt;runtime&lt;/code&gt; in the portal.&lt;/p&gt;
+&lt;h3&gt;Change runtime in app settings&lt;/h3&gt;
+&lt;p&gt;Here we use the command &lt;code class=&quot;language-text&quot;&gt;az functionapp config appsettings set&lt;/code&gt; to set the runtime for the function app. we also use the name of the &lt;code class=&quot;language-text&quot;&gt;function app&lt;/code&gt; and the name of the &lt;code class=&quot;language-text&quot;&gt;resource-group&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az functionapp config appsettings set -n funcappsimon -g rgfuncappsimon -s FUNCTIONS_EXTENSION_VERSION=~&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;Change Node version in app settings&lt;/h3&gt;
+&lt;p&gt;Here we use the command &lt;code class=&quot;language-text&quot;&gt;az functionapp config appsettings set&lt;/code&gt; to set the Node versions for the function app. we also use the name of the &lt;code class=&quot;language-text&quot;&gt;function app&lt;/code&gt; and the name of the &lt;code class=&quot;language-text&quot;&gt;resource-group&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az functionapp config appsettings set -n funcappsimon -g rgfuncappsimon -s WEBSITE_NODE_DEFAULT_VERSION=~&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;Using Azure Functions Extension&lt;/h2&gt;
+&lt;p&gt;Using Azure Functions Extension we could just use the available application settings, right-click and edit the setting.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/editsetting-909997a0f39ae78e2d3283ba527c01dd-1ecbd.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 795px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 71.19496855345912%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACMElEQVQ4y4WTSW/bMBCF8wtaFOitkK2VsrVZtiRK1EJJtnNy0fTaQ68F2v9/f52h4MSpE/QwGC7gh+GbNw9huMGoBOq6gqxqSFmjqiTKsgLf+X6AIBB3cT33PA+249DeR7bL8BAEIcoiQaMajHrCOE1omgZpmmGz2f4X6LoeVus1HIKuKRMwQJykpiqlWoIpyp1ZR1FsHniefxe3QAa5rovVasVAYR7WdYO26yk6dJT7fkBGVWa7HFm2MxVzNmuKQITg37kEX9s2HAYuFQqjVVVVBNGYxgl6GDFSno8nWmucTmcMlPN8b8B5miBwbEShMNmxvsC3LdiUDZC1klIulXWDyQzshoH2PTRVy1Iw0CWtPpcXuF9/I/7+B97lFz60P/BR/8Qn+fQCZA2naUbbdiZGPT6DWc+B4IqgfObnDfbTBfX5G5rHJ0TqEVaqYEXFa+B8PJoHS6U9QUa0BNMEv2pbE3QrAtTlAW0t0ZM7CrKLcMk69P1nDUvy4DwfScfeQFgzrm6g73LmJmmWgcDcEPapop9wM6Vs6L2ER51/8HyBwy7G3JXkxd484C+yXnEcIyFLsQviOEFM+dZKbB3bdihsc2ZZ1gKURYazrgxQa200jLYRmdV904Ovje2a4EkxPhRk7G2aY99o6ubSBLZQFEVvTsgV9i6QL5I0RdsrVKTL4VCYyPf7u6m4HcN3gWEYolMF2nEwArNxWS+ekh3pmOc5BDXh35m+7hdZPPAIM/AvFLSuKwA1aXMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;editsett&quot;
+        title=&quot;&quot;
+        src=&quot;/static/editsetting-909997a0f39ae78e2d3283ba527c01dd-1ecbd.png&quot;
+        srcset=&quot;/static/editsetting-909997a0f39ae78e2d3283ba527c01dd-c5464.png 200w,
+/static/editsetting-909997a0f39ae78e2d3283ba527c01dd-ae6da.png 400w,
+/static/editsetting-909997a0f39ae78e2d3283ba527c01dd-1ecbd.png 795w&quot;
+        sizes=&quot;(max-width: 795px) 100vw, 795px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h1&gt;Changes in Visual Studio Code&lt;/h1&gt;
+&lt;p&gt;Many times we only need to make changes in Azure, if there are no breaking changes or we don’t need to deploy anything else.&lt;/p&gt;
+&lt;h2&gt;Breaking changes&lt;/h2&gt;
+&lt;p&gt;Even though the migration is often smooth there are still some breaking changes:
+&lt;a href=&quot;https://docs.microsoft.com/sv-se/azure/azure-functions/functions-versions#javascript&quot;&gt;https://docs.microsoft.com/sv-se/azure/azure-functions/functions-versions#javascript&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Settings in Azure Functions Extension for creating new&lt;/h2&gt;
+&lt;p&gt;I’m primarily using the extension when it comes to creation, deployment and changing settings. This is not the first time I’m mentioning the extension. In an old post of mine, I’m walking you through the steps on how to generate a &lt;code class=&quot;language-text&quot;&gt;Function App&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;functions&lt;/code&gt; using the &lt;code class=&quot;language-text&quot;&gt;Azure Functions Extension&lt;/code&gt; for &lt;code class=&quot;language-text&quot;&gt;Visual Studio Code&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/azurefuncsetting-f82edc9e3e8fdc285dd7382332f1238c-ebeb8.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 56.29202689721422%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABcUlEQVQoz3WS23KCQBBE+Q+R+0VFQW6KiZZV8uL//9Bkz5CxTCp5aFiW2e6envXyPJdxHGW32wnrKIokjmNdZ1n2QpqmulcUxb+gzgvDSJqmkb7vpes6Jcvcz81mo9jv94q6rvWf7/uK9XotQRDo28C3lySp3O93medZrtdPiZJEqraX6XxW54bL5SLH41HJD4eDVFUlZVlqZ9vtVoGgcxjqJg4oCqNY6n6Q+fGQ0+mk7g1t22on7EOMIyIC8KjDOE5UGVVaZJOsTNXapYa3HXxv9UfL2EQZsjwvxByTJwTDMOjaCJe6/JWxiXKGCJQQd4uqL6vVSgmez6fmervdtF3ioA5SviHiDAaAte2GkqjC+9RQhhRAgjo17OMCMq4R4jZ1gwczB165BKEUlbsqzhGuaJVBEAsOTJg1pL/hJe7Rde1S6OC74mY8y4e7JkwT2NWx72maVAi371lqhqFziBOcLtNyUy5dwXd7fwGC/1r+AmYZQg00+OxJAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;extsett&quot;
+        title=&quot;&quot;
+        src=&quot;/static/azurefuncsetting-f82edc9e3e8fdc285dd7382332f1238c-48538.png&quot;
+        srcset=&quot;/static/azurefuncsetting-f82edc9e3e8fdc285dd7382332f1238c-bed0f.png 200w,
+/static/azurefuncsetting-f82edc9e3e8fdc285dd7382332f1238c-5fd34.png 400w,
+/static/azurefuncsetting-f82edc9e3e8fdc285dd7382332f1238c-48538.png 800w,
+/static/azurefuncsetting-f82edc9e3e8fdc285dd7382332f1238c-ebeb8.png 1041w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Nowadays you change the settings of your extension in VS Code when it comes to &lt;code class=&quot;language-text&quot;&gt;project language&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;runtime&lt;/code&gt;. If you look at the picture you can see that I have &lt;code class=&quot;language-text&quot;&gt;~2&lt;/code&gt; selected from before. I can now just change it to &lt;code class=&quot;language-text&quot;&gt;~3&lt;/code&gt; to match de default values of the &lt;code class=&quot;language-text&quot;&gt;Azure Portal&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;Azure CLI&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Changes in the code&lt;/h2&gt;
+&lt;p&gt;I used the extension to deploy the &lt;code class=&quot;language-text&quot;&gt;Function App&lt;/code&gt; to Azure as a 2.x. And if we have made our changes in Azure and changed the runtime to 3.x, and then try to deploy, the extension picks this up. You could still deploy, but it notices you have a local 2.x project and a 3.x in Azure.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/doesnotmatch-9063a4bb5f65a2a0703ee448fc9dd9fc-573dd.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 698px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 23.065902578796564%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA5UlEQVQY022P20rEQBBE8/+/4Y+Igg8ioll0d95ymYCrydxvGwNlT8d9EQNFVXf6zPQ0/fCBcRzQ9wOstfDewznHqvmvrv9Y3NtzZXPOaNb4BusyjFYMxBhRSkFKmesQA/dCCDTn2GNK7CF49kR1nd22jQ5UNzDuG95ZBhNpXVeUXGhoh0rJVKc90xZ1k5x2Z4YOrF6/ppQLNfatrsq/0IWyTwXTl4E8K0yfGpKycoFftCwKxhh4umieZ2YbrTWUUv+qQuN5wcOLwO3jK+6fDrh7PkJ0E07Hd7TtAUIISCkpt+i6Dj8MVnvgjNv3MwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;nomatch&quot;
+        title=&quot;&quot;
+        src=&quot;/static/doesnotmatch-9063a4bb5f65a2a0703ee448fc9dd9fc-573dd.png&quot;
+        srcset=&quot;/static/doesnotmatch-9063a4bb5f65a2a0703ee448fc9dd9fc-62f75.png 200w,
+/static/doesnotmatch-9063a4bb5f65a2a0703ee448fc9dd9fc-683fa.png 400w,
+/static/doesnotmatch-9063a4bb5f65a2a0703ee448fc9dd9fc-573dd.png 698w&quot;
+        sizes=&quot;(max-width: 698px) 100vw, 698px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;So go into your code project, &lt;code class=&quot;language-text&quot;&gt;.vscode&lt;/code&gt;, and then in &lt;code class=&quot;language-text&quot;&gt;settings.json&lt;/code&gt; change the &lt;code class=&quot;language-text&quot;&gt;azureFunctions.projectRuntime&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;~3&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/projectsetting-a7efb2ccaef4484bc967a7b178b570af-a7df7.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 37.67258382642998%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABjUlEQVQoz22SSW/bMBCF9RdyKxJRpsRdplbbkiUvsdsscICkqNtDgZx67v8/v45Yp80hh4chRc6HxzeK+n6NwhfQSkNdJARH05Toug5VVUJKBW1sOJPv7k3r6ey9otPTCQ+nE/pxRLcesB43sNaSHMpqTlXBGgMlBFgcI765/qdpz1gSNEsSJKTo5esLnn+c8fz9G7aHA4bdDobccM6RZRmEyTFfDsjbntSFWvR7+NUI7StYmcFIgZsAZ4iWuxXqVYOi8MFJnjsCpQE2OdDzEvXmiGq8RbneEWyLZn+Hdv9A3w6wWqEwCk4JSOqLiqGFG5YwTQWhKKfcgxMsTdMAVM6HxqLbBqDvNmFfbz/DE7wiUO90AKb0qqg4/0L78zf4l1dc9Wd8Or4izhcQKScoh/E12tv7v5Dg9IDF8ZEc3sPVC9RGYkNZt7kBmzIsuwUsuZOUldCOHM3B0wyz2Qxaa6pJcJpQPozFQW/r5DIIdtHUQ8CGQi9hvYMUkn4PEwbCQhMLE3xr/FjsP5ju/wFb7+7kWwb2FwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;psett&quot;
+        title=&quot;&quot;
+        src=&quot;/static/projectsetting-a7efb2ccaef4484bc967a7b178b570af-48538.png&quot;
+        srcset=&quot;/static/projectsetting-a7efb2ccaef4484bc967a7b178b570af-bed0f.png 200w,
+/static/projectsetting-a7efb2ccaef4484bc967a7b178b570af-5fd34.png 400w,
+/static/projectsetting-a7efb2ccaef4484bc967a7b178b570af-48538.png 800w,
+/static/projectsetting-a7efb2ccaef4484bc967a7b178b570af-a7df7.png 1014w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Beware that changing the local project setting to &lt;code class=&quot;language-text&quot;&gt;~3&lt;/code&gt; and then deploying to an &lt;code class=&quot;language-text&quot;&gt;already deployed function app&lt;/code&gt; does NOT change the runtime in Azure.&lt;/p&gt;
+&lt;h1&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;My preferred way would be to use the Azure Functions Extension all the way. Remember to change the default version to &lt;code class=&quot;language-text&quot;&gt;~3&lt;/code&gt;. And the approach for migration would be:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Change to &lt;code class=&quot;language-text&quot;&gt;~3&lt;/code&gt; in the &lt;code class=&quot;language-text&quot;&gt;settings.json&lt;/code&gt;. &lt;/li&gt;
+&lt;li&gt;Do an &lt;code class=&quot;language-text&quot;&gt;npm start&lt;/code&gt; and try the function locally in the emulator. Make sure it works&lt;/li&gt;
+&lt;li&gt;Via the &lt;code class=&quot;language-text&quot;&gt;Azure Function Extension&lt;/code&gt; change the app settings of the &lt;code class=&quot;language-text&quot;&gt;function app&lt;/code&gt; to use runtime &lt;code class=&quot;language-text&quot;&gt;~3&lt;/code&gt; and node &lt;code class=&quot;language-text&quot;&gt;~12&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Deploy the functions to the function app via the extension.&lt;/li&gt;
+&lt;li&gt;Drink a preferred beverage while waiting.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now it’s deployed and hopefully working. And you are awesome! &lt;/p&gt;</content:encoded></item><item><title><![CDATA[Bot Framework in Node.js - Microsoft Teams (Part 2)]]></title><description><![CDATA[Introduction In the  previous post , we built the Bot, tested it locally in the emulator, created all resources in Azure and also deployed…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part2/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part2/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/botframework2-a7f5cecfbea0980063335fbf2dda403f-b70ec.png&quot;
