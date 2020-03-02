@@ -14,8 +14,6 @@ https://graph.microsoft.com/v1.0/groups?$filter=mailNickname eq 'sps08' or displ
 
 # Introduction
 
-I the last post we looked at Adaptive Cards and also how to utilize them in prompts and catching the answers from them with workarounds.
-
 In this post we will have a look at how to secure the Bot and give the user the ability to log in and then call Microsoft Graph. We will utilize the Azure Bot service built in authentication abilities.
 
 # Sourcecode
@@ -30,10 +28,10 @@ Here is the link to the Github repository for this post: [https://github.com/sim
 - [Ngrok](https://ngrok.com/download)
 
 # Register a new Azure AD Application
-In the first post we created a app registration, but it's really for the channel authentication and making sure we don't receive messages from somewhere we shouldn't.
+In the first post, we created an App Registration, but it's for the channel authentication and making sure we don't receive messages from somewhere we shouldn't.
 
 The last time we created the AD Application using the `Azure CLI`. It was less complicated since we just needed the `appId` and `appSecret`, we didn't need to add any permission scopes.
-In this post we will create the App registration and add the connection using the portal. 
+In this post, we will create the App registration and add the connection using the portal. 
 
 ## Using Azure CLI
 I did make an additional post as a "bonus" to find the `scopes` we want to use, create the AD Application with them, and then create the `connection` from the Bot to the application - all by using `Azure CLI`

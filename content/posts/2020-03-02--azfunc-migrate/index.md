@@ -1,11 +1,11 @@
 ---
 title: Azure Function migration from 2.0 to 3.0
 tags: ["azure"]
-cover: sitescript.png
+cover: azfuncmigrate3.png
 author: Simon Ågren
 ---
 
-![extend](./sitescript.png)
+![extend](./azfuncmigrate3.png)
 
 # Introduction
 Last time we visited Azure Functions, I did a brief introduction of Azure Functions 3.0 that now supports `Node 12`. The function app runtime you select gives you different options when it comes to platform versions. Go and check out that post if you want to know more.

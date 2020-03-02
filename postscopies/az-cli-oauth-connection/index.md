@@ -40,7 +40,7 @@ az bot authsetting list-providers --query "[?appDisplayName=='Azure AD V2'].{Nam
 You could ofcourse just copy the Id from the table we printed. But it could be really good to know how to work with variables. If you are runnign Azure CLI from PowerShell, like I am, this is an example to grab the Microsoft Graph service provider Id to a variable.
 
 ```json
-$aadV2Id = az bot authsetting list-providers --query "[?appDisplayName=='Azure AD V2'].appId | [0]" --all 
+$aadV2Id = az bot authsetting list-providers --provider-name "Aadv2" --query "properties.id" 
 ```
 
 # Creating an OAuth connection setting
@@ -55,17 +55,20 @@ In this example we create an connection setting to an Azure AD V2 application. T
   $bot = "BotSimonBot"
   $connName = "GraphConnection"
   $scopeString = "openid profile User.Read"
-  $paramString = "tenantId=$tenantId" 
+  $paramString = "tenantId=$tenantId"
+  $clientId = "<IdFromAADapp>" 
+  $secret = "<secretFromAADapp>"
+  $providerName = "Aadv2"
   ```
 
 2. Get Azure AD V2 Id
   
   ```json
-  $aadV2Id = az bot authsetting list-providers --query "[?appDisplayName=='Azure AD V2'].appId | [0]" --all 
+  $aadV2Id = az bot authsetting list-providers --provider-name "Aadv2" --query "properties.id" 
   ```
 
 3. Create connection
 `--provider-scope-string`, `--client-id` and `--client-secret`
 ```json
-az bot authsetting create --resource-group $rGroup --name $bot --setting-name $connName --client-id $clientId --client-secret $secret --provider-scope-string $scopeString --service $aadV2Id --parameters $paramString
+az bot authsetting create --resource-group $rGroup --name $bot --setting-name $connName --client-id $clientId --client-secret $secret --provider-scope-string $scopeString --service $providerName --parameters $paramString
 ```

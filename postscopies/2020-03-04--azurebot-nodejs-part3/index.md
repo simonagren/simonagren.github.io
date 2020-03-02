@@ -1,5 +1,5 @@
 ---
-title: Bot Framework in Node.js - Dialogs 
+title: Bot Framework in Node.js - Dialogs (Part 3) 
 tags: ["botframework", "nodejs", "azure"]
 cover: botframework2.png
 author: Simon Ågren
@@ -9,9 +9,13 @@ author: Simon Ågren
 
 # Introduction
 
-In the last post we tried the Bot in Microsoft Teams using `ngrok`. This post will be a bit code heavy, I felt like I needed to explain a lot what is going on behind the scenes. And hopefully this put things a bit into context. 
+In the last post, we tried the Bot in Microsoft Teams using **ngrok**, and we also added a **@mention**. 
 
-Dialogs are really powerfull in Bot Framework 4, and we could really utilize them in structured ways - even in more complicated branched conditional situations. We will try to stick to the basics, but at the same time prepare the Bot for upcoming posts.
+This post will be a bit code-heavy. A lot needed to be explained and a lot going on behind the scenes. Hopefully, this put things a bit into context. 
+
+Dialogs are powerful in Bot Framework 4, and we could utilize them in very structured ways, and complicated branched conditional situations. 
+
+I will try to stick to the basics, but at the same time prepare the Bot for upcoming posts.
 
 ## What we will build today
 
@@ -19,7 +23,7 @@ Dialogs are really powerfull in Bot Framework 4, and we could really utilize the
 
 
 # Sourcecode
-Here is the link to the Github repository for this post: [https://github.com/simonagren/simon-blog-bot-v2](https://github.com/simonagren/simon-blog-bot-v2)
+Here is the link to the Github repository for this post: [https://github.com/simonagren/simon-blog-bot-v3](https://github.com/simonagren/simon-blog-bot-v3)
 
 # Prerequisites 
 - [Bot Emulator](https://aka.ms/Emulator-wiki-getting-started)
@@ -34,10 +38,10 @@ Here is the link to the Github repository for this post: [https://github.com/sim
 We have a few different dialogs: `prompts`, `waterfall dialogs` and `component dialogs` 
 
 ## Prompts
-Prompts are used to ask the user for input and wait until the user enters an input. If the value is valid the prompt returns the value, otherwise it will reprompt the user.
-We have to ability to define our own validadators for each prompt.
+Prompts are used to ask the user for input and wait until the user enters input. If the value is valid the prompt returns the value, otherwise it will re-prompt the user.
+We have to ability to define our custom validators for each prompt.
 
-We have a couple of different prompts, and among those:
+There are different prompts available, and among those:
 - **Choice Prompt**: Asks for a choice from a set of options
 - **Text prompt**: Asks for general text input
 - **Confirm prompt**: Asks for a confirmation.
@@ -46,22 +50,23 @@ We have a couple of different prompts, and among those:
 
 ## Waterfall dialogs
 A waterfall dialog is composed of a sequence of steps. Each step of the conversation is implemented as an asynchronous function that takes a waterfall step context parameter.
-Usually in each step we prompt the user for input with (for instace a question), which then the user can respond to. 
+Usually, in each step, we prompt the user for input(for instance a question), which then the user can respond to. 
 
 ![input](./input.png)
 
-When we get the input from the use we will pass the result to the next step. 
+The input from the user will be passed to the next step. 
 
 Another option is to begin a child dialog from a step, and this could be as simple or complex as we want to build the branching.
+
 You could read some more [here](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-dialog-manage-complex-conversation-flow?view=azure-bot-service-4.0&tabs=javascript) regarding complex conversation flows.
 
 ## Component dialogs
-The component dialog makes it easy to create `resusable dialogs` for specific scenarios, and sometimes it makes sense to break up the bots logic into smaller pieces. A `component` could be added as a `dialog` to another `ComponentDialog` or `DialogSet` - we will use both of these scenarios in the Bot. 
+The component dialog makes it easy to create **reusable dialogs** for specific scenarios, and sometimes it makes sense to break up the Bots' logic into smaller pieces. A **component** could be added as a **dialog** to another **ComponentDialog** or **DialogSet** - we will use both of these scenarios in the Bot. 
 
-We can have `Waterfall dialogs` and `prompts` in the each component and it will have its' own "dialog flow". The dialogs could be imported and run as a main dialog or started as child dialogs.
+We can have **Waterfall dialogs** and **prompts** in each component and it will have its' own "dialog flow". The dialogs could be imported and run as the main dialog or started as child dialogs.
 
 In our case we will have three components deriving from `ComponentDialog`:
-- Our main component that we run from the Bot
+- The main component that we run from the Bot
   ```typescript
   export class MainDialog extends ComponentDialog {
   ``` 
@@ -77,9 +82,9 @@ In our case we will have three components deriving from `ComponentDialog`:
 # Project changes
 
 ## Files we added
-In the `src` folder we create an additional folder `dialogs`. This will in our case contain 4 new files:
+In the **src** folder, we create an additional folder named **dialogs**. It will contain 4 new files:
 
-- **mainDialog.ts**: The main dialog will now at first just kick of the site `siteDialog` and then collect the results. In upcoming posts we will add some additional steps.
+- **mainDialog.ts**: The main dialog will now at first just kick off the **siteDialog** and then collect the results. In upcoming posts, we will add some additional steps.
 - **siteDetails.ts**: the class that defines all the properties we use and need.
 - **siteDialog.ts**:  Will contain the conversational flow between the user and the Bot, where the user "orders" a site.
 - **ownerResolverDialog**: an example where we create a new dialog to validate user input.      
@@ -87,22 +92,33 @@ In the `src` folder we create an additional folder `dialogs`. This will in our c
 ![newfiles](./newfiles.png)
 
 ## bot.ts
-We have also done a few changes in the `bot.ts` file
+We have also done a few changes in the **bot.ts** file
 
 ### Imports
-We used to have a single import from `botbuilder`. Now we have a couple more imports from `botbuilder` for handling state in the dialogs, and a few from  `botbuilder-dialogs`. We have also imported the `MainDialog` that we we will run. 
+We added some more imports from **botbuilder** for handling state in the dialogs, and a few from **botbuilder-dialogs**. We have also imported the **MainDialog** that we will run. 
 
 ```typescript
-import { ActivityHandler, BotState, ConversationState, StatePropertyAccessor, UserState } from 'botbuilder';	
-import { Dialog, DialogState } from 'botbuilder-dialogs';	
+import {
+  Activity,
+  ActivityHandler,
+  ActivityTypes,
+  BotState,
+  ChannelAccount,
+  ConversationState,
+  Mention,
+  StatePropertyAccessor,
+  TurnContext,
+  UserState
+} from 'botbuilder';
+import { Dialog, DialogState } from 'botbuilder-dialogs';
 import { MainDialog } from '../dialogs/mainDialog';	
 ```
 
 And handling state is not in the scope of this post, you can read more [here](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0)
 
 ### Variables and constructor
-- Before the constructor we have added a few private variables.
-- The constructor now expects properties `conversationState`, a `userState` and a `dialog`, that we need to supply when creating an isntance of the Bot later.
+- Before the constructor, we have added a few private variables.
+- The constructor now expects properties **conversationState**, a **userState** and a **dialog**, that we need to supply when creating an instance of the Bot later.
 - After making sure that we get these properties, we initialize the private variables with the values we got in. 
 
 ```typescript
@@ -140,7 +156,7 @@ constructor(
   ```
 
 ### Method changes
-The `onMessage` method will now run the `MainDialog` with the current `context` and `dialogState`. Before it just sent back a message to the user echoing what was written to the Bot.
+The **onMessage** method will now run the **MainDialog** with the current **context** and **dialogState**. Before it sent back a message to the user **@mention** and echoing what was written to the Bot.
 
 ```typescript
 this.onMessage(async (context, next) => {
@@ -153,7 +169,7 @@ this.onMessage(async (context, next) => {
   });
 ```
 
-We have added the `onDialog` method to save changes in state.
+We have added the **onDialog** method to save the state changes.
 ```typescript
 this.onDialog(async (context, next) => {
   // Save any state changes. The load happened during the execution of the Dialog.
@@ -164,25 +180,29 @@ this.onDialog(async (context, next) => {
   await next();
 });
 ```
-The `onMembersAdded` have been just slightly changed
+The **onMembersAdded** have instead gotten the **@mention** part (slightly changed).
+
 ```typescript
 this.onMembersAdded(async (context, next) => {
   const membersAdded = context.activity.membersAdded;
   for (const member of membersAdded) {
     if (member.id !== context.activity.recipient.id) {
-      const welcome = `Welcome to Simon Bot ${ member.name }. This Bot is a work in progress. At this time we have some dialogs working. Type anything to get started.`;
-      await context.sendActivity(welcome);
+      // If we are in Microsoft Teams
+      if (context.activity.channelId === 'msteams') {
+        // Send a message with an @Mention
+        await this._messageWithMention(context, member);
+      } else {
+        // Otherwise we send a normal echo
+        await context.sendActivity(`Welcome to Simon Bot ${member.name}. This Bot is a work in progress. At this time we have some dialogs working. Type anything to get started.`);
+      }
     }
   }
-  // By calling next() you ensure that the next BotHandler is run.
-  await next();
-});
 ```
 
 ## Index.ts
 
 ### Imports
-Here we also used to have a single import from `botbuilder` and now we have a couple more imports from. We have also imported the `MainDialog` that we we will use and inject in the Bot class instance. 
+Here we also used to have a single import from **botbuilder** and now we have a couple more imports from. We have also imported the **MainDialog** that we will use and inject in the Bot class instance. 
 
 ```typescript
 import { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } from 'botbuilder';
@@ -191,14 +211,14 @@ import { SimonBot } from './bots/bot';
 ```
 
 ### Code changes
-in `adapter.onTurnError` at the end of the method we have added some code to delete the conversationState on error.
+in **adapter.onTurnError** at the end of the method, we have added some code to delete the **conversationState** on error.
 ```typescript
 await conversationState.delete(context);
 ```
 
-- First we set up the required instances of `ConversationState` and `UserState`
-- The we initialize an instance of the `MainDialog`
-- And finally create a new Bot instace with the required properties.
+- First, we set up the required instances of **ConversationState** and **UserState**
+- Then, we initialize an instance of the **MainDialog**
+- And finally, create a new Bot instance with the required properties.
 
 ```typescript
 let conversationState: ConversationState;
@@ -212,9 +232,9 @@ const dialog = new MainDialog('mainDialog');
 const myBot = new SimonBot(conversationState, userState, dialog);
 ```
 ## mainDialog.ts
-The main dialog consists of two steps `initialStep` and `finalStep`. That will kick off the `siteDialog` and then collect the result.
+The main dialog consists of two steps **initialStep** and **finalStep**. That will kick off the **siteDialog** and then collect the result.
 
-At first we add some constants, basicly the name of the dialogs we will add.
+At first, we add some constants. It's the name of the dialogs we will add.
 ```typescript
 const SITE_DIALOG = 'siteDialog';
 const MAIN_WATERFALL_DIALOG = 'waterfallDialog';
@@ -235,10 +255,10 @@ constructor(id: string) {
   }
 }  
 ```
-First we add the dialogs we will use, there's the `SiteDialog` and a `WaterFallDialog`. The Waterfall Dialog contain steps, and these have been added in the sequence which they are intened to be run. 
+First, we add the dialogs we will use, there's the **SiteDialog** and a **WaterFallDialog**. The Waterfall Dialog contains steps, and these have been added in the sequence they are intended to be run. 
 
 ### initialStep
-This step creates a new instance of the `SiteDetails` class and injects it whil starting the `siteDialog` child dialog.
+This step creates a new instance of the **SiteDetails** class and injects it while starting the **siteDialog** child dialog.
 ```typescript
 private async initialStep(stepContext: WaterfallStepContext): Promise<DialogTurnResult> {
     const siteDetails = new SiteDetails();
@@ -247,7 +267,7 @@ private async initialStep(stepContext: WaterfallStepContext): Promise<DialogTurn
 ```
 
 ### finalStep
-In this step we collect the result from the previous step, in is this case it's the result from all the `siteDialog` steps. This is where we would typically save something to a "datebase".
+In this step, we collect the result from the previous step. It's the result of all the **siteDialog** steps. This is where we would typically save something to a "database".
 ```typescript
 private async finalStep(stepContext: WaterfallStepContext): Promise<DialogTurnResult> {
     if (stepContext.result) {
@@ -261,7 +281,7 @@ private async finalStep(stepContext: WaterfallStepContext): Promise<DialogTurnRe
 
 
 ## siteDialog.ts
-The site dialog consists of multiple `prompts`, the `OwnerResolverDialog` and another `WaterFallDialog`.
+The site dialog consists of multiple **prompts**, the **OwnerResolverDialog** and another **WaterFallDialog**.
 
 This is what the constructor looks like:
 ```typescript
@@ -287,8 +307,8 @@ constructor(id: string) {
 ```
 
 ### SiteTypeStep
-The first `siteTypeStep` will use a `ChoicePrompt`. 
-We will use the `WaterFallStepContext` to populate `siteDetails` with values in every step. And if we don't have a siteType value in siteDetails, we will prompt the user. In this case we use the dialog/prompt we added using the `CHOICE_PROMPT`. And if we have a value, we will just run `.next(siteDetails.siteType)` and send the value to the next step in the WaterFall Dialog.
+The first **siteTypeStep** will use a **ChoicePrompt**. 
+We will use the **WaterFallStepContext** to populate **siteDetails** with values in every step. And if we don't have a siteType value in siteDetails, we will prompt the user. In this case, we use the dialog/prompt we added using the **CHOICE_PROMPT**. And if we have a value, we will just run **.next(siteDetails.siteType)** and send the value to the next step in the WaterFall Dialog.
 
 ```typescript
 private async siteTypeStep(stepContext: WaterfallStepContext): Promise<DialogTurnResult> {
@@ -311,7 +331,7 @@ The second step `siteTitleStep` will use a `TextPrompt`, but we will prompt the 
 ```typescript 
 .addDialog(new TextPrompt(TITLE_PROMPT, this.titlePromptValidator))
 ```
-The validator method will in this case just check that the legth of the text from the user is more than 0 and less than 20 characters. The downside of adding validation methods in the dialog is that it could possibly clutter it a bit, we will look at another example using another dialog soon.
+The validator method will in this case just check that the length of the text from the user is more than 0 and less than 20 characters. The downside of adding validation methods in the dialog is that it could clutter it a bit, we will look at another example using another dialog soon.
 
 ```typescript
 private async titlePromptValidator(promptContext: PromptValidatorContext<string>): Promise<boolean> {
@@ -320,8 +340,8 @@ private async titlePromptValidator(promptContext: PromptValidatorContext<string>
 
 ```
 
-We will first get the `siteType` value from the previous step. 
-And as in the previous step if we don't have the value from the user, we will prompt the user. And if we have a value, we will just run `.next(siteDetails.title)` and send the value to the next step in the WaterFall Dialog.
+We will first get the **siteType** value from the previous step. 
+And as in the previous step, if we don't have the value from the user, we will prompt the user. And if we have a value, we will just run **.next(siteDetails.title)** and send the value to the next step in the WaterFall Dialog.
 
 ```typescript
 private async titleStep(stepContext: WaterfallStepContext): Promise<DialogTurnResult> {
@@ -340,7 +360,7 @@ private async titleStep(stepContext: WaterfallStepContext): Promise<DialogTurnRe
 }
 ```
 ### OwnerStep
-The `ownerStep` will not use any of the prompts we added. It will instead kick off the `OwnerResolverDialog`.
+The **ownerStep** will not use any of the prompts we added. It will instead kick off the **OwnerResolverDialog**.
 
 ```typescript
 private async ownerStep(stepContext: WaterfallStepContext): Promise<DialogTurnResult> {
@@ -358,9 +378,9 @@ private async ownerStep(stepContext: WaterfallStepContext): Promise<DialogTurnRe
 ```
 
 ## OwnerResolverDialog
-Basicly I have created a dialog similar to the `MainDialog` only a bit smaller.
+I have created a dialog similar to the **MainDialog** only a bit smaller.
 
-We also add a `prompt` here and a `WaterFallDialog`, but only two steps - an initial and final step.
+We also add a **prompt** here and a **WaterFallDialog**, but only two steps - an initial and final step.
 
 ```typescript
 this
@@ -375,7 +395,7 @@ this
 this.initialDialogId = WATERFALL_DIALOG;
 }
 ```
-Here we do in a similar fashion that we have supplied a validation method to the text prompt, but in this case it exists in this dialog and does not clutter the `MainDialog`, and sometimes we need multiple validation methods. We will in another post add some extra validation here using `Microsoft Graph` to see that the user actually exists.
+Here we do in a similar fashion that we have supplied a validation method to the text prompt, but in this case, it exists in this dialog and does not clutter the **MainDialog**, and sometimes we need multiple validation methods. We will in another post add some extra validation here using **Microsoft Graph** to see that the user exists.
 
 ```typescript
 private static async ownerPromptValidator(promptContext: PromptValidatorContext<string>): Promise<boolean> {
@@ -394,7 +414,7 @@ private static async ownerPromptValidator(promptContext: PromptValidatorContext<
   }
 }
 ```
-And this is how the steps looks like, they should be familiar. Note that we don't use a `repromtMessage` since we handle the message to the user in the validator method.
+And this is how the steps look like, they should be familiar. Note that we don't use a **repromtMessage** since we handle the message to the user in the validator method.
 ```typescript
 private async initialStep(stepContext: WaterfallStepContext): Promise<DialogTurnResult> {
   const siteDetails = (stepContext.options as any).siteDetails;
@@ -415,3 +435,6 @@ private async finalStep(stepContext: WaterfallStepContext): Promise<DialogTurnRe
   return await stepContext.endDialog(owner);
 }
 ```
+
+# Next step
+The next post we will be a short one focusing on how to handle user interruptions. If the user asks for help or restarts the Bot.

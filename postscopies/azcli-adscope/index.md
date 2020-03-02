@@ -110,11 +110,11 @@ In this example we create an app registration that has permissions to Microsoft 
 
   You could as well put the JSON in a .json file and then use it. But it makes more sense when using hardcoded values.
 
-  ```json
-  $resources = @"
-  [{ "resourceAppId": $graphId, "resourceAccess": [{"id": $openid,"type": "Role"},{"id": $profile,"type": "Role"}]}]
-  "@ | ConvertTo-Json
-  ```
+```powershell
+$resources = @"
+[{ "resourceAppId": $graphId, "resourceAccess": [{"id": $openid,"type": "Role"},{"id": $profile,"type": "Role"}]}]
+"@ | ConvertTo-Json
+```
 
 5. Create the AD Application
 

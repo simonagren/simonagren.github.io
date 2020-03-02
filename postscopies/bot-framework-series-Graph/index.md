@@ -7,6 +7,10 @@ author: Simon Ågren
 
 ![extend](./sitescript.png)
 
+# FIXA MED ALIAS RESOLVERDIALOG
+
+
+
 # Introduction
 
 I the last post we created a new Azure AD Application registration, gave it permissions to Microsoft Graph. We also added an OAuth promt to the dialogs and made it possible for the user to log in both in the emulator as well as Microsoft Teams.
