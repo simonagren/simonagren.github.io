@@ -1,96 +1,96 @@
 {
   "assetsByChunkName": {
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-1feb5289ebb34cbf5735.js",
-      "component---src-pages-index-js-1feb5289ebb34cbf5735.js.map"
-    ],
-    "path---tags-spfx": [
-      "path---tags-spfx-9627969f881dcf0c4f57.js",
-      "path---tags-spfx-9627969f881dcf0c4f57.js.map"
+      "component---src-pages-index-js-15519aaedb06946b2411.js",
+      "component---src-pages-index-js-15519aaedb06946b2411.js.map"
     ],
     "path---tags-nodejs": [
-      "path---tags-nodejs-9eb9c6d1abfe78c5aa40.js",
-      "path---tags-nodejs-9eb9c6d1abfe78c5aa40.js.map"
+      "path---tags-nodejs-ddf968e50cc5ebfd3615.js",
+      "path---tags-nodejs-ddf968e50cc5ebfd3615.js.map"
     ],
     "path---tags": [
-      "path---tags-b6216c16fa9ec897582c.js",
-      "path---tags-b6216c16fa9ec897582c.js.map"
+      "path---tags-580d00a644a22174a9cb.js",
+      "path---tags-580d00a644a22174a9cb.js.map"
     ],
     "path---azurefunction-v-2-pnpjs": [
-      "path---azurefunction-v-2-pnpjs-19ef0b9bf5c14a35e13c.js",
-      "path---azurefunction-v-2-pnpjs-19ef0b9bf5c14a35e13c.js.map"
+      "path---azurefunction-v-2-pnpjs-876a07b01bbe5b9b7f17.js",
+      "path---azurefunction-v-2-pnpjs-876a07b01bbe5b9b7f17.js.map"
     ],
     "path---": [
       "path----10af29650361dfde501a.js",
       "path----10af29650361dfde501a.js.map"
     ],
     "path---tags-msteams": [
-      "path---tags-msteams-bc5470bdeb5f0a2e3cf8.js",
-      "path---tags-msteams-bc5470bdeb5f0a2e3cf8.js.map"
+      "path---tags-msteams-de71368f5cc26f0431e3.js",
+      "path---tags-msteams-de71368f5cc26f0431e3.js.map"
     ],
     "component---src-pages-contact-js": [
       "component---src-pages-contact-js-d58c2cb3f0cb03914d20.js",
       "component---src-pages-contact-js-d58c2cb3f0cb03914d20.js.map"
     ],
     "path---tags-azurefunctions": [
-      "path---tags-azurefunctions-eb1aaea47a2a8380693e.js",
-      "path---tags-azurefunctions-eb1aaea47a2a8380693e.js.map"
+      "path---tags-azurefunctions-574942bcb84523a6c131.js",
+      "path---tags-azurefunctions-574942bcb84523a6c131.js.map"
     ],
     "component---src-templates-category-template-js": [
       "component---src-templates-category-template-js-ccbdb357ea067077af6d.js",
       "component---src-templates-category-template-js-ccbdb357ea067077af6d.js.map"
     ],
     "path---azurebot-armtemplate-keyvault": [
-      "path---azurebot-armtemplate-keyvault-f92ba1e31c0b12ca2281.js",
-      "path---azurebot-armtemplate-keyvault-f92ba1e31c0b12ca2281.js.map"
+      "path---azurebot-armtemplate-keyvault-5a1d041dcaf8170d6ea4.js",
+      "path---azurebot-armtemplate-keyvault-5a1d041dcaf8170d6ea4.js.map"
     ],
     "component---node-modules-gatsby-plugin-offline-app-shell-js": [
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js",
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "path---tags-sharepoint": [
-      "path---tags-sharepoint-ca26fe1197a088fecd9e.js",
-      "path---tags-sharepoint-ca26fe1197a088fecd9e.js.map"
+      "path---tags-sharepoint-6e41e3fce46580002f9e.js",
+      "path---tags-sharepoint-6e41e3fce46580002f9e.js.map"
     ],
     "component---src-layouts-index-js": [
       "component---src-layouts-index-js-5c89e0c1300bb14357e2.js",
       "component---src-layouts-index-js-5c89e0c1300bb14357e2.js.map"
     ],
     "path---category": [
-      "path---category-085041fcd366ca2c83c7.js",
-      "path---category-085041fcd366ca2c83c7.js.map"
+      "path---category-4e3771fb8b884450475d.js",
+      "path---category-4e3771fb8b884450475d.js.map"
     ],
     "component---src-pages-category-js": [
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js",
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js.map"
     ],
+    "path---azurebot-nodejs-part-3": [
+      "path---azurebot-nodejs-part-3-78f6ddde0dbb69b8159e.js",
+      "path---azurebot-nodejs-part-3-78f6ddde0dbb69b8159e.js.map"
+    ],
     "path---tags-azure": [
-      "path---tags-azure-4aa41bdf45f215f6eddc.js",
-      "path---tags-azure-4aa41bdf45f215f6eddc.js.map"
+      "path---tags-azure-d74e9d9372544612c749.js",
+      "path---tags-azure-d74e9d9372544612c749.js.map"
     ],
     "path---part-2-azurefunction": [
-      "path---part-2-azurefunction-cfd43bff7efe503e5224.js",
-      "path---part-2-azurefunction-cfd43bff7efe503e5224.js.map"
+      "path---part-2-azurefunction-38cd3e419c487bf49cba.js",
+      "path---part-2-azurefunction-38cd3e419c487bf49cba.js.map"
     ],
     "path---azurebot-nodejs-part-2": [
-      "path---azurebot-nodejs-part-2-7edb6f298ac9a15a0a4d.js",
-      "path---azurebot-nodejs-part-2-7edb6f298ac9a15a0a4d.js.map"
+      "path---azurebot-nodejs-part-2-7d34e27a1d475eb4b84b.js",
+      "path---azurebot-nodejs-part-2-7d34e27a1d475eb4b84b.js.map"
     ],
     "path---tags-gatsby": [
       "path---tags-gatsby-74044d2b80c247ab0d41.js",
       "path---tags-gatsby-74044d2b80c247ab0d41.js.map"
     ],
     "path---tags-pnp": [
-      "path---tags-pnp-45cde5868d621e991d64.js",
-      "path---tags-pnp-45cde5868d621e991d64.js.map"
+      "path---tags-pnp-ed3fb881d74a15ee38be.js",
+      "path---tags-pnp-ed3fb881d74a15ee38be.js.map"
     ],
     "path---index": [
-      "path---index-8152a41dc7425f077166.js",
-      "path---index-8152a41dc7425f077166.js.map"
+      "path---index-df6fb03a72dd18a8fcc4.js",
+      "path---index-df6fb03a72dd18a8fcc4.js.map"
     ],
     "path---sp-starter-footer": [
-      "path---sp-starter-footer-a32904132878b6215314.js",
-      "path---sp-starter-footer-a32904132878b6215314.js.map"
+      "path---sp-starter-footer-71193f42687cd1c30fd9.js",
+      "path---sp-starter-footer-71193f42687cd1c30fd9.js.map"
     ],
     "component---src-pages-search-js": [
       "component---src-pages-search-js-9eb51a291fcd270c8c2b.js",
@@ -101,16 +101,16 @@
       "path---hello-world-d01b5401efd8d1f62a21.js.map"
     ],
     "path---azfunc-migrate": [
-      "path---azfunc-migrate-c9b4391572741bdad0a7.js",
-      "path---azfunc-migrate-c9b4391572741bdad0a7.js.map"
+      "path---azfunc-migrate-00ce5d0fd87cc7d36d94.js",
+      "path---azfunc-migrate-00ce5d0fd87cc7d36d94.js.map"
     ],
     "path---part-4-azurefunction": [
-      "path---part-4-azurefunction-30e6eed0dcfaff21013d.js",
-      "path---part-4-azurefunction-30e6eed0dcfaff21013d.js.map"
+      "path---part-4-azurefunction-4e8e29a49545334af41c.js",
+      "path---part-4-azurefunction-4e8e29a49545334af41c.js.map"
     ],
     "path---tags-sitedesigns": [
-      "path---tags-sitedesigns-71d94fe19e1bf1b51b3b.js",
-      "path---tags-sitedesigns-71d94fe19e1bf1b51b3b.js.map"
+      "path---tags-sitedesigns-ee09d18cff3357bb09fc.js",
+      "path---tags-sitedesigns-ee09d18cff3357bb09fc.js.map"
     ],
     "component---src-pages-404-js": [
       "component---src-pages-404-js-cf325d2e9bf981eec2f6.js",
@@ -127,8 +127,8 @@
       "path---success-795fd6b2364df2b3b8d1.js.map"
     ],
     "path---part-3-azurefunction": [
-      "path---part-3-azurefunction-70787c63b8cd60d0378c.js",
-      "path---part-3-azurefunction-70787c63b8cd60d0378c.js.map"
+      "path---part-3-azurefunction-4faa2b581826baa49f3c.js",
+      "path---part-3-azurefunction-4faa2b581826baa49f3c.js.map"
     ],
     "path---404-html": [
       "path---404-html-a0e39f21c11f6a62c5ab.js",
@@ -147,8 +147,8 @@
       "path---draft-post-28e944b1cf4ebbb1402f.js.map"
     ],
     "path---tags-flow": [
-      "path---tags-flow-14ddd4baf3b454876c3b.js",
-      "path---tags-flow-14ddd4baf3b454876c3b.js.map"
+      "path---tags-flow-f3174cede18348205280.js",
+      "path---tags-flow-f3174cede18348205280.js.map"
     ],
     "component---src-pages-tags-js": [
       "component---src-pages-tags-js-ee95b59890837315bfce.js",
@@ -159,46 +159,42 @@
       "component---src-templates-post-template-js-7285b814e0ce02f756c9.js.map"
     ],
     "path---tags-botframework": [
-      "path---tags-botframework-e9f10034a33283821335.js",
-      "path---tags-botframework-e9f10034a33283821335.js.map"
+      "path---tags-botframework-03f6b68ee2c3ae22b4c3.js",
+      "path---tags-botframework-03f6b68ee2c3ae22b4c3.js.map"
     ],
     "path---offline-plugin-app-shell-fallback": [
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js",
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
     "component---src-templates-tags-template-js": [
-      "component---src-templates-tags-template-js-12ca052e603e348e4bb8.js",
-      "component---src-templates-tags-template-js-12ca052e603e348e4bb8.js.map"
+      "component---src-templates-tags-template-js-2bbf7a1a87bbfc6c0b14.js",
+      "component---src-templates-tags-template-js-2bbf7a1a87bbfc6c0b14.js.map"
     ],
     "path---create-team-site-script": [
       "path---create-team-site-script-d18c5410cb523575f027.js",
       "path---create-team-site-script-d18c5410cb523575f027.js.map"
     ],
-    "path---tags-spstarterkit": [
-      "path---tags-spstarterkit-b36d51f5c8580a42c26b.js",
-      "path---tags-spstarterkit-b36d51f5c8580a42c26b.js.map"
-    ],
     "app": [
-      "app-6f7018a52c4447df10b8.js",
+      "app-2c41bcd498a99dd20763.js",
       "build-js-styles.css",
-      "app-6f7018a52c4447df10b8.js.map",
+      "app-2c41bcd498a99dd20763.js.map",
       "build-js-styles.css.map"
     ],
     "path---azurebot-nodejs-part-1": [
-      "path---azurebot-nodejs-part-1-206de792a83d23f8299d.js",
-      "path---azurebot-nodejs-part-1-206de792a83d23f8299d.js.map"
+      "path---azurebot-nodejs-part-1-731245040246c890a51a.js",
+      "path---azurebot-nodejs-part-1-731245040246c890a51a.js.map"
     ],
     "component---src-templates-page-template-js": [
       "component---src-templates-page-template-js-d8488bbc283385794485.js",
       "component---src-templates-page-template-js-d8488bbc283385794485.js.map"
     ],
     "path---sites-sitedesign-rest": [
-      "path---sites-sitedesign-rest-e42b9a5fe7f13581742c.js",
-      "path---sites-sitedesign-rest-e42b9a5fe7f13581742c.js.map"
+      "path---sites-sitedesign-rest-eae92ce27ead39ed909b.js",
+      "path---sites-sitedesign-rest-eae92ce27ead39ed909b.js.map"
     ],
     "path---sp-starter-xml-links": [
-      "path---sp-starter-xml-links-206e0fc9d10b6ebcdb3b.js",
-      "path---sp-starter-xml-links-206e0fc9d10b6ebcdb3b.js.map"
+      "path---sp-starter-xml-links-869b6c032bcd637108d1.js",
+      "path---sp-starter-xml-links-869b6c032bcd637108d1.js.map"
     ],
     "path---404": [
       "path---404-a0e39f21c11f6a62c5ab.js",
@@ -209,8 +205,8 @@
       "path---search-5d06f52ffcf66bed92ab.js.map"
     ],
     "path---intro-durable": [
-      "path---intro-durable-63347a06c9423da9e7b8.js",
-      "path---intro-durable-63347a06c9423da9e7b8.js.map"
+      "path---intro-durable-a8e760d18735987374f2.js",
+      "path---intro-durable-a8e760d18735987374f2.js.map"
     ],
     "path---category-sayings": [
       "path---category-sayings-9d88829e1a6338b48790.js",
@@ -221,8 +217,8 @@
       "path---about-68394863fb5f83e71b29.js.map"
     ],
     "path---azfunc-v-3": [
-      "path---azfunc-v-3-53210d480ffaffc90323.js",
-      "path---azfunc-v-3-53210d480ffaffc90323.js.map"
+      "path---azfunc-v-3-4c2b7942e156d90079f1.js",
+      "path---azfunc-v-3-4c2b7942e156d90079f1.js.map"
     ]
   }
 }

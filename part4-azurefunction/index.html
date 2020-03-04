@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" prefix="og: http://ogp.me/ns#"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/component---src-layouts-index-js-5c89e0c1300bb14357e2.js" as="script"/><link rel="preload" href="/component---src-templates-post-template-js-7285b814e0ce02f756c9.js" as="script"/><link rel="preload" href="/path---part-4-azurefunction-30e6eed0dcfaff21013d.js" as="script"/><link rel="preload" href="/app-6f7018a52c4447df10b8.js" as="script"/><link rel="preload" href="/commons-4f6a6f0e29497a8fb0f8.js" as="script"/><title data-react-helmet="true">Part 4 - Azure Functions V2 + VS Code + PnPJs === true - AgrenPoint - A dev blog</title><meta data-react-helmet="true" name="description" content="AgrenPoint is development with Simon Ågren."/><meta data-react-helmet="true" property="og:url" content="https://simonagren.github.io/part4-azurefunction/"/><meta data-react-helmet="true" property="og:title" content="Part 4 - Azure Functions V2 + VS Code + PnPJs === true - AgrenPoint - A dev blog"/><meta data-react-helmet="true" property="og:description" content="AgrenPoint is development with Simon Ågren."/><meta data-react-helmet="true" property="og:image" content="https://simonagren.github.io/static/funcpnp4-9eba6bc91f2af79fc88248378c1ecef4-160fa.png"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="fb:app_id" content="2263145610597628"/><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"/><meta data-react-helmet="true" name="twitter:site" content="@agrenpoint"/><meta data-react-helmet="true" name="twitter:creator" content="@agrenpoint"/><meta data-react-helmet="true" name="twitter:title" content="Part 4 - Azure Functions V2 + VS Code + PnPJs === true - AgrenPoint - A dev blog"/><meta data-react-helmet="true" name="twitter:description" content="AgrenPoint is development with Simon Ågren."/><meta data-react-helmet="true" name="twitter:image" content="https://simonagren.github.io/static/funcpnp4-9eba6bc91f2af79fc88248378c1ecef4-160fa.png"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#666"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><style id="__jsx-105041544">.item.jsx-105041544,.showItem.jsx-105041544{background:transparent;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
+<!DOCTYPE html><html lang="en" prefix="og: http://ogp.me/ns#"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/component---src-layouts-index-js-5c89e0c1300bb14357e2.js" as="script"/><link rel="preload" href="/component---src-templates-post-template-js-7285b814e0ce02f756c9.js" as="script"/><link rel="preload" href="/path---part-4-azurefunction-4e8e29a49545334af41c.js" as="script"/><link rel="preload" href="/app-2c41bcd498a99dd20763.js" as="script"/><link rel="preload" href="/commons-4f6a6f0e29497a8fb0f8.js" as="script"/><title data-react-helmet="true">Part 4 - Azure Functions V2 + VS Code + PnPJs === true - AgrenPoint - A dev blog</title><meta data-react-helmet="true" name="description" content="AgrenPoint is development with Simon Ågren."/><meta data-react-helmet="true" property="og:url" content="https://simonagren.github.io/part4-azurefunction/"/><meta data-react-helmet="true" property="og:title" content="Part 4 - Azure Functions V2 + VS Code + PnPJs === true - AgrenPoint - A dev blog"/><meta data-react-helmet="true" property="og:description" content="AgrenPoint is development with Simon Ågren."/><meta data-react-helmet="true" property="og:image" content="https://simonagren.github.io/static/funcpnp4-9eba6bc91f2af79fc88248378c1ecef4-160fa.png"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="fb:app_id" content="2263145610597628"/><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"/><meta data-react-helmet="true" name="twitter:site" content="@agrenpoint"/><meta data-react-helmet="true" name="twitter:creator" content="@agrenpoint"/><meta data-react-helmet="true" name="twitter:title" content="Part 4 - Azure Functions V2 + VS Code + PnPJs === true - AgrenPoint - A dev blog"/><meta data-react-helmet="true" name="twitter:description" content="AgrenPoint is development with Simon Ågren."/><meta data-react-helmet="true" name="twitter:image" content="https://simonagren.github.io/static/funcpnp4-9eba6bc91f2af79fc88248378c1ecef4-160fa.png"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#666"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><style id="__jsx-105041544">.item.jsx-105041544,.showItem.jsx-105041544{background:transparent;-webkit-transition:all 0.5s;-webkit-transition:all 0.5s;transition:all 0.5s;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
 .item.jsx-105041544 a,.showItem.jsx-105041544 a{padding:10px;display:-webkit-box;display:-ms-flexbox;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
 .item.jsx-105041544 svg,.showItem.jsx-105041544 svg{margin:0 5px 0 0;opacity:0.6;}
 .itemList .hideItem{display:none;}
@@ -123,25 +123,25 @@ blockquote em{font-style:italic;}</style><style id="gatsby-inlined-css">@font-fa
   
   </a>
     </p>
-<h2>The posts in this serie</h2>
+<h2>The posts in this series</h2>
 <ul>
 <li><a href="https://simonagren.github.io/azurefunction-v2-pnpjs/" target="_blank">Part 1 - Azure Functions V2 + VS Code + PnPJs === true</a></li>
 <li><a href="https://simonagren.github.io/part2-azurefunction/" target="_blank">Part 2 - Azure Functions V2 + VS Code + PnPJs === true</a></li>
 <li><a href="https://simonagren.github.io/part3-azurefunction/" target="_blank">Part 3 - Azure Functions V2 + VS Code + PnPJs === true</a></li>
 <li>Part 4 - Azure Functions V2 + VS Code + PnPJs === true</li>
 </ul>
-<p>This is the last post of this series and in this post we will secure a Function App with Azure AD and create a custom connector. Then we will call the Azure Function from both Flow and SPFx</p>
+<p>This is the last post of this series and in this post, we will secure a Function App with Azure AD and create a custom connector. Then we will call the Azure Function from both Flow and SPFx</p>
 <p>When I started to implement this, the Azure subscription for my dev tenant expired. Then I was reminded that I could use my organizational MSDN subscription. But wait, if I build my Function Apps in the organizational tenant how could I access them in my dev tenant? This blog post ends up involving a multi-tenant scenario - which isn’t that bad really - it helped me refresh some knowledge.</p>
-<p>In the previous post we discussed how to use the Azure Key vault to make our calls to SharePoint and the Microsoft Graph a little more secure. But we have not really discussed how to secure our Azure functions themselves. In production the anonymous access (alone) is a bad idea, since anyone could call your function. Another common scenario is to use “function” permission, which gives you a code that you would need to pass along in the query string of the URL. Even though this is more secure, anyone with that code could call the Azure Function - so I ended up securing the Function App via Azure AD while I kept the anonymous access to the Azure Function itself. </p>
+<p>In the previous post, we discussed how to use the Azure Key vault to make our calls to SharePoint and the Microsoft Graph a little more secure. But we have not discussed how to secure our Azure functions themselves. In production, the anonymous access (alone) is a bad idea, since anyone could call your function. Another common scenario is to use “function” permission, which gives you a code that you would need to pass along in the query string of the URL. Even though this is more secure, anyone with that code could call the Azure Function - so I ended up securing the Function App via Azure AD while I kept the anonymous access to the Azure Function itself. </p>
 <p>Let’s get started.</p>
 <h2>Prerequisites</h2>
-<p>For this blog post I assume you already have created a Function App. If you havn’t you could clone this <a href="https://github.com/simonagren/AzureADAzureFunction" target="_blank">solution</a> from my Github, and follow the steps in the readme file. </p>
+<p>For this blog post, I assume you already have created a Function App. If you haven’t you could clone this <a href="https://github.com/simonagren/AzureADAzureFunction" target="_blank">solution</a> from my Github, and follow the steps in the readme file. </p>
 <h2>Secure the Function App via Azure AD</h2>
 <p>We will secure the Function App with Azure AD by creating an App Registration, make it a multi-tenant app, enable CORS for my Dev tenant and then consent as an Admin.</p>
 <h3>Register AD App for Azure Function in GUI</h3>
 <ul>
 <li>Go to your Azure Portal and navigate to your Function App.</li>
-<li>Select “Platform Features” and then “Authetication/Authorization”</li>
+<li>Select “Platform Features” and then “Authentication/Authorization”</li>
 </ul>
 <p>
   <a
@@ -179,7 +179,7 @@ blockquote em{font-style:italic;}</style><style id="gatsby-inlined-css">@font-fa
   </a>
     </p>
 <ul>
-<li>Switch App Service Authentication to On, select “Log in with Azure Active Directory”, and Select Azure Active Directory as the Authentication Provider</li>
+<li>Switch App Service Authentication to On, select “Log in with Azure Active Directory”, and select Azure Active Directory as the Authentication Provider</li>
 </ul>
 <p>
   <a
@@ -253,10 +253,10 @@ blockquote em{font-style:italic;}</style><style id="gatsby-inlined-css">@font-fa
   </a>
     </p>
 <h3>Change to Multi-tenant</h3>
-<p>Now there should be an “Authentication” link available directly in the overview of the Function App. Either press that Authentication link, or navigate the same way we did in the previous step via “Authetication/Authorization”.</p>
+<p>Now there should be an “Authentication” link available directly in the overview of the Function App. Either press that Authentication link, or navigate the same way we did in the previous step via “Authentication/Authorization”.</p>
 <ul>
 <li>Select Azure AD again from Application Providers -> Manage Application -> Settings -> Properties.</li>
-<li>Enter a App Id URI based on your tenant, mine was: <code class="language-text">https://&lt;tenant&gt;.onmicrosoft.com/pnptesting</code></li>
+<li>Enter an App Id URI based on your tenant, mine was: <code class="language-text">https://&lt;tenant&gt;.onmicrosoft.com/pnptesting</code></li>
 <li>Flip the Multi-tenant switch and then save!</li>
 </ul>
 <p>
@@ -330,7 +330,7 @@ blockquote em{font-style:italic;}</style><style id="gatsby-inlined-css">@font-fa
     </p>
 <h3>Fix CORS</h3>
 <ul>
-<li>In “Platform Features” again select CORS, and add the url to your other tenant, mine was <code class="language-text">https://agrendev.sharepoint.com</code></li>
+<li>In “Platform Features” again select CORS, and add the URL to your other tenant, mine was <code class="language-text">https://agrendev.sharepoint.com</code></li>
 </ul>
 <p>
   <a
@@ -365,8 +365,8 @@ blockquote em{font-style:italic;}</style><style id="gatsby-inlined-css">@font-fa
   
   </a>
     </p>
-<h3>Consent with an user from the other tenant</h3>
-<p>I opened a new window with the Chrome profile for my dev tenant. Then I navigated to the url of the Function App (not the AD app), and was asked to consent. As I was logged in with the Admin account I was able to consent for the whole organization (sorry for the Swedish).</p>
+<h3>Consent with a user from the other tenant</h3>
+<p>I opened a new window with the Chrome profile for my dev tenant. Then I navigated to the URL of the Function App (not the AD app) and was asked to consent. As I was logged in with the Admin account I was able to consent for the whole organization (sorry for the Swedish).</p>
 <p>
   <a
     class="gatsby-resp-image-link"
@@ -406,7 +406,7 @@ blockquote em{font-style:italic;}</style><style id="gatsby-inlined-css">@font-fa
 <h3>Create AD Application and delegate permissions</h3>
 <p>Go to the Azure Portal of your consuming (in my case dev tenant), select Azure AD and the Application Registration.</p>
 <ul>
-<li>Enter a name and a sign-on url, then create</li>
+<li>Enter a name and a sign-on URL, then create</li>
 </ul>
 <p>
   <a
@@ -442,7 +442,7 @@ blockquote em{font-style:italic;}</style><style id="gatsby-inlined-css">@font-fa
   </a>
     </p>
 <ul>
-<li>Go in to settings, permissions, select permissions and then search for the name of your AD Application from the other tenant. In my case it’s <code class="language-text">pnptesting</code>.</li>
+<li>Go into settings, permissions, select permissions and then search for the name of your AD Application from the other tenant. In my case, it’s <code class="language-text">pnptesting</code>.</li>
 <li>Delegate the permissions and select</li>
 </ul>
 <p>
@@ -518,14 +518,14 @@ blockquote em{font-style:italic;}</style><style id="gatsby-inlined-css">@font-fa
   </a>
     </p>
 <ul>
-<li>Go in to keys, create a new key. Make a note of the <code class="language-text">key value</code> and the <code class="language-text">application id</code> of this app.
-Make sure to leave the window open, since we’re going to change the reply url.</li>
+<li>Go into keys, create a new key. Make a note of the <code class="language-text">key value</code> and the <code class="language-text">application id</code> of this app.
+Make sure to leave the window open, since we’re going to change the reply URL.</li>
 </ul>
-<h3>Create Custom Connector in Flow</h3>
+<h3>Create a Custom Connector in Flow</h3>
 <p>You could use the Wizard directly in Flow/PowerApps, import an OpenAPI (swagger) file, or a Postman collection.
-My experience revolves around creating collections in Postman and importing them, so for this post we will use the Wizard in the UI. </p>
+My experience revolves around creating collections in Postman and importing them, so for this post, we will use the Wizard in the UI. </p>
 <ul>
-<li>Navigate to the Flow portal, under data select custom connectors. Then select “create custom connector”</li>
+<li>Navigate to the Flow portal, under data select custom connectors. Then select “Create custom connector”</li>
 </ul>
 <p>
   <a
@@ -561,7 +561,7 @@ My experience revolves around creating collections in Postman and importing them
   </a>
     </p>
 <ul>
-<li>Enter the url to your function app (not the HttpTrigger) as “Host”, then move to security</li>
+<li>Enter the URL to your function app (not the HttpTrigger) as “Host”, then move to security</li>
 </ul>
 <p>
   <a
@@ -598,9 +598,9 @@ My experience revolves around creating collections in Postman and importing them
   </a>
     </p>
 <ul>
-<li>Select Oauth 2.0, Azure Active Directory as identity provider, enter the client Id and secret of your newly created app.</li>
+<li>Select Oauth 2.0, Azure Active Directory as the Identity provider, enter the client Id and secret of your newly created app.</li>
 <li>The resource URL is the ID of the Azure AD app we created in the other tenant, the one I told you to make a note of the ID.</li>
-<li>Save now, and you will receive a redirect url.</li>
+<li>Save now, and you will receive a redirect URL.</li>
 </ul>
 <p>
   <a
@@ -675,7 +675,7 @@ My experience revolves around creating collections in Postman and importing them
     </p>
 <ul>
 <li>
-<p>Under request, select import from sample.</p>
+<p>Under request, select Import from sample.</p>
 </li>
 <li>
 <p>Select “POST”, and enter something like this in the body</p>
@@ -699,7 +699,7 @@ This Azure Function creates an Item in a custom list - very basic.</p>
 <p>As you can see we’ve created an item in SharePoint now.</p>
 <h2>Call the Azure Function from SPFx</h2>
 <p>UPDATE:
-I added the link to two articles that involves similar things that I’m doing in this post.</p>
+I added the link to two articles that involve similar things that I’m doing in this post.</p>
 <ul>
 <li>
 <p>Waldek Mastykarz wrote a good blog post on this subject about how you could solve the API Permissions easier with Office365 CLI <a href="https://blog.mastykarz.nl/grant-api-permissions-office-365-cli/">here</a>.</p>
@@ -709,17 +709,17 @@ I added the link to two articles that involves similar things that I’m doing i
 </li>
 </ul>
 <hr>
-<p>So I’ve created a simple SPFx webpart <a href="https://github.com/simonagren/SPFxAzureFunction">solution</a> that you could clone from my Github.</p>
-<p>Follow the readme and replace with your own variables in the code. In this web part we are requestion API Permissions.</p>
+<p>So I’ve created a simple SPFx web part <a href="https://github.com/simonagren/SPFxAzureFunction">solution</a> that you could clone from my Github.</p>
+<p>Follow the readme and replace it with your variables in the code. In this web part, we are requesting API Permissions.</p>
 <h3>Package solution</h3>
 <p>Package the solution with the following commands. The file will end up in the <code class="language-text">sharepoint\solution</code> folder.</p>
 <div class="gatsby-highlight" data-language="bash">
       <pre class="language-bash"><code class="language-bash">gulp bundle --ship
 gulp package-solution --ship</code></pre>
       </div>
-<h3>Deploy solution</h3>
+<h3>Deploy the solution</h3>
 <ul>
-<li>I usually right click in VS Code and choose reveal in Explorer.</li>
+<li>I usually right-click in VS Code and choose to reveal in Explorer.</li>
 </ul>
 <p>
   <a
@@ -759,7 +759,7 @@ gulp package-solution --ship</code></pre>
 <p>Copy the path to the folder</p>
 </li>
 <li>
-<p>Navigate to your App catalog. Then later in the browser when I upload I  just paste the path in the upper pane, then select the package.</p>
+<p>Navigate to your App catalog. Then later in the browser when I upload I  just paste the path in the upper pane then select the package.</p>
 </li>
 </ul>
 <p>
@@ -802,7 +802,7 @@ gulp package-solution --ship</code></pre>
 <h3>Test the web part</h3>
 <ul>
 <li>Open a page add the web part.</li>
-<li>Now you should see all you SharePoint Lists.</li>
+<li>Now you should see all your SharePoint Lists.</li>
 </ul>
 <p>
   <a
@@ -843,7 +843,7 @@ gulp package-solution --ship</code></pre>
 <li><a href="https://www.linkedin.com/in/simonaagren/" target="_blank" rel="noopener">linkedin</a> </li>
 <li><a href="https://www.github.com/simonagren" target="_blank" rel="noopener">github</a> </li>
 <li><a href="mailto:simon.agren@sogeti.se">email</a> </li>
-</ul></footer></div><script id="webpack-manifest">/*<![CDATA[*/window.webpackManifest={"0":"0-8c412ec1b0483da16ba8.js","231608221292675":"app-6f7018a52c4447df10b8.js","99219681209289":"component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js","215303740077764":"component---src-templates-tags-template-js-12ca052e603e348e4bb8.js","78839606078735":"component---src-templates-category-template-js-ccbdb357ea067077af6d.js","198517197184460":"component---src-templates-post-template-js-7285b814e0ce02f756c9.js","235131596041995":"component---src-templates-page-template-js-d8488bbc283385794485.js","162898551421021":"component---src-pages-404-js-cf325d2e9bf981eec2f6.js","118442821920679":"component---src-pages-category-js-bbb34571e9395b2ce79b.js","70144966829960":"component---src-pages-contact-js-d58c2cb3f0cb03914d20.js","35783957827783":"component---src-pages-index-js-1feb5289ebb34cbf5735.js","142807904292071":"component---src-pages-search-js-9eb51a291fcd270c8c2b.js","195850678278728":"component---src-pages-tags-js-ee95b59890837315bfce.js","60335399758886":"path----10af29650361dfde501a.js","210333531512890":"path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js","123539316595192":"path---tags-azure-4aa41bdf45f215f6eddc.js","204742010901139":"path---tags-botframework-e9f10034a33283821335.js","45154319480143":"path---tags-nodejs-9eb9c6d1abfe78c5aa40.js","64429788993680":"path---tags-msteams-bc5470bdeb5f0a2e3cf8.js","73165692349720":"path---tags-azurefunctions-eb1aaea47a2a8380693e.js","111281043614685":"path---tags-sharepoint-ca26fe1197a088fecd9e.js","136878851966660":"path---tags-pnp-45cde5868d621e991d64.js","35944489930307":"path---tags-spfx-9627969f881dcf0c4f57.js","161332231442148":"path---tags-sitedesigns-71d94fe19e1bf1b51b3b.js","195721700418347":"path---tags-flow-14ddd4baf3b454876c3b.js","228210918811275":"path---tags-spstarterkit-b36d51f5c8580a42c26b.js","134928267902561":"path---tags-gatsby-74044d2b80c247ab0d41.js","272822664802534":"path---category-sayings-9d88829e1a6338b48790.js","151096926280774":"path---azfunc-migrate-c9b4391572741bdad0a7.js","132185550962241":"path---azurebot-nodejs-part-2-7edb6f298ac9a15a0a4d.js","280046212792167":"path---azfunc-v-3-53210d480ffaffc90323.js","84377823653368":"path---azurebot-armtemplate-keyvault-f92ba1e31c0b12ca2281.js","231781160298207":"path---azurebot-nodejs-part-1-206de792a83d23f8299d.js","265366572510745":"path---intro-durable-63347a06c9423da9e7b8.js","237011130961143":"path---sites-sitedesign-rest-e42b9a5fe7f13581742c.js","142664729879037":"path---sp-starter-footer-a32904132878b6215314.js","249764411047270":"path---sp-starter-xml-links-206e0fc9d10b6ebcdb3b.js","151271220972878":"path---part-4-azurefunction-30e6eed0dcfaff21013d.js","174865989322120":"path---part-3-azurefunction-70787c63b8cd60d0378c.js","128056441965757":"path---part-2-azurefunction-cfd43bff7efe503e5224.js","59878927867768":"path---azurefunction-v-2-pnpjs-19ef0b9bf5c14a35e13c.js","188061144472069":"path---pnpjs-update-managed-metadata-98907fe8d8da7f8a4039.js","221964924166240":"path---create-team-site-script-d18c5410cb523575f027.js","144342403179678":"path---hello-world-d01b5401efd8d1f62a21.js","190060841767333":"path---draft-post-28e944b1cf4ebbb1402f.js","273950069227526":"path---about-68394863fb5f83e71b29.js","170786371021445":"path---success-795fd6b2364df2b3b8d1.js","254022195166212":"path---404-a0e39f21c11f6a62c5ab.js","115052432080904":"path---category-085041fcd366ca2c83c7.js","184662623972074":"path---contact-df2b21822e3063deaa00.js","142629428675168":"path---index-8152a41dc7425f077166.js","254572558124955":"path---search-5d06f52ffcf66bed92ab.js","55702396619907":"path---tags-b6216c16fa9ec897582c.js","178698757827068":"path---404-html-a0e39f21c11f6a62c5ab.js","114276838955818":"component---src-layouts-index-js-5c89e0c1300bb14357e2.js"}/*]]>*/</script><script>
+</ul></footer></div><script id="webpack-manifest">/*<![CDATA[*/window.webpackManifest={"0":"0-8c412ec1b0483da16ba8.js","231608221292675":"app-2c41bcd498a99dd20763.js","99219681209289":"component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js","215303740077764":"component---src-templates-tags-template-js-2bbf7a1a87bbfc6c0b14.js","78839606078735":"component---src-templates-category-template-js-ccbdb357ea067077af6d.js","198517197184460":"component---src-templates-post-template-js-7285b814e0ce02f756c9.js","235131596041995":"component---src-templates-page-template-js-d8488bbc283385794485.js","162898551421021":"component---src-pages-404-js-cf325d2e9bf981eec2f6.js","118442821920679":"component---src-pages-category-js-bbb34571e9395b2ce79b.js","70144966829960":"component---src-pages-contact-js-d58c2cb3f0cb03914d20.js","35783957827783":"component---src-pages-index-js-15519aaedb06946b2411.js","142807904292071":"component---src-pages-search-js-9eb51a291fcd270c8c2b.js","195850678278728":"component---src-pages-tags-js-ee95b59890837315bfce.js","60335399758886":"path----10af29650361dfde501a.js","210333531512890":"path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js","204742010901139":"path---tags-botframework-03f6b68ee2c3ae22b4c3.js","45154319480143":"path---tags-nodejs-ddf968e50cc5ebfd3615.js","123539316595192":"path---tags-azure-d74e9d9372544612c749.js","64429788993680":"path---tags-msteams-de71368f5cc26f0431e3.js","73165692349720":"path---tags-azurefunctions-574942bcb84523a6c131.js","111281043614685":"path---tags-sharepoint-6e41e3fce46580002f9e.js","136878851966660":"path---tags-pnp-ed3fb881d74a15ee38be.js","161332231442148":"path---tags-sitedesigns-ee09d18cff3357bb09fc.js","195721700418347":"path---tags-flow-f3174cede18348205280.js","134928267902561":"path---tags-gatsby-74044d2b80c247ab0d41.js","272822664802534":"path---category-sayings-9d88829e1a6338b48790.js","120116498110629":"path---azurebot-nodejs-part-3-78f6ddde0dbb69b8159e.js","151096926280774":"path---azfunc-migrate-00ce5d0fd87cc7d36d94.js","132185550962241":"path---azurebot-nodejs-part-2-7d34e27a1d475eb4b84b.js","280046212792167":"path---azfunc-v-3-4c2b7942e156d90079f1.js","84377823653368":"path---azurebot-armtemplate-keyvault-5a1d041dcaf8170d6ea4.js","231781160298207":"path---azurebot-nodejs-part-1-731245040246c890a51a.js","265366572510745":"path---intro-durable-a8e760d18735987374f2.js","237011130961143":"path---sites-sitedesign-rest-eae92ce27ead39ed909b.js","142664729879037":"path---sp-starter-footer-71193f42687cd1c30fd9.js","249764411047270":"path---sp-starter-xml-links-869b6c032bcd637108d1.js","151271220972878":"path---part-4-azurefunction-4e8e29a49545334af41c.js","174865989322120":"path---part-3-azurefunction-4faa2b581826baa49f3c.js","128056441965757":"path---part-2-azurefunction-38cd3e419c487bf49cba.js","59878927867768":"path---azurefunction-v-2-pnpjs-876a07b01bbe5b9b7f17.js","188061144472069":"path---pnpjs-update-managed-metadata-98907fe8d8da7f8a4039.js","221964924166240":"path---create-team-site-script-d18c5410cb523575f027.js","144342403179678":"path---hello-world-d01b5401efd8d1f62a21.js","190060841767333":"path---draft-post-28e944b1cf4ebbb1402f.js","273950069227526":"path---about-68394863fb5f83e71b29.js","170786371021445":"path---success-795fd6b2364df2b3b8d1.js","254022195166212":"path---404-a0e39f21c11f6a62c5ab.js","115052432080904":"path---category-4e3771fb8b884450475d.js","184662623972074":"path---contact-df2b21822e3063deaa00.js","142629428675168":"path---index-df6fb03a72dd18a8fcc4.js","254572558124955":"path---search-5d06f52ffcf66bed92ab.js","55702396619907":"path---tags-580d00a644a22174a9cb.js","178698757827068":"path---404-html-a0e39f21c11f6a62c5ab.js","114276838955818":"component---src-layouts-index-js-5c89e0c1300bb14357e2.js"}/*]]>*/</script><script>
             
   
   if(true) {
@@ -855,4 +855,4 @@ gulp package-solution --ship</code></pre>
   if (typeof ga === "function") {
     ga('create', 'UA-128887135-1', 'auto');
       }
-      </script><script>/*<![CDATA[*/["/commons-4f6a6f0e29497a8fb0f8.js","/app-6f7018a52c4447df10b8.js","/path---part-4-azurefunction-30e6eed0dcfaff21013d.js","/component---src-templates-post-template-js-7285b814e0ce02f756c9.js","/component---src-layouts-index-js-5c89e0c1300bb14357e2.js"].forEach(function(s){document.write('<script src="'+s+'" defer></'+'script>')})/*]]>*/</script></body></html>
+      </script><script>/*<![CDATA[*/["/commons-4f6a6f0e29497a8fb0f8.js","/app-2c41bcd498a99dd20763.js","/path---part-4-azurefunction-4e8e29a49545334af41c.js","/component---src-templates-post-template-js-7285b814e0ce02f756c9.js","/component---src-layouts-index-js-5c89e0c1300bb14357e2.js"].forEach(function(s){document.write('<script src="'+s+'" defer></'+'script>')})/*]]>*/</script></body></html>

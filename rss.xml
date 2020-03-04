@@ -1,4 +1,545 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Mon, 02 Mar 2020 17:42:37 GMT</lastBuildDate><item><title><![CDATA[Azure Function migration from 2.0 to 3.0]]></title><description><![CDATA[Introduction Last time we visited Azure Functions, I did a brief introduction of Azure Functions 3.0 that now supports  . The function app…]]></description><link>https://simonagren.github.io/azfunc-migrate/</link><guid isPermaLink="false">https://simonagren.github.io/azfunc-migrate/</guid><content:encoded>&lt;p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Wed, 04 Mar 2020 10:42:18 GMT</lastBuildDate><item><title><![CDATA[Bot Framework in Node.js - Dialogs (Part 3)]]></title><description><![CDATA[In the last post, we tried the Bot in Microsoft Teams using  ngrok , and we also added a  @mention .  This post will be a bit code-heavy. A…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part3/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part3/</guid><content:encoded>&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/botframework3-f0bbb24c1a8bf567d48e95abd710cb89-b70ec.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 46.916666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABJ0AAASdAHeZh94AAAB3UlEQVQoz12SzU8TYRDG+weRSEIotAUNEhOiyIeABElA9KZy4qKeCecSKFAgSiktnwc8GIgkePHaJh6MUtrudlu6lI8EkELb3fZhZroNhMOzs/u+7/zeZ2bW5piKYmhdQ9eSitdrGlzTMQysJek7gTafKvFlMIFXK5q8s57T+gt/Ah2LKjooti6oYI6Tcm09ARVjP3W0LyoSe4MqOv1liMAC5QQGPFso773fTOEd6cO3AwyT+ukyx1RMoDamvt3Q0E0O35DTxpmYOOshUN+yJuCmuTjsk1FUuSMY+Z5GKq0joiSxR8pkDrHz7xR2T4wcEpCpdZ6olGqnWE/fHGsJwBDe5z2+6MH4Pj5v6wCKKJomikUDpYIJ368TuLx3HHIC0xnW8kURZ71BTVw+/arIeoMF/LilI3+dxXUujxKh+bH151zOOBlYZ7mp9cTF6ZP5uIBYgzQc7t99YMksIF8whBb+ewnv7jEaZy2Ho7tH8IWOsBzeF0jNxJ2SPeV2cBUV4CcquVS4wlX2EoaRZ4/UwwvLIU159fcZQsn/CGk6OdIEyMnO6Vs5LIfVBOShXORMnGQNnFFUMzm4f2RuHT6iZj70xilBkV5W/qdKdN5bY3AzTf2xpWZqUdNs5UwUN0LDEtgGD+dzAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;extend&quot;
+        title=&quot;&quot;
+        src=&quot;/static/botframework3-f0bbb24c1a8bf567d48e95abd710cb89-48538.png&quot;
+        srcset=&quot;/static/botframework3-f0bbb24c1a8bf567d48e95abd710cb89-bed0f.png 200w,
+/static/botframework3-f0bbb24c1a8bf567d48e95abd710cb89-5fd34.png 400w,
+/static/botframework3-f0bbb24c1a8bf567d48e95abd710cb89-48538.png 800w,
+/static/botframework3-f0bbb24c1a8bf567d48e95abd710cb89-b70ec.png 1200w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;In the last post, we tried the Bot in Microsoft Teams using &lt;strong&gt;ngrok&lt;/strong&gt;, and we also added a &lt;strong&gt;@mention&lt;/strong&gt;. &lt;/p&gt;
+&lt;p&gt;This post will be a bit code-heavy. A lot needed to be explained and a lot going on behind the scenes. Hopefully, this put things a bit into context. &lt;/p&gt;
+&lt;p&gt;Dialogs are powerful in Bot Framework 4, and we could utilize them in very structured ways, and complicated branched conditional situations. &lt;/p&gt;
+&lt;p&gt;I will try to stick to the basics, but at the same time prepare the Bot for upcoming posts.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Bot Framework in Node.js&lt;/th&gt;
+&lt;th&gt;Complimentary post&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part1&quot; target=&quot;_blank&quot;&gt;
+Let’s begin (Part 1)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-armtemplate-keyvault&quot; target=&quot;_blank&quot;&gt;
+Bot Framework 4 ARM template Deploy with Key Vault
+&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part2&quot; target=&quot;_blank&quot;&gt;
+Microsoft Teams (Part 2)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Dialogs (Part 3)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;What we will build today&lt;/h2&gt;
+&lt;img src=&quot;/bot-6f8cc0596169838afaaa698fc511369e.gif&quot;&gt;
+&lt;h1&gt;Sourcecode&lt;/h1&gt;
+&lt;p&gt;Here is the link to the Github repository for this post: &lt;a href=&quot;https://github.com/simonagren/simon-blog-bot-v3&quot;&gt;https://github.com/simonagren/simon-blog-bot-v3&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;Prerequisites&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://aka.ms/Emulator-wiki-getting-started&quot;&gt;Bot Emulator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://nodejs.org/en/download/&quot;&gt;Node.js 10.4+&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://azure.microsoft.com/free/&quot;&gt;An Azure Account&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.microsoft.com/office/dev-program&quot;&gt;Office 365 dev tenant&lt;/a&gt; - for Microsoft Teams&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://ngrok.com/download&quot;&gt;Ngrok&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/app-studio-overview#installing-app-studio&quot;&gt;App Studio installed in Teams&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Dialogs in Bot Framework 4&lt;/h1&gt;
+&lt;p&gt;We have a few different dialogs: &lt;code class=&quot;language-text&quot;&gt;prompts&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;waterfall dialogs&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;component dialogs&lt;/code&gt; &lt;/p&gt;
+&lt;h2&gt;Prompts&lt;/h2&gt;
+&lt;p&gt;Prompts are used to ask the user for input and wait until the user enters input. If the value is valid the prompt returns the value, otherwise it will re-prompt the user.
+We have to ability to define our custom validators for each prompt, and we could could also create our own custom prompts.&lt;/p&gt;
+&lt;p&gt;There are different prompts available, and among those:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Choice Prompt&lt;/strong&gt;: Asks for a choice from a set of options&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Text prompt&lt;/strong&gt;: Asks for general text input&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Confirm prompt&lt;/strong&gt;: Asks for a confirmation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Number prompt&lt;/strong&gt;:	Asks for a number.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OAuth Prompt&lt;/strong&gt;: Asks the user to sign in using the Bot Frameworks Single Sign On (SSO) service&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Waterfall dialogs&lt;/h2&gt;
+&lt;p&gt;A waterfall dialog is composed of a sequence of steps. Each step of the conversation is implemented as an asynchronous function that takes a waterfall step context parameter.
+Usually, in each step, we prompt the user for input(for instance a question), which then the user can respond to. &lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/input-e693267b2b950d7cac737a6b627496f7-89b2b.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 505px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 27.920792079207917%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAoUlEQVQY04WQOw4CIRRF2Z2dC7G1cQlW4w6srOzdzFQ2A4SPE0UKYeAqqAkawZucPD7Jyc0jjDFwzkEpzVMIkacxBikxxsx33m9phhfpTJJASpnRWkMplbHWNoWltAxxzqGWmqj8CyFivHjI0eF89SBlixq/miZRyiBvmK96zJY9Ft3xKfyX1g5Pj3abPcd6N2B74CDTNKFFCKG6y8+7z9wB0qnS+gPnaJQAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;input&quot;
+        title=&quot;&quot;
+        src=&quot;/static/input-e693267b2b950d7cac737a6b627496f7-89b2b.png&quot;
+        srcset=&quot;/static/input-e693267b2b950d7cac737a6b627496f7-50b18.png 200w,
+/static/input-e693267b2b950d7cac737a6b627496f7-275e6.png 400w,
+/static/input-e693267b2b950d7cac737a6b627496f7-89b2b.png 505w&quot;
+        sizes=&quot;(max-width: 505px) 100vw, 505px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;The input from the user will be passed to the next step. &lt;/p&gt;
+&lt;p&gt;Another option is to begin a child dialog from a step, and this could be as simple or complex as we want to build the branching.&lt;/p&gt;
+&lt;p&gt;You could read some more &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-dialog-manage-complex-conversation-flow?view=azure-bot-service-4.0&amp;#x26;tabs=javascript&quot;&gt;here&lt;/a&gt; regarding complex conversation flows.&lt;/p&gt;
+&lt;h2&gt;Component dialogs&lt;/h2&gt;
+&lt;p&gt;The component dialog makes it easy to create &lt;strong&gt;reusable dialogs&lt;/strong&gt; for specific scenarios, and sometimes it makes sense to break up the Bots’ logic into smaller pieces. A &lt;strong&gt;component&lt;/strong&gt; could be added as a &lt;strong&gt;dialog&lt;/strong&gt; to another &lt;strong&gt;ComponentDialog&lt;/strong&gt; or &lt;strong&gt;DialogSet&lt;/strong&gt; - we will use both of these scenarios in the Bot. &lt;/p&gt;
+&lt;p&gt;We can have &lt;strong&gt;Waterfall dialogs&lt;/strong&gt; and &lt;strong&gt;prompts&lt;/strong&gt; in each component and it will have its’ own “dialog flow”. The dialogs could be imported and run as the main dialog or started as child dialogs.&lt;/p&gt;
+&lt;p&gt;In our case we will have three components deriving from &lt;code class=&quot;language-text&quot;&gt;ComponentDialog&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The main component that we run from the Bot&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MainDialog&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;ComponentDialog&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The site dialog that we will import to and run from &lt;code class=&quot;language-text&quot;&gt;MainDialog&lt;/code&gt; &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;SiteDialog&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;ComponentDialog&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;And the owner resolver dialog that will be used for displaying an own dialog for validation&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;OwnerResolverDialog&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;ComponentDialog&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Project changes&lt;/h1&gt;
+&lt;p&gt;This is a high-level visualization of how the Bot is built:&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/botdiagram-31b8adcc2e3dfe06a196d1a677825fac-5da49.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 78.92271662763467%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABJ0AAASdAHeZh94AAAEBUlEQVQ4y42T60+TZxjG+wfsy7JkWTZdELUC2swZYDIpkABBmEvMssRkyTZdnBugyxQRHaAIOApWhB0ECrMgKFXO1oCr0lJaWqAcC4VCCwJyCDim2eIOjvLbU/DDsk8+yZU7efO+133dz/17Jf3jj7naPIXy+hgl9W7KtQ9Q354k75qTi+JZtqijU78xu/QHjaYF7vc84kLlOMX1k6gaJiiscaMQ751Tj2AceIREedNFceME8jQrezJtRCl6ify2h53fWAk8YWL7J/coappAa1ngoKJLNBgk4isd+3O7iL3YxwfpnUQca0d28D7JRXYkOVVjfJTVhezHIbZVTeKnduFX7iag+gEyZR+7j7RRqp1B37dERPItIlPv8P65JrblW9hQ4iT4ZDtRp8zsPtpOqsqJJLtsGJ/0LgJqZpBVuJBmdeJf4WbH9UmhCYLTWlDdsdHSO4j8jBZp2QRvaWbxV7nYnGXDr2oamWYeH6UFRZUBSa6Yf/sRPUHJZoLEiIHH2tZGDUoyie4mdhzWUX7XTdvAAoFf6JGndBCXoyUms4Xo9GaiMu+yN/tngo63kFdjQrKw/Cf3uhfR2xZp9apnab0+l657iV+ePMPjgRrDLIrKMQprnRTUDQs5KKwb4fv6Aa5oOxmZm0bCC56phacoboxRZ5zjwBkLx5W9JOX38VlGF/tOdbD/vJYas33d8K9nnrWPVldX8fxXnvXqPfd6Fok+YSaxoB9pvh3ZT+PsLHXiX+oiMlNL5Mk6Mqo6kNicvwq+5slQj64xl1vpJE9I4eWwepy0MgcDrsd0jizzTnwbYQkG3rg8yEbNNP6aKV5RuwlLNRCW2MqFm8JQqRkXoDqJTe5gnxglTmzuveweYs53c0Ao6riZHwTENucTQuKNRCd14Fs4yDZBwM4bbt5UjxGc2klovH7dMLNilF2f69mbZObdpHa2qsTWRdeAEgd7zzaJUbRcabZisLsJFwREpujxKxli87UJpAKzrdfcBIt7DI1/njCrwolckB4nEoYnC0y+sxNc5EB2uZ+4dB3RJ3UUNFnQ2W1EpzTz4dlGtlwys0EYbql08ZrKQahALjRBJNQIQ++9yQ61Ik808naiAZ88O9sLHGxS9CNPaiYo/jaq5kGsjkVCEtqJ+drEppxepCJZYJWb14tHkIstrxl6E04vPqW2bZYG0xwN7XM0ts5Qd3+GRv1D6o0L3Gyd58nvHsz2ZfYcNRIroJde6sO3ehKp+Jt8y52EnrIiTzCS7U34ohxahpfZdcRAuNj0qzl9vFw5xUahl8Sdh5zWEZLYSG6tGYmXsxXB28qKZ73+T/+srHP4t2A1/5aLeGU/nxYPcUgs80tBx8dXHRwr6uR0qRXnw2X+BcPRr+mxHOWwAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;diagram&quot;
+        title=&quot;&quot;
+        src=&quot;/static/botdiagram-31b8adcc2e3dfe06a196d1a677825fac-48538.png&quot;
+        srcset=&quot;/static/botdiagram-31b8adcc2e3dfe06a196d1a677825fac-bed0f.png 200w,
+/static/botdiagram-31b8adcc2e3dfe06a196d1a677825fac-5fd34.png 400w,
+/static/botdiagram-31b8adcc2e3dfe06a196d1a677825fac-48538.png 800w,
+/static/botdiagram-31b8adcc2e3dfe06a196d1a677825fac-b70ec.png 1200w,
+/static/botdiagram-31b8adcc2e3dfe06a196d1a677825fac-5da49.png 1281w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h2&gt;Files we added&lt;/h2&gt;
+&lt;p&gt;In the &lt;strong&gt;src&lt;/strong&gt; folder, we create an additional folder named &lt;strong&gt;dialogs&lt;/strong&gt;. It will contain 4 new files:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;mainDialog.ts&lt;/strong&gt;: The main dialog will now at first just kick off the &lt;strong&gt;siteDialog&lt;/strong&gt; and then collect the results. In upcoming posts, we will add some additional steps.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;siteDetails.ts&lt;/strong&gt;: the class that defines all the properties we use and need.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;siteDialog.ts&lt;/strong&gt;:  Will contain the conversational flow between the user and the Bot, where the user “orders” a site.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ownerResolverDialog&lt;/strong&gt;: an example where we create a new dialog to validate user input.      &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/newfiles-82e1709e24d2b30501cd4c40346facea-e8874.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 499px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 116.83366733466933%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACLElEQVQ4y6WU2XraMBCF/SJN4gUb7wuW9wUDJelN3v9tTo9E+T67JYDTi7GQNPqZ0ZyR5mxdiKLEOO5R1w0aWtsNGMYBSZrCsjbY2A42G/u+0Uf6akGcICcwTFJ4YQQvCNUYRLEaXT+AyzU13jP6OK4HbctPxMNpliEmdJcLeJ5/iexRVLcilCln2Y4QT23Yf9KTm2tMnjFNC5oESGBRFFycOV3/ef77C1sALQK9eIeyqpHwPiXAnoHMOfSLa1gAM04GXupn2+GDkWYvr9i9vqEwTGUB980HkS6ANT9eJtC2PcZhr1JPWBydMEM3IN50+DPoQ2BpMsVEEFSi73pM04ShH1GVFStOOKWTE2w9UWkFlGnZyQ5CFIyypXUsUoY0SSjsDGHgqysw6Gya5h2zYBgGtH0QI64G7Mcjfp4+cD7/QlV32Pox/CBB74YQYYowpk6jjJq9bTEL6/sRtBMnWXvAMJ0wHd8x7o/oygYd1w8E1vJAkvNe71uaCgT01yLTxhgl+Ow6nHNu/nhRFug6LKahP0z1r5Rtz0UlBN6nI3qpRdm/7EvbcVe3nypKmtkUdY6ekqlZlIaVbpsW/op+XsgmiBxUVaGer2G8yEU6yM2589NAOy4hml5JpqNkClH847gK6JedAvYEHg4HJfDLI/H83S2AYbSh7oRqOylqx9muLsYywihVL418+vthpJ5SmOyei+M3gNeJfBev9l8R3nqd1xTkJvArh+8AfwOmbqtGa4DBRAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;newfiles&quot;
+        title=&quot;&quot;
+        src=&quot;/static/newfiles-82e1709e24d2b30501cd4c40346facea-e8874.png&quot;
+        srcset=&quot;/static/newfiles-82e1709e24d2b30501cd4c40346facea-1cfea.png 200w,
+/static/newfiles-82e1709e24d2b30501cd4c40346facea-e5761.png 400w,
+/static/newfiles-82e1709e24d2b30501cd4c40346facea-e8874.png 499w&quot;
+        sizes=&quot;(max-width: 499px) 100vw, 499px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h2&gt;bot.ts&lt;/h2&gt;
+&lt;p&gt;We have also done a few changes in the &lt;strong&gt;bot.ts&lt;/strong&gt; file&lt;/p&gt;
+&lt;h3&gt;Imports&lt;/h3&gt;
+&lt;p&gt;We added some more imports from &lt;strong&gt;botbuilder&lt;/strong&gt; for handling state in the dialogs, and a few from &lt;strong&gt;botbuilder-dialogs&lt;/strong&gt;. We have also imported the &lt;strong&gt;MainDialog&lt;/strong&gt; that we will run. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  Activity&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  ActivityHandler&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  ActivityTypes&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  BotState&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  ChannelAccount&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  ConversationState&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  Mention&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  StatePropertyAccessor&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  TurnContext&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  UserState
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;botbuilder&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; Dialog&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; DialogState &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;botbuilder-dialogs&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; MainDialog &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;../dialogs/mainDialog&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;	&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;And handling state is not in the scope of this post, you can read more &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Variables and constructor&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Before the constructor, we have added a few private variables.&lt;/li&gt;
+&lt;li&gt;The constructor now expects properties &lt;strong&gt;conversationState&lt;/strong&gt;, a &lt;strong&gt;userState&lt;/strong&gt; and a &lt;strong&gt;dialog&lt;/strong&gt;, that we need to supply when creating an instance of the Bot later.&lt;/li&gt;
+&lt;li&gt;After making sure that we get these properties, we initialize the private variables with the values we got in. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; conversationState&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; BotState&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; userState&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; BotState&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; dialog&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Dialog&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; dialogState&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; StatePropertyAccessor&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;DialogState&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;/**
+  *
+  * @param {ConversationState} conversationState
+  * @param {UserState} userState
+  * @param {Dialog} dialog
+  */&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+  conversationState&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; BotState&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  userState&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; BotState&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  dialog&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Dialog
+&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;conversationState&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;[SimonBot]: Missing parameter. conversationState is required&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;userState&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;[SimonBot]: Missing parameter. userState is required&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;dialog&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;[SimonBot]: Missing parameter. dialog is required&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;conversationState &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; conversationState &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; ConversationState&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;userState &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; userState &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; UserState&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dialog &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; dialog&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dialogState &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;conversationState&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;createProperty&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;DialogState&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;DialogState&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;
+  &lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;Method changes&lt;/h3&gt;
+&lt;p&gt;The &lt;strong&gt;onMessage&lt;/strong&gt; method will now run the &lt;strong&gt;MainDialog&lt;/strong&gt; with the current &lt;strong&gt;context&lt;/strong&gt; and &lt;strong&gt;dialogState&lt;/strong&gt;. Before it sent back a message to the user &lt;strong&gt;@mention&lt;/strong&gt; and echoing what was written to the Bot.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;onMessage&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; next&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Run the Dialog with the new message Activity.&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dialog &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; MainDialog&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dialogState&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// By calling next() you ensure that the next BotHandler is run.&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;We have added the &lt;strong&gt;onDialog&lt;/strong&gt; method to save the state changes.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;onDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; next&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// Save any state changes. The load happened during the execution of the Dialog.&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;conversationState&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;saveChanges&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;userState&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;saveChanges&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// By calling next() you ensure that the next BotHandler is run.&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;The &lt;strong&gt;onMembersAdded&lt;/strong&gt; have instead gotten the &lt;strong&gt;@mention&lt;/strong&gt; part (slightly changed).&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;onMembersAdded&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; next&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; membersAdded &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; context&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;activity&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;membersAdded&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; member &lt;span class=&quot;token keyword&quot;&gt;of&lt;/span&gt; membersAdded&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;member&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;id &lt;span class=&quot;token operator&quot;&gt;!==&lt;/span&gt; context&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;activity&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;recipient&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;id&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token comment&quot;&gt;// If we are in Microsoft Teams&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;activity&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;channelId &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;msteams&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token comment&quot;&gt;// Send a message with an @Mention&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;_messageWithMention&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; member&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token comment&quot;&gt;// Otherwise we send a normal echo&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; context&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sendActivity&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`Welcome to Simon Bot &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;member&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;name&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;. This Bot is a work in progress. At this time we have some dialogs working. Type anything to get started.`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;Index.ts&lt;/h2&gt;
+&lt;h3&gt;Imports&lt;/h3&gt;
+&lt;p&gt;Here we also used to have a single import from &lt;strong&gt;botbuilder&lt;/strong&gt; and now we have a couple more imports from. We have also imported the &lt;strong&gt;MainDialog&lt;/strong&gt; that we will use and inject in the Bot class instance. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; BotFrameworkAdapter&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ConversationState&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; MemoryStorage&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; UserState &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;botbuilder&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; MainDialog &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;./dialogs/mainDialog&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; SimonBot &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;./bots/bot&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;	&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;Code changes&lt;/h3&gt;
+&lt;p&gt;in &lt;strong&gt;adapter.onTurnError&lt;/strong&gt; at the end of the method, we have added some code to delete the &lt;strong&gt;conversationState&lt;/strong&gt; on error.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; conversationState&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;First, we set up the required instances of &lt;strong&gt;ConversationState&lt;/strong&gt; and &lt;strong&gt;UserState&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Then, we initialize an instance of the &lt;strong&gt;MainDialog&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;And finally, create a new Bot instance with the required properties.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; conversationState&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; ConversationState&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; userState&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; UserState&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; memoryStorage &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MemoryStorage&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+conversationState &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;ConversationState&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;memoryStorage&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+userState &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;UserState&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;memoryStorage&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; dialog &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MainDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;mainDialog&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; myBot &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;SimonBot&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;conversationState&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; userState&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; dialog&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;mainDialog.ts&lt;/h2&gt;
+&lt;p&gt;The main dialog consists of two steps &lt;strong&gt;initialStep&lt;/strong&gt; and &lt;strong&gt;finalStep&lt;/strong&gt;. That will kick off the &lt;strong&gt;siteDialog&lt;/strong&gt; and then collect the result.&lt;/p&gt;
+&lt;p&gt;At first, we add some constants. It’s the name of the dialogs we will add.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;SITE_DIALOG&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;siteDialog&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;MAIN_WATERFALL_DIALOG&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;waterfallDialog&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;Then later we use them in the constructor while adding the dialogs we want.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;id&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;id&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;SiteDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;SITE_DIALOG&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;WaterfallDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;MAIN_WATERFALL_DIALOG&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;initialStep&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;finalStep&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;initialDialogId &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;MAIN_WATERFALL_DIALOG&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;  &lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;First, we add the dialogs we will use, there’s the &lt;strong&gt;SiteDialog&lt;/strong&gt; and a &lt;strong&gt;WaterFallDialog&lt;/strong&gt;. The Waterfall Dialog contains steps, and these have been added in the sequence they are intended to be run. &lt;/p&gt;
+&lt;h3&gt;initialStep&lt;/h3&gt;
+&lt;p&gt;This step creates a new instance of the &lt;strong&gt;SiteDetails&lt;/strong&gt; class and injects it while starting the &lt;strong&gt;siteDialog&lt;/strong&gt; child dialog. We are using the constant &lt;code class=&quot;language-text&quot;&gt;SITE_DIALOG&lt;/code&gt; to make sure there are no spelling errors.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;initialStep&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;stepContext&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; WaterfallStepContext&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;DialogTurnResult&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; siteDetails &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;SiteDetails&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;beginDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;SITE_DIALOG&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; siteDetails&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;finalStep&lt;/h3&gt;
+&lt;p&gt;In this step, we collect the result from the previous step. It’s the result of all the &lt;strong&gt;siteDialog&lt;/strong&gt; steps. This is where we would typically save something to a “database”.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;finalStep&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;stepContext&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; WaterfallStepContext&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;DialogTurnResult&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;result&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; result &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;result &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; SiteDetails&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; msg &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`I have created a &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;result&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sendActivity&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;msg&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;endDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;siteDialog.ts&lt;/h2&gt;
+&lt;p&gt;The site dialog consists of multiple &lt;strong&gt;prompts&lt;/strong&gt;, the &lt;strong&gt;OwnerResolverDialog&lt;/strong&gt; and another &lt;strong&gt;WaterFallDialog&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;This is what the constructor looks like:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;id&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;id &lt;span class=&quot;token operator&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;siteDialog&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;ChoicePrompt&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;CHOICE_PROMPT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;TextPrompt&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;TEXT_PROMPT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;OwnerResolverDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;OWNER_RESOLVER_DIALOG&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;ConfirmPrompt&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;CONFIRM_PROMPT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;WaterfallDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;WATERFALL_DIALOG&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;siteTypeStep&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;titleStep&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;descriptionStep&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;ownerStep&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;aliasStep&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;confirmStep&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;finalStep&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;initialDialogId &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;WATERFALL_DIALOG&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;   &lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;SiteTypeStep&lt;/h3&gt;
+&lt;p&gt;The first &lt;strong&gt;siteTypeStep&lt;/strong&gt; will use a &lt;strong&gt;ChoicePrompt&lt;/strong&gt;. &lt;/p&gt;
+&lt;p&gt;We will use the &lt;strong&gt;WaterFallStepContext&lt;/strong&gt; to populate &lt;strong&gt;siteDetails&lt;/strong&gt; with values in every step. &lt;/p&gt;
+&lt;p&gt;If we don’t have a siteType value in siteDetails, we will prompt the user. In this case, we use the dialog/prompt we added using the &lt;strong&gt;CHOICE_PROMPT&lt;/strong&gt;. &lt;/p&gt;
+&lt;p&gt;And if we have a value, we will just run &lt;strong&gt;.next(siteDetails.siteType)&lt;/strong&gt; and send the value to the next step in the WaterFall Dialog.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;siteTypeStep&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;stepContext&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; WaterfallStepContext&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;DialogTurnResult&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; siteDetails &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;options &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; SiteDetails&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;siteDetails&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;siteType&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+      &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;CHOICE_PROMPT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+          choices&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; ChoiceFactory&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toChoices&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Team Site&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;Communication Site&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+          prompt&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;Select site type.&apos;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;siteDetails&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;siteType&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;TitleStep&lt;/h3&gt;
+&lt;p&gt;The second step &lt;code class=&quot;language-text&quot;&gt;siteTitleStep&lt;/code&gt; will use a &lt;code class=&quot;language-text&quot;&gt;TextPrompt&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;We will first get the &lt;strong&gt;siteType&lt;/strong&gt; value from the previous step.
+And as in the previous step, if we don’t have the value from the user, we will prompt the user. And if we have a value, we will just run &lt;strong&gt;.next(siteDetails.title)&lt;/strong&gt; and send the value to the next step in the WaterFall Dialog.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;titleStep&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;stepContext&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; WaterfallStepContext&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;DialogTurnResult&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; siteDetails &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;options &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; SiteDetails&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  siteDetails&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;siteType &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;result&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;siteDetails&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;title&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+      &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; promptText &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;Provide a title for your site&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;TEXT_PROMPT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; prompt&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; promptText &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;siteDetails&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;title&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;OwnerStep&lt;/h3&gt;
+&lt;p&gt;The &lt;strong&gt;ownerStep&lt;/strong&gt; will not use any of the prompts we added. It will instead kick off the &lt;strong&gt;OwnerResolverDialog&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;ownerStep&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;stepContext&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; WaterfallStepContext&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;DialogTurnResult&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; siteDetails &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;options &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; SiteDetails&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Capture the results of the previous step&lt;/span&gt;
+  siteDetails&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;description &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;result&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;siteDetails&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;owner&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;beginDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;OWNER_RESOLVER_DIALOG&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; siteDetails &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;siteDetails&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;owner&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;OwnerResolverDialog&lt;/h2&gt;
+&lt;p&gt;I have created a dialog similar to the &lt;strong&gt;MainDialog&lt;/strong&gt; only a bit smaller.&lt;/p&gt;
+&lt;p&gt;We also add a &lt;strong&gt;prompt&lt;/strong&gt; here and a &lt;strong&gt;WaterFallDialog&lt;/strong&gt;, but only two steps - an initial and final step.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;TextPrompt&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;TEXT_PROMPT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; OwnerResolverDialog&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;ownerPromptValidator&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;WaterfallDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;WATERFALL_DIALOG&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;initialStep&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;finalStep&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;initialDialogId &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;WATERFALL_DIALOG&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;Here we supply a validation method to the text prompt. Sometimes we need multiple validation methods, we will add some extra validation here in another post using &lt;strong&gt;Microsoft Graph&lt;/strong&gt; to see that the user exists.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;ownerPromptValidator&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;promptContext&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; PromptValidatorContext&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token builtin&quot;&gt;boolean&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;promptContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;recognized&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;succeeded&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; owner&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; promptContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;recognized&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;value&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// Regex for email&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;OwnerResolverDialog&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;validateEmail&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;owner&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      promptContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sendActivity&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Malformatted email adress.&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;This is how the steps look like, they should be familiar. Note that we don’t use a &lt;strong&gt;repromtMessage&lt;/strong&gt; since we handle the message to the user in the validator method.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;initialStep&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;stepContext&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; WaterfallStepContext&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;DialogTurnResult&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; siteDetails &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;options &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;siteDetails&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; promptMsg &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;Provide an owner email&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;siteDetails&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;owner&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;TEXT_PROMPT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      prompt&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; promptMsg
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;siteDetails&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;owner&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;finalStep&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;stepContext&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; WaterfallStepContext&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;DialogTurnResult&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; owner &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;result&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;endDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;owner&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h1&gt;Next step&lt;/h1&gt;
+&lt;p&gt;The next post will be a short one focusing on how to handle user interruptions. If the user asks for help or restarts the Bot.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Azure Function migration from 2.0 to 3.0]]></title><description><![CDATA[Last time we visited Azure Functions, I did a brief introduction of Azure Functions 3.0 that now supports  . The function app runtime you…]]></description><link>https://simonagren.github.io/azfunc-migrate/</link><guid isPermaLink="false">https://simonagren.github.io/azfunc-migrate/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/azfuncmigrate3-af01378f495ff5b799014c0a3b4f66e3-b70ec.png&quot;
@@ -32,7 +573,6 @@
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;h1&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;Last time we visited Azure Functions, I did a brief introduction of Azure Functions 3.0 that now supports &lt;code class=&quot;language-text&quot;&gt;Node 12&lt;/code&gt;. The function app runtime you select gives you different options when it comes to platform versions. Go and check out that post if you want to know more.&lt;/p&gt;
 &lt;p&gt;I have created a &lt;strong&gt;Function App and&lt;/strong&gt; a &lt;strong&gt;Function&lt;/strong&gt; with version 2.x. And today we are going to have a look at the different options when it comes to migrating from 2.x to 3.x. There’s not a lot of steps, I will give you a few options and try to clarify a few things.&lt;/p&gt;
 &lt;h1&gt;Prerequisites&lt;/h1&gt;
@@ -286,7 +826,7 @@
 &lt;li&gt;Deploy the functions to the function app via the extension.&lt;/li&gt;
 &lt;li&gt;Drink a preferred beverage while waiting.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Now it’s deployed and hopefully working. And you are awesome! &lt;/p&gt;</content:encoded></item><item><title><![CDATA[Bot Framework in Node.js - Microsoft Teams (Part 2)]]></title><description><![CDATA[Introduction In the  previous post , we built the Bot, tested it locally in the emulator, created all resources in Azure and also deployed…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part2/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part2/</guid><content:encoded>&lt;p&gt;
+&lt;p&gt;Now it’s deployed and hopefully working. And you are awesome! &lt;/p&gt;</content:encoded></item><item><title><![CDATA[Bot Framework in Node.js - Microsoft Teams (Part 2)]]></title><description><![CDATA[In the  previous post , we built the Bot, tested it locally in the emulator, created all resources in Azure and also deployed the Bot to the…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part2/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part2/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/botframework2-a7f5cecfbea0980063335fbf2dda403f-b70ec.png&quot;
@@ -320,10 +860,37 @@
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;h1&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;In the &lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part1&quot; target=&quot;_blank&quot;&gt;previous post&lt;/a&gt;, we built the Bot, tested it locally in the emulator, created all resources in Azure and also deployed the Bot to the web service in Azure using ARM templates and Key Vault (&lt;a href=&quot;https://simonagren.github.io/azurebot-armtemplate-keyvault&quot; target=&quot;_blank&quot;&gt;separate post&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;In this second post, we will continue with the Bot and run it from within &lt;strong&gt;Microsoft Teams&lt;/strong&gt;. From localhost with the help of &lt;strong&gt;ngrok&lt;/strong&gt; and, from the &lt;strong&gt;Azure deployment&lt;/strong&gt;. &lt;/p&gt;
 &lt;p&gt;Just for fun, we will add an &lt;strong&gt;@mention&lt;/strong&gt; in the &lt;strong&gt;echo&lt;/strong&gt; when the Bot is in Microsoft Teams.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Bot Framework in Node.js&lt;/th&gt;
+&lt;th&gt;Complimentary post&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part1&quot; target=&quot;_blank&quot;&gt;
+Let’s begin (Part 1)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-armtemplate-keyvault&quot; target=&quot;_blank&quot;&gt;
+Bot Framework 4 ARM template Deploy with Key Vault
+&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Microsoft Teams (Part 2)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part3&quot; target=&quot;_blank&quot;&gt;
+Dialogs (Part 3)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;h1&gt;Sourcecode&lt;/h1&gt;
 &lt;p&gt;Here is the finalized source code. &lt;a href=&quot;https://github.com/simonagren/simon-blog-bot-v2&quot;&gt;https://github.com/simonagren/simon-blog-bot-v2&lt;/a&gt;&lt;/p&gt;
 &lt;h1&gt;Prerequisites&lt;/h1&gt;
@@ -998,7 +1565,7 @@ The Bot should work now, congrats!&lt;/li&gt;
 &lt;h1&gt;Final words&lt;/h1&gt;
 &lt;p&gt;Remember that we haven’t re-deployed the Bot to Azure. The updated version is running locally. Don’t stress is, we will primarily work from localhost, going forward.&lt;/p&gt;
 &lt;p&gt;Have a look at the previous post regarding how to .zip deploy the Bot again, if you want.&lt;/p&gt;
-&lt;p&gt;In the next post, we will look at dialogs, prompts, and validation.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[A brief introduction to Azure Functions 3.x]]></title><description><![CDATA[Introduction In this post, I will talk about Azure Functions 3.0 that has become generally available (GA) and was announced almost a month…]]></description><link>https://simonagren.github.io/azfunc-v3/</link><guid isPermaLink="false">https://simonagren.github.io/azfunc-v3/</guid><content:encoded>&lt;p&gt;
+&lt;p&gt;In the next post, we will look at dialogs, prompts, and validation.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[A brief introduction to Azure Functions 3.x]]></title><description><![CDATA[In this post, I will talk about Azure Functions 3.0 that has become generally available (GA) and was announced almost a month ago  here . I…]]></description><link>https://simonagren.github.io/azfunc-v3/</link><guid isPermaLink="false">https://simonagren.github.io/azfunc-v3/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/azfunc3-52663bc6c0010d24966d5439cdc6f172-b70ec.png&quot;
@@ -1032,7 +1599,6 @@ The Bot should work now, congrats!&lt;/li&gt;
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;h1&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;In this post, I will talk about Azure Functions 3.0 that has become generally available (GA) and was announced almost a month ago &lt;a href=&quot;https://azure.microsoft.com/en-us/updates/azure-functions-runtime-30-is-now-available/&quot;&gt;here&lt;/a&gt;. I feel that this is a nice update, allowing for newer function runtime and also some performance improvements. The new capabilities in the release include support for &lt;code class=&quot;language-text&quot;&gt;Node 12&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;.Net Core 3.2&lt;/code&gt;. &lt;/p&gt;
 &lt;p&gt;If you are familiar with me, you know I will focus on &lt;code class=&quot;language-text&quot;&gt;Node.js&lt;/code&gt; and TypeScript today.&lt;/p&gt;
 &lt;h1&gt;Speaking of versions&lt;/h1&gt;
@@ -1207,7 +1773,7 @@ The Bot should work now, congrats!&lt;/li&gt;
   &lt;/a&gt;
     &lt;/p&gt;
 &lt;h1&gt;Next steps&lt;/h1&gt;
-&lt;p&gt;I’m planning another post showing a couple of ways to migrate from 2.x to 3.x. &lt;/p&gt;</content:encoded></item><item><title><![CDATA[Bot Framework 4 ARM template Deploy with Key Vault]]></title><description><![CDATA[Introduction This post assumes that you already have generated your Bot and you have available ARM Templates to deploy with. Follow the…]]></description><link>https://simonagren.github.io/azurebot-armtemplate-keyvault/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-armtemplate-keyvault/</guid><content:encoded>&lt;p&gt;
+&lt;p&gt;I’m planning another post showing a couple of ways to migrate from 2.x to 3.x. &lt;/p&gt;</content:encoded></item><item><title><![CDATA[Bot Framework 4 ARM template Deploy with Key Vault]]></title><description><![CDATA[This post assumes that you already have generated your Bot and you have available ARM Templates to deploy with. Follow the steps in I broke…]]></description><link>https://simonagren.github.io/azurebot-armtemplate-keyvault/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-armtemplate-keyvault/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/bot-keyvault-02ab72bfc11ec5246486d7c87731014f-b70ec.png&quot;
@@ -1241,7 +1807,6 @@ The Bot should work now, congrats!&lt;/li&gt;
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;h1&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;This post assumes that you already have generated your Bot and you have available ARM Templates to deploy with. Follow the steps in I broke this out to another post here:
 &lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part1&quot; target=&quot;_blank&quot;&gt;This&lt;/a&gt; post.&lt;/p&gt;
 &lt;h1&gt;Prerequisites&lt;/h1&gt;
@@ -1471,6 +2036,34 @@ The Bot should work now, congrats!&lt;/li&gt;
     &lt;/p&gt;
 &lt;p&gt;This is the first of a series of blog-posts regarding Bot Framework 4, Node.js and TypeScript. There’s a lot of material out there and it might seem redundant to start with the basics.
 I will take you on a journey where we begin with the most simple concepts, and in each post, we develop the Bot a bit further while introducing some new concepts. And it’s going to be my ways of doing things, with workarounds and both simple and creative ways to get things done.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Bot Framework in Node.js&lt;/th&gt;
+&lt;th&gt;Complimentary post&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Let’s begin (Part 1)&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-armtemplate-keyvault&quot;  target=&quot;_blank&quot;&gt;
+Bot Framework 4 ARM template Deploy with Key Vault
+&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part2&quot;  target=&quot;_blank&quot;&gt;
+Microsoft Teams (Part 2)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part3&quot;  target=&quot;_blank&quot;&gt;
+Dialogs (Part 3)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;h1&gt;Planned topics&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;As of right now these are the intended topics that we will go trough:&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -2962,7 +3555,7 @@ Then we return all the links like they were but encoded.&lt;/p&gt;
     result&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;links &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;loadLinks&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;result&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-      &lt;/div&gt;</content:encoded></item><item><title><![CDATA[Part 4 - Azure Functions V2 + VS Code + PnPJs === true]]></title><description><![CDATA[The posts in this serie Part 1 - Azure Functions V2 + VS Code + PnPJs === true Part 2 - Azure Functions V2 + VS Code + PnPJs === true Part…]]></description><link>https://simonagren.github.io/part4-azurefunction/</link><guid isPermaLink="false">https://simonagren.github.io/part4-azurefunction/</guid><content:encoded>&lt;p&gt;
+      &lt;/div&gt;</content:encoded></item><item><title><![CDATA[Part 4 - Azure Functions V2 + VS Code + PnPJs === true]]></title><description><![CDATA[The posts in this series Part 1 - Azure Functions V2 + VS Code + PnPJs === true Part 2 - Azure Functions V2 + VS Code + PnPJs === true Part…]]></description><link>https://simonagren.github.io/part4-azurefunction/</link><guid isPermaLink="false">https://simonagren.github.io/part4-azurefunction/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/funcpnp4-9eba6bc91f2af79fc88248378c1ecef4-48538.png&quot;
@@ -2995,25 +3588,25 @@ Then we return all the links like they were but encoded.&lt;/p&gt;
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;h2&gt;The posts in this serie&lt;/h2&gt;
+&lt;h2&gt;The posts in this series&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://simonagren.github.io/azurefunction-v2-pnpjs/&quot; target=&quot;_blank&quot;&gt;Part 1 - Azure Functions V2 + VS Code + PnPJs === true&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://simonagren.github.io/part2-azurefunction/&quot; target=&quot;_blank&quot;&gt;Part 2 - Azure Functions V2 + VS Code + PnPJs === true&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://simonagren.github.io/part3-azurefunction/&quot; target=&quot;_blank&quot;&gt;Part 3 - Azure Functions V2 + VS Code + PnPJs === true&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Part 4 - Azure Functions V2 + VS Code + PnPJs === true&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;This is the last post of this series and in this post we will secure a Function App with Azure AD and create a custom connector. Then we will call the Azure Function from both Flow and SPFx&lt;/p&gt;
+&lt;p&gt;This is the last post of this series and in this post, we will secure a Function App with Azure AD and create a custom connector. Then we will call the Azure Function from both Flow and SPFx&lt;/p&gt;
 &lt;p&gt;When I started to implement this, the Azure subscription for my dev tenant expired. Then I was reminded that I could use my organizational MSDN subscription. But wait, if I build my Function Apps in the organizational tenant how could I access them in my dev tenant? This blog post ends up involving a multi-tenant scenario - which isn’t that bad really - it helped me refresh some knowledge.&lt;/p&gt;
-&lt;p&gt;In the previous post we discussed how to use the Azure Key vault to make our calls to SharePoint and the Microsoft Graph a little more secure. But we have not really discussed how to secure our Azure functions themselves. In production the anonymous access (alone) is a bad idea, since anyone could call your function. Another common scenario is to use “function” permission, which gives you a code that you would need to pass along in the query string of the URL. Even though this is more secure, anyone with that code could call the Azure Function - so I ended up securing the Function App via Azure AD while I kept the anonymous access to the Azure Function itself. &lt;/p&gt;
+&lt;p&gt;In the previous post, we discussed how to use the Azure Key vault to make our calls to SharePoint and the Microsoft Graph a little more secure. But we have not discussed how to secure our Azure functions themselves. In production, the anonymous access (alone) is a bad idea, since anyone could call your function. Another common scenario is to use “function” permission, which gives you a code that you would need to pass along in the query string of the URL. Even though this is more secure, anyone with that code could call the Azure Function - so I ended up securing the Function App via Azure AD while I kept the anonymous access to the Azure Function itself. &lt;/p&gt;
 &lt;p&gt;Let’s get started.&lt;/p&gt;
 &lt;h2&gt;Prerequisites&lt;/h2&gt;
-&lt;p&gt;For this blog post I assume you already have created a Function App. If you havn’t you could clone this &lt;a href=&quot;https://github.com/simonagren/AzureADAzureFunction&quot; target=&quot;_blank&quot;&gt;solution&lt;/a&gt; from my Github, and follow the steps in the readme file. &lt;/p&gt;
+&lt;p&gt;For this blog post, I assume you already have created a Function App. If you haven’t you could clone this &lt;a href=&quot;https://github.com/simonagren/AzureADAzureFunction&quot; target=&quot;_blank&quot;&gt;solution&lt;/a&gt; from my Github, and follow the steps in the readme file. &lt;/p&gt;
 &lt;h2&gt;Secure the Function App via Azure AD&lt;/h2&gt;
 &lt;p&gt;We will secure the Function App with Azure AD by creating an App Registration, make it a multi-tenant app, enable CORS for my Dev tenant and then consent as an Admin.&lt;/p&gt;
 &lt;h3&gt;Register AD App for Azure Function in GUI&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Go to your Azure Portal and navigate to your Function App.&lt;/li&gt;
-&lt;li&gt;Select “Platform Features” and then “Authetication/Authorization”&lt;/li&gt;
+&lt;li&gt;Select “Platform Features” and then “Authentication/Authorization”&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
   &lt;a
@@ -3051,7 +3644,7 @@ Then we return all the links like they were but encoded.&lt;/p&gt;
   &lt;/a&gt;
     &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Switch App Service Authentication to On, select “Log in with Azure Active Directory”, and Select Azure Active Directory as the Authentication Provider&lt;/li&gt;
+&lt;li&gt;Switch App Service Authentication to On, select “Log in with Azure Active Directory”, and select Azure Active Directory as the Authentication Provider&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
   &lt;a
@@ -3125,10 +3718,10 @@ Then we return all the links like they were but encoded.&lt;/p&gt;
   &lt;/a&gt;
     &lt;/p&gt;
 &lt;h3&gt;Change to Multi-tenant&lt;/h3&gt;
-&lt;p&gt;Now there should be an “Authentication” link available directly in the overview of the Function App. Either press that Authentication link, or navigate the same way we did in the previous step via “Authetication/Authorization”.&lt;/p&gt;
+&lt;p&gt;Now there should be an “Authentication” link available directly in the overview of the Function App. Either press that Authentication link, or navigate the same way we did in the previous step via “Authentication/Authorization”.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Select Azure AD again from Application Providers -&gt; Manage Application -&gt; Settings -&gt; Properties.&lt;/li&gt;
-&lt;li&gt;Enter a App Id URI based on your tenant, mine was: &lt;code class=&quot;language-text&quot;&gt;https://&amp;lt;tenant&amp;gt;.onmicrosoft.com/pnptesting&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Enter an App Id URI based on your tenant, mine was: &lt;code class=&quot;language-text&quot;&gt;https://&amp;lt;tenant&amp;gt;.onmicrosoft.com/pnptesting&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Flip the Multi-tenant switch and then save!&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
@@ -3202,7 +3795,7 @@ Then we return all the links like they were but encoded.&lt;/p&gt;
     &lt;/p&gt;
 &lt;h3&gt;Fix CORS&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;In “Platform Features” again select CORS, and add the url to your other tenant, mine was &lt;code class=&quot;language-text&quot;&gt;https://agrendev.sharepoint.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;In “Platform Features” again select CORS, and add the URL to your other tenant, mine was &lt;code class=&quot;language-text&quot;&gt;https://agrendev.sharepoint.com&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
   &lt;a
@@ -3237,8 +3830,8 @@ Then we return all the links like they were but encoded.&lt;/p&gt;
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;h3&gt;Consent with an user from the other tenant&lt;/h3&gt;
-&lt;p&gt;I opened a new window with the Chrome profile for my dev tenant. Then I navigated to the url of the Function App (not the AD app), and was asked to consent. As I was logged in with the Admin account I was able to consent for the whole organization (sorry for the Swedish).&lt;/p&gt;
+&lt;h3&gt;Consent with a user from the other tenant&lt;/h3&gt;
+&lt;p&gt;I opened a new window with the Chrome profile for my dev tenant. Then I navigated to the URL of the Function App (not the AD app) and was asked to consent. As I was logged in with the Admin account I was able to consent for the whole organization (sorry for the Swedish).&lt;/p&gt;
 &lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -3278,7 +3871,7 @@ Then we return all the links like they were but encoded.&lt;/p&gt;
 &lt;h3&gt;Create AD Application and delegate permissions&lt;/h3&gt;
 &lt;p&gt;Go to the Azure Portal of your consuming (in my case dev tenant), select Azure AD and the Application Registration.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Enter a name and a sign-on url, then create&lt;/li&gt;
+&lt;li&gt;Enter a name and a sign-on URL, then create&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
   &lt;a
@@ -3314,7 +3907,7 @@ Then we return all the links like they were but encoded.&lt;/p&gt;
   &lt;/a&gt;
     &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Go in to settings, permissions, select permissions and then search for the name of your AD Application from the other tenant. In my case it’s &lt;code class=&quot;language-text&quot;&gt;pnptesting&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Go into settings, permissions, select permissions and then search for the name of your AD Application from the other tenant. In my case, it’s &lt;code class=&quot;language-text&quot;&gt;pnptesting&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;Delegate the permissions and select&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
@@ -3390,14 +3983,14 @@ Then we return all the links like they were but encoded.&lt;/p&gt;
   &lt;/a&gt;
     &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Go in to keys, create a new key. Make a note of the &lt;code class=&quot;language-text&quot;&gt;key value&lt;/code&gt; and the &lt;code class=&quot;language-text&quot;&gt;application id&lt;/code&gt; of this app.
-Make sure to leave the window open, since we’re going to change the reply url.&lt;/li&gt;
+&lt;li&gt;Go into keys, create a new key. Make a note of the &lt;code class=&quot;language-text&quot;&gt;key value&lt;/code&gt; and the &lt;code class=&quot;language-text&quot;&gt;application id&lt;/code&gt; of this app.
+Make sure to leave the window open, since we’re going to change the reply URL.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Create Custom Connector in Flow&lt;/h3&gt;
+&lt;h3&gt;Create a Custom Connector in Flow&lt;/h3&gt;
 &lt;p&gt;You could use the Wizard directly in Flow/PowerApps, import an OpenAPI (swagger) file, or a Postman collection.
-My experience revolves around creating collections in Postman and importing them, so for this post we will use the Wizard in the UI. &lt;/p&gt;
+My experience revolves around creating collections in Postman and importing them, so for this post, we will use the Wizard in the UI. &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Navigate to the Flow portal, under data select custom connectors. Then select “create custom connector”&lt;/li&gt;
+&lt;li&gt;Navigate to the Flow portal, under data select custom connectors. Then select “Create custom connector”&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
   &lt;a
@@ -3433,7 +4026,7 @@ My experience revolves around creating collections in Postman and importing them
   &lt;/a&gt;
     &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Enter the url to your function app (not the HttpTrigger) as “Host”, then move to security&lt;/li&gt;
+&lt;li&gt;Enter the URL to your function app (not the HttpTrigger) as “Host”, then move to security&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
   &lt;a
@@ -3470,9 +4063,9 @@ My experience revolves around creating collections in Postman and importing them
   &lt;/a&gt;
     &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Select Oauth 2.0, Azure Active Directory as identity provider, enter the client Id and secret of your newly created app.&lt;/li&gt;
+&lt;li&gt;Select Oauth 2.0, Azure Active Directory as the Identity provider, enter the client Id and secret of your newly created app.&lt;/li&gt;
 &lt;li&gt;The resource URL is the ID of the Azure AD app we created in the other tenant, the one I told you to make a note of the ID.&lt;/li&gt;
-&lt;li&gt;Save now, and you will receive a redirect url.&lt;/li&gt;
+&lt;li&gt;Save now, and you will receive a redirect URL.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
   &lt;a
@@ -3547,7 +4140,7 @@ My experience revolves around creating collections in Postman and importing them
     &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Under request, select import from sample.&lt;/p&gt;
+&lt;p&gt;Under request, select Import from sample.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Select “POST”, and enter something like this in the body&lt;/p&gt;
@@ -3571,7 +4164,7 @@ This Azure Function creates an Item in a custom list - very basic.&lt;/p&gt;
 &lt;p&gt;As you can see we’ve created an item in SharePoint now.&lt;/p&gt;
 &lt;h2&gt;Call the Azure Function from SPFx&lt;/h2&gt;
 &lt;p&gt;UPDATE:
-I added the link to two articles that involves similar things that I’m doing in this post.&lt;/p&gt;
+I added the link to two articles that involve similar things that I’m doing in this post.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Waldek Mastykarz wrote a good blog post on this subject about how you could solve the API Permissions easier with Office365 CLI &lt;a href=&quot;https://blog.mastykarz.nl/grant-api-permissions-office-365-cli/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -3581,17 +4174,17 @@ I added the link to two articles that involves similar things that I’m doing i
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;p&gt;So I’ve created a simple SPFx webpart &lt;a href=&quot;https://github.com/simonagren/SPFxAzureFunction&quot;&gt;solution&lt;/a&gt; that you could clone from my Github.&lt;/p&gt;
-&lt;p&gt;Follow the readme and replace with your own variables in the code. In this web part we are requestion API Permissions.&lt;/p&gt;
+&lt;p&gt;So I’ve created a simple SPFx web part &lt;a href=&quot;https://github.com/simonagren/SPFxAzureFunction&quot;&gt;solution&lt;/a&gt; that you could clone from my Github.&lt;/p&gt;
+&lt;p&gt;Follow the readme and replace it with your variables in the code. In this web part, we are requesting API Permissions.&lt;/p&gt;
 &lt;h3&gt;Package solution&lt;/h3&gt;
 &lt;p&gt;Package the solution with the following commands. The file will end up in the &lt;code class=&quot;language-text&quot;&gt;sharepoint\solution&lt;/code&gt; folder.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;
       &lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;gulp bundle --ship
 gulp package-solution --ship&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
-&lt;h3&gt;Deploy solution&lt;/h3&gt;
+&lt;h3&gt;Deploy the solution&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;I usually right click in VS Code and choose reveal in Explorer.&lt;/li&gt;
+&lt;li&gt;I usually right-click in VS Code and choose to reveal in Explorer.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
   &lt;a
@@ -3631,7 +4224,7 @@ gulp package-solution --ship&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Copy the path to the folder&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Navigate to your App catalog. Then later in the browser when I upload I  just paste the path in the upper pane, then select the package.&lt;/p&gt;
+&lt;p&gt;Navigate to your App catalog. Then later in the browser when I upload I  just paste the path in the upper pane then select the package.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
@@ -3674,7 +4267,7 @@ gulp package-solution --ship&lt;/code&gt;&lt;/pre&gt;
 &lt;h3&gt;Test the web part&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Open a page add the web part.&lt;/li&gt;
-&lt;li&gt;Now you should see all you SharePoint Lists.&lt;/li&gt;
+&lt;li&gt;Now you should see all your SharePoint Lists.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
   &lt;a
@@ -3710,7 +4303,7 @@ gulp package-solution --ship&lt;/code&gt;&lt;/pre&gt;
   &lt;/a&gt;
     &lt;/p&gt;
 &lt;h2&gt;Thank you&lt;/h2&gt;
-&lt;p&gt;Thank you for following along in this series.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Part 3 - Azure Functions V2 + VS Code + PnPJs === true]]></title><description><![CDATA[The posts in this serie Part 1 - Azure Functions V2 + VS Code + PnPJs === true Part 2 - Azure Functions V2 + VS Code + PnPJs === true Part…]]></description><link>https://simonagren.github.io/part3-azurefunction/</link><guid isPermaLink="false">https://simonagren.github.io/part3-azurefunction/</guid><content:encoded>&lt;p&gt;
+&lt;p&gt;Thank you for following along in this series.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Part 3 - Azure Functions V2 + VS Code + PnPJs === true]]></title><description><![CDATA[The posts in this series Part 1 - Azure Functions V2 + VS Code + PnPJs === true Part 2 - Azure Functions V2 + VS Code + PnPJs === true Part…]]></description><link>https://simonagren.github.io/part3-azurefunction/</link><guid isPermaLink="false">https://simonagren.github.io/part3-azurefunction/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/funcpnp3-c7aa3f5193d2ac45392b4291dbd280fc-48538.png&quot;
@@ -3743,7 +4336,7 @@ gulp package-solution --ship&lt;/code&gt;&lt;/pre&gt;
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;h1&gt;The posts in this serie&lt;/h1&gt;
+&lt;h1&gt;The posts in this series&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://simonagren.github.io/azurefunction-v2-pnpjs/&quot; target=&quot;_blank&quot;&gt;Part 1 - Azure Functions V2 + VS Code + PnPJs === true&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://simonagren.github.io/part2-azurefunction/&quot; target=&quot;_blank&quot;&gt;Part 2 - Azure Functions V2 + VS Code + PnPJs === true&lt;/a&gt;&lt;/li&gt;
@@ -3751,8 +4344,8 @@ gulp package-solution --ship&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;a href=&quot;https://simonagren.github.io/part4-azurefunction/&quot; target=&quot;_blank&quot;&gt;Part 4 - Azure Functions V2 + VS Code + PnPJs === true&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;I this post we will use the Azure CLI to create an Azure Key Vault, register our secrets in the vault, create the permissions required for us to access the keys.&lt;/p&gt;
-&lt;p&gt;After everything is set up we will call both SharePoint and the Graph via PNPJs to create a Microsoft Team based on the Group of an Modern Team site.&lt;/p&gt;
-&lt;p&gt;As we will be using Application Permissions to call the Graph we need to have an registered “app” in our Azure AD, so we get an Id and Secret. Have a look in &lt;a href=&quot;https://simonagren.github.io/create-team-site-script/&quot; target=&quot;_blank&quot;&gt;This&lt;/a&gt; blogpost of mine to see how you could register one.&lt;/p&gt;
+&lt;p&gt;After everything is set up we will call both SharePoint and the Graph via PNPJs to create a Microsoft Team based on the Group of a Modern Team site.&lt;/p&gt;
+&lt;p&gt;As we will be using Application Permissions to call the Graph we need to have a registered “app” in our Azure AD, so we get an Id and Secret. Have a look in &lt;a href=&quot;https://simonagren.github.io/create-team-site-script/&quot; target=&quot;_blank&quot;&gt;This&lt;/a&gt; blog post of mine to see how you could register one.&lt;/p&gt;
 &lt;p&gt;Let’s get to it!&lt;/p&gt;
 &lt;h1&gt;Prerequisites&lt;/h1&gt;
 &lt;p&gt;Install Azure CLI globally&lt;/p&gt;
@@ -3761,7 +4354,7 @@ gulp package-solution --ship&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
 &lt;h1&gt;Azure Key Vault&lt;/h1&gt;
 &lt;p&gt;Now let’s use a best practices approach, the Azure Key Vault for getting our &lt;code class=&quot;language-text&quot;&gt;secrets&lt;/code&gt;.&lt;/p&gt;
-&lt;h2&gt;Create a Key vault with Azure CLI&lt;/h2&gt;
+&lt;h2&gt;Create a Key Vault with Azure CLI&lt;/h2&gt;
 &lt;h3&gt;Login to Azure with:&lt;/h3&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az login&lt;/code&gt;&lt;/pre&gt;
@@ -3793,7 +4386,7 @@ gulp package-solution --ship&lt;/code&gt;&lt;/pre&gt;
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;git clone https&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;//github.com/simonagren/keyvaultfunc.git&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
 &lt;ul&gt;
-&lt;li&gt;cd into folder and restore dependencies&lt;/li&gt;
+&lt;li&gt;cd into the folder and restore dependencies&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;npm install&lt;/code&gt;&lt;/pre&gt;
@@ -3804,15 +4397,15 @@ gulp package-solution --ship&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;code .&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
-&lt;p&gt;If you look in the package.json you can see that we have added three additional dependencies we need for our project. Note that it includes the &lt;code class=&quot;language-text&quot;&gt;@pnp/graph&lt;/code&gt; package since we will be calling the Graph aswell. These are those we added:&lt;/p&gt;
+&lt;p&gt;If you look in the package.json you can see that we have added three additional dependencies we need for our project. Note that it includes the &lt;code class=&quot;language-text&quot;&gt;@pnp/graph&lt;/code&gt; package since we will be calling the Graph as well. These are those we added:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;ms-rest-azure
 @pnp/graph
 azure-keyvault &lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
 &lt;h1&gt;Create an app and publish via CLI&lt;/h1&gt;
-&lt;p&gt;We could ofcourse like in &lt;a href=&quot;https://simonagren.github.io/part2-azurefunction/&quot; target=&quot;_blank&quot;&gt;Part 2&lt;/a&gt; deploy via the Extension in VS Code. But I wanted to show you how it’s done via CLI.&lt;/p&gt;
-&lt;h3&gt;We already know/created an resource group. But let’s find our storage Account:&lt;/h3&gt;
+&lt;p&gt;We could of course, just as in &lt;a href=&quot;https://simonagren.github.io/part2-azurefunction/&quot; target=&quot;_blank&quot;&gt;Part 2&lt;/a&gt; deploy via the Extension in VS Code. But I wanted to show you how it’s done via CLI.&lt;/p&gt;
+&lt;h3&gt;We already know/created a resource group. But let’s find our storage Account:&lt;/h3&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az storage account list&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
@@ -3821,7 +4414,7 @@ azure-keyvault &lt;/code&gt;&lt;/pre&gt;
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az functionapp create --name pnptesting --storage-account pnphttptrigger98d7 --consumption-plan-location northeurope --resource-group &lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
 &lt;h3&gt;Publish app&lt;/h3&gt;
-&lt;p&gt;As I mentioned earlier we need to have both an app registered in SharePoint, and an app registerd in our Azure AD with read/write permissions to Groups in the Graph.&lt;/p&gt;
+&lt;p&gt;As I mentioned earlier we need to have both an app registered in SharePoint, and an app registered in our Azure AD with read/write permissions to Groups in the Graph.&lt;/p&gt;
 &lt;p&gt;Edit the &lt;code class=&quot;language-text&quot;&gt;local.settings.json&lt;/code&gt; and enter your:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;spId&lt;/li&gt;
@@ -3835,9 +4428,9 @@ azure-keyvault &lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
 &lt;p&gt;Success!&lt;/p&gt;
 &lt;h2&gt;If you do get any errors&lt;/h2&gt;
-&lt;p&gt;With missing connectionstring etc. Try to deploy via the VS Code extension UI then, and set the App Settings via the extension as well.&lt;/p&gt;
+&lt;p&gt;With missing connection string etc. Try to deploy via the VS Code extension UI then, and set the App Settings via the extension as well.&lt;/p&gt;
 &lt;h1&gt;Enable managed service identity on our Azure Function App&lt;/h1&gt;
-&lt;p&gt;We do this for our specific Function App that we created&lt;/p&gt;
+&lt;p&gt;We do this for the specific Function App that we created&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;az functionapp identity assign --name pnptesting --resource-group &lt;span class=&quot;token string&quot;&gt;&quot;funcresourcegroup&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
@@ -3860,7 +4453,7 @@ const KeyVault = require(&amp;#39;azure-keyvault&amp;#39;);
 const msRestAzure = require(&amp;#39;ms-rest-azure&amp;#39;);&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
 &lt;h2&gt;Getting the secrets&lt;/h2&gt;
-&lt;p&gt;Here we first get a token from the general vault endpoint. Instanciate an KeyvaultClient and gets both the SharePoint and Graph secrets.&lt;/p&gt;
+&lt;p&gt;Here we first get a token from the general vault endpoint. Instantiate a KeyvaultClient and get both the SharePoint and Graph secrets.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
       &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; vaultUri &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;https://simonsfuncvault.vault.azure.net/&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;// Should always be https://vault.azure.net&lt;/span&gt;
@@ -3892,7 +4485,7 @@ graph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span clas
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
 &lt;h2&gt;Create a Microsoft Team from the Team Site Group&lt;/h2&gt;
-&lt;p&gt;First we get the web and select the Title. Then we get and filter all groups to find the one with the same displayName as our Modern Team Site.&lt;/p&gt;
+&lt;p&gt;First, we get the web and select the Title. Then we get and filter all groups to find the one with the same displayName as our Modern Team Site.&lt;/p&gt;
 &lt;p&gt;We then get that specific group by Id and creates a Microsoft Team via the new &lt;code class=&quot;language-text&quot;&gt;createTeam()&lt;/code&gt; &lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
       &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Get the web and select only Title&lt;/span&gt;
@@ -3962,7 +4555,7 @@ graph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span clas
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
       &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;https&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;//pnptesting.azurewebsites.net/api/PnPHttpTrigger?site=pnpazurefunc&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
-&lt;p&gt;In the browser you should now have received a message that the Team have been created.&lt;/p&gt;
+&lt;p&gt;In the browser, you should now have received a message that the Team has been created.&lt;/p&gt;
 &lt;h2&gt;After&lt;/h2&gt;
 &lt;p&gt;
   &lt;a
@@ -3998,7 +4591,7 @@ graph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span clas
   &lt;/a&gt;
     &lt;/p&gt;
 &lt;h1&gt;Finishing words&lt;/h1&gt;
-&lt;p&gt;Next post will be about securing the Function App with Azure AD.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Part 2 - Azure Functions V2 + VS Code + PnPJs === true]]></title><description><![CDATA[The posts in this serie Part 1 - Azure Functions V2 + VS Code + PnPJs === true Part 2 - Azure Functions V2 + VS Code + PnPJs === true Part…]]></description><link>https://simonagren.github.io/part2-azurefunction/</link><guid isPermaLink="false">https://simonagren.github.io/part2-azurefunction/</guid><content:encoded>&lt;p&gt;
+&lt;p&gt;The next post will be about securing the Function App with Azure AD.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Part 2 - Azure Functions V2 + VS Code + PnPJs === true]]></title><description><![CDATA[The posts in this series Part 1 - Azure Functions V2 + VS Code + PnPJs === true Part 2 - Azure Functions V2 + VS Code + PnPJs === true Part…]]></description><link>https://simonagren.github.io/part2-azurefunction/</link><guid isPermaLink="false">https://simonagren.github.io/part2-azurefunction/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/funcpnp2-55add6717461e76d8487682f8791bdf0-48538.png&quot;
@@ -4031,7 +4624,7 @@ graph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span clas
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;h1&gt;The posts in this serie&lt;/h1&gt;
+&lt;h1&gt;The posts in this series&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://simonagren.github.io/azurefunction-v2-pnpjs/&quot; target=&quot;_blank&quot;&gt;Part 1 - Azure Functions V2 + VS Code + PnPJs === true&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Part 2 - Azure Functions V2 + VS Code + PnPJs === true&lt;/li&gt;
@@ -4039,7 +4632,7 @@ graph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span clas
 &lt;li&gt;&lt;a href=&quot;https://simonagren.github.io/part4-azurefunction/&quot; target=&quot;_blank&quot;&gt;Part 4 - Azure Functions V2 + VS Code + PnPJs === true&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Let’s deploy the Function to Azure and watch it call SharePoint!&lt;/p&gt;
-&lt;p&gt;This is the second post about Azure Functions V2, with PnPJs and Visual Studio code. I decided to split this post in two. The next post will focus on using the Azure Key Vault with our JavaScript Solution. &lt;/p&gt;
+&lt;p&gt;This is the second post about Azure Functions V2, with PnPJs and Visual Studio code. I decided to split this post into two. The next post will focus on using the Azure Key Vault with our JavaScript Solution. &lt;/p&gt;
 &lt;p&gt;This post is about deploying our app, and while we do that we have a look at the local vs productions variables.&lt;/p&gt;
 &lt;h1&gt;An Azure Function to work with&lt;/h1&gt;
 &lt;p&gt;Have a look at the first post if you want to install the prerequisites and build the function from scratch:
@@ -4089,7 +4682,7 @@ graph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span clas
 &lt;li&gt;Select or create a new Resource Group&lt;/li&gt;
 &lt;li&gt;Select or create a new Storage Account&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Let the extension run it’s magic. After some time you should receive a message that the function has been deployed.
+&lt;p&gt;Let the extension run its magic. After some time you should receive a message that the function has been deployed.
 Right now we don’t have any production variables, so we will use an awesome feature in the extension for this. We could also change the settings from the UI in the VS Code extension. Really smooth!&lt;/p&gt;
 &lt;p&gt;
   &lt;a
@@ -4158,15 +4751,15 @@ Right now we don’t have any production variables, so we will use an awesome fe
   &lt;/a&gt;
     &lt;/p&gt;
 &lt;h1&gt;Deploy via Azure Function Core Tools (CLI)&lt;/h1&gt;
-&lt;p&gt;Ok so here of course we have a couple of options, here are two:&lt;/p&gt;
+&lt;p&gt;We have a couple of options, here are two:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Create an Function App via the CLI and then publish our app&lt;/li&gt;
-&lt;li&gt;Create an Function App from the UI.&lt;/li&gt;
+&lt;li&gt;Create a Function App via the CLI and then publish our app&lt;/li&gt;
+&lt;li&gt;Create a Function App from the UI.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Just to demonstrate how to fetch the Application settings from an existing Function App, we will create an Function App from the UI.&lt;/p&gt;
-&lt;p&gt;The &lt;code class=&quot;language-text&quot;&gt;local.settings.json&lt;/code&gt; is only being used locally, our settings are never transfered to Azure.&lt;/p&gt;
+&lt;p&gt;Just to demonstrate how to fetch the Application settings from an existing Function App, we will create a Function App from the UI.&lt;/p&gt;
+&lt;p&gt;The &lt;code class=&quot;language-text&quot;&gt;local.settings.json&lt;/code&gt; is only being used locally, our settings are never transferred to Azure.&lt;/p&gt;
 &lt;h2&gt;Create Function App from the Azure Portal&lt;/h2&gt;
-&lt;p&gt;If you dont’t have an function app from the previous steps, create one here.&lt;/p&gt;
+&lt;p&gt;If you don’t have a function app from the previous steps, create one here.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Log in to the Azure Portal -&gt; Create new resource -&gt; search for Function App and select &lt;code class=&quot;language-text&quot;&gt;create&lt;/code&gt;.
 
@@ -4207,18 +4800,18 @@ Right now we don’t have any production variables, so we will use an awesome fe
 &lt;/ol&gt;
 &lt;h2&gt;(OPTIONAL) Get Application Settings&lt;/h2&gt;
 &lt;p&gt;We are going to use the &lt;code class=&quot;language-text&quot;&gt;Azure Functions Core Tools&lt;/code&gt; that we installed in the previous post, to get the application settings of our newly created app.
-We don’t need to get these before we deploy, I’m just showing you that you can. There might be some scenarious where you would want the storage settings etc.&lt;/p&gt;
+We don’t need to get these before we deploy, I’m just showing you that you can. There might be some scenarios where you would want the storage settings etc.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Open a node console and cd into our VS Code project.&lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Run following command to fetch all application settings and they will be pushed into the local.settings.json file. &lt;/p&gt;
+&lt;p&gt;Run the following command to fetch all application settings and they will be pushed into the local.settings.json file. &lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;
       &lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;func azure functionapp fetch&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;app&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;settings &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;FuncApp&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2&gt;Deploy our function with local settings&lt;/h2&gt;
-&lt;p&gt;So we publish our app and use the &lt;code class=&quot;language-text&quot;&gt;local.settings.json&lt;/code&gt; to overwrite the App Settings in Azure. We don’t overwrite and remove all the settings, we actually just add the new settings and overwrite/update if there are any with the same name.  &lt;/p&gt;
+&lt;p&gt;So we publish our app and use the &lt;code class=&quot;language-text&quot;&gt;local.settings.json&lt;/code&gt; to overwrite the App Settings in Azure. We don’t overwrite and remove all the settings, we just add the new settings and overwrite/update if there are any with the same name.  &lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;
       &lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;func azure functionapp publish &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;FuncApp&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;publish&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;local&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;settings &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;i &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;overwrite&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;settings &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;y&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
@@ -4291,16 +4884,16 @@ We don’t need to get these before we deploy, I’m just showing you that you c
   &lt;/a&gt;
     &lt;/p&gt;
 &lt;h1&gt;Recap&lt;/h1&gt;
-&lt;p&gt;So deploying an Azure Function from Visual Studio Code is really easy, I really like the Functions Extension. And I really like that we could change the Application Settings easily from the extension.&lt;/p&gt;
-&lt;p&gt;As you saw in other example, we created a new Function App to receive the settings from Azure. You don’t have to do that, you could fetch settings from any of your Function Apps.&lt;/p&gt;
+&lt;p&gt;So deploying an Azure Function from Visual Studio Code is very easy, I like the Functions Extension. And I really like that we could change the Application Settings easily from the extension.&lt;/p&gt;
+&lt;p&gt;As you saw in the other example, we created a new Function App to receive the settings from Azure. You don’t have to do that, you could fetch settings from any of your Function Apps.&lt;/p&gt;
 &lt;p&gt;Another really easy way to deploy this function would be to:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Create an Function App in the Azure Portal&lt;/li&gt;
+&lt;li&gt;Create a Function App in the Azure Portal&lt;/li&gt;
 &lt;li&gt;Clone my repository from GitHub&lt;/li&gt;
 &lt;li&gt;Fill in the values in local.setting.json&lt;/li&gt;
 &lt;li&gt;Run &lt;code class=&quot;language-text&quot;&gt;func azure functionapp publish &amp;lt;FuncApp&amp;gt; --publish-local-settings -i --overwrite-settings -y&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;And of course we could both get the settings, and set from local settings via the Extension in VS Code.&lt;/p&gt;
+&lt;p&gt;And of course, we could both get the settings, and set from local settings via the Extension in VS Code.&lt;/p&gt;
 &lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -4335,7 +4928,7 @@ We don’t need to get these before we deploy, I’m just showing you that you c
   &lt;/a&gt;
     &lt;/p&gt;
 &lt;p&gt;And you would be done!&lt;/p&gt;
-&lt;p&gt;Anyways the next post will be using the Azure CLI and Azure Key Vault!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Part 1 - Azure Functions V2 + VS Code + PnPJs === true]]></title><description><![CDATA[The posts in this serie Part 1 - Azure Functions V2 + VS Code + PnPJs === true Part 2 - Azure Functions V2 + VS Code + PnPJs === true Part…]]></description><link>https://simonagren.github.io/azurefunction-v2-pnpjs/</link><guid isPermaLink="false">https://simonagren.github.io/azurefunction-v2-pnpjs/</guid><content:encoded>&lt;p&gt;
+&lt;p&gt;Anyways the next post will be using the Azure CLI and Azure Key Vault!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Part 1 - Azure Functions V2 + VS Code + PnPJs === true]]></title><description><![CDATA[The posts in this series Part 1 - Azure Functions V2 + VS Code + PnPJs === true Part 2 - Azure Functions V2 + VS Code + PnPJs === true Part…]]></description><link>https://simonagren.github.io/azurefunction-v2-pnpjs/</link><guid isPermaLink="false">https://simonagren.github.io/azurefunction-v2-pnpjs/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/funcpnp-dfec975154c30531070e5894527e0e5f-48538.png&quot;
@@ -4368,7 +4961,7 @@ We don’t need to get these before we deploy, I’m just showing you that you c
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;h1&gt;The posts in this serie&lt;/h1&gt;
+&lt;h1&gt;The posts in this series&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;Part 1 - Azure Functions V2 + VS Code + PnPJs === true&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://simonagren.github.io/part2-azurefunction/&quot; target=&quot;_blank&quot;&gt;Part 2 - Azure Functions V2 + VS Code + PnPJs === true&lt;/a&gt;&lt;/li&gt;
@@ -4376,11 +4969,11 @@ We don’t need to get these before we deploy, I’m just showing you that you c
 &lt;li&gt;&lt;a href=&quot;https://simonagren.github.io/part4-azurefunction/&quot; target=&quot;_blank&quot;&gt;Part 4 - Azure Functions V2 + VS Code + PnPJs === true&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;As the title may hint, you’re up for some JavaScript!&lt;/p&gt;
-&lt;p&gt;Today I had a few moments over and decided to have look at Azure Functions V2. In all honesty It’s been quite some time since I played around with Azure Functions, and back then I only made one or two PnP PowerShell scripts. It felt really interesting digging in to this again.&lt;/p&gt;
+&lt;p&gt;Today I had a few moments over and decided to have look at Azure Functions V2. In all honesty, It’s been quite some time since I played around with Azure Functions, and back then I only made one or two PnP PowerShell scripts. It felt really interesting digging into this again.&lt;/p&gt;
 &lt;p&gt;Anyways, I started to think about using PnPJs in the JavaScript function, and this might not be news to some of you, but for me this was exciting!&lt;/p&gt;
-&lt;p&gt;This first blog post will be a lot about setup and getting PnPJs to work with an Azure Function. Next post will include some deployment, local vs production variables, the Azure Storage Emulator etc. Then in the third post I will write some about Ochestrations and how we can utilize the strengths of functions vs more classic approaches.&lt;/p&gt;
+&lt;p&gt;This first blog post will be a lot about setup and getting PnPJs to work with an Azure Function. The next post will include some deployment, local vs production variables, the Azure Storage Emulator, etc. Then in the third post, I will write some about Orchestrations and how we can utilize the strengths of functions vs more classic approaches.&lt;/p&gt;
 &lt;p&gt;So I ended up creating everything from Visual Studio code (you could use the CLI), and I want to share how I did it. &lt;/p&gt;
-&lt;h2&gt;Installing prerequisites&lt;/h2&gt;
+&lt;h1&gt;Installing prerequisites&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;I assume you already have &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;, and &lt;a href=&quot;https://nodejs.org/&quot;&gt;Node&lt;/a&gt; or else go get it already :)&lt;/p&gt;
@@ -4395,7 +4988,7 @@ We don’t need to get these before we deploy, I’m just showing you that you c
 &lt;p&gt;And you also need an &lt;a href=&quot;https://azure.microsoft.com/free/?ref=microsoft.com&amp;#x26;utm_source=microsoft.com&amp;#x26;utm_medium=docs&amp;#x26;utm_campaign=visualstudio&quot;&gt;Azure Account&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Install Azure Function extension&lt;/h2&gt;
+&lt;h1&gt;Install Azure Function extension&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;I installed from &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions&quot;&gt;this url&lt;/a&gt;.
@@ -4440,7 +5033,7 @@ But you could also search for “Azure Functions” among the extensions in VS C
     &lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2&gt;Create new project&lt;/h2&gt;
+&lt;h2&gt;Create a new project&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;Select the Create a new Project icon -&gt; make a new folder -&gt; then select it.&lt;/li&gt;
 &lt;/ol&gt;
@@ -4522,7 +5115,7 @@ But you could also search for “Azure Functions” among the extensions in VS C
     &lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Select you folder and choose HTTPTrigger&lt;/p&gt;
+&lt;p&gt;Select your folder and choose HTTPTrigger&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Type in a name -&gt; select Anonymous authentication.&lt;/p&gt;
@@ -4564,7 +5157,7 @@ But you could also search for “Azure Functions” among the extensions in VS C
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
 &lt;h2&gt;Let’s write some code&lt;/h2&gt;
-&lt;p&gt;Go in to the index.js of the function. I only changed a few things and made quite an simple example.&lt;/p&gt;
+&lt;p&gt;Go into the index.js of the function. I only changed a few things and made a simple example.&lt;/p&gt;
 &lt;p&gt;First off I added the PnPJs packages I needed. As far as I know you cannot use normal imports OOTB in NodeJS, so I am using require.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
       &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// equal to: import { sp } from &quot;@pnp/sp;&quot;&lt;/span&gt;
@@ -4573,7 +5166,7 @@ But you could also search for “Azure Functions” among the extensions in VS C
 &lt;span class=&quot;token comment&quot;&gt;// equal to: import { SPFetchClient } from &quot;@pnp/nodejs;&quot;&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; SPFetchClient &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;@pnp/nodejs&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;SPFetchClient&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
-&lt;p&gt;Then I changed the querystring property from name to site. I’m using the value as siteName for the PnPJs setup. This site will be the default when using PnPJs.&lt;/p&gt;
+&lt;p&gt;Then I changed the query string property from name to site. I’m using the value as siteName for the PnPJs setup. This site will be the default when using PnPJs.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
       &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;req&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;query&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site &lt;span class=&quot;token operator&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;req&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;body &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; req&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;body&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; siteName &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; req&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;query&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site &lt;span class=&quot;token operator&quot;&gt;||&lt;/span&gt; req&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;body&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
@@ -4588,7 +5181,7 @@ But you could also search for “Azure Functions” among the extensions in VS C
     &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
-&lt;p&gt;So after the setup we make a call to our SharePoint site and selects the Title from the web and gets all of the Lists in the web. Then we send a response text back to the user.&lt;/p&gt;
+&lt;p&gt;So after the setup, we make a call to our SharePoint site and selects the Title from the web and get all of the Lists in the web. Then we send a response text back to the user.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
       &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Get the web and all the Lists&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; web &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; sp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;web&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Title&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;expand&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Lists&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
@@ -4641,7 +5234,7 @@ context&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;res &lt;spa
 &lt;h2&gt;Debugging&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;Set a break point if you want to have a closer look.&lt;/p&gt;
+&lt;p&gt;Set a breakpoint if you want to have a closer look.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Press F5 and let everything load up.&lt;/p&gt;
@@ -4655,7 +5248,7 @@ context&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;res &lt;spa
 &lt;/ol&gt;
 &lt;p&gt;Congrats, you have now made a working Azure Function V2, that you could deploy to Azure. Just make sure the dependencies follow along.&lt;/p&gt;
 &lt;h2&gt;Next steps&lt;/h2&gt;
-&lt;p&gt;As I mentioned in the beginning of the post I will soon create another post on this subject, so stay tuned!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Update managed metadata fields with PnPJs]]></title><description><![CDATA[Last night I was helping out with an issue in the PnPJs repository on GitHub where the user wanted to update a managed metadata column. I…]]></description><link>https://simonagren.github.io/pnpjs-update-managed-metadata/</link><guid isPermaLink="false">https://simonagren.github.io/pnpjs-update-managed-metadata/</guid><content:encoded>&lt;p&gt;
+&lt;p&gt;As I mentioned at the beginning of the post I will soon create another post on this subject, so stay tuned!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Update managed metadata fields with PnPJs]]></title><description><![CDATA[Last night I was helping out with an issue in the PnPJs repository on GitHub where the user wanted to update a managed metadata column. I…]]></description><link>https://simonagren.github.io/pnpjs-update-managed-metadata/</link><guid isPermaLink="false">https://simonagren.github.io/pnpjs-update-managed-metadata/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/pnp-pnpjs-600-558bcf95ded30b225148cfbca1a4ed0c-b75b8.png&quot;
