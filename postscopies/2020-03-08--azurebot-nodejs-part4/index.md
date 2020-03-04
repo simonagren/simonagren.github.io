@@ -7,11 +7,9 @@ author: Simon Ågren
 
 ![extend](./botframework2.png)
 
-# Introduction
+The last post was long. It was a lot of explaining regarding the code. And hopefully, that put things a bit into context. 
 
-The last post was long. It was a lot of explaining regarding the code. And hopefully that put things a bit into context. 
-
-This post will be shorter, and focus on how to handle user interruptions. Currently in the Bot the only option is to follow the conversation step by step, there is no way to get help och restart the bot.
+This post will be shorter and focus on how to handle user interruptions. Currently, in the Bot the only option is to follow the conversation step by step, there is no way to get help and restart the Bot.
 
 # Sourcecode
 Here is the link to the Github repository for this post: [https://github.com/simonagren/simon-blog-bot-v4](https://github.com/simonagren/simon-blog-bot-v4)
@@ -25,7 +23,7 @@ Here is the link to the Github repository for this post: [https://github.com/sim
 - [Ngrok](https://ngrok.com/download)
 
 # Project changes
-We will incorporate another component dialog to handle the user asking for help or wanting to restart the conversational flow. In the upcoming post we will also add some log out-logic to this dialog.
+We will incorporate another component dialog to handle the user asking for help or wanting to restart the conversational flow. In the upcoming post, we will also add some log out-logic to this dialog.
 
 This dialog will inherit from **componentDialog**
 ```typescript
@@ -43,13 +41,13 @@ export class OwnerResolverDialog extends HelperDialog {
 ```
 
 ## HelperDialog
-Everytime a dialog that derives from this componetn dialog is run, we will check for user interruption.
+Every time a dialog that derives from this component dialog is run, we will check for user interruption.
 We have added **onContinueDialog** that is a overridden method from **ComponentDialog**.
 
 ### interruption
-A method has been added to check if the user has written anything that corresponds to the helper dialog actions. If the user is asking for **?** or **help** we send a message back with information, and then the **DialogTurnStatus.waiting** makes sure we wait for user input before continueing.
+A method has been added to check if the user has written anything that corresponds to the helper dialog actions. If the user is asking for **?** or **help** we send a message back with information, and then the **DialogTurnStatus.waiting** makes sure we wait for user input before continuing
 
-On the other hand if the user writes **cancel**, **quit** or **restart** we will cancel all the dialogs with **cancelAllDialogs()**
+On the other hand, if the user writes **cancel**, **quit** or **restart** we will cancel all the dialogs with **cancelAllDialogs()**
 
 ```typescript
 private async interruption(dc: DialogContext): Promise<DialogTurnResult|undefined> {
@@ -73,7 +71,7 @@ private async interruption(dc: DialogContext): Promise<DialogTurnResult|undefine
 }
 ```
 ### onContinueDialog
-Will call the **interruption** method everytime we receive a message from the user. If the user has written something that's not equal to any of the command in the HelperDialog, we will just continue as normal.
+We will call the **interruption** method every time we receive a message from the user. If the user has written something that's not equal to any of the commands in the HelperDialog, we will just continue as normal.
 
 ```typescript
 public async onContinueDialog(dc: DialogContext): Promise<DialogTurnResult> {
@@ -86,7 +84,7 @@ public async onContinueDialog(dc: DialogContext): Promise<DialogTurnResult> {
 ```
 
 # Main Dialog
-As explained eralier the main dialog consists of two steps **initialStep** and **finalStep**. The initial step will kick off the **siteDialog** and then the final step will collect the result.
+As explained earlier, the main dialog consists of two steps **initialStep** and **finalStep**. The initial step will kick off the **siteDialog** and then the final step will collect the result.
 
 As mentioned earlier, if the user restarts the dialog the **stepContext.result** will return null in the **finalStep**. We will not collect any values from the **siteDialog** and for now, we will just end the dialog. The user must write something again to start it again.
 
@@ -103,4 +101,4 @@ private async finalStep(stepContext: WaterfallStepContext): Promise<DialogTurnRe
 }
 ```
 # Next step
-In the next post we will look at how to secure the Bot and give the user the ability to log in and then call Microsoft Graph, utilizing the Azure Bot service built in authentication abilities.
+In the next post, we will look at how to secure the Bot and give the user the ability to log in and then call Microsoft Graph, utilizing the Azure Bot service built-in authentication abilities.

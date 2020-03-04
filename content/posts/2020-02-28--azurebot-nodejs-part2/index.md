@@ -7,14 +7,17 @@ author: Simon Ågren
 
 ![extend](./botframework2.png)
 
-# Introduction
-
 In the <a href="https://simonagren.github.io/azurebot-nodejs-part1" target="_blank">previous post</a>, we built the Bot, tested it locally in the emulator, created all resources in Azure and also deployed the Bot to the web service in Azure using ARM templates and Key Vault (<a href="https://simonagren.github.io/azurebot-armtemplate-keyvault" target="_blank">separate post</a>).
 
 In this second post, we will continue with the Bot and run it from within **Microsoft Teams**. From localhost with the help of **ngrok** and, from the **Azure deployment**. 
 
 Just for fun, we will add an **@mention** in the **echo** when the Bot is in Microsoft Teams.
 
+| Bot Framework in Node.js                                                                  | Complimentary post                                                                                                          |
+|-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| <a href="https://simonagren.github.io/azurebot-nodejs-part1" target="_blank">Let's begin (Part 1)</a>     | <a href="https://simonagren.github.io/azurebot-armtemplate-keyvault" target="_blank">Bot Framework 4 ARM template Deploy with Key Vault</a> |
+| Microsoft Teams (Part 2) |                                                                                                                             |
+| <a href="https://simonagren.github.io/azurebot-nodejs-part3" target="_blank">Dialogs (Part 3)</a>         |                                                                                                                             |
 
 # Sourcecode
 Here is the finalized source code. [https://github.com/simonagren/simon-blog-bot-v2](https://github.com/simonagren/simon-blog-bot-v2)

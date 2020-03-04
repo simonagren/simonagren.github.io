@@ -60,15 +60,13 @@ const Social = props => {
               }
               @from-width tablet {
                 #social {
-                  padding: ${`calc(${theme.space.default}) calc(${theme.space.default} * 2)`};
+                  padding: 10px 20px;
                   max-width: ${theme.text.maxWidth.tablet};
                 }
               }
               @from-width desktop {
                 #social {
-                  padding: ${`calc(${theme.space.default} * 1.5) 0 calc(${
-                    theme.space.default
-                  } * 1.5)`};
+                  padding: 10px 0 10px;
                   max-width: ${theme.text.maxWidth.desktop};
                 }
               }

@@ -1,6 +1,6 @@
 ---
 title: Extending My Links in SharePoint Starter Kit 
-tags: ["sharepoint", "pnp", "spstarterkit"]
+tags: ["sharepoint", "pnp"]
 cover: extend.jpg
 author: Simon Ågren
 ---

@@ -11,9 +11,6 @@ author: Simon Ågren
 https://graph.microsoft.com/v1.0/groups?$filter=mailNickname eq 'sps08' or displayName eq 'sps08'
 
 
-
-# Introduction
-
 In this post we will have a look at how to secure the Bot and give the user the ability to log in and then call Microsoft Graph. We will utilize the Azure Bot service built in authentication abilities.
 
 # Sourcecode

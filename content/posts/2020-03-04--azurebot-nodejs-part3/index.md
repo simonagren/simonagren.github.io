@@ -1,13 +1,11 @@
 ---
 title: Bot Framework in Node.js - Dialogs (Part 3) 
 tags: ["botframework", "nodejs", "azure"]
-cover: botframework2.png
+cover: botframework3.png
 author: Simon Ågren
 ---
 
-![extend](./botframework2.png)
-
-# Introduction
+![extend](./botframework3.png)
 
 In the last post, we tried the Bot in Microsoft Teams using **ngrok**, and we also added a **@mention**. 
 
@@ -16,6 +14,13 @@ This post will be a bit code-heavy. A lot needed to be explained and a lot going
 Dialogs are powerful in Bot Framework 4, and we could utilize them in very structured ways, and complicated branched conditional situations. 
 
 I will try to stick to the basics, but at the same time prepare the Bot for upcoming posts.
+
+| Bot Framework in Node.js                                                                  | Complimentary post                                                                                                          |
+|-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| <a href="https://simonagren.github.io/azurebot-nodejs-part1" target="_blank">Let's begin (Part 1)</a>     | <a href="https://simonagren.github.io/azurebot-armtemplate-keyvault" target="_blank">Bot Framework 4 ARM template Deploy with Key Vault</a> |
+| <a href="https://simonagren.github.io/azurebot-nodejs-part2" target="_blank">Microsoft Teams (Part 2)</a> |                                                                                                                             |
+| Dialogs (Part 3)         |                                                                                                                             |
+
 
 ## What we will build today
 
@@ -32,6 +37,7 @@ Here is the link to the Github repository for this post: [https://github.com/sim
 - [An Azure Account](https://azure.microsoft.com/free/)
 - [Office 365 dev tenant](https://developer.microsoft.com/office/dev-program) - for Microsoft Teams
 - [Ngrok](https://ngrok.com/download)
+- [App Studio installed in Teams](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/app-studio-overview#installing-app-studio)
 
 
 # Dialogs in Bot Framework 4
@@ -39,7 +45,7 @@ We have a few different dialogs: `prompts`, `waterfall dialogs` and `component d
 
 ## Prompts
 Prompts are used to ask the user for input and wait until the user enters input. If the value is valid the prompt returns the value, otherwise it will re-prompt the user.
-We have to ability to define our custom validators for each prompt.
+We have to ability to define our custom validators for each prompt, and we could could also create our own custom prompts.
 
 There are different prompts available, and among those:
 - **Choice Prompt**: Asks for a choice from a set of options
@@ -80,6 +86,10 @@ In our case we will have three components deriving from `ComponentDialog`:
   ``` 
 
 # Project changes
+
+This is a high-level visualization of how the Bot is built:
+
+![diagram](./botdiagram.png)
 
 ## Files we added
 In the **src** folder, we create an additional folder named **dialogs**. It will contain 4 new files:
@@ -258,11 +268,11 @@ constructor(id: string) {
 First, we add the dialogs we will use, there's the **SiteDialog** and a **WaterFallDialog**. The Waterfall Dialog contains steps, and these have been added in the sequence they are intended to be run. 
 
 ### initialStep
-This step creates a new instance of the **SiteDetails** class and injects it while starting the **siteDialog** child dialog.
+This step creates a new instance of the **SiteDetails** class and injects it while starting the **siteDialog** child dialog. We are using the constant `SITE_DIALOG` to make sure there are no spelling errors.
 ```typescript
 private async initialStep(stepContext: WaterfallStepContext): Promise<DialogTurnResult> {
     const siteDetails = new SiteDetails();
-    return await stepContext.beginDialog('siteDialog', siteDetails);
+    return await stepContext.beginDialog(SITE_DIALOG, siteDetails);
 }
 ```
 
@@ -289,7 +299,6 @@ constructor(id: string) {
     super(id || 'siteDialog');
     this
         .addDialog(new ChoicePrompt(CHOICE_PROMPT))
-        .addDialog(new TextPrompt(TITLE_PROMPT, this.titlePromptValidator))
         .addDialog(new TextPrompt(TEXT_PROMPT))
         .addDialog(new OwnerResolverDialog(OWNER_RESOLVER_DIALOG))
         .addDialog(new ConfirmPrompt(CONFIRM_PROMPT))
@@ -308,7 +317,12 @@ constructor(id: string) {
 
 ### SiteTypeStep
 The first **siteTypeStep** will use a **ChoicePrompt**. 
-We will use the **WaterFallStepContext** to populate **siteDetails** with values in every step. And if we don't have a siteType value in siteDetails, we will prompt the user. In this case, we use the dialog/prompt we added using the **CHOICE_PROMPT**. And if we have a value, we will just run **.next(siteDetails.siteType)** and send the value to the next step in the WaterFall Dialog.
+
+We will use the **WaterFallStepContext** to populate **siteDetails** with values in every step. 
+
+If we don't have a siteType value in siteDetails, we will prompt the user. In this case, we use the dialog/prompt we added using the **CHOICE_PROMPT**. 
+
+And if we have a value, we will just run **.next(siteDetails.siteType)** and send the value to the next step in the WaterFall Dialog.
 
 ```typescript
 private async siteTypeStep(stepContext: WaterfallStepContext): Promise<DialogTurnResult> {
@@ -327,18 +341,7 @@ private async siteTypeStep(stepContext: WaterfallStepContext): Promise<DialogTur
 }
 ```
 ### TitleStep
-The second step `siteTitleStep` will use a `TextPrompt`, but we will prompt the user using the `TITLE_PROMPT`. This prompt was added with a validation method also included.
-```typescript 
-.addDialog(new TextPrompt(TITLE_PROMPT, this.titlePromptValidator))
-```
-The validator method will in this case just check that the length of the text from the user is more than 0 and less than 20 characters. The downside of adding validation methods in the dialog is that it could clutter it a bit, we will look at another example using another dialog soon.
-
-```typescript
-private async titlePromptValidator(promptContext: PromptValidatorContext<string>): Promise<boolean> {
-  return promptContext.recognized.succeeded && promptContext.recognized.value.length > 0 && promptContext.recognized.value.length < 20;
-}
-
-```
+The second step `siteTitleStep` will use a `TextPrompt`.
 
 We will first get the **siteType** value from the previous step. 
 And as in the previous step, if we don't have the value from the user, we will prompt the user. And if we have a value, we will just run **.next(siteDetails.title)** and send the value to the next step in the WaterFall Dialog.
@@ -352,8 +355,7 @@ private async titleStep(stepContext: WaterfallStepContext): Promise<DialogTurnRe
   if (!siteDetails.title) {
 
       const promptText = 'Provide a title for your site';
-      const retryPromptText = 'The site title must contain at least one letter and be less than 20';
-      return await stepContext.prompt(TITLE_PROMPT, { prompt: promptText, retryPrompt: retryPromptText });
+      return await stepContext.prompt(TEXT_PROMPT, { prompt: promptText });
   } else {
       return await stepContext.next(siteDetails.title);
   }
@@ -395,7 +397,7 @@ this
 this.initialDialogId = WATERFALL_DIALOG;
 }
 ```
-Here we do in a similar fashion that we have supplied a validation method to the text prompt, but in this case, it exists in this dialog and does not clutter the **MainDialog**, and sometimes we need multiple validation methods. We will in another post add some extra validation here using **Microsoft Graph** to see that the user exists.
+Here we supply a validation method to the text prompt. Sometimes we need multiple validation methods, we will add some extra validation here in another post using **Microsoft Graph** to see that the user exists.
 
 ```typescript
 private static async ownerPromptValidator(promptContext: PromptValidatorContext<string>): Promise<boolean> {
@@ -414,7 +416,7 @@ private static async ownerPromptValidator(promptContext: PromptValidatorContext<
   }
 }
 ```
-And this is how the steps look like, they should be familiar. Note that we don't use a **repromtMessage** since we handle the message to the user in the validator method.
+This is how the steps look like, they should be familiar. Note that we don't use a **repromtMessage** since we handle the message to the user in the validator method.
 ```typescript
 private async initialStep(stepContext: WaterfallStepContext): Promise<DialogTurnResult> {
   const siteDetails = (stepContext.options as any).siteDetails;
@@ -437,4 +439,4 @@ private async finalStep(stepContext: WaterfallStepContext): Promise<DialogTurnRe
 ```
 
 # Next step
-The next post we will be a short one focusing on how to handle user interruptions. If the user asks for help or restarts the Bot.
+The next post will be a short one focusing on how to handle user interruptions. If the user asks for help or restarts the Bot.

@@ -7,7 +7,7 @@ author: Simon Ågren
 
 ![pnp and azurefunc](./funcpnp.png)
 
-# The posts in this serie
+# The posts in this series
 - Part 1 - Azure Functions V2 + VS Code + PnPJs === true
 - <a href="https://simonagren.github.io/part2-azurefunction/" target="_blank">Part 2 - Azure Functions V2 + VS Code + PnPJs === true</a>
 - <a href="https://simonagren.github.io/part3-azurefunction/" target="_blank">Part 3 - Azure Functions V2 + VS Code + PnPJs === true</a>
@@ -15,16 +15,15 @@ author: Simon Ågren
 
 As the title may hint, you're up for some JavaScript!
 
-Today I had a few moments over and decided to have look at Azure Functions V2. In all honesty It's been quite some time since I played around with Azure Functions, and back then I only made one or two PnP PowerShell scripts. It felt really interesting digging in to this again.
+Today I had a few moments over and decided to have look at Azure Functions V2. In all honesty, It's been quite some time since I played around with Azure Functions, and back then I only made one or two PnP PowerShell scripts. It felt really interesting digging into this again.
 
 Anyways, I started to think about using PnPJs in the JavaScript function, and this might not be news to some of you, but for me this was exciting!
 
-This first blog post will be a lot about setup and getting PnPJs to work with an Azure Function. Next post will include some deployment, local vs production variables, the Azure Storage Emulator etc. Then in the third post I will write some about Ochestrations and how we can utilize the strengths of functions vs more classic approaches.
+This first blog post will be a lot about setup and getting PnPJs to work with an Azure Function. The next post will include some deployment, local vs production variables, the Azure Storage Emulator, etc. Then in the third post, I will write some about Orchestrations and how we can utilize the strengths of functions vs more classic approaches.
 
 So I ended up creating everything from Visual Studio code (you could use the CLI), and I want to share how I did it. 
 
-
-## Installing prerequisites
+# Installing prerequisites
 
 * I assume you already have [Visual Studio Code](https://code.visualstudio.com/), and [Node](https://nodejs.org/) or else go get it already :)
 
@@ -34,7 +33,7 @@ npm i -g azure-functions-core-tools@2
 ```
 * And you also need an [Azure Account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-## Install Azure Function extension
+# Install Azure Function extension
 
 1. I installed from [this url](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions). 
 But you could also search for "Azure Functions" among the extensions in VS Code.
@@ -44,7 +43,7 @@ But you could also search for "Azure Functions" among the extensions in VS Code.
 3. Select the Azure Icon -> sign in to Azure.
 ![](./extension.jpg)
 
-## Create new project
+## Create a new project
 
 1. Select the Create a new Project icon -> make a new folder -> then select it.
 
@@ -59,7 +58,7 @@ But you could also search for "Azure Functions" among the extensions in VS Code.
 1. Select the "Create Function" icon
 ![](./newfunc.jpg)
 
-2. Select you folder and choose HTTPTrigger
+2. Select your folder and choose HTTPTrigger
 
 3. Type in a name -> select Anonymous authentication.
 
@@ -108,7 +107,7 @@ This is how mine looks like:
 ```
 
 ## Let's write some code
-Go in to the index.js of the function. I only changed a few things and made quite an simple example.
+Go into the index.js of the function. I only changed a few things and made a simple example.
 
 First off I added the PnPJs packages I needed. As far as I know you cannot use normal imports OOTB in NodeJS, so I am using require.
 ```typescript
@@ -118,7 +117,7 @@ const sp =  require("@pnp/sp").sp;
 // equal to: import { SPFetchClient } from "@pnp/nodejs;"
 const SPFetchClient = require("@pnp/nodejs").SPFetchClient;
 ```
-Then I changed the querystring property from name to site. I'm using the value as siteName for the PnPJs setup. This site will be the default when using PnPJs.
+Then I changed the query string property from name to site. I'm using the value as siteName for the PnPJs setup. This site will be the default when using PnPJs.
 ```typescript
 if (req.query.site || (req.body && req.body.site)) {
     const siteName = req.query.site || req.body.site;
@@ -134,7 +133,7 @@ if (req.query.site || (req.body && req.body.site)) {
 });
 ```
 
-So after the setup we make a call to our SharePoint site and selects the Title from the web and gets all of the Lists in the web. Then we send a response text back to the user.
+So after the setup, we make a call to our SharePoint site and selects the Title from the web and get all of the Lists in the web. Then we send a response text back to the user.
 ```typescript
 // Get the web and all the Lists
 const web = await sp.web.select("Title").expand('Lists').get();
@@ -188,7 +187,7 @@ module.exports = async function (context, req) {
 ```
 
 ## Debugging
-1. Set a break point if you want to have a closer look.
+1. Set a breakpoint if you want to have a closer look.
 
 2. Press F5 and let everything load up.
 
@@ -200,4 +199,4 @@ Congrats, you have now made a working Azure Function V2, that you could deploy t
 
 ## Next steps
 
-As I mentioned in the beginning of the post I will soon create another post on this subject, so stay tuned!
+As I mentioned at the beginning of the post I will soon create another post on this subject, so stay tuned!

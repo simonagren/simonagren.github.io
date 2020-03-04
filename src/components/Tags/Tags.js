@@ -67,7 +67,7 @@ const Tags = props => {
                     color: black;
                     display: inline-block;
                     vertical-align: middle;
-                    margin-left: 10px;
+                    margin-left: 2px;
                     font-size: 12px;
                   }
                 }

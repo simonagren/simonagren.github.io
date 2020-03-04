@@ -7,7 +7,6 @@ author: Simon Ågren
 
 ![extend](./azfunc3.png)
 
-# Introduction
 In this post, I will talk about Azure Functions 3.0 that has become generally available (GA) and was announced almost a month ago [here](https://azure.microsoft.com/en-us/updates/azure-functions-runtime-30-is-now-available/). I feel that this is a nice update, allowing for newer function runtime and also some performance improvements. The new capabilities in the release include support for `Node 12` and `.Net Core 3.2`. 
 
 If you are familiar with me, you know I will focus on `Node.js` and TypeScript today.

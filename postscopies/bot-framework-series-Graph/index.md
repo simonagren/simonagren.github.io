@@ -9,10 +9,6 @@ author: Simon Ågren
 
 # FIXA MED ALIAS RESOLVERDIALOG
 
-
-
-# Introduction
-
 I the last post we created a new Azure AD Application registration, gave it permissions to Microsoft Graph. We also added an OAuth promt to the dialogs and made it possible for the user to log in both in the emulator as well as Microsoft Teams.
 
 In this post we will add some helpers and enable the user to utilize Microft Graph. We will create an example using both the `GraphClient` and `PnPJs Graph` for hooking in to the Azure Bot Service auth flow. And in this example we will add some additional validation into the dialogs as well.
@@ -47,7 +43,7 @@ We will install these packages:
     ```
 - [Microsoft Graph Types](https://www.npmjs.com/package/@microsoft/microsoft-graph-types)    
     ```json
-    npm i @microsoft/microsoft-graph-types
+    npm i @microsoft/microsoft-graph-types --save-dev
     ```
 - [PnPjs: Graph and NodeJs](https://pnp.github.io/pnpjs/getting-started/#connect-to-microsoft-graph-from-node)
     ```json

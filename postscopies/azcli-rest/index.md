@@ -7,7 +7,6 @@ author: Simon Ågren
 
 ![extend](./sitescript.png)
 
-# Introduction
 Native support for REST in Azure CLI since V.X
 
 # Prerequisites 

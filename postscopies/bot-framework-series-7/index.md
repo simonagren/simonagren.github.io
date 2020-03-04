@@ -7,8 +7,6 @@ author: Simon Ågren
 
 ![extend](./sitescript.png)
 
-# Introduction
-
 In this post we got a little fancy using Adaptive cards in the Bot. And we talked about a few workarounds to have them working in `prompts` and how to collect the user input, especially when it comes to `Microsoft Teams`.
 
 In this post we will have a look at proactive messages at a higher level, and try to be a little creative. And we will have a look at how to make sure that the messages we send to the Bot, and then to the users are coming from a trusted source - by validating the token.

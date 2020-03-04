@@ -10,6 +10,12 @@ author: Simon Ågren
 This is the first of a series of blog-posts regarding Bot Framework 4, Node.js and TypeScript. There's a lot of material out there and it might seem redundant to start with the basics. 
 I will take you on a journey where we begin with the most simple concepts, and in each post, we develop the Bot a bit further while introducing some new concepts. And it's going to be my ways of doing things, with workarounds and both simple and creative ways to get things done.
 
+| Bot Framework in Node.js                                                                  | Complimentary post                                                                                                          |
+|-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| Let's begin (Part 1)     | <a href="https://simonagren.github.io/azurebot-armtemplate-keyvault"  target="_blank">Bot Framework 4 ARM template Deploy with Key Vault</a> |
+| <a href="https://simonagren.github.io/azurebot-nodejs-part2"  target="_blank">Microsoft Teams (Part 2)</a> |                                                                                                                             |
+| <a href="https://simonagren.github.io/azurebot-nodejs-part3"  target="_blank">Dialogs (Part 3)</a>         |                                                                                                                             |
+
 # Planned topics
 
 ***As of right now these are the intended topics that we will go trough:***

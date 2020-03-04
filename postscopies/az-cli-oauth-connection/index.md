@@ -7,68 +7,81 @@ author: Simon Ågren
 
 ![extend](./sitescript.png)
 
-# Introduction
+In a previous post [Azure CLI Azure AD registration with permission scopes](https://simonagren.github.io/azcli-ad-scope) we registered an Azure AD Application using specific scopes to the service principal `Microsoft Graph`, and we also prepared it with a reply-url that works for Bot Framework auth.
 
-In a previous post [Azure CLI Azure AD registration with permission scopes](https://simonagren.github.io/az-cli-ad-scope) we registered an Azure AD Application using specific scopes to the service principal `Microsoft Graph`, and we also pre-prepared it with an reply url that works for Bot Framework auth.
-
-In this post we will create a `auth connection` from the Bot Channels Registration, to the Azure AD Registration, giving the Bot the possibility to get a token to call Microsoft Graph.
+In this post we will create an `auth connection` from the Bot Channels Registration to the Azure AD Registration, giving the Bot the possibility to get a token to call Microsoft Graph.
 
 # Prerequisites 
 - [Azure Cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 - [An Azure Account](https://azure.microsoft.com/free/)
 
-# Command overview
-When we use the command [az bot authsetting create](https://docs.microsoft.com/en-us/cli/azure/bot/authsetting?view=azure-cli-latest#az-bot-authsetting-create) there are some common things we need to enter such as: `--resource-group`, `--name`, `--setting-name`, `--provider-scope-string`, `--client-id` and `--client-secret`. Depending on which `--service` you decide to use there are a few other service specific things we need to add in `--parameters`. As you can see in the picture with Azure AD V2 we need `Tenant ID`.
+# Create command
+When we use the command [az bot authsetting create](https://docs.microsoft.com/en-us/cli/azure/bot/authsetting?view=azure-cli-latest#az-bot-authsetting-create) there are some common things we need to enter such as: 
+- `--resource-group`
+- `--name`
+- `--setting-name`
+- `--provider-scope-string`
+- `--client-id`
+- `--client-secret`. 
+
+Depending on which `--service`(service provider) you decide to use there are a few service-specific things we need to add in `--parameters`. 
+
+As you can see in the picture with **Azure Active Directory V2** we need to add a `Tenant ID`.
 
 ![connection](./connection.png)
 
-## List all available service providers
-We use the command `az bot authsetting list-providers` and ` --all` to get all service providers. We also add a query `--query "[].{Name:appDisplayName, Id:appId}`. The first brackets takes all the results, and then we use the `{}` to create an object with custom header names `appDisplayName` and the `appId` and output it as a table.
+## We need some more things
+At first I tried to create the OAuth connection with the common properties and only `tenantId=<tenantId>`in the property string. And the connection seemed to work just fine, although from the UI in the portal, the Client id and Client secret were blank.
 
-```json
-az bot authsetting list-providers --query "[].{Name:appDisplayName, Id:appId}" --output table --all
+This made no sense since I had provided the `--client-id` and `--client-secret` in the creation. 
+
+Turns out the **Azure Active Directory V2** service takes more `--parameters` key-value pairs:
+- `clientId`
+- `clientSecret`
+- `tenantId`
+
+If you provide all of them everything will be fine!
+
+# List all available service providers
+We use the command `az bot authsetting list-providers` to get all service providers. 
+
+We also add a query `--query "value[].[properties.displayName, properties.serviceProviderNamme]"` to get the display name and the service provider name, and output it as a table.
+
+```powershell
+az bot authsetting list-providers --query "value[].[properties.displayName, properties.serviceProviderName]" -o table
 ```
 
-## Get Azure AD V2 from the service providers 
-We use the same base command but change the query slightly `--query "[?appDisplayName=='Azure AD V2'].{Name:appDisplayName, Id:appId}"`. Now in the first bracket we only look for a service provicer with the `appDisplayName` of Microsoft Graph and then we output the values in a table. 
+# Use the service provider name in a variable
+You could of course just copy the service provider name from the table we printed. 
 
-```json
-az bot authsetting list-providers --query "[?appDisplayName=='Azure AD V2'].{Name:appDisplayName, Id:appId}" --output table --all
-```
+If you are running Azure CLI from PowerShell, like I am, this is an example to grab the Azure Active Directory service provider name to a variable.
 
-## Use the service provider appId in a variable
-You could ofcourse just copy the Id from the table we printed. But it could be really good to know how to work with variables. If you are runnign Azure CLI from PowerShell, like I am, this is an example to grab the Microsoft Graph service provider Id to a variable.
-
-```json
-$aadV2Id = az bot authsetting list-providers --provider-name "Aadv2" --query "properties.id" 
+```powershell
+$providerName = az bot authsetting list-providers --query "value[?properties.displayName=='Azure Active Directory v2'].properties.serviceProviderName | [0]" 
 ```
 
 # Creating an OAuth connection setting
 
-In this example we create an connection setting to an Azure AD V2 application. The already registered application has permissions to Microsoft Graph already.
+In this example, we create a connection setting to an Azure AD V2 application. The registered Azure Active Directory Application has permissions to Microsoft Graph.
 
 1. Create variables
-  ```json
-  $appName = "AADSimonBotGraphTest"
-  $secret = "SimonBlogBotDemoStuff1!"
-  $rGroup = "RGSimonBot"
-  $bot = "BotSimonBot"
-  $connName = "GraphConnection"
-  $scopeString = "openid profile User.Read"
-  $paramString = "tenantId=$tenantId"
+  ```powershell
   $clientId = "<IdFromAADapp>" 
-  $secret = "<secretFromAADapp>"
-  $providerName = "Aadv2"
+  $clientSecret = "<secretFromAADapp>"
+  $tenantId = "<tenantId>"
+  $rGroup = "RGSimonBot"
+  $botName = "BotSimonBot"
+  $connName = "GraphConnection"
+  $scopeString = "openid profile User.Read Group.Read.All"
   ```
 
-2. Get Azure AD V2 Id
+2. Get Azure Active Directory V2 service provider name
   
-  ```json
-  $aadV2Id = az bot authsetting list-providers --provider-name "Aadv2" --query "properties.id" 
+  ```powershell
+  $providerName = az bot authsetting list-providers --query "value[?properties.displayName=='Azure Active Directory v2'].properties.serviceProviderName | [0]" 
   ```
 
-3. Create connection
-`--provider-scope-string`, `--client-id` and `--client-secret`
-```json
-az bot authsetting create --resource-group $rGroup --name $bot --setting-name $connName --client-id $clientId --client-secret $secret --provider-scope-string $scopeString --service $providerName --parameters $paramString
+3. Create Connection
+```powershell
+az bot authsetting create -g $rGroup -n $botName -c $connName --client-id $clientId --client-secret $clientSecret --provider-scope-string $scopeString --service $providerName --parameters "clientId=$clientId" "clientSecret=$clientSecret" "tenantId=$tenantId"
 ```

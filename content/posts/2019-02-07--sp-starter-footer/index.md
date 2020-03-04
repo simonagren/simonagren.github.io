@@ -1,6 +1,6 @@
 ---
 title: Findings from issues with SharePoint Starter Kit 
-tags: ["sharepoint", "pnp", "spstarterkit"]
+tags: ["sharepoint", "pnp"]
 cover: default-front-page-contoso.png
 author: Simon Ågren
 ---

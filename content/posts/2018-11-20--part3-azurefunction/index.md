@@ -7,7 +7,7 @@ author: Simon Ågren
 
 ![pnp and azure func](./funcpnp3.png)
 
-# The posts in this serie
+# The posts in this series
 - <a href="https://simonagren.github.io/azurefunction-v2-pnpjs/" target="_blank">Part 1 - Azure Functions V2 + VS Code + PnPJs === true</a>
 - <a href="https://simonagren.github.io/part2-azurefunction/" target="_blank">Part 2 - Azure Functions V2 + VS Code + PnPJs === true</a>
 - Part 3 - Azure Functions V2 + VS Code + PnPJs === true
@@ -15,9 +15,9 @@ author: Simon Ågren
 
 I this post we will use the Azure CLI to create an Azure Key Vault, register our secrets in the vault, create the permissions required for us to access the keys.
 
-After everything is set up we will call both SharePoint and the Graph via PNPJs to create a Microsoft Team based on the Group of an Modern Team site.
+After everything is set up we will call both SharePoint and the Graph via PNPJs to create a Microsoft Team based on the Group of a Modern Team site.
 
-As we will be using Application Permissions to call the Graph we need to have an registered "app" in our Azure AD, so we get an Id and Secret. Have a look in <a href="https://simonagren.github.io/create-team-site-script/" target="_blank">This</a> blogpost of mine to see how you could register one.
+As we will be using Application Permissions to call the Graph we need to have a registered "app" in our Azure AD, so we get an Id and Secret. Have a look in <a href="https://simonagren.github.io/create-team-site-script/" target="_blank">This</a> blog post of mine to see how you could register one.
 
 Let's get to it!
 
@@ -31,7 +31,7 @@ npm install -g azure-cli
 # Azure Key Vault
 Now let's use a best practices approach, the Azure Key Vault for getting our `secrets`.
 
-## Create a Key vault with Azure CLI
+## Create a Key Vault with Azure CLI
 ### Login to Azure with: 
 ```json
 az login
@@ -69,7 +69,7 @@ az keyvault secret set --vault-name "simonsfuncvault" --name "graphSecret" --val
 ```json
 git clone https://github.com/simonagren/keyvaultfunc.git
 ```
-- cd into folder and restore dependencies
+- cd into the folder and restore dependencies
 
 ```json
 npm install
@@ -80,7 +80,7 @@ npm install
 code .
 ```
 
-If you look in the package.json you can see that we have added three additional dependencies we need for our project. Note that it includes the `@pnp/graph` package since we will be calling the Graph aswell. These are those we added:
+If you look in the package.json you can see that we have added three additional dependencies we need for our project. Note that it includes the `@pnp/graph` package since we will be calling the Graph as well. These are those we added:
 
 ```json
 ms-rest-azure
@@ -89,9 +89,9 @@ azure-keyvault
 ```
 
 # Create an app and publish via CLI
-We could ofcourse like in <a href="https://simonagren.github.io/part2-azurefunction/" target="_blank">Part 2</a> deploy via the Extension in VS Code. But I wanted to show you how it's done via CLI.
+We could of course, just as in <a href="https://simonagren.github.io/part2-azurefunction/" target="_blank">Part 2</a> deploy via the Extension in VS Code. But I wanted to show you how it's done via CLI.
 
-### We already know/created an resource group. But let's find our storage Account:
+### We already know/created a resource group. But let's find our storage Account:
 ```json
 az storage account list
 ```
@@ -102,7 +102,7 @@ az functionapp create --name pnptesting --storage-account pnphttptrigger98d7 --c
 ```
 
 ### Publish app
-As I mentioned earlier we need to have both an app registered in SharePoint, and an app registerd in our Azure AD with read/write permissions to Groups in the Graph.
+As I mentioned earlier we need to have both an app registered in SharePoint, and an app registered in our Azure AD with read/write permissions to Groups in the Graph.
 
 Edit the `local.settings.json` and enter your:
 - spId
@@ -117,10 +117,10 @@ func azure functionapp publish pnptesting --publish-local-settings -i --overwrit
 Success!
 
 ## If you do get any errors
-With missing connectionstring etc. Try to deploy via the VS Code extension UI then, and set the App Settings via the extension as well.
+With missing connection string etc. Try to deploy via the VS Code extension UI then, and set the App Settings via the extension as well.
 
 # Enable managed service identity on our Azure Function App
-We do this for our specific Function App that we created
+We do this for the specific Function App that we created
 
 ```json
 az functionapp identity assign --name pnptesting --resource-group "funcresourcegroup"
@@ -148,7 +148,7 @@ const KeyVault = require('azure-keyvault');
 const msRestAzure = require('ms-rest-azure');
 ```
 ## Getting the secrets
-Here we first get a token from the general vault endpoint. Instanciate an KeyvaultClient and gets both the SharePoint and Graph secrets.
+Here we first get a token from the general vault endpoint. Instantiate a KeyvaultClient and get both the SharePoint and Graph secrets.
 
 ```typescript
 const vaultUri = "https://simonsfuncvault.vault.azure.net/";
@@ -182,7 +182,7 @@ graph.setup({
  ```
 
 ## Create a Microsoft Team from the Team Site Group
-First we get the web and select the Title. Then we get and filter all groups to find the one with the same displayName as our Modern Team Site.
+First, we get the web and select the Title. Then we get and filter all groups to find the one with the same displayName as our Modern Team Site.
 
 We then get that specific group by Id and creates a Microsoft Team via the new `createTeam()` 
 ```typescript
@@ -224,10 +224,10 @@ Make sure that the name of the site you use is a Modern Team Site
 https://pnptesting.azurewebsites.net/api/PnPHttpTrigger?site=pnpazurefunc
 
 ```
-In the browser you should now have received a message that the Team have been created.
+In the browser, you should now have received a message that the Team has been created.
 
 ## After
 ![afterteam](./postteams.jpg)
 
 # Finishing words
-Next post will be about securing the Function App with Azure AD.
+The next post will be about securing the Function App with Azure AD.
