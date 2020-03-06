@@ -1,4 +1,154 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Wed, 04 Mar 2020 10:42:18 GMT</lastBuildDate><item><title><![CDATA[Bot Framework in Node.js - Dialogs (Part 3)]]></title><description><![CDATA[In the last post, we tried the Bot in Microsoft Teams using  ngrok , and we also added a  @mention .  This post will be a bit code-heavy. A…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part3/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part3/</guid><content:encoded>&lt;p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Fri, 06 Mar 2020 14:13:26 GMT</lastBuildDate><item><title><![CDATA[Bot Framework in Node.js - Interruptions (Part 4)]]></title><description><![CDATA[The last post was long. It was a lot of explaining regarding the code, and hopefully, that put things a bit into context.  This post will be…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part4/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part4/</guid><content:encoded>&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/botframework4-63c21ada261fd07269bdde2634eb0641-b70ec.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 46.916666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABJ0AAASdAHeZh94AAAB6UlEQVQoz01SS08TYRTtDyJAAtQWBCJNdCHykFdQY1B3Cis3sDesS5BHyyOURy2PhS4IRJO6cSkkLozQznSm08JQwKQ8Cm1n2sO938yELs7c73XPPffccXmnJbzZ1NCzqmJoQ0PTjIzXGynaJ9ERUkXsDyfxIqKJNeMZnT9fSaJrWUUXxfYlFczTSLmuvjUV4z91dC4rIg6EVXSvWCSCbM1KYIKnS9bdh69pvCcMfzvCCOElFfNOy4LUxazvtiyFbym2BGShrI+IBr9oVCCJtrkE3FMSqvwxfNw+RvpYR0xJ4ZCQyZzgx8F/updJIREy6wN6zK3Wf5ZQPymhgaKbMWXdceTCNRNxjO3qAEoomSZKJQPloonQr3M0BSoUMpmHkp4sKqRIE+2xT9xeL7XdbftU7Y9jlAgLtznc5gsoEzV/dv5ewMMeMqGjoG4ygccLimixxyZ5ta4JD3sJnTSAalI4uqOjbBZRKBqCbf/fNQLRMzQHbYWfoqcI/T5FZD9OylTUUpLbLsKtsw0c+bHTcrl4g5vcNQyjwBrJw0tbIU15/U8We+kr7Gk6hjZTwsOHs7LwrBJ8xsV4KJd5E+c5A1mKaiYP//fMvcJWMrMlkKAERXjp/E8OKve8ZmIfTb3Nhm8+gUdB552EOzZOE5q0JRmkAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;extend&quot;
+        title=&quot;&quot;
+        src=&quot;/static/botframework4-63c21ada261fd07269bdde2634eb0641-48538.png&quot;
+        srcset=&quot;/static/botframework4-63c21ada261fd07269bdde2634eb0641-bed0f.png 200w,
+/static/botframework4-63c21ada261fd07269bdde2634eb0641-5fd34.png 400w,
+/static/botframework4-63c21ada261fd07269bdde2634eb0641-48538.png 800w,
+/static/botframework4-63c21ada261fd07269bdde2634eb0641-b70ec.png 1200w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;The last post was long. It was a lot of explaining regarding the code, and hopefully, that put things a bit into context. &lt;/p&gt;
+&lt;p&gt;This post will be shorter and focus on how to handle user interruptions. Currently, the only option in the Bot is to follow the conversation step by step, there is no way to get help and restart the Bot.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Bot Framework in Node.js&lt;/th&gt;
+&lt;th&gt;Complimentary post&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part1&quot; target=&quot;_blank&quot;&gt;
+Let’s begin (Part 1)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-armtemplate-keyvault&quot; target=&quot;_blank&quot;&gt;
+Bot Framework 4 ARM template Deploy with Key Vault
+&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part2&quot; target=&quot;_blank&quot;&gt;
+Microsoft Teams (Part 2)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part3&quot; target=&quot;_blank&quot;&gt;
+Dialogs (Part 3)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Interruptions (Part 4)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;What we will build today&lt;/h2&gt;
+&lt;img src=&quot;/cancel-bef8fb62251c77821e1d3c0871d695f1.gif&quot;&gt;
+&lt;h1&gt;Sourcecode&lt;/h1&gt;
+&lt;p&gt;Here is the link to the Github repository for this post: &lt;a href=&quot;https://github.com/simonagren/simon-blog-bot-v4&quot;&gt;https://github.com/simonagren/simon-blog-bot-v4&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;Prerequisites&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://aka.ms/Emulator-wiki-getting-started&quot;&gt;Bot Emulator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://nodejs.org/en/download/&quot;&gt;Node.js 10.4+&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://azure.microsoft.com/free/&quot;&gt;An Azure Account&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.microsoft.com/office/dev-program&quot;&gt;Office 365 dev tenant&lt;/a&gt; - for Microsoft Teams&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://ngrok.com/download&quot;&gt;Ngrok&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/app-studio-overview#installing-app-studio&quot;&gt;App Studio installed in Teams&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Project changes&lt;/h1&gt;
+&lt;p&gt;We will incorporate another component dialog to handle the user asking for help or wanting to restart the conversational flow. In the upcoming post, we will also add some log out-logic to this dialog.&lt;/p&gt;
+&lt;p&gt;This dialog will inherit from &lt;strong&gt;componentDialog&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;HelperDialog&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;ComponentDialog&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;We want to check every time the user writes something if there is a help or cancel command. We change &lt;strong&gt;siteDialog&lt;/strong&gt; and &lt;strong&gt;ownerResolverDialog&lt;/strong&gt; to inherit from &lt;strong&gt;HelperDialog&lt;/strong&gt; in order to enable this:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;SiteDialog&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;HelperDialog&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;OwnerResolverDialog&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;HelperDialog&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;HelperDialog&lt;/h2&gt;
+&lt;p&gt;Every time a dialog that derives from this component dialog is run, we will check for user interruption.
+We have added &lt;strong&gt;onContinueDialog&lt;/strong&gt; that is a overridden method from &lt;strong&gt;ComponentDialog&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3&gt;interruption&lt;/h3&gt;
+&lt;p&gt;A method has been added to check if the user has written anything that corresponds to the helper dialog actions. If the user is asking for &lt;strong&gt;?&lt;/strong&gt; or &lt;strong&gt;help&lt;/strong&gt; we send a message back with information, and then the &lt;strong&gt;DialogTurnStatus.waiting&lt;/strong&gt; makes sure we wait for user input before continuing&lt;/p&gt;
+&lt;p&gt;On the other hand, if the user writes &lt;strong&gt;cancel&lt;/strong&gt;, &lt;strong&gt;quit&lt;/strong&gt; or &lt;strong&gt;restart&lt;/strong&gt; we will cancel all the dialogs with &lt;strong&gt;cancelAllDialogs()&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;interruption&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;dc&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; DialogContext&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;DialogTurnResult&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;undefined&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;dc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;activity&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; text &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; dc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;activity&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toLowerCase&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;token keyword&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;help&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;?&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; helpMessageText &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;Answer the questions asked. If you want to restart use: cancel, quit or restart&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; dc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sendActivity&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;helpMessageText&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; helpMessageText&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; InputHints&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;ExpectingInput&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; status&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; DialogTurnStatus&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;waiting &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;cancel&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;quit&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;restart&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; cancelMessageText &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;Restarting...&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; dcc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sendActivity&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;cancelMessageText&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; cancelMessageText&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; InputHints&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;IgnoringInput&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; dc&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;cancelAllDialogs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;onContinueDialog&lt;/h3&gt;
+&lt;p&gt;We will call the &lt;strong&gt;interruption&lt;/strong&gt; method every time we receive a message from the user. If the user has written something that’s not equal to any of the commands in the HelperDialog, we will just continue as normal.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;onContinueDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;dc&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; DialogContext&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;DialogTurnResult&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; result &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;interruption&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;dc&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;result&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; result&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;onContinueDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;dc&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h1&gt;Main Dialog&lt;/h1&gt;
+&lt;p&gt;As explained earlier, the main dialog consists of two steps &lt;strong&gt;initialStep&lt;/strong&gt; and &lt;strong&gt;finalStep&lt;/strong&gt;. The initial step will kick off the &lt;strong&gt;siteDialog&lt;/strong&gt; and then the final step will collect the result.&lt;/p&gt;
+&lt;p&gt;If the user restarts the dialog the &lt;strong&gt;stepContext.result&lt;/strong&gt; will return null in the &lt;strong&gt;finalStep&lt;/strong&gt;. We will not collect any values from the &lt;strong&gt;siteDialog&lt;/strong&gt; and for now, just end the dialog. The user must write something again to start it again.&lt;/p&gt;
+&lt;p&gt;You can see it beneath:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;finalStep&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;stepContext&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; WaterfallStepContext&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;DialogTurnResult&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;result&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; result &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;result &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; SiteDetails&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; msg &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`I have created a &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;result&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sendActivity&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;msg&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;endDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h1&gt;Next step&lt;/h1&gt;
+&lt;p&gt;In the next post, we will look at how to secure the Bot and give the user the ability to log in and then call Microsoft Graph, utilizing the Azure Bot service built-in authentication abilities.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Bot Framework in Node.js - Dialogs (Part 3)]]></title><description><![CDATA[In the last post, we tried the Bot in Microsoft Teams using  ngrok , and we also added a  @mention .  This post will be a bit code-heavy. A…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part3/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part3/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/botframework3-f0bbb24c1a8bf567d48e95abd710cb89-b70ec.png&quot;
@@ -60,6 +210,12 @@ Microsoft Teams (Part 2)
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Dialogs (Part 3)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part4&quot; target=&quot;_blank&quot;&gt;
+Interruptions (Part 4)
+&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -886,6 +1042,12 @@ Bot Framework 4 ARM template Deploy with Key Vault
 &lt;tr&gt;
 &lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part3&quot; target=&quot;_blank&quot;&gt;
 Dialogs (Part 3)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part4&quot; target=&quot;_blank&quot;&gt;
+Interruptions (Part 4)
 &lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
@@ -2059,6 +2221,12 @@ Microsoft Teams (Part 2)
 &lt;tr&gt;
 &lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part3&quot;  target=&quot;_blank&quot;&gt;
 Dialogs (Part 3)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part4&quot; target=&quot;_blank&quot;&gt;
+Interruptions (Part 4)
 &lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
