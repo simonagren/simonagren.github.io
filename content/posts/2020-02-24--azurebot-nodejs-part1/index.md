@@ -15,6 +15,7 @@ I will take you on a journey where we begin with the most simple concepts, and i
 | Let's begin (Part 1)     | <a href="https://simonagren.github.io/azurebot-armtemplate-keyvault"  target="_blank">Bot Framework 4 ARM template Deploy with Key Vault</a> |
 | <a href="https://simonagren.github.io/azurebot-nodejs-part2"  target="_blank">Microsoft Teams (Part 2)</a> |                                                                                                                             |
 | <a href="https://simonagren.github.io/azurebot-nodejs-part3"  target="_blank">Dialogs (Part 3)</a>         |                                                                                                                             |
+| <a href="https://simonagren.github.io/azurebot-nodejs-part4" target="_blank">Interruptions (Part 4)</a> |                                                                                                                             |
 
 # Planned topics
 

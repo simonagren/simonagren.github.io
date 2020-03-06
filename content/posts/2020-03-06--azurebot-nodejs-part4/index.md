@@ -1,15 +1,27 @@
 ---
 title: Bot Framework in Node.js - Interruptions (Part 4)  
 tags: ["botframework", "nodejs", "azure"]
-cover: botframework2.png
+cover: botframework4.png
 author: Simon Ågren
 ---
 
-![extend](./botframework2.png)
+![extend](./botframework4.png)
 
-The last post was long. It was a lot of explaining regarding the code. And hopefully, that put things a bit into context. 
+The last post was long. It was a lot of explaining regarding the code, and hopefully, that put things a bit into context. 
 
-This post will be shorter and focus on how to handle user interruptions. Currently, in the Bot the only option is to follow the conversation step by step, there is no way to get help and restart the Bot.
+This post will be shorter and focus on how to handle user interruptions. Currently, the only option in the Bot is to follow the conversation step by step, there is no way to get help and restart the Bot.
+
+| Bot Framework in Node.js                                                                  | Complimentary post                                                                                                          |
+|-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| <a href="https://simonagren.github.io/azurebot-nodejs-part1" target="_blank">Let's begin (Part 1)</a>     | <a href="https://simonagren.github.io/azurebot-armtemplate-keyvault" target="_blank">Bot Framework 4 ARM template Deploy with Key Vault</a> |
+| <a href="https://simonagren.github.io/azurebot-nodejs-part2" target="_blank">Microsoft Teams (Part 2)</a> |                                                                                                                             |
+| <a href="https://simonagren.github.io/azurebot-nodejs-part3" target="_blank">Dialogs (Part 3)</a>         |                                                                                                                             |
+| Interruptions (Part 4) |                                                                                                                             |
+
+
+## What we will build today
+
+<img src="./cancel.gif"/>
 
 # Sourcecode
 Here is the link to the Github repository for this post: [https://github.com/simonagren/simon-blog-bot-v4](https://github.com/simonagren/simon-blog-bot-v4)
@@ -21,6 +33,7 @@ Here is the link to the Github repository for this post: [https://github.com/sim
 - [An Azure Account](https://azure.microsoft.com/free/)
 - [Office 365 dev tenant](https://developer.microsoft.com/office/dev-program) - for Microsoft Teams
 - [Ngrok](https://ngrok.com/download)
+- [App Studio installed in Teams](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/app-studio-overview#installing-app-studio)
 
 # Project changes
 We will incorporate another component dialog to handle the user asking for help or wanting to restart the conversational flow. In the upcoming post, we will also add some log out-logic to this dialog.
@@ -86,7 +99,7 @@ public async onContinueDialog(dc: DialogContext): Promise<DialogTurnResult> {
 # Main Dialog
 As explained earlier, the main dialog consists of two steps **initialStep** and **finalStep**. The initial step will kick off the **siteDialog** and then the final step will collect the result.
 
-As mentioned earlier, if the user restarts the dialog the **stepContext.result** will return null in the **finalStep**. We will not collect any values from the **siteDialog** and for now, we will just end the dialog. The user must write something again to start it again.
+If the user restarts the dialog the **stepContext.result** will return null in the **finalStep**. We will not collect any values from the **siteDialog** and for now, just end the dialog. The user must write something again to start it again.
 
 You can see it beneath:
 

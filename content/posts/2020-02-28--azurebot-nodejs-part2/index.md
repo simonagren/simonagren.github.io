@@ -18,6 +18,7 @@ Just for fun, we will add an **@mention** in the **echo** when the Bot is in Mic
 | <a href="https://simonagren.github.io/azurebot-nodejs-part1" target="_blank">Let's begin (Part 1)</a>     | <a href="https://simonagren.github.io/azurebot-armtemplate-keyvault" target="_blank">Bot Framework 4 ARM template Deploy with Key Vault</a> |
 | Microsoft Teams (Part 2) |                                                                                                                             |
 | <a href="https://simonagren.github.io/azurebot-nodejs-part3" target="_blank">Dialogs (Part 3)</a>         |                                                                                                                             |
+| <a href="https://simonagren.github.io/azurebot-nodejs-part4" target="_blank">Interruptions (Part 4)</a> |                                                                                                                             |
 
 # Sourcecode
 Here is the finalized source code. [https://github.com/simonagren/simon-blog-bot-v2](https://github.com/simonagren/simon-blog-bot-v2)
