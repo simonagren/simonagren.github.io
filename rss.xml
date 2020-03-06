@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Fri, 06 Mar 2020 14:13:26 GMT</lastBuildDate><item><title><![CDATA[Bot Framework in Node.js - Interruptions (Part 4)]]></title><description><![CDATA[The last post was long. It was a lot of explaining regarding the code, and hopefully, that put things a bit into context.  This post will be…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part4/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part4/</guid><content:encoded>&lt;p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Fri, 06 Mar 2020 19:18:10 GMT</lastBuildDate><item><title><![CDATA[Bot Framework in Node.js - Interruptions (Part 4)]]></title><description><![CDATA[The last post was long. It was a lot of explaining regarding the code, and hopefully, that put things a bit into context.  This post will be…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part4/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part4/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/botframework4-63c21ada261fd07269bdde2634eb0641-b70ec.png&quot;
@@ -83,6 +83,41 @@ Dialogs (Part 3)
 &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/app-studio-overview#installing-app-studio&quot;&gt;App Studio installed in Teams&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1&gt;Project changes&lt;/h1&gt;
+&lt;p&gt;This is a high-level visualization of how the Bot is built:&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/botdiagram-07bfcc0a9d1fa43f6042ab4660d5a01e-7bed9.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 86.75958188153311%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAABJ0AAASdAHeZh94AAAELElEQVQ4y32UiVPUZRjH+ROapNS00jgzlXIaS4EA0caOYdJJPGp0Ik1z4r4mIeI0lEtFbtAczbKScRxQRHG5FtgD9mJZFhZEXLkDGeVS2E/vLtvUTE3PzHee931nfp/3eb7v+3sdEJF2vp2MS0YCU1pYnazAM6+djae0rDmpwjW6gZ3ftlCnHiflgo7Q0zK2hFbhmSrj3VQl2yIa8A+uZ+NXtVxrHMCB/l5ycmrx/E6Oz0kFrqUduOVreL1Ez4aLRpwzWwlMa0TZNcjezF/xTagkIL0Sp1wFK8TGnnFS/OKa2Rwu4UbzoBXYQ05ZGy/EyQSkizW5HbwcL8UlR4dHnhjntPNhpoTKGzL8kmtYUWDA6UIPryY089IJNa5lJpYX9eCcUCG66FyssE7aR1B6m2hHTfhZDZF5WsJyNTYF56jI+tlEv+ERZRX9HMqSEf9TNdElSqKL5cSWyIguUJJ2ScPApFkA+0yU/m6g8KaZg8KXHTENfJOhJDSrld2ine2hdew/rqSl6SGX7zwgv9zEvsQKYgskROVL2J9yi8DU63yeLqF35IG1wnucS7tGnCjZ6ayO13L1rC3oYL3QGqEl6SoCwmopF6CgH5QcyhP+JqnZdFyNZ7qaNxK1fJByDd+I69xWGwVQRI1sgL2JzQSJgzjyo4HD5w22fPSCgQNFOrKuGOk2P+bjyEbcRcXLSo24lxlxO2dkaaEBv6Qq/MOruKuzAy/XmLlY3U/kGQ1fpioIPtHK16LN4AwVB5KVHM3WoO2ZZMexZrwia3HMasO9SI9bYTuOp1R4h0nxDb2DRNe5CDz1m4k9yXI+Fcf/VnILHuLqrC/txDOznl1JFexLv4VU/5CdsQrcjslwKelkfaGeN4s6cBFamyhnS0g1d9vtwIxfunD+rBqfI7WsjG/iRQFbWtrNqtRatkaU80lyOTc1Cval1OD9fSXLz+pxLu7ETYCX5enZFCMqDLktWrYDb8mHOJylIlJck6BiHV9c6SboiomD59VE5EnJvqpCe9/MrsTb+Mff4JVscRj5etYJrRR2+AhvfUPtQIvFwr9iYWFR/wjzyBwfRbXwTrgUR+G1m/WPEno+V8t7UQ1/A23fC6hVFnu2ohbs6/N2cN/QFAGxTWyKrGfVaS3rhHceQqvOaPEKb8Yn5C6Svzy02GH/pfmFxQ7uDT5he0SjDbhE+Lb6XBdOQs/ld/B+QhXbYq5SrTJaW+Z/w2IHzotCI8RjsDmkgbcTZHglKfAWL9OGBDlbY2vYk1qP6eFjHIb6/mBiYoKxsTFGR0cZHx+3zYeHhxkV44XBQSaFHk1OYB4YQdrWh0LVT5Oil0Z5D7LWPuoU92k3Dli3x+HZ02fMzMwKzTA1NWXLVk1PTzMtsmV+njkxfjI1zdysdT4rrHgqzmyOhfk5W7auzc1O2/z+EyHXCkjC6C9SAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;diagram&quot;
+        title=&quot;&quot;
+        src=&quot;/static/botdiagram-07bfcc0a9d1fa43f6042ab4660d5a01e-48538.png&quot;
+        srcset=&quot;/static/botdiagram-07bfcc0a9d1fa43f6042ab4660d5a01e-bed0f.png 200w,
+/static/botdiagram-07bfcc0a9d1fa43f6042ab4660d5a01e-5fd34.png 400w,
+/static/botdiagram-07bfcc0a9d1fa43f6042ab4660d5a01e-48538.png 800w,
+/static/botdiagram-07bfcc0a9d1fa43f6042ab4660d5a01e-7bed9.png 1148w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
 &lt;p&gt;We will incorporate another component dialog to handle the user asking for help or wanting to restart the conversational flow. In the upcoming post, we will also add some log out-logic to this dialog.&lt;/p&gt;
 &lt;p&gt;This dialog will inherit from &lt;strong&gt;componentDialog&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
