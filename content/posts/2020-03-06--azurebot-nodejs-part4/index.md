@@ -36,6 +36,11 @@ Here is the link to the Github repository for this post: [https://github.com/sim
 - [App Studio installed in Teams](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/app-studio-overview#installing-app-studio)
 
 # Project changes
+
+This is a high-level visualization of how the Bot is built:
+
+![diagram](./botdiagram.png)
+
 We will incorporate another component dialog to handle the user asking for help or wanting to restart the conversational flow. In the upcoming post, we will also add some log out-logic to this dialog.
 
 This dialog will inherit from **componentDialog**
