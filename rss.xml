@@ -1,4 +1,290 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Fri, 06 Mar 2020 19:18:10 GMT</lastBuildDate><item><title><![CDATA[Bot Framework in Node.js - Interruptions (Part 4)]]></title><description><![CDATA[The last post was long. It was a lot of explaining regarding the code, and hopefully, that put things a bit into context.  This post will be…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part4/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part4/</guid><content:encoded>&lt;p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Mon, 09 Mar 2020 05:31:18 GMT</lastBuildDate><item><title><![CDATA[Azure AD & Microsoft Graph permission scopes, with Azure CLI]]></title><description><![CDATA[In this small post, we will look at a scenario where we want to register an Azure AD Application using specific scopes. When adding scopes…]]></description><link>https://simonagren.github.io/azcli-adscope/</link><guid isPermaLink="false">https://simonagren.github.io/azcli-adscope/</guid><content:encoded>&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/azcli-scopes-e5aceb9744ad9f189605a624aef5497e-b70ec.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 46.916666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAABJ0AAASdAHeZh94AAABTUlEQVQoz2NgYONUmrwx+O5/FscgRgYQEBcX9/Ly8vTwNDY2cnZ2MTE2BgoygoGQiNmSVo+ry+20tf24eaQZuBwDve/+D3v832TlMQZGZiaQOiDBIC0jo6+vB9EGNpOBhYVVRMLR18F2SpV/bGKDoqIhSJQvPNtw7m4GKSUgW0lZ2cjQSEJCQllZ2crKUk1NTUlZSV5eXkkJJMvNpxLtbpsW6Cit4MrGygE2E2g2EwvEfD19fW9vLwsLC3sQsDM2MbGysgoICLCzt4MoVZdmEeFjY2Bgg7oHZCQXl6CwsIiICA8PDxcXFysrKxsrKwcHBwsYQMRFxUT5+Ph4+ITExCXYWJnhehmATnVxcXFycnJ0cHB1czM2MQZa5e/vb2Fuoaen7+3lZWZm5ujkZGdna25mZmpqysXJAdUJDBImJiYGSgAjbgA0GpnLQBUAALtfNtODiNadAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;extend&quot;
+        title=&quot;&quot;
+        src=&quot;/static/azcli-scopes-e5aceb9744ad9f189605a624aef5497e-48538.png&quot;
+        srcset=&quot;/static/azcli-scopes-e5aceb9744ad9f189605a624aef5497e-bed0f.png 200w,
+/static/azcli-scopes-e5aceb9744ad9f189605a624aef5497e-5fd34.png 400w,
+/static/azcli-scopes-e5aceb9744ad9f189605a624aef5497e-48538.png 800w,
+/static/azcli-scopes-e5aceb9744ad9f189605a624aef5497e-b70ec.png 1200w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;In this small post, we will look at a scenario where we want to register an Azure AD Application using specific scopes. When adding scopes for service principals using the Azure CLI we need to use the internal Ids. &lt;/p&gt;
+&lt;p&gt;And one way would be to manually create one registration, get that app and then print out the scopes and then just copy and paste. &lt;/p&gt;
+&lt;p&gt;I will show you another way&lt;/p&gt;
+&lt;h1&gt;Prerequisites&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/cli/azure/install-azure-cli&quot;&gt;Azure CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://azure.microsoft.com/free/&quot;&gt;An Azure Account&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Command overview&lt;/h1&gt;
+&lt;p&gt;When we use the command &lt;a href=&quot;https://docs.microsoft.com/en-us/cli/azure/ad/app?view=azure-cli-latest#az-ad-app-create&quot;&gt;az ad app create&lt;/a&gt; and want to add permission scopes, we will need to use &lt;code class=&quot;language-text&quot;&gt;--required-resource-accesses&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;We need to supply a JSON format where &lt;code class=&quot;language-text&quot;&gt;resourceAppId&lt;/code&gt; represents the service provider (ex. Microsoft Graph). &lt;/p&gt;
+&lt;p&gt;We also need to add the scopes with ids in &lt;code class=&quot;language-text&quot;&gt;resource access&lt;/code&gt;. And this is one example of how it can look:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;
+      &lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token string&quot;&gt;&quot;resourceAppId&quot;&lt;/span&gt;: &lt;span class=&quot;token string&quot;&gt;&quot;00000002-0000-0000-c000-000000000000&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token string&quot;&gt;&quot;resourceAccess&quot;&lt;/span&gt;: &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;token string&quot;&gt;&quot;id&quot;&lt;/span&gt;: &lt;span class=&quot;token string&quot;&gt;&quot;a42657d6-7f20-40e3-b6f0-cee03008a62a&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token string&quot;&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class=&quot;token string&quot;&gt;&quot;Scope&quot;&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;List all available service providers&lt;/h2&gt;
+&lt;p&gt;We use the command &lt;code class=&quot;language-text&quot;&gt;az ad sp list&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;--all&lt;/code&gt; to get all service providers. &lt;/p&gt;
+&lt;p&gt;We also add a query &lt;code class=&quot;language-text&quot;&gt;--query &amp;quot;[].{Name:appDisplayName, Id:appId}&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;The first brackets take all the results, and then we use the &lt;code class=&quot;language-text&quot;&gt;{}&lt;/code&gt; to create an object with custom header names &lt;code class=&quot;language-text&quot;&gt;appDisplayName&lt;/code&gt; and the &lt;code class=&quot;language-text&quot;&gt;appId&lt;/code&gt; and output it as a table.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;
+      &lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;az ad &lt;span class=&quot;token function&quot;&gt;sp&lt;/span&gt; list &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;query &lt;span class=&quot;token string&quot;&gt;&quot;[].{Name:appDisplayName, Id:appId}&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;output table &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;all&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/allprincipals-110b3226341f39f1debde5c8f557f8aa-25d6a.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 44.242424242424235%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABJ0AAASdAHeZh94AAABkklEQVQoz4WR6U/CQBDFlyOGeKERIxolFEotBSyKZzSiiGiI+olL8BZFRC7Fv/85s0BEovHD6267O7++eSOUeBVj4StMRe8wsVLCWKSA8cg1RsMlOIIF2EgW4xKWUFfWcBH2UBFCz0MEchjRcrLeEaRzNQvh2avAad5iJnYv14nIjbxgUXOwBvKwDclOmtssw73xiNn1B7hIXOveesL89hPE2nkHy0d16MdNqIdvmF69hV0rSJjwZ7+ldlf+zneNVJPqGgidtGjfgpn+wPrFJ4SZfofvoEYHbQRTDK1Ry9SCUZQAdtrXIJBNsAGNzSQbVNtC+LQNwX9yxdj2A7m7k+32XfUhg3ublod3/xUKybP3QqrKVSO3DBZ6sk6ZPGJh55mGcg2hZH44+s0hA31xVg1Kb2W3gcQbBGfAL0u7FRmwM9rNcBg2COSIuOUgtc4QhnLLEW6Zg+QcWIsEnTRv/gUGEnUYvSHyQAwytXrWAc9DrNCDM+C23VtlOX6Zoy/zJ1AloJ9ceverEs57Pdkkxw18AZnXKS5BTnB4AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;allprincipals&quot;
+        title=&quot;&quot;
+        src=&quot;/static/allprincipals-110b3226341f39f1debde5c8f557f8aa-48538.png&quot;
+        srcset=&quot;/static/allprincipals-110b3226341f39f1debde5c8f557f8aa-bed0f.png 200w,
+/static/allprincipals-110b3226341f39f1debde5c8f557f8aa-5fd34.png 400w,
+/static/allprincipals-110b3226341f39f1debde5c8f557f8aa-48538.png 800w,
+/static/allprincipals-110b3226341f39f1debde5c8f557f8aa-25d6a.png 825w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h2&gt;Get Microsoft Graph from the service providers&lt;/h2&gt;
+&lt;p&gt;We use the same base command but change the query slightly &lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;--query &amp;quot;[?appDisplayName==&amp;#39;Microsoft Graph&amp;#39;].{Name:appDisplayName, Id:appId}&amp;quot;&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;Now in the first bracket. we only look for a service provider with the &lt;code class=&quot;language-text&quot;&gt;appDisplayName&lt;/code&gt; of Microsoft Graph and then we output the values in a table. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;
+      &lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;az ad &lt;span class=&quot;token function&quot;&gt;sp&lt;/span&gt; list &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;query &lt;span class=&quot;token string&quot;&gt;&quot;[?appDisplayName==&apos;Microsoft Graph&apos;].{Name:appDisplayName, Id:appId}&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;output table &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;all&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/graphprincipal-0d378e8411c5825ace00a4e0c653eebb-313a6.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 10.531220876048462%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAYAAABYBvyLAAAACXBIWXMAABJ0AAASdAHeZh94AAAAc0lEQVQI12OQskz9z6cf/1/YOOG/oGHsfwHDhP+8OtH/OfVi/rPrx/5n1Iz4z6Ae/p9BA4pBfBgG8hmBcmxAzKUdDaSBYuJmyf9FjJP+i5kmgw3m1Yv7z6MXCzQ84b+AQfx/RuWw/wzKoUAaO2aAYSUIDQCIAT2go2HeHQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;graphprincipal&quot;
+        title=&quot;&quot;
+        src=&quot;/static/graphprincipal-0d378e8411c5825ace00a4e0c653eebb-48538.png&quot;
+        srcset=&quot;/static/graphprincipal-0d378e8411c5825ace00a4e0c653eebb-bed0f.png 200w,
+/static/graphprincipal-0d378e8411c5825ace00a4e0c653eebb-5fd34.png 400w,
+/static/graphprincipal-0d378e8411c5825ace00a4e0c653eebb-48538.png 800w,
+/static/graphprincipal-0d378e8411c5825ace00a4e0c653eebb-313a6.png 1073w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h2&gt;Use the service provider appId in a variable&lt;/h2&gt;
+&lt;p&gt;You could of course just copy the Id from the table we printed. It could be good to know how to work with variables. If you are running Azure CLI from PowerShell, like I am, this is an example to grab the Microsoft Graph service provider Id to a variable.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;
+      &lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$graphId&lt;/span&gt; = az ad &lt;span class=&quot;token function&quot;&gt;sp&lt;/span&gt; list &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;query &lt;span class=&quot;token string&quot;&gt;&quot;[?appDisplayName==&apos;Microsoft Graph&apos;].appId | [0]&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;all &lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;Get the available application permissions&lt;/h2&gt;
+&lt;p&gt;Here we change the command to &lt;code class=&quot;language-text&quot;&gt;az ad sp show&lt;/code&gt; which is used to get a specific service provider. &lt;/p&gt;
+&lt;p&gt;In the query &lt;code class=&quot;language-text&quot;&gt;--query &amp;quot;appRoles[].{Value:value, Id:id}&amp;quot;&lt;/code&gt; we get all the &lt;code class=&quot;language-text&quot;&gt;appRoles&lt;/code&gt;, flatten them and then select the value and id to output as a table.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;
+      &lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;az ad &lt;span class=&quot;token function&quot;&gt;sp&lt;/span&gt; show &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;id &lt;span class=&quot;token variable&quot;&gt;$graphId&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;query &lt;span class=&quot;token string&quot;&gt;&quot;appRoles[].{Value:value, Id:id}&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;output table&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/scopesall-d33839972a74ffb1723a2e98b60cfd32-e16ca.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 30.260047281323878%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABJ0AAASdAHeZh94AAABU0lEQVQY00VQZ08CQRRcpUbsSmKM0g7l7qSInNEICjY0xKARkKoIsYAgiAYTf/349kH0w2Q3b2fnzYzQ0304gjUsRB8xE67CESphNvIAu1qBKXILYdzAqhZh18sw07ug+4RWGp1qie+WzSKm9ArmtusQ4cwAa/FXrBMWdxo8tKplWLUybIEKzAp98t/xTEl2sLr/DFe8BXeiDe/RGzaOu3AaTQhffgQjO4QvSQ8n71iKNchpnR3OReqYDtUg/AUmWkhQT3/ATwLuwzZDSXWxdUGGDl4glAIvFsb1EK5ECx7aNi8t+0jAk4Pw5liISTSzaRWEM58sIp1KvnQYvBxgZe+JOcyN53+gnvUQOO3BS04lUUl12K2JuhkJ5qnDKozsNwLE1SR/jBjN5L+/5dGrr5F9iuKhc5n6cO42Ke49JonAJIojO9TO+5SmTUv/IWvgyGPBX9puxwaMmvNvAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;scopesall&quot;
+        title=&quot;&quot;
+        src=&quot;/static/scopesall-d33839972a74ffb1723a2e98b60cfd32-48538.png&quot;
+        srcset=&quot;/static/scopesall-d33839972a74ffb1723a2e98b60cfd32-bed0f.png 200w,
+/static/scopesall-d33839972a74ffb1723a2e98b60cfd32-5fd34.png 400w,
+/static/scopesall-d33839972a74ffb1723a2e98b60cfd32-48538.png 800w,
+/static/scopesall-d33839972a74ffb1723a2e98b60cfd32-e16ca.png 846w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h2&gt;Get specific appRole to variable&lt;/h2&gt;
+&lt;p&gt;We could also query for specific appRoles of course. We changed the query &lt;code class=&quot;language-text&quot;&gt;--query &amp;quot;appRoles[?value==&amp;#39;Mail.Send&amp;#39;].id | [0]&lt;/code&gt; to look for a specific appRole with the value equal to &lt;code class=&quot;language-text&quot;&gt;Mail.Send&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;
+      &lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$mailSend&lt;/span&gt; = az ad &lt;span class=&quot;token function&quot;&gt;sp&lt;/span&gt; show &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;id &lt;span class=&quot;token variable&quot;&gt;$graphId&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;query &lt;span class=&quot;token string&quot;&gt;&quot;appRoles[?value==&apos;Mail.Send&apos;].id | [0]&quot;&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/delegatedall-4876c0b2a02aecf17fcb91526633ded0-2a16b.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 31.596091205211728%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABJ0AAASdAHeZh94AAABRklEQVQY01VQaU/CUBAs2AIi8f7gBUhbW+AVwftAvEDQjyYIpVCDBAGR0/+fjNtXNfJhspu3szPzVghnO1g5aGLtqIWlTJ1gI2TYkFgF3pNn+FgV80kLgbQN0bAgEURmuT1VT9yEqFUQpD5oNCCEs13sXHaxcdbGcqYJf8LCnFaFpJnwyiYE+QWibiKS7WH7ouNyT9tw9uTrPvzxGucICkEuQzBKE+iFESJXPZ50IdXAYvoVoZTNhR2Sj5aMxynn6fkR4lQZ7aWevhBI1rmgR61wCHphiC1yXj9uUWwaxsqukwPFdZZIcO9+AJWwS6mUmz60/BCJhzEJWrOC7CdhsjjB6uEbF/gdcgKRfXQGRvNEccyFdIJRmmKfEgZZg5v/8ZXbT0RzH9g8f+dfdB//OSruDWOUzEnncKO5Hpw99W5AN6/N8L8Be3fC8vJtU9UAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;delegated&quot;
+        title=&quot;&quot;
+        src=&quot;/static/delegatedall-4876c0b2a02aecf17fcb91526633ded0-48538.png&quot;
+        srcset=&quot;/static/delegatedall-4876c0b2a02aecf17fcb91526633ded0-bed0f.png 200w,
+/static/delegatedall-4876c0b2a02aecf17fcb91526633ded0-5fd34.png 400w,
+/static/delegatedall-4876c0b2a02aecf17fcb91526633ded0-48538.png 800w,
+/static/delegatedall-4876c0b2a02aecf17fcb91526633ded0-2a16b.png 921w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h2&gt;Get the available delegated permissions&lt;/h2&gt;
+&lt;p&gt;Here we continue with the same command but changed the query &lt;code class=&quot;language-text&quot;&gt;--query &amp;quot;oauth2Permissions[].{Value:value, Id:id}&amp;quot;&lt;/code&gt; to instead get &lt;code class=&quot;language-text&quot;&gt;oauth2Permissions&lt;/code&gt;, we flatten them and output value and id as a table.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;
+      &lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;az ad &lt;span class=&quot;token function&quot;&gt;sp&lt;/span&gt; show &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;id &lt;span class=&quot;token variable&quot;&gt;$graphId&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;query &lt;span class=&quot;token string&quot;&gt;&quot;oauth2Permissions[].{Value:value, Id:id}&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;output table&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;Get specific delegated permissions to variable&lt;/h2&gt;
+&lt;p&gt;We could do the same when getting a specific &lt;code class=&quot;language-text&quot;&gt;--query &amp;quot;oauth2Permissions[?value==&amp;#39;openid&amp;#39;].id | [0]&lt;/code&gt; to look for a specific delegated with the value equal to &lt;code class=&quot;language-text&quot;&gt;openid&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;
+      &lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$openid&lt;/span&gt; = az ad &lt;span class=&quot;token function&quot;&gt;sp&lt;/span&gt; show &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;id &lt;span class=&quot;token variable&quot;&gt;$graphId&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;query &lt;span class=&quot;token string&quot;&gt;&quot;oauth2Permissions[?value==&apos;openid&apos;].id | [0]&quot;&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h1&gt;Creating Azure AD Application registration&lt;/h1&gt;
+&lt;p&gt;In this example, we create an app registration that has permissions to the Microsoft Graph and will be able to be utilized by a Bot Framework Bot.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create variables for app name and password&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;
+      &lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$appName&lt;/span&gt; = &lt;span class=&quot;token string&quot;&gt;&quot;AADSimonBotGraphTest&quot;&lt;/span&gt;
+&lt;span class=&quot;token variable&quot;&gt;$secret&lt;/span&gt; = &lt;span class=&quot;token string&quot;&gt;&quot;SimonBlogBotDemoStuff1!&quot;&lt;/span&gt;
+&lt;span class=&quot;token variable&quot;&gt;$replyUrl&lt;/span&gt; = &lt;span class=&quot;token string&quot;&gt;&quot;https://token.botframework.com/.auth/web/redirect&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;Get Microsoft Graph Id&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;
+      &lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$graphId&lt;/span&gt; = az ad &lt;span class=&quot;token function&quot;&gt;sp&lt;/span&gt; list &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;query &lt;span class=&quot;token string&quot;&gt;&quot;[?appDisplayName==&apos;Microsoft Graph&apos;].appId | [0]&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;all &lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;Create variables for scopes&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;
+      &lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;  &lt;span class=&quot;token variable&quot;&gt;$openid&lt;/span&gt; = az ad &lt;span class=&quot;token function&quot;&gt;sp&lt;/span&gt; show &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;id &lt;span class=&quot;token variable&quot;&gt;$graphId&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;query &lt;span class=&quot;token string&quot;&gt;&quot;oauth2Permissions[?value==&apos;openid&apos;].id | [0]&quot;&lt;/span&gt;
+  &lt;span class=&quot;token variable&quot;&gt;$profile&lt;/span&gt; = az ad &lt;span class=&quot;token function&quot;&gt;sp&lt;/span&gt; show &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;id &lt;span class=&quot;token variable&quot;&gt;$graphId&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;query &lt;span class=&quot;token string&quot;&gt;&quot;oauth2Permissions[?value==&apos;profile&apos;].id | [0]&quot;&lt;/span&gt;
+  &lt;span class=&quot;token variable&quot;&gt;$userRead&lt;/span&gt; = az ad &lt;span class=&quot;token function&quot;&gt;sp&lt;/span&gt; show &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;id &lt;span class=&quot;token variable&quot;&gt;$graphId&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;query &lt;span class=&quot;token string&quot;&gt;&quot;oauth2Permissions[?value==&apos;User.Read&apos;].id | [0]&quot;&lt;/span&gt;
+  &lt;span class=&quot;token variable&quot;&gt;$groupReadAll&lt;/span&gt; = az ad &lt;span class=&quot;token function&quot;&gt;sp&lt;/span&gt; show &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;id &lt;span class=&quot;token variable&quot;&gt;$graphId&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;query &lt;span class=&quot;token string&quot;&gt;&quot;oauth2Permissions[?value==&apos;Group.Read.All&apos;].id | [0]&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;Create a JSON structure for resources&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;  In PowerShell, you need to have the JSON as one string, without any new rows, etc (as far as I know). And it also has to be escaped. That is why I added the last &lt;code class=&quot;language-text&quot;&gt;ConvertTo-Json&lt;/code&gt; which, in this case, escapes the double quotes from &lt;code class=&quot;language-text&quot;&gt;&amp;quot;&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;\&amp;quot;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;  In more complex scenarios you might want to get a bit fancier with HOW you build the string, but the beginning &lt;code class=&quot;language-text&quot;&gt;@&amp;quot;&lt;/code&gt; and ending &lt;code class=&quot;language-text&quot;&gt;@&amp;quot;&lt;/code&gt; let me use variables in the string. &lt;/p&gt;
+&lt;p&gt;  You could as well put the JSON in a .json file and then use it. But it makes more sense when using hardcoded values.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;
+      &lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$resources&lt;/span&gt; = @&lt;span class=&quot;token string&quot;&gt;&quot;
+[{ &quot;&lt;/span&gt;resourceAppId&lt;span class=&quot;token string&quot;&gt;&quot;: &lt;span class=&quot;token variable&quot;&gt;$graphId&lt;/span&gt;, &quot;&lt;/span&gt;resourceAccess&lt;span class=&quot;token string&quot;&gt;&quot;: [{&quot;&lt;/span&gt;id&lt;span class=&quot;token string&quot;&gt;&quot;: &lt;span class=&quot;token variable&quot;&gt;$openid&lt;/span&gt;,&quot;&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;: &quot;&lt;/span&gt;Scope&lt;span class=&quot;token string&quot;&gt;&quot;},{&quot;&lt;/span&gt;id&lt;span class=&quot;token string&quot;&gt;&quot;: &lt;span class=&quot;token variable&quot;&gt;$profile&lt;/span&gt;,&quot;&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;: &quot;&lt;/span&gt;Scope&lt;span class=&quot;token string&quot;&gt;&quot;},{&quot;&lt;/span&gt;id&lt;span class=&quot;token string&quot;&gt;&quot;: &lt;span class=&quot;token variable&quot;&gt;$userRead&lt;/span&gt;,&quot;&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;: &quot;&lt;/span&gt;Scope&lt;span class=&quot;token string&quot;&gt;&quot;},{&quot;&lt;/span&gt;id&lt;span class=&quot;token string&quot;&gt;&quot;: &lt;span class=&quot;token variable&quot;&gt;$groupReadAll&lt;/span&gt;,&quot;&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;: &quot;&lt;/span&gt;Scope&lt;span class=&quot;token string&quot;&gt;&quot;}]}]
+&quot;&lt;/span&gt;@ &lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;ConvertTo-Json&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;Create the AD Application&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Here we use the &lt;code class=&quot;language-text&quot;&gt;az ad app create&lt;/code&gt; and add in our variables that we created and the “scopes”. And in this case, we create a single-tenant app.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;
+      &lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;az ad app create &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;display&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;name &lt;span class=&quot;token variable&quot;&gt;$appName&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;password &lt;span class=&quot;token variable&quot;&gt;$secret&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;reply&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;urls &lt;span class=&quot;token variable&quot;&gt;$replyUrl&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;required&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;resource&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;accesses &lt;span class=&quot;token variable&quot;&gt;$resources&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;available&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;to&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;other&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;tenants false&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;ol start=&quot;6&quot;&gt;
+&lt;li&gt;(Optional) Admin consent&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Try to stay away from scopes that require Admin consent. If you need to consent you could do this using this command with the &lt;code class=&quot;language-text&quot;&gt;appId&lt;/code&gt; you get after creation &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;
+      &lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;az ad app permission admin&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;consent &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;id &lt;span class=&quot;token variable&quot;&gt;$appId&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h1&gt;Recap&lt;/h1&gt;
+&lt;p&gt;You have gotten a small glance of how it’s done behind the scenes, and you could definitely benefit from these concept when it comes to automation.&lt;/p&gt;
+&lt;p&gt;You have learned how to create an Azure AD application registration with the permission scopes of choice. And you have a another tool in you arsenal, right next to the Azure Portal way.&lt;/p&gt;
+&lt;p&gt;Until next time.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Bot Framework in Node.js - Interruptions (Part 4)]]></title><description><![CDATA[The last post was long. It was a lot of explaining regarding the code, and hopefully, that put things a bit into context.  This post will be…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part4/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part4/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/botframework4-63c21ada261fd07269bdde2634eb0641-b70ec.png&quot;
@@ -65,6 +351,20 @@ Dialogs (Part 3)
 &lt;tr&gt;
 &lt;td&gt;Interruptions (Part 4)&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part5&quot; target=&quot;_blank&quot;&gt;
+Auth and Microsoft Graph (Part 5)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-adscope&quot; target=&quot;_blank&quot;&gt;
+Azure CLI Azure AD registration with permission scopes
+&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-connection&quot; target=&quot;_blank&quot;&gt;
+Azure CLI OAuth Connection to Azure AD V2
+&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -183,7 +483,7 @@ We have added &lt;strong&gt;onContinueDialog&lt;/strong&gt; that is a overridden
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
       &lt;/div&gt;
 &lt;h1&gt;Next step&lt;/h1&gt;
-&lt;p&gt;In the next post, we will look at how to secure the Bot and give the user the ability to log in and then call Microsoft Graph, utilizing the Azure Bot service built-in authentication abilities.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Bot Framework in Node.js - Dialogs (Part 3)]]></title><description><![CDATA[In the last post, we tried the Bot in Microsoft Teams using  ngrok , and we also added a  @mention .  This post will be a bit code-heavy. A…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part3/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part3/</guid><content:encoded>&lt;p&gt;
+&lt;p&gt;In the next post, we will look at how to secure the Bot and give the user the ability to log in and then call Microsoft Graph, utilizing the Azure Bot service built-in authentication abilities.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Bot Framework in Node.js - Dialogs (Part 3)]]></title><description><![CDATA[In the previous post, we tried the Bot in Microsoft Teams using  ngrok , and we also added a  @mention .  This post will be a bit code-heavy…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part3/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part3/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/botframework3-f0bbb24c1a8bf567d48e95abd710cb89-b70ec.png&quot;
@@ -217,7 +517,7 @@ We have added &lt;strong&gt;onContinueDialog&lt;/strong&gt; that is a overridden
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;p&gt;In the last post, we tried the Bot in Microsoft Teams using &lt;strong&gt;ngrok&lt;/strong&gt;, and we also added a &lt;strong&gt;@mention&lt;/strong&gt;. &lt;/p&gt;
+&lt;p&gt;In the previous post, we tried the Bot in Microsoft Teams using &lt;strong&gt;ngrok&lt;/strong&gt;, and we also added a &lt;strong&gt;@mention&lt;/strong&gt;. &lt;/p&gt;
 &lt;p&gt;This post will be a bit code-heavy. A lot needed to be explained and a lot going on behind the scenes. Hopefully, this put things a bit into context. &lt;/p&gt;
 &lt;p&gt;Dialogs are powerful in Bot Framework 4, and we could utilize them in very structured ways, and complicated branched conditional situations. &lt;/p&gt;
 &lt;p&gt;I will try to stick to the basics, but at the same time prepare the Bot for upcoming posts.&lt;/p&gt;
@@ -252,6 +552,20 @@ Microsoft Teams (Part 2)
 Interruptions (Part 4)
 &lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part5&quot; target=&quot;_blank&quot;&gt;
+Auth and Microsoft Graph (Part 5)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-adscope&quot; target=&quot;_blank&quot;&gt;
+Azure CLI Azure AD registration with permission scopes
+&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-connection&quot; target=&quot;_blank&quot;&gt;
+Azure CLI OAuth Connection to Azure AD V2
+&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1085,6 +1399,20 @@ Dialogs (Part 3)
 Interruptions (Part 4)
 &lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part5&quot; target=&quot;_blank&quot;&gt;
+Auth and Microsoft Graph (Part 5)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-adscope&quot; target=&quot;_blank&quot;&gt;
+Azure CLI Azure AD registration with permission scopes
+&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-connection&quot; target=&quot;_blank&quot;&gt;
+Azure CLI OAuth Connection to Azure AD V2
+&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -2264,6 +2592,20 @@ Dialogs (Part 3)
 Interruptions (Part 4)
 &lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part5&quot; target=&quot;_blank&quot;&gt;
+Auth and Microsoft Graph (Part 5)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-adscope&quot; target=&quot;_blank&quot;&gt;
+Azure CLI Azure AD registration with permission scopes
+&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-connection&quot; target=&quot;_blank&quot;&gt;
+Azure CLI OAuth Connection to Azure AD V2
+&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
