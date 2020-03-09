@@ -7,7 +7,7 @@ author: Simon Ågren
 
 ![extend](./botframework3.png)
 
-In the last post, we tried the Bot in Microsoft Teams using **ngrok**, and we also added a **@mention**. 
+In the previous post, we tried the Bot in Microsoft Teams using **ngrok**, and we also added a **@mention**. 
 
 This post will be a bit code-heavy. A lot needed to be explained and a lot going on behind the scenes. Hopefully, this put things a bit into context. 
 
@@ -21,6 +21,8 @@ I will try to stick to the basics, but at the same time prepare the Bot for upco
 | <a href="https://simonagren.github.io/azurebot-nodejs-part2" target="_blank">Microsoft Teams (Part 2)</a> |                                                                                                                             |
 | Dialogs (Part 3)         |                                                                                                                             |
 | <a href="https://simonagren.github.io/azurebot-nodejs-part4" target="_blank">Interruptions (Part 4)</a> |                                                                                                                             |
+| <a href="https://simonagren.github.io/azurebot-nodejs-part5" target="_blank">Auth and Microsoft Graph (Part 5)</a> |<a href="https://simonagren.github.io/azcli-adscope" target="_blank">Azure CLI Azure AD registration with permission scopes</a>                                                                                                                             |
+|  |<a href="https://simonagren.github.io/azcli-connection" target="_blank">Azure CLI OAuth Connection to Azure AD V2</a>                                                                                                                             |
 
 
 ## What we will build today

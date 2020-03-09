@@ -7,14 +7,25 @@ author: Simon Ågren
 
 ![extend](./sitescript.png)
 
-# FIXA MED ALIAS RESOLVERDIALOG
+I the previous post we created a new Azure AD Application registration, gave it permissions to Microsoft Graph. We also added an OAuth prompt to the main dialog and made it possible for the user to log in both in the emulator as well as Microsoft Teams.
 
-I the last post we created a new Azure AD Application registration, gave it permissions to Microsoft Graph. We also added an OAuth promt to the dialogs and made it possible for the user to log in both in the emulator as well as Microsoft Teams.
+In this post, we will add some helpers and enable the user to call the Microsoft Graph. We will create an example using both the `GraphClient` and `PnPJs Graph` for hooking into the Azure Bot Service auth flow. We will add some additional validation logic into the `Owner Resolver Dialog`, and also add a similar `Alias Resolver Dialog`.
 
-In this post we will add some helpers and enable the user to utilize Microft Graph. We will create an example using both the `GraphClient` and `PnPJs Graph` for hooking in to the Azure Bot Service auth flow. And in this example we will add some additional validation into the dialogs as well.
+| Bot Framework in Node.js                                                                  | Complimentary post                                                                                                          |
+|-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| <a href="https://simonagren.github.io/azurebot-nodejs-part1" target="_blank">Let's begin (Part 1)</a>     | <a href="https://simonagren.github.io/azurebot-armtemplate-keyvault" target="_blank">Bot Framework 4 ARM template Deploy with Key Vault</a> |
+| <a href="https://simonagren.github.io/azurebot-nodejs-part2" target="_blank">Microsoft Teams (Part 2)</a> |                                                                                                                             |
+| <a href="https://simonagren.github.io/azurebot-nodejs-part3" target="_blank">Dialogs (Part 3)</a>         |                                                                                                                             |
+| <a href="https://simonagren.github.io/azurebot-nodejs-part4" target="_blank">Interruptions (Part 4)</a> |                                                                                                                             |
+| Auth and Microsoft Graph (Part 5) |<a href="https://simonagren.github.io/azcli-adscope" target="_blank">Azure CLI Azure AD registration with permission scopes</a>                                                                                                                             |
+|  |<a href="https://simonagren.github.io/azcli-connection" target="_blank">Azure CLI OAuth Connection to Azure AD V2</a>                                                                                                                             |
+
+## What we will build today
+
+<img src="./loginout.gif"/>
 
 # Sourcecode
-It is the same source as the previous post: [https://github.com/simonagren/simon-blog-bot-v3](https://github.com/simonagren/simon-blog-bot-v3)
+Here is the link to the Github repository for this post: [https://github.com/simonagren/simon-blog-bot-v6](https://github.com/simonagren/simon-blog-bot-v6)
 
 # Prerequisites 
 - [Bot Emulator](https://aka.ms/Emulator-wiki-getting-started)
@@ -23,16 +34,21 @@ It is the same source as the previous post: [https://github.com/simonagren/simon
 - [An Azure Account](https://azure.microsoft.com/free/)
 - [Office 365 dev tenant](https://developer.microsoft.com/office/dev-program) - for Microsoft Teams
 - [Ngrok](https://ngrok.com/download)
+- [App Studio installed in Teams](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/app-studio-overview#installing-app-studio)
 
 # Getting a token from the Azure Bot Service
 
-In the last post we saw that we will get a token from the `OAuthPrompt` after the user logs in. We will not store the token locally after (which I explained more in the last post). To receive the token we will call the OAuth prompt again when we need it.
+In the previous post, we saw that the `OAuthPrompt` gives us a token after the user logs in. We will not store the token locally (which I explained more in the last post), instead call the OAuth prompt again whenever we need a token.
 
-Normally you would have to add some `MSAL` or `ADAL` settings that the `GraphClient` or `PnPJs` would use to fetch a token, and then use to call Microsoft Graph.
+Normally you would have to add `MSAL` or `ADAL` settings that the `GraphClient` or `PnPJs` would use to fetch a token, and then use to call Microsoft Graph.
 
-But this time we have already received the token and we will work with that in the clients.
+In the Bot, we already have a token and we will work with that in the clients.
 
 # Project changes
+
+This is a high-level visualization of how the Bot is built:
+
+![diagram](./botdiagram.png)
 
 ## npm packages
 
@@ -53,96 +69,103 @@ We will install these packages:
 In the `src` folder we create an additional folder `helpers`. This will in our case contain 3 new files:
 
 - **graphHelper.ts**: the Microsoft Graph helper class, that will contain examples utilizing both `simple-graph-client` and `simple-pnpjs-client` to call Microsoft Graph. 
-- **simple-graph-client.ts**: wiring up the `GraphClient` from Microsoft, with the token from the Bot. Contains methods to call Microsoft Graph.
-- **simple-pnpjs-client.ts**: wiring up the `PnPJs` graph client from `Patterns And Practices (PnP)`, with the token from the Bot. Contains methods to call Microsoft Graph.
+- **simple-graph-client.ts**: wiring up the `GraphClient` from Microsoft, with the token from the Bot. Contains methods to call the Microsoft Graph.
+- **simple-pnpjs-client.ts**: wiring up the `PnPJs` graph client from `Patterns And Practices (PnP)`, with the token from the Bot. It contains methods to call the Microsoft Graph.
 
-![newfiles](./newfiles.png)
+We also add another dialog in the form of:
+- **aliasResolverDialog.ts**: A dialog similar to owner resolver dialog. It will call Microsoft Graph to see if the alias is already taken.
 
+## graphHelper
+The graph helper imports `simple-graph-client` and `simple-pnpjs-client`, and contains two methods: `userExists()` and `aliasExists`. 
 
-## simple-graph-client.ts
+The methods will be used in the Owner resolver dialog and Alias Resolver Dialog. Both methods want a `TokenResponse` and a `string`. 
 
-### Imports
+This method instantiates a new `client` using the `SimpleGraphClient` based in the Microsoft Graph SDK, by sending in the token. Then we run the `userExists()` with the string input, to see if the user (owner) exists in the tenant.
 
-We import the Microsoft Graph `Client` and also the types for `User`. 
+```typescript
+public static async userExists(tokenResponse: any, emailAddress: string): Promise<boolean> {
+    if (!tokenResponse) {
+        throw new Error('GraphHelper.userExists(): `tokenResponse` cannot be undefined.');
+    }
+    const client = new SimpleGraphClient(tokenResponse.token);
+    return await client.userExists(emailAddress);   
+}
+```
+
+This method instantiates a new `client` using the `SimplePnPJsClient` based on PnPjs V2, by sending in the token. Then we run the `aliasExists()` with the string input, to see if the group alias is already taken in the tenant.
+
+```typescript
+public static async aliasExists(tokenResponse: any, alias: string): Promise<boolean> {
+    if (!tokenResponse) {
+        throw new Error('GraphHelper.aliasExists(): `tokenResponse` cannot be undefined.');
+    }
+    const client = new SimplePnPJsClient(tokenResponse.token);
+    return await client.aliasExists(alias);
+}
+```
+
+## Simple graph client
+In this case, we first import the `Client` and the `User` type.
 
 ```typescript
 import { Client } from '@microsoft/microsoft-graph-client';
 import { User } from '@microsoft/microsoft-graph-types';
 ```
-
-### Variables and constructor
-- Before the constructor we have added a few private variables.
-- The constructor now expects the property `token`
-- After making sure that we get the token, we initialize the Graph `Client` with the token.
+Then we initialize the `Client` with the token that was injected. 
 
 ```typescript
-private token: string;
-private graphClient: Client;
-
 constructor(token: any) {
     if (!token || !token.trim()) {
         throw new Error('SimpleGraphClient: Invalid token received.');
     }
-
     this.token = token;
 
-    // Get an Authenticated Microsoft Graph client using the token issued to the user.
     this.graphClient = Client.init({
         authProvider: (done) => {
-            done(null, this.token); // First parameter takes an error if you can't get an access token.
+            done(null, this.token);
         }
     });
 }
 ```
 
-### Methods
-
-Only one simple method to check if a user exists
-
+Then we call the Microsoft Graph to see if the user exists.
 ```typescript
-/**
-* Check if a user exists
-* @param {string} emailAddress Email address of the email's recipient.
-*/
-public async userExists(emailAddress: string): Promise<User> {
+
+public async userExists(emailAddress: string): Promise<boolean> {
     if (!emailAddress || !emailAddress.trim()) {
         throw new Error('SimpleGraphClient.userExists(): Invalid `emailAddress` parameter received.');
     }
-    return await this.graphClient
+    try {
+        const user: User = await this.graphClient
         .api(`/users/${emailAddress}`)
-        .get().then((res: User) => {
-            return res;
-        });
+        .get();
+
+        return user ? true : false;
+
+    } catch (error) {
+        return false;
     }
+}
 ```
 
-## simple-pnpjs-client.ts
+## simple PnPjs Client
+We import the Microsoft Graph types for `Group`, `graph` from the PnPjs Graph package (with an alias) and also `BearerTokenFetchClient` from the PnPjs Nodejs package.
 
-### Imports
-
-We import the Microsoft Graph types for `User`, `graph` from the PnPjs Graph package (with an alias) and also `BearerTokenFetchClient` from the PnPjs Nodejs package.
-
-If you have seen some more of my posts I usually use the `AdalTokenFetchClient`, where you supply the `clientId` and `clientSecret` of you Azure AD application. But this time we already have a token som the `BearerTokenFetchClient` is perfect in this scenario. 
+If you have seen some more of my posts I usually use the `AdalTokenFetchClient`, where you supply the `clientId` and `clientSecret` of your Azure AD application. But this time we already have a token so the `BearerTokenFetchClient` is perfect in this scenario. 
 
 ```typescript
-import { User } from '@microsoft/microsoft-graph-types';
-import { graph as graphClient } from "@pnp/graph-commonjs";
-import { BearerTokenFetchClient } from "@pnp/nodejs-commonjs";
+import { Group } from '@microsoft/microsoft-graph-types';
+import { graph as graphClient } from '@pnp/graph-commonjs';
+import { BearerTokenFetchClient } from '@pnp/nodejs-commonjs';
 ```
 
-### Variables and constructor
-- Before the constructor we have added a private variable.
-- The constructor now expects the property `token`
-- After making sure that we get the token, we initialize the PnPjs `graph` with the token, by using the `BearerTokenFetchClient`.
+Then we initialize the `graphClient` with the token that was injected. 
 
 ```typescript
-private token: any;
-
 constructor(token: any) {
     if (!token || !token.trim()) {
         throw new Error('SimpleGraphClient: Invalid token received.');
     }
-
     this.token = token;
 
     graphClient.setup({
@@ -154,100 +177,28 @@ constructor(token: any) {
     });
 }
 ```
-
-### Methods
-
-Only one simple method to check if a user exists
+Then we call the Microsoft Graph to see if the alias exists.
 
 ```typescript
-/**
-* Check if a user exists
-* @param {string} emailAddress Email address of the email's recipient.
-*/
-public async userExists(emailAddress: string): Promise<User> {
-    if (!emailAddress || !emailAddress.trim()) {
-        throw new Error('SimplePnPjsClient.userExists(): Invalid `emailAddress` parameter received.');
+public async aliasExists(alias: string): Promise<boolean> {
+    if (!alias || !alias.trim()) {
+        throw new Error('SimplePnPjsClient.aliasExists(): Invalid `alias` parameter received.');
     }
-    return await graphClient.users.getById(emailAddress).get();
+    try {
+        const group: Group[] = await graphClient.groups.filter(`mailNickname eq '${alias}' or displayName eq '${alias}'`)();
+        return group.length > 0;
+    } catch (error) {
+        return false;
+    }
 }
 ```
 
-## graphHelper.ts
+## Owner resolver dialog and Alias Resolver Dialog
+Just as in the previous blog post, we have added an `OAuthPrompt` to these dialogs, and an additional `promptStep`. This is because we need the token now to call Microsoft Graph. 
 
-### Imports
-We used to have imported the two client wrappers.
+Check out that post if you need more details.
 
-```typescript
-import { SimpleGraphClient } from './simple-graph-client';
-import { SimplePnPJsClient } from './simple-pnpjs-client';	
-```
-
-### Methods
-
-It only contains two methods so far: `userExists()` and `userExistsPnP`. They both do similar things, but uses the two different clients. They take both the `tokenResponse` and an `emailAddress` to call the Graph and see if that user exists based on the email.
-
-```typescript
-/**
-* Let's the user see if the user exists using GraphClient
-* @param {TokenResponse} tokenResponse A response that includes a user token.
-* @param {string} emailAddress The email address of the user.
-*/
-public static async userExists(tokenResponse: any, emailAddress: string): Promise<boolean> {
-    if (!tokenResponse) {
-        throw new Error('GraphHelper.userExists(): `tokenResponse` cannot be undefined.');
-    }
-    const client = new SimpleGraphClient(tokenResponse.token);
-    const user = await client.userExists(emailAddress);
-    return user !== undefined;
-}
-
-/**
-* Let's the user see if the user exists using PnPJs
-* @param {TokenResponse} tokenResponse A response that includes a user token.
-* @param {string} emailAddress The email address of the user.
-*/
-public static async userExistsPnP(tokenResponse: any, emailAddress: string): Promise<boolean> {
-    if (!tokenResponse) {
-        throw new Error('GraphHelper.userExists(): `tokenResponse` cannot be undefined.');
-    }
-    const client = new SimplePnPJsClient(tokenResponse.token);
-    const user = await client.userExists(emailAddress);
-    return user !== undefined;
-}
-```
-
-## OwnerResolverDialog
-
-
-Here we import the `OAuthPrompt`, and `GraphHelper`, add a new constant
-```typescript
-const OAUTH_PROMPT = 'OAuthPrompt';
-```
-
-We add a private variable to the top of the class
-```typescript
-private static tokenResponse: any;
-```
-and then add an additional `promptStep` and the `OAuthPrompt` using the connection.
-
-```typescript
-this
-    .addDialog(new TextPrompt(TEXT_PROMPT, OwnerResolverDialog.ownerPromptValidator.bind(this)))
-    .addDialog(new OAuthPrompt(OAUTH_PROMPT, {
-          connectionName: process.env.connectionName,
-          text: 'Please Sign In',
-          timeout: 300000,
-          title: 'Sign In' }))
-    .addDialog(new WaterfallDialog(WATERFALL_DIALOG, [
-          this.promptStep.bind(this),
-          this.initialStep.bind(this),
-          this.finalStep.bind(this)
-        ]));
-```
-
-### promptStep
-
-The prompt step only kicks off the new login prompt.
+The `promptStep` only kicks off the new login prompt.
 
 ```typescript
 private async promptStep(stepContext: WaterfallStepContext): Promise<DialogTurnResult> {
@@ -255,57 +206,37 @@ private async promptStep(stepContext: WaterfallStepContext): Promise<DialogTurnR
 }
 ```
 
-### initialStep
-Just as the previous post the initial step has changed. It will now get the `token` from the previous step in the `stepcontext.result`. And if we didn't get a token, to login wasn't successfull.
+Then the `initialStep` has been changed to collect the token from `stepcontext.result`. And if we didn't get a token, the login wasn't successful.
 
-```typescript
-private async initialStep(stepContext: WaterfallStepContext): Promise<DialogTurnResult> {
-    const tokenResponse = stepContext.result;
-    if (tokenResponse && tokenResponse.token) {
-      
-      OwnerResolverDialog.tokenResponse = tokenResponse;
+And these parts are the same in both `ownerResolverDialog` and `aliasResolverDialog`.
 
-      const siteDetails = (stepContext.options as any).siteDetails;
-      const promptMsg = 'Provide an owner email';
+### Owner resolver dialog
 
-      if (!siteDetails.owner) {
-        return await stepContext.prompt(TEXT_PROMPT, {
-          prompt: promptMsg
-        });
-      } else {
-        return await stepContext.next(siteDetails.owner);
-      }
-    }
-    await stepContext.context.sendActivity('Login was not successful please try again.');
-    return await stepContext.endDialog();
-  }
+In the `ownerPromptValidator` we have added some additional validation to make sure, not only that the email is correctly formatted, but also a valid existing user.
+
+Here we are using the `GraphHelper` to see if the user exists. Once again, we send in the tokenResponse and the email address the use wrote to see if it exists in the tenant. And this one is using `Microsoft Graph Client`.
+
+```typescript      
+if (!await GraphHelper.userExists(OwnerResolverDialog.tokenResponse, owner))  {
+    promptContext.context.sendActivity('User doesn\'t exist.');
+    return false;
+}
 ```
 
-### ownerPromptValidator
-Here we have added some additional validation to make sure, not only that the email is correctly formatted, but also a valid existing user.
+### Alias resolver dialog
+Here we have added just one validation to make sure that the alias doesn't already exist. Here the `GraphHelper` is used again and this one is utilizing `PnPjs`.
 
 ```typescript
-private static async ownerPromptValidator(promptContext: PromptValidatorContext<string>): Promise<boolean> {
-    if (promptContext.recognized.succeeded) {
-      
-      const owner: string = promptContext.recognized.value;
-      if (!OwnerResolverDialog.validateEmail(owner)) {
-        promptContext.context.sendActivity('Malformatted email adress.');
-        return false;
-      }
-      
-      // THIS IS NEW
-      if (!await GraphHelper.userExists(owner, OwnerResolverDialog.tokenResponse))  {
-        promptContext.context.sendActivity('User doesn\'t exist.');
-        return false;
-      }
-
-      return true;
-
-    } else {
-      return false;
-    }
-  }
+if (await GraphHelper.aliasExists(AliasResolverDialog.tokenResponse, alias))  {
+    promptContext.context.sendActivity('Alias already exist.');
+    return false;
+}
 ```
+
+# Next step
+In this post, we have looked at how we could call Microsoft Graph in two different ways. And how to incorporate Microsoft Graph into our prompt validation.
+
+In the next post, we will get a bit fancy using Adaptive Cards in our prompts.
+
 
 

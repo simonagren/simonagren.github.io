@@ -1,15 +1,15 @@
 ---
-title: Azure CLI OAuth Connection to Azure AD V2
-tags: ["botframework", "azure", "msgraph"]
-cover: sitescript.png
+title: Azure AD & Microsoft Graph OAuth Connection, with Azure CLI
+tags: ["azure", "msgraph", "botframework"]
+cover: azcli-connection.png
 author: Simon Ågren
 ---
 
-![extend](./sitescript.png)
+![extend](./azcli-connection.png)
 
-In a previous post [Azure CLI Azure AD registration with permission scopes](https://simonagren.github.io/azcli-ad-scope) we registered an Azure AD Application using specific scopes to the service principal `Microsoft Graph`, and we also prepared it with a reply-url that works for Bot Framework auth.
+In the previous post <a href="https://simonagren.github.io/azcli-adscope" target="_blank">Azure AD & Microsoft Graph permission scopes, with Azure CLI</a>, we registered an Azure AD Application using specific scopes to the service principal `Microsoft Graph`. We also prepared it with a reply-URL that works for Bot Framework auth.
 
-In this post we will create an `auth connection` from the Bot Channels Registration to the Azure AD Registration, giving the Bot the possibility to get a token to call Microsoft Graph.
+In this post we will create an `OAuth connection` from the Bot Channels Registration to the Azure AD Registration, giving the Bot the possibility to get a token to call Microsoft Graph.
 
 # Prerequisites 
 - [Azure Cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
@@ -24,14 +24,16 @@ When we use the command [az bot authsetting create](https://docs.microsoft.com/e
 - `--client-id`
 - `--client-secret`. 
 
-Depending on which `--service`(service provider) you decide to use there are a few service-specific things we need to add in `--parameters`. 
+Depending on which `--service` (service provider) you decide to use there are a few service-specific things we need to add in `--parameters`. 
 
 As you can see in the picture with **Azure Active Directory V2** we need to add a `Tenant ID`.
 
-![connection](./connection.png)
+![oauthconn](./oauthconn.png)
 
 ## We need some more things
-At first I tried to create the OAuth connection with the common properties and only `tenantId=<tenantId>`in the property string. And the connection seemed to work just fine, although from the UI in the portal, the Client id and Client secret were blank.
+At first, I tried to create the OAuth connection with the common properties and only `tenantId=<tenantId>`in the property string. 
+
+The connection seemed to work just fine, although, from the UI in the portal, the Client id, and Client secret were blank.
 
 This made no sense since I had provided the `--client-id` and `--client-secret` in the creation. 
 
@@ -62,9 +64,10 @@ $providerName = az bot authsetting list-providers --query "value[?properties.dis
 
 # Creating an OAuth connection setting
 
-In this example, we create a connection setting to an Azure AD V2 application. The registered Azure Active Directory Application has permissions to Microsoft Graph.
+In this example, we create a connection setting to an Azure AD V2 application. The registered Azure Active Directory Application has permissions to the Microsoft Graph.
 
 1. Create variables
+  
   ```powershell
   $clientId = "<IdFromAADapp>" 
   $clientSecret = "<secretFromAADapp>"
@@ -82,6 +85,7 @@ In this example, we create a connection setting to an Azure AD V2 application. T
   ```
 
 3. Create Connection
+
 ```powershell
 az bot authsetting create -g $rGroup -n $botName -c $connName --client-id $clientId --client-secret $clientSecret --provider-scope-string $scopeString --service $providerName --parameters "clientId=$clientId" "clientSecret=$clientSecret" "tenantId=$tenantId"
 ```
