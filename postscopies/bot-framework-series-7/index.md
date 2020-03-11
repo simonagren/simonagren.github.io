@@ -88,6 +88,9 @@ server.post('/api/notify', async (req, res) => {
 ...
 ```
 
+FIXA DET HÄR server.use(restify.plugins.bodyParser());
+
+
 ## bot.ts
 
 ### Variables and constructor

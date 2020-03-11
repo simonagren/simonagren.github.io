@@ -28,12 +28,15 @@ Depending on which `--service` (service provider) you decide to use there are a 
 
 As you can see in the picture with **Azure Active Directory V2** we need to add a `Tenant ID`.
 
-![oauthconn](./oauthconn.png)
+![newconn](./new.png)
 
 ## We need some more things
 At first, I tried to create the OAuth connection with the common properties and only `tenantId=<tenantId>`in the property string. 
 
 The connection seemed to work just fine, although, from the UI in the portal, the Client id, and Client secret were blank.
+
+![workingbut](./workingbut.png)
+
 
 This made no sense since I had provided the `--client-id` and `--client-secret` in the creation. 
 
@@ -89,3 +92,7 @@ In this example, we create a connection setting to an Azure AD V2 application. T
 ```powershell
 az bot authsetting create -g $rGroup -n $botName -c $connName --client-id $clientId --client-secret $clientSecret --provider-scope-string $scopeString --service $providerName --parameters "clientId=$clientId" "clientSecret=$clientSecret" "tenantId=$tenantId"
 ```
+
+Great! Now you have created the connection, and we could find it from the settings of the Bot Channels registration.
+
+![oauthconn](./oauthconn.png)
