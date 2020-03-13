@@ -1,4 +1,664 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Wed, 11 Mar 2020 13:00:38 GMT</lastBuildDate><item><title><![CDATA[Azure AD & Microsoft Graph OAuth Connection, with Azure CLI]]></title><description><![CDATA[In the previous post  Azure AD & Microsoft Graph permission scopes, with Azure CLI , we registered an Azure AD Application using specific…]]></description><link>https://simonagren.github.io/azcli-connection/</link><guid isPermaLink="false">https://simonagren.github.io/azcli-connection/</guid><content:encoded>&lt;p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Fri, 13 Mar 2020 14:57:12 GMT</lastBuildDate><item><title><![CDATA[Bot Framework in Node.js - Auth and Microsoft Graph (part 5)]]></title><description><![CDATA[In the previous post, we had a look at user interruptions. In this post, we will have a look at how to secure the Bot and give the user the…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part5/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part5/</guid><content:encoded>&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/botframework5-d069abc39a202859cea11fc120ae11c0-b70ec.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 46.916666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABJ0AAASdAHeZh94AAAB8UlEQVQoz3WSTU8TURSG+x9g56Zb2Uik0M5MYQhsMAGqYGEhbcEEqiyMyqoJGwMRQ0xMKNVOq0gtLZ8qoVuEpauSsDGRfsxHpzY0LEz4AS/nzFA0ISxO3jPn3vvc95w7DuF9ERPbBobXNIxvGZA+lBDcqtC3jsGUZulIVsejDQNDlPszuqWjVBvJqBjNaLifUsEckc46/FR4fViD74uKBVLe+CBtH7BgBOhf1TBEtQG6oO+zCh8BBtMVDGTrFKfoS1UgElBgIFMf79DtadVy6I2XbMClM3bUnSjj7lIB7ctFtEdP0KEQYO4H5FAEcjACT2QP4kcTQqwAB1t1x4p0qIROgjGQAT3JsqX/57JCa5S7o7/R2hvG/rs2pGc74Lztg2sxD0nRbGAnbQx/M/Fsr2rN78l3E093q5ii2jTp89wf6sLEy5yJydwZ7sx8RVOzhLcvvPj0JgC5awyucALSSg0OdsetuGM8WNshj8FDF/EDsWtWsZHHyxCXfuFWaxB+oQWB/nsQeifhXvgJkR3OH9SRytexflTAQ3pp17L9Whzs/lrETuBJVtH9KofFuRBk3zicgQS8K1V7hpvHf5GvnOPIqCFE7bZFi1eObgoGSwkVnrgOQdHhTRr/fhsedJdSplZVC9RYuAnUWLf0Mq5yql8Ai9Pka+mkvgUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;extend&quot;
+        title=&quot;&quot;
+        src=&quot;/static/botframework5-d069abc39a202859cea11fc120ae11c0-48538.png&quot;
+        srcset=&quot;/static/botframework5-d069abc39a202859cea11fc120ae11c0-bed0f.png 200w,
+/static/botframework5-d069abc39a202859cea11fc120ae11c0-5fd34.png 400w,
+/static/botframework5-d069abc39a202859cea11fc120ae11c0-48538.png 800w,
+/static/botframework5-d069abc39a202859cea11fc120ae11c0-b70ec.png 1200w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;In the previous post, we had a look at user interruptions.&lt;/p&gt;
+&lt;p&gt;In this post, we will have a look at how to secure the Bot and give the user the ability to log in (and out) and then call Microsoft Graph. We will utilize the Azure Bot service built-in authentication abilities.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Bot Framework in Node.js&lt;/th&gt;
+&lt;th&gt;Complimentary post&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part1&quot; target=&quot;_blank&quot;&gt;
+Let’s begin (Part 1)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-armtemplate-keyvault&quot; target=&quot;_blank&quot;&gt;
+Bot Framework 4 ARM template Deploy with Key Vault
+&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part2&quot; target=&quot;_blank&quot;&gt;
+Microsoft Teams (Part 2)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part3&quot; target=&quot;_blank&quot;&gt;
+Dialogs (Part 3)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part4&quot; target=&quot;_blank&quot;&gt;
+Interruptions (Part 4)
+&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Auth and Microsoft Graph (Part 5)&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-adscope&quot; target=&quot;_blank&quot;&gt;
+Azure AD &amp;#x26; Microsoft Graph permission scopes, with Azure CLI
+&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-connection&quot; target=&quot;_blank&quot;&gt;
+Azure AD &amp;#x26; Microsoft Graph OAuth Connection, with Azure CLI
+&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;What we will build today&lt;/h2&gt;
+&lt;img src=&quot;/loginout-cdf547c737a9961c73f95762cd331b07.gif&quot;&gt;
+&lt;h1&gt;Sourcecode&lt;/h1&gt;
+&lt;p&gt;Here is the link to the Github repository for this post: &lt;a href=&quot;https://github.com/simonagren/simon-blog-bot-v5&quot;&gt;https://github.com/simonagren/simon-blog-bot-v5&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;Prerequisites&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://aka.ms/Emulator-wiki-getting-started&quot;&gt;Bot Emulator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://nodejs.org/en/download/&quot;&gt;Node.js 10.4+&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://azure.microsoft.com/free/&quot;&gt;An Azure Account&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.microsoft.com/office/dev-program&quot;&gt;Office 365 dev tenant&lt;/a&gt; - for Microsoft Teams&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://ngrok.com/download&quot;&gt;Ngrok&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/app-studio-overview#installing-app-studio&quot;&gt;App Studio installed in Teams&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Register a new Azure AD Application&lt;/h1&gt;
+&lt;p&gt;In the first post, we created an Azure AD App Registration, and that was for the channel authentication and making sure we don’t receive messages from somewhere we shouldn’t.&lt;/p&gt;
+&lt;p&gt;The last time we used &lt;code class=&quot;language-text&quot;&gt;Azure CLI&lt;/code&gt;. It was less complicated since we just needed the &lt;code class=&quot;language-text&quot;&gt;appId&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;appSecret&lt;/code&gt;, we didn’t need to add any permission scopes.
+In this post, we will create the App registration and add the connection using the portal. &lt;/p&gt;
+&lt;h2&gt;Using Azure CLI&lt;/h2&gt;
+&lt;p&gt;I did make two additional posts as a “bonus” to find the &lt;code class=&quot;language-text&quot;&gt;scopes&lt;/code&gt; we want to use, create the AD Application with them, and then create the &lt;code class=&quot;language-text&quot;&gt;connection&lt;/code&gt; from the Bot to the application - all by using &lt;code class=&quot;language-text&quot;&gt;Azure CLI&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-adscope&quot; target=&quot;_blank&quot;&gt;Azure AD &amp;#x26; Microsoft Graph permission scopes, with Azure CLI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-connection&quot; target=&quot;_blank&quot;&gt;Azure AD &amp;#x26; Microsoft Graph OAuth Connection, with Azure CLI&lt;/a&gt;                                     &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Using the portal&lt;/h2&gt;
+&lt;h3&gt;Register AD Application&lt;/h3&gt;
+&lt;p&gt;Go to the &lt;code class=&quot;language-text&quot;&gt;Azure Active Directory&lt;/code&gt; blade in the Azure Portal, then &lt;code class=&quot;language-text&quot;&gt;App registrations&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;New registration&lt;/code&gt;. Fill in the values and set the &lt;code class=&quot;language-text&quot;&gt;redirect URI&lt;/code&gt; to &lt;strong&gt;&lt;a href=&quot;https://token.botframework.com/.auth/web/redirect&quot;&gt;https://token.botframework.com/.auth/web/redirect&lt;/a&gt;&lt;/strong&gt;, then register. &lt;/p&gt;
+&lt;p&gt;As always, take notes of the &lt;code class=&quot;language-text&quot;&gt;appId&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;tenantId&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/register-a1b9efe3875e6242b897853e9b01ac3b-04f00.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 689px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 97.67779390420901%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACNElEQVQ4y6VUW47bMAz0YfvTuxXoAXqDnqDoYzdrx44fsi2/Jfkx5SjxIsgGCdAaGEiiKYqcoRSkSuPlmOLtVOB3XOA1zvEjzHDIG5S6Q3w84nQ6IYoiP47j+BBB3583VaVCkWdI4hjpKcG6zLj3bduGR19AB+fcQyf6eFyt13W9i2C2FnmWYRgGGGMwTRMmSd3IyBK4Nmbya87pNz9IINC9wR/h7kW4+/mW4DVRiFXrEeUax6JBXLYXW4Mwq5HpEXpaUY/LO/S0QA0OQWdWnMShaCdkzYiyd+iEPi32xmwfYfEh2I6ss1LyPKPve1/KdCmT67sc3uCG6XPJ5KvIc5RlCaUUMuGzqip/AAOT16diXSGoxxlK92ibBo2gritB7YMStO3B9wratvXzu6L0k4Wq6vfNHHPJuCgKlJLxnjlBO33Y4EoVIF3X8Bkus0NdstTUb0qSxG/QWqPrWp9N13U+Q9pIUXOphvZr+D5c1g2DFWGMg7FOTnJYlgX/+gV22dDaDZ3Arc+VfQYpeZZbMEr32/fb8V8ZkpvEk6yQpqnnkFwxMNW9HXfFd9t+HQkr1zig8SivDYNRRQrCdRiGfs4DYnmB+HxxJA6Hg//POX120Rg8sNZ4xVgmsV7A0/i01VV17s3q3J/MnqCNLTWOg1eXe42VgJywh5zAuhmTPattZH4L+u3+ewK3vRg0ZkGkHUJBMSyoLi8Hx2vQxhZ7Ksq3Xx0+f43x6csR36Px6av8rG3+AiAXD/qqtWpqAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;register&quot;
+        title=&quot;&quot;
+        src=&quot;/static/register-a1b9efe3875e6242b897853e9b01ac3b-04f00.png&quot;
+        srcset=&quot;/static/register-a1b9efe3875e6242b897853e9b01ac3b-0c2dd.png 200w,
+/static/register-a1b9efe3875e6242b897853e9b01ac3b-0604e.png 400w,
+/static/register-a1b9efe3875e6242b897853e9b01ac3b-04f00.png 689w&quot;
+        sizes=&quot;(max-width: 689px) 100vw, 689px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Create a new &lt;strong&gt;never expiring&lt;/strong&gt; &lt;code class=&quot;language-text&quot;&gt;secret&lt;/code&gt; and make note of the value.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/secret-bb60a1f197a24fbaabfa48a513f744a3-a4e62.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 57.56646216768916%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABWUlEQVQoz51T207FIBDs/3+N/ogPmvhqjKfXg71xKbTAuAtpz/FBUyWZQJftMMsORVVVaNsWZVmi7/u0rusmzdM0IcYI7wN8+BmBZ+9hnUNhtMa6runHbdvyJn07u2BbHfKIJ5BHIec5kTBhjAGLdXirrmh6iXHxmE6Cc6UNKDQp5BMyYYRhwrKFmDSUC5SUE0+B8knhhBBvkrn8Yeip/BX/GUVDTek/BYzRMFqlkp01QHBH0q7+DIqKunu5fKDrWixKYtAOj68zXiqTiFdq1J8IZ7KGtfZQMyiLh+crnt6HpJitwJZgB/B8j/sYrxlEONK9bUen2SpS1BhFCykllFLfwLEd3FCOzeQU59zNNsaYtMnBjU4TbPCuS0bn0/mgm7V+RiaUMzQRMtm+wS9kHMdUwj6YkNXsTliW5WjYve2Kuq7REPge8zPzZJshgYlZJZMLIQ7C31R+AXN5qWRuevUnAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;secret&quot;
+        title=&quot;&quot;
+        src=&quot;/static/secret-bb60a1f197a24fbaabfa48a513f744a3-48538.png&quot;
+        srcset=&quot;/static/secret-bb60a1f197a24fbaabfa48a513f744a3-bed0f.png 200w,
+/static/secret-bb60a1f197a24fbaabfa48a513f744a3-5fd34.png 400w,
+/static/secret-bb60a1f197a24fbaabfa48a513f744a3-48538.png 800w,
+/static/secret-bb60a1f197a24fbaabfa48a513f744a3-a4e62.png 978w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Under &lt;code class=&quot;language-text&quot;&gt;API Permissions&lt;/code&gt;, we are going to add &lt;code class=&quot;language-text&quot;&gt;Microsoft Graph&lt;/code&gt; delegated permission scopes. In this case, we added &lt;code class=&quot;language-text&quot;&gt;openid&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;profile&lt;/code&gt;, and &lt;code class=&quot;language-text&quot;&gt;Group.Read.All&lt;/code&gt; (&lt;code class=&quot;language-text&quot;&gt;User.Read&lt;/code&gt; was already there).&lt;/p&gt;
+&lt;p&gt;The &lt;code class=&quot;language-text&quot;&gt;Group.Read.All&lt;/code&gt; require Admin consent. We don’t need it now, but I did want to prepare us for upcoming posts. Make sure you admin consent in whatever way you find feasible.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/permissions-15db64adbd6f452a1f518a715e60405d-e23dc.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 84.2233009708738%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB/UlEQVQ4y6WU23LTMBRF9fm8MvwJf8ADfe5MSwptmottxbEty47jqy7eHMmJCVNaUvDMGl1ytKWzdRS2DQKEUYQwDBFFHJxztG2LYRjeTdd1YFljUXcKWmsopfC/H7tdpkjTFEkcY08cygJ126PpBlijMVr7YtE4jq/CtqnAMoqx5Hus4xRBmmOTCKzizPdDUUA0A5Q2hKbUFOx4Er5knDZiDwHH4u4WD4t7PD1+R7BZY7tZYbteYbN+xi4KsKINIr7zPrtsyrJEXde/4fzzgpGswIVERCfZl9ULksMRSd3TRXW0qPenMXREY+yMJjpl/TyTskAmcuTU9pSOMmZKz5i57y7MUN/hLs6NL+c0cWjplgcNVhYF0iSBoYBxtLB2CnLjGaMvRCahoe8hZY6C1ossQ9vU/gKZ29FN9hSgvemD9+Jvn4uZT0jr7KkavGCe50iSvReuqsobfC5W97sL/hNO9LJ1MFcGQggSlf6FuJM6Qdc/j8+7v1V/cx02lHtCHhaFJKEW2puuppZQnuF1hl84f5mrt8X9HZZPP6j2nrFZLX3t7XeciK6EI+ahf2XseKwQ05NzPnaUYtM06J2HlGp/JVNs5zNiijpSZCilIKH2qvf6poc7WdO7lUSBnShP3qi5JN4L+3ST4+PXHB++CHz+VqI9lpR2+89/Xz8BYBklaQiJAG4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;permissions&quot;
+        title=&quot;&quot;
+        src=&quot;/static/permissions-15db64adbd6f452a1f518a715e60405d-48538.png&quot;
+        srcset=&quot;/static/permissions-15db64adbd6f452a1f518a715e60405d-bed0f.png 200w,
+/static/permissions-15db64adbd6f452a1f518a715e60405d-5fd34.png 400w,
+/static/permissions-15db64adbd6f452a1f518a715e60405d-48538.png 800w,
+/static/permissions-15db64adbd6f452a1f518a715e60405d-e23dc.png 824w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h3&gt;Create Connection from the Bot&lt;/h3&gt;
+&lt;p&gt;Got to your &lt;code class=&quot;language-text&quot;&gt;Bot Channels Registration&lt;/code&gt;, into settings and under &lt;code class=&quot;language-text&quot;&gt;OAuth Connection Settings&lt;/code&gt; press &lt;code class=&quot;language-text&quot;&gt;Add setting&lt;/code&gt;. Fill in a new name, I’m using &lt;code class=&quot;language-text&quot;&gt;Azure AD V2&lt;/code&gt;, the &lt;code class=&quot;language-text&quot;&gt;appId&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;secret&lt;/code&gt;, and the &lt;code class=&quot;language-text&quot;&gt;tenantId&lt;/code&gt;. The scopes are case sensitive and separated by one single space. &lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/connection-2ed6b584465db510db4b02da49395810-95975.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 375px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 156.26666666666665%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAfCAYAAADnTu3OAAAACXBIWXMAABJ0AAASdAHeZh94AAADq0lEQVRIx6VW2W7bSBDU///OPvrNgDcwFo6xCeIcEnWQFCmJ4n0fUqWreYRx7ACJCZRmpkn1NKt7qrmo6xqr1QqmaWK5XMIwDFiWpaBtvV5ju90ijmPw6rpuwvV6RVEUOJ/PKMsSvu9j0bYt7u/vcXt7i5ubGzw8POD94yP+ffdObY8yv7u7w2azwUtXVVUIggBN0/QOL7JTmadIkwR5niOKIuRZiiLPEIstEWRZDu90RJYm6oSRjRivcb6o2w7GuUJeNWC0uF4QFS3CXNZNDVLSdS2qlvYGTV2pbQ5Gyf+ShkXeXPDP5xTWKcTettHVJZ5ODT65EtXBwWa7Q1VksOMW66BG4B1xPJ3geR5c18XhcICz36tjjVDJvXQaBXdp237d23q0AlKDme01LJ6TPOfnb7C4XC4IwxCJlIVy+IZLHfInikJEYYBSaqpthXhJxg8wOY2OL2G8x9dVDsUvwuAMx7Zgmzu4ji3JkbllymjqvSSOEMumr2IIZnJIwrnTmHomiKNG0DZDsn6Hpk8aHZLDTAqZRV0UucwznZNT3vtjDvmnSEOP1AnBte+fpWDLn6Jox4ibXzHjEPDPnhSnjeNBCtV14Mr8dDyojXy6zl7tYeArn0kcDmPPre+dhMO8d8gwGeXIXyMjj1LNIzaMXBOvZbo/njMOGVkoisHXzGV8Ux023QUPyz3ef7Pxv+Fi6URwkha7oIQZVrCjBlZU9wiHUWx23PRrweZcwMv6Q7EQYcF/ax+fVxt83e7xZWNj63hY7lwY9hEfvhh4Mkx8Wu0Ua7F9/LbBx69rXT8J9H8nioNE2F2u2IuSuLKjm/Q4ZB32EokT17DDUlANYyn2ClZQqI2jFfT3pwj53oHvKYcUUGYtkcoXtv+OQ2Znt9thL5pGbTMtlomDKi9ezeqvWeY4i5AN6CyCqZCGQ5xERI/Ho25CNZqO4nO0vdNiPMt0OMr4CD2Gw1HknB3tuey/hEmx2bUYJSNhk3pTHdIh+y95dHjEpMhZ7JMWyslRruof2jhXmvGkjOKsr+wLZ3RKsP9qg5eGz00MYwVbmhcbPhPHjwJ+DKxWS32Wa/JHWibFJm80EKN89RwWg6wVE7hWDM8Rdd2r+3SW0zRV0OGbewrV2RaJ4muwz/bq07fNsTVyU2I+n9tGpZo4DOVkkB9ngCm9hfyxwB0BuRqT5oouahLlA4ofUZbM6bCY6yG/X1gufG2WT6rfM+lERSpHkkpOG0eqO5+J1Zb9VIffATQJWUrXrswnAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;connection&quot;
+        title=&quot;&quot;
+        src=&quot;/static/connection-2ed6b584465db510db4b02da49395810-95975.png&quot;
+        srcset=&quot;/static/connection-2ed6b584465db510db4b02da49395810-2e141.png 200w,
+/static/connection-2ed6b584465db510db4b02da49395810-95975.png 375w&quot;
+        sizes=&quot;(max-width: 375px) 100vw, 375px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;And after saving, you could click on the connection and &lt;code class=&quot;language-text&quot;&gt;test connection&lt;/code&gt; as well. First, you need to consent and then you could get a token.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/consent-d1734083a8a221718ccc2d624695f001-f0902.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 438px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 122.37442922374429%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAYCAYAAAD6S912AAAACXBIWXMAAA7DAAAOwwHHb6hkAAACx0lEQVQ4y61Vy5LSQBSdH3HjF/gHbv0Oyx9waWmVG1eWC79Bd+7mB3yONS8oq4AhvBISYCaQ8AiEECAkxz7NdCYjj2Fhqi63u9N9+txz7w1HUE+8wP94jvgz8yOcfH2PhvENLauL6+sODMNAFEVyU5IkB5sATDCLgfboBlHgYhqECIKpsGDvQXXRBkO5lMQI/Cnc/giO08NgMMBoNEK/34frutI7jiO953n7AfmzWq0kiO/7mEwm0k+na5az2Sw1rtGyUmwFXC6XuLoqo1gsSV8qlVAoFKSOtNPTU+TzeeRyOWm8dC9gIkL2hgM4XRv+2INt2+h2uzJMMovjWEaRBdmm521SgEUUI1/r4k/tBiWjB9dZ69br9STgQ0+W6VrDOMGNt4TjC6ZhsvUAGdLIVjH+l3nKcLWKYDUNmIaO8lURZU1DtVpFq9WSGlYqFaFvUerK9VqthnK5DE3s43gDkDdNRGY9b4zxeCyzzPKgMWQmjZklG+Wz46yOR2rAw9RtOBzKGmQZMSksk21a7dIxZcjbyIxABCFTVdz0LHDaQUkhIMNifZGVAiIoGdPUBTRGwzXuURFsaijA+DLrVdfQ2DWcK10XiwXm87mMLFuPaetxI4FUC5IRGShgzvmOa7tq815SeFsYhqlXDNZ+PaanNByr/iZz7t9g2Ol0UK/Xoeu6rD2OzWYTpmnC0BtoW6asU0vMGw0d7XYbpmVhJCLzxZeKst1LCkGaAoDFbImNvIBzUxS80bqG3umhYtqwbBdBWkrJ7pBJn9QZAk2FNacMotfnosOmywRhdAcSiZaN4+Q+4EPFytbKXV7i5NdPXJyfoV7V8OzjGR69+o6nH87x5N1vPH79A5rtZz9f2z/xlIKhs38Lopc10dMdod3b4wqefyrizXENL79oePG5iPYwvAN8qPoPfVINd4Ht+oPi5251q58aqzN/AWn/Ni21lgl1AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;consent&quot;
+        title=&quot;&quot;
+        src=&quot;/static/consent-d1734083a8a221718ccc2d624695f001-f0902.png&quot;
+        srcset=&quot;/static/consent-d1734083a8a221718ccc2d624695f001-86c03.png 200w,
+/static/consent-d1734083a8a221718ccc2d624695f001-99356.png 400w,
+/static/consent-d1734083a8a221718ccc2d624695f001-f0902.png 438w&quot;
+        sizes=&quot;(max-width: 438px) 100vw, 438px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/test-abc1441247461443c4bf86b004b08d24-7b800.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 439px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 37.58542141230068%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABSklEQVQoz61R2W6DQBDj//+raaKGm4WSg0pRuRqowk1Aietdmr5UfSvI8o6Z2Zkx2nr9DOEHsCwDpmVCN03YroMwfMU+3GGzeSHW0A0DjmORLWx1HUIIuI4Nx/NgWxZWTysY1LU8z1GUJbIsRZKmiJME+UeO8pMa48P+gDh+R5plyPOM5wQJc4qiQHE+q/yUOJ1OijVZMI4j/uvRSk7XNDWGYUDf90SH7pt7asMwKr3rOrRtQ+5Vroy7tlVxS5ZD3e93aD7981wXnvAIAdu2cYwieijok4+QGzj0VNe39GgL07QQ7qRG7+h3EAT01UQSx8uEsvs0TT+QnSRfr1cFeZ7nRR/HJZ7mmdpvqAvP/CnCE+waIore1CrLSj2ausbxeIDv+6jrSq12u93+9E+tLJOqqmJBrSAnlt0ePl0uFXFRZ/ntcaEs/gW+X4GTWs1ZdhDaAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;test&quot;
+        title=&quot;&quot;
+        src=&quot;/static/test-abc1441247461443c4bf86b004b08d24-7b800.png&quot;
+        srcset=&quot;/static/test-abc1441247461443c4bf86b004b08d24-69a89.png 200w,
+/static/test-abc1441247461443c4bf86b004b08d24-60743.png 400w,
+/static/test-abc1441247461443c4bf86b004b08d24-7b800.png 439w&quot;
+        sizes=&quot;(max-width: 439px) 100vw, 439px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h3&gt;Add connection to .env&lt;/h3&gt;
+&lt;p&gt;We add the name of the connection we just created into the &lt;code class=&quot;language-text&quot;&gt;.env&lt;/code&gt; file. For production scenarios, we have to also add the &lt;code class=&quot;language-text&quot;&gt;connectionName&lt;/code&gt; to the Azure App Service application settings.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;
+      &lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;MicrosoftAppId=&amp;lt;idToFirstAADregistration&gt;
+MicrosoftAppPassword=&amp;lt;secretToFirstAADregistration&gt;
+connectionName=GraphConnection&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h1&gt;Project changes&lt;/h1&gt;
+&lt;p&gt;This is a high-level visualization of how the Bot is built:&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/botdiagram-667132a5fa2017d4cf3292ca7fa65795-81103.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 85.81395348837209%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAABJ0AAASdAHeZh94AAAEPElEQVQ4y42T/1PTdRzH/Ru6us6uDNFTsvJURhMjvLTyqCyxflDLu7zrAvJS5GsI8UUQLUBkbOD4In7LzLwiDKgOFMf4MgYbG9sYSzk7FRAY2xA2BtsevSd52S9d77vXvV6f9+f9frzfr9fr+V6CGN4FPxdb7iD/6RYVV25SV3+T8w23qLryB7LvbdQ138bumqe93075JRvHzlg4Jf5VXrZRfMFK9mkLZWKfx+tjSRB4e3SGuCIdOVUmQg+oeKNEx/aTOiRHtKxK7eTVhBuo+sdJO61Dmt/LS2lqYo71EFPUS1RmJxs/u0bUfhV3J9wCGPAxqtbzQW43scU6NsgHiKi1EFFl5rXzQ6xXmtl6WEWrUcceWQvLFRZWK8ysD647YyNcbiI6o5OYDDX3JjwC6JllUmsmPEPDs6UDbDxlZllhH6Ff65GITWvkFiSFKhqae9mer2fliT6ktSZC8rQ8U2REorSwVGEluqCBialpAXTP4rENI2/4k3R5P0ll/aQqjCTLhcn6STypJ7tmkFtmBz+q7pGo6CXj7DWSlX0kV/XyZU0PSQo9yiYdvkAw5blZ7moHyb98m7gSPW+mqIn7RktiaS97CzRsS+vgvcNdtKnu8MP1u6RXGtmd3USmopWM8lY+zmsmNqeRJGUbXl8Q6F9gvNvAR7vOEZbWxnKljU2VJiJF7aKELS23sPGLGzQ1DrM3v4eI1A5eKBZzRQNIS0ysLjSwLfsX3s1qYNThWuyy27OA4rKVlGoT+5UDJFYaSKwwkCR8fIWRnDODDI/MsDevh3XJ7ayoFA0Ta6XVZkLK9GxNb2FHdjP3nX8Dx6bmOHLOSlyxnj2ZHcQLyewT9ftUpufz4xo+zOpGa3XxSYGW8GQ1T1baeLF2iJU1Np6WWYg62PVv4KTTyzZRuy2H2nnrkIoNJ/REnheSqDLyTv5VduZe5XeDiX1Cg6syNbxca0WqFGURug2rHmR9uoadXzUx9ghod3l5PbEdaUIbkfHXCQmKV6S1XIA3pf/M24fraezvIqHsN7bk1BMqG0Ai5LWhysIKkdXmA2ref/yGPn+AXzVjXGpd7OQF9QjfdY3wbdcoF8VcU/cYI/Y59uT2IE1q5zmZGUnFAGtF854vMbL5YMc/wEAgwP8Zzpl5duVoeEUAl8nNRNYOIhGph5wwEC2AOx4HBi14S5/Pv2jB2L/oF8Q3BJgUZQkCI4VsQpRW1gnY2rohQstNbEnqeKjFMYdzMeX/Go/u7/b62Z2rZU18G08cN7K21EBYqYmnjvYRnVJPbG4j9mnxludm53ngFM/P4xbmweNe9LMzM0KfHvzCe6emBNJPW98I2dUGjp42kldjIK9aT0GtkSyhhqbOkYcHL5mf8+EYs+NyTGGfnMQ5McG0y4VjfBz7/fv4RDwrfDD2OO34pidhbhpf0GbsBNwO5l3jzD+Yeli6vwD6GRd8opLoGQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;diagram&quot;
+        title=&quot;&quot;
+        src=&quot;/static/botdiagram-667132a5fa2017d4cf3292ca7fa65795-48538.png&quot;
+        srcset=&quot;/static/botdiagram-667132a5fa2017d4cf3292ca7fa65795-bed0f.png 200w,
+/static/botdiagram-667132a5fa2017d4cf3292ca7fa65795-5fd34.png 400w,
+/static/botdiagram-667132a5fa2017d4cf3292ca7fa65795-48538.png 800w,
+/static/botdiagram-667132a5fa2017d4cf3292ca7fa65795-81103.png 860w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h2&gt;bot.ts&lt;/h2&gt;
+&lt;p&gt;Since we want to use the Bot in Microsoft Teams later, we will change so the Bot no longer derived from &lt;code class=&quot;language-text&quot;&gt;ActivityHandler&lt;/code&gt;, instead &lt;code class=&quot;language-text&quot;&gt;TeamsActivityHandler&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;SimonBot&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;TeamsActivityHandler&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;We also add two more methods&lt;/p&gt;
+&lt;h3&gt;onTokenResponseEvent&lt;/h3&gt;
+&lt;p&gt;In non-Teams situations, we need to implement the onTokenResponseEvent to make sure the dialog is run with the new token response event.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;onTokenResponseEvent&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; next&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token builtin&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Running dialog with Token Response Event Activity.&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+      &lt;span class=&quot;token comment&quot;&gt;// Run the Dialog with the new Token Response Event Activity.&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dialog &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; MainDialog&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dialogState&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+      &lt;span class=&quot;token comment&quot;&gt;// By calling next() you ensure that the next BotHandler is run.&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;handleTeamsSigninVerifyState&lt;/h3&gt;
+&lt;p&gt;And in Teams situations, we need to implement handleTeamsSigninVerifyState, because Teams handles it a bit differently. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;handleTeamsSigninVerifyState&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; TurnContext&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; query&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; SigninStateVerificationQuery&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dialog &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; MainDialog&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;dialogState&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;mainDialog&lt;/h2&gt;
+&lt;p&gt;In the main dialog, we import the &lt;code class=&quot;language-text&quot;&gt;OAuthPrompt&lt;/code&gt;, add a new constant&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;OAUTH_PROMPT&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;OAuthPrompt&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;And then add &lt;code class=&quot;language-text&quot;&gt;promptStep&lt;/code&gt; and the &lt;code class=&quot;language-text&quot;&gt;OAuthPrompt&lt;/code&gt; using the connection.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;SiteDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;SITE_DIALOG&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;WaterfallDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;MAIN_WATERFALL_DIALOG&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;promptStep&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;initialStep&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;finalStep&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;addDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;OAuthPrompt&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;OAUTH_PROMPT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+            connectionName&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; process&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;env&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;connectionName&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            text&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;Please Sign In&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            timeout&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;300000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+            title&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;Sign In&apos;&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;promptStep&lt;/h3&gt;
+&lt;p&gt;The prompt step only kicks off the new login prompt.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;promptStep&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;stepContext&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; WaterfallStepContext&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;DialogTurnResult&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;beginDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;OAUTH_PROMPT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h3&gt;initialStep&lt;/h3&gt;
+&lt;p&gt;The initial step is changed. It will now get the &lt;code class=&quot;language-text&quot;&gt;token&lt;/code&gt; from the previous step in the &lt;code class=&quot;language-text&quot;&gt;stepcontext.result&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;An important thing to notice is that we don’t save the token. The idea is to call the prompt again when we need the token. If the user is still logged in it will just send back a token. Otherwise, the user will have to log in again - so there’s no need to save the token locally since we could end up with expired tokens.&lt;/p&gt;
+&lt;p&gt;If we didn’t get a token, the login wasn’t successful.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;initialStep&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;stepContext&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; WaterfallStepContext&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;DialogTurnResult&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; tokenResponse &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;result&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;tokenResponse&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sendActivity&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;You are now logged in.&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        
+        &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; siteDetails &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;SiteDetails&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;beginDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;siteDialog&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; siteDetails&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;context&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sendActivity&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Login was not successful please try again.&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; stepContext&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;endDialog&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h1&gt;Test login&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Run the local Bot by using &lt;code class=&quot;language-text&quot;&gt;npm start&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Start the emulator and check the settings at first. &lt;/p&gt;
+&lt;p&gt;I had some issues getting the login to work. Your best bet is to download the latest emulator, and these are the settings that work well for me:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/emulatorsettings-b0d4cdfbda47deb288cd9401abb3e4b5-e4b69.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 33.592233009708735%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABJ0AAASdAHeZh94AAABDUlEQVQoz41RXVLGIAzk6HoLn+wZfNH7qNPvK6CllJ9CS9cExFHHB5nZCSHJZhPEvu/47zlKQc4ZOSWc5/kj1n1hnUeihESJ1f4GExC4oBw7vHdY1xUxxhrftg1dFOeIZ2WgtYKUEtM0QSkJTVByorfm+xBqwavccNVEFjysXbEsC1lbG4TPHKGtR6QumbqwmhATETAyfGx+H8e6BLsGKvaVgOG9h3NNNasVL+MVF/mGSc/Qs8HwqHA7jLh7kLi5HzE86TYOIedEowYcx/GFQnvtqCOrd0dJrSN3WkjBlk9SWxBToXvh5VRSVsBKWFXfIxN9P+IieQ+m7qPB1JH++kH+hHmeK5kxptoe7/gABSEeMjyPNpwAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;emusettings&quot;
+        title=&quot;&quot;
+        src=&quot;/static/emulatorsettings-b0d4cdfbda47deb288cd9401abb3e4b5-48538.png&quot;
+        srcset=&quot;/static/emulatorsettings-b0d4cdfbda47deb288cd9401abb3e4b5-bed0f.png 200w,
+/static/emulatorsettings-b0d4cdfbda47deb288cd9401abb3e4b5-5fd34.png 400w,
+/static/emulatorsettings-b0d4cdfbda47deb288cd9401abb3e4b5-48538.png 800w,
+/static/emulatorsettings-b0d4cdfbda47deb288cd9401abb3e4b5-e4b69.png 1030w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Then connect to the Bot from the emulator using &lt;a href=&quot;http://localhost:3978/api/messages&quot;&gt;http://localhost:3978/api/messages&lt;/a&gt; and the &lt;code class=&quot;language-text&quot;&gt;appId&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;secret&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Write something to kick off the dialogs. And the press login, and open the window.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/openurl-54363c6184835280c1b344e5e4877c01-2d90b.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 593px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 91.73693086003372%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAABJ0AAASdAHeZh94AAAB+ElEQVQ4y51UyY7TQBD11yNxRuICB4TgBEJCiMNIgxB3BBKnLJPESRxnsR0v8b49+lWmLU8WNENLT9Vd7nquetXdBu5H27Zim6ZBXdf/DeOUsCxLRFGEw+EgVkOvwzBEHMeyvoSLhJ7nwbIsLJdL7HY7LBYLrFYr2LYt/iRJnka43+/hui4cxxFLUg36GHgty6uEDOyT9Ek1IcFsCb02SKTBUVWVEEynU5imKXY2m3WYTCYCvR4Oh4LRaITBYHCeIQk3mw3G47EQzudzmZOYVqCC75Qdje8wX1hK37XAXm9h8Jj0s2TJQRDA930B55RAdFXNCoIQnprvHBdZ7KsUMoW8swaDKDytJwFBp8tRmwSpsn6cKmQwLZXN1kNRV7j96eLZ2yXefLXx6rON5++WMEhAIt1ZEp93L4IfxQgOCUyWuHFQlAV+/Hbw4qOFD982eH+zxstPKxhZliFNU+R53pXMNf0aqVjlU/6yKFCovcweDUsteDbuURy7rHV8zDhqfZw3La8qVOkh/kxS8Rnnmx8PFSF4/WWH77/Cc8KnDlZGqVxfHeqkOBL2tSIKanSC/IKvj0o1qFFdF0K+HtvtVm4HQbEf/CDnTx7+9BRsIpsphLwZ13SkPklWI0pqVV7Ljxd0hLyDHSFT/teDmaQlYoWqur6HZJrwL22Law5iVH25AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;openurl&quot;
+        title=&quot;&quot;
+        src=&quot;/static/openurl-54363c6184835280c1b344e5e4877c01-2d90b.png&quot;
+        srcset=&quot;/static/openurl-54363c6184835280c1b344e5e4877c01-422aa.png 200w,
+/static/openurl-54363c6184835280c1b344e5e4877c01-16f91.png 400w,
+/static/openurl-54363c6184835280c1b344e5e4877c01-2d90b.png 593w&quot;
+        sizes=&quot;(max-width: 593px) 100vw, 593px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;This opens a window where you can copy the verification code and message back to the Bot. Then you receive your token.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/loggedin-458b189670949072fbc1720452d9c933-a00a0.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 577px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 53.7261698440208%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAABEElEQVQoz52SW2qEMBSGs8HuoQ996A4KhXktFLqBQldmxY7gpVC8xsSoiX9zMqPjOHVgeuDj5Fzy86NhwzDAGAOttctU931/Rtd1jnV/vUOZNU0Dz/MQBAF830ccx6iqCnVdz5ngx7zsLaE+aTEp5VxQFkLMjiaEVGgsSnUXswmlFEjLCY7jiK2gSfTT4zvroc32nrEaTrBtW+eKii2EkFfnS5xDzrn7IeT0v2h73x7AqJjEbolpve0Mdh8R7l++8PwegZ0WbndFIZTG49sed0+feHjdnwT/djGe5fVs6g/aIC85an58NmVZzhRFgTzP5++6JXjZt+fRgNGjTJLEkaYpwjB0ZFl2VXDp/sDhif0CnyRXpUT8/u0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;loggedin&quot;
+        title=&quot;&quot;
+        src=&quot;/static/loggedin-458b189670949072fbc1720452d9c933-a00a0.png&quot;
+        srcset=&quot;/static/loggedin-458b189670949072fbc1720452d9c933-6bb65.png 200w,
+/static/loggedin-458b189670949072fbc1720452d9c933-a3182.png 400w,
+/static/loggedin-458b189670949072fbc1720452d9c933-a00a0.png 577w&quot;
+        sizes=&quot;(max-width: 577px) 100vw, 577px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h2&gt;Login in Teams&lt;/h2&gt;
+&lt;p&gt;We need to make some changes to the &lt;code class=&quot;language-text&quot;&gt;manifest&lt;/code&gt; in App Studio for the login to work. Right now the window would not open.&lt;/p&gt;
+&lt;p&gt;As we did in &lt;a href=&quot;https://simonagren.github.io/azurebot-nodejs-part2&quot; target=&quot;_blank&quot;&gt;Microsoft Teams (Part 2)&lt;/a&gt;, we will start App studio from Microsoft Teams and edit the manifest of our Teams App.&lt;/p&gt;
+&lt;p&gt;Under &lt;code class=&quot;language-text&quot;&gt;domain and permissions&lt;/code&gt; we need to add &lt;code class=&quot;language-text&quot;&gt;token.botframework.com&lt;/code&gt; as a supported host, this will allow the popup to be opened.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/validdomains-6b3bce64b190f73f1c9df645ff660e43-cbca2.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 487px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 84.80492813141683%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAABJ0AAASdAHeZh94AAABqUlEQVQ4y61U23KCMBDl///JvumT1Y79Aa1yS4AA4Y5wurtUy0NbdKaZObPZkBxP9mx0QKNtGqTGwFqLsixRFAXatkVdV4QawzDwNozjuAiHN36cjnhZrfD6usPh8I71eoO3/R6bzQbb7Q5JYvDoEEJWkZM6VlZYhkVVVZKzYp7Xkpdo6Da3b3yOUZWVrGVZNhEWZYEojkhJAqU0VBgijmOBVoowrfE3PhQGAdzLRb7nWY5Ia0RRJGtCOFyv6LpeajUH12Q+v+Xz+TynKk+EaWpwPJ7g+z58j+HJr4akLiA1rJBzRdCRpn2erLNSrbWcU7IngPPN/rOLj4z5PlFoqcCJyahtOKYwhJRqM+L54dz6MGFTCHE0Rb5iksQwhEL6kxwvliGEDVkfUl24dp57oeiSY2fJuV55lhJpDpsT7N9wHq3TU1deIn3kyd2f3o0sS1NpTkPRUMNyjKnR+Y0Pw/icQm5sNqZt6q84R41r36PvO/TdMoSQJ1qFZMhZzGFjPNdF4LtQgU/RI0MyIW9qes/0L/QbhJAVVPe2sNOcUM3AZF3bLOLfXf4E+K0ptGvLMcIAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;validdomains&quot;
+        title=&quot;&quot;
+        src=&quot;/static/validdomains-6b3bce64b190f73f1c9df645ff660e43-cbca2.png&quot;
+        srcset=&quot;/static/validdomains-6b3bce64b190f73f1c9df645ff660e43-2bbb6.png 200w,
+/static/validdomains-6b3bce64b190f73f1c9df645ff660e43-b5c84.png 400w,
+/static/validdomains-6b3bce64b190f73f1c9df645ff660e43-cbca2.png 487w&quot;
+        sizes=&quot;(max-width: 487px) 100vw, 487px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Spin up &lt;code class=&quot;language-text&quot;&gt;ngrok&lt;/code&gt; again &lt;strong&gt;ngrok http 3978 —host-header=localhost&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Then we could go to Azure once again and change the &lt;code class=&quot;language-text&quot;&gt;messaging endpoint&lt;/code&gt; in the Bot Channels Registration to point to the &lt;code class=&quot;language-text&quot;&gt;https://&amp;lt;ngrokUrl&amp;gt;/api/messages&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Now if you write something to the Bot in Teams, you get a similar login experience&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/signinteams-a44aca5b39ee4387c972c4d9360cb126-d876e.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 23.085460599334073%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABJ0AAASdAHeZh94AAAAtElEQVQY04WQiw6DIAxF/f/P3DKdBSMKCPjgjta5zG3JSE5IS3O4UN10hzB5GGMQQoBzDikl8Mo5C9u2YVmWE+u6Ipb5cTCw4/Ci6ozCPCc0TYO2vaOua8QYT0LmfR11jD+E3llJQDQWWQ/vOV3+En4iwpJwML1IDyq2cnwWWRsxTUmezr1/7F9kwaGc3RGhsyMmb8uNHp1WuF4vIEVQ1JbkBK217KpApaf4rMyR1CSz9Ow9ANrngzUPpK4QAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;signinteams&quot;
+        title=&quot;&quot;
+        src=&quot;/static/signinteams-a44aca5b39ee4387c972c4d9360cb126-48538.png&quot;
+        srcset=&quot;/static/signinteams-a44aca5b39ee4387c972c4d9360cb126-bed0f.png 200w,
+/static/signinteams-a44aca5b39ee4387c972c4d9360cb126-5fd34.png 400w,
+/static/signinteams-a44aca5b39ee4387c972c4d9360cb126-48538.png 800w,
+/static/signinteams-a44aca5b39ee4387c972c4d9360cb126-d876e.png 901w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;If you press Sign In Teams will open a window briefly, and then close it to get you the token.&lt;/p&gt;
+&lt;p&gt;And we are logged in&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/teamsloggedin-147d28ae3aa98ff7dc529b4926440730-652cb.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 682px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 35.19061583577712%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABJ0AAASdAHeZh94AAAAu0lEQVQoz5WR6wqDMAyF+/7POBAUNqestXettGdJsdv+6QIfLSQ9PUmENQucMfDOwVkDazS8p7uzCN5jjZEIx3lGgJheC273B2L0MCxMIvu+I6VU4SilXIJDaK0xvUYSSZjnGcPQY+h7dF1XP/hHMOcM0VpurpSitq3/OL0i+FsjjF7AsEPOSRlofhtatAdnUY7aKsiLYHel5Jpq9pnqfNsof4X0FYy0JaVURUqJ5ziC57uusXZgj07OeAM6xyJePWxqNgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;loggedinteams&quot;
+        title=&quot;&quot;
+        src=&quot;/static/teamsloggedin-147d28ae3aa98ff7dc529b4926440730-652cb.png&quot;
+        srcset=&quot;/static/teamsloggedin-147d28ae3aa98ff7dc529b4926440730-30246.png 200w,
+/static/teamsloggedin-147d28ae3aa98ff7dc529b4926440730-7a75d.png 400w,
+/static/teamsloggedin-147d28ae3aa98ff7dc529b4926440730-652cb.png 682w&quot;
+        sizes=&quot;(max-width: 682px) 100vw, 682px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h1&gt;Next step&lt;/h1&gt;
+&lt;p&gt;In the next post, we will add some helpers and enable the user to utilize the Microsoft Graph. We will create an example using both the &lt;code class=&quot;language-text&quot;&gt;Microsoft Graph Client&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;PnPjs Graph&lt;/code&gt; for hooking into the Azure Bot Service auth-flow.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Azure AD & Microsoft Graph OAuth Connection, with Azure CLI]]></title><description><![CDATA[In the previous post  Azure AD & Microsoft Graph permission scopes, with Azure CLI , we registered an Azure AD Application using specific…]]></description><link>https://simonagren.github.io/azcli-connection/</link><guid isPermaLink="false">https://simonagren.github.io/azcli-connection/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/azcli-connection-fba499085724398a27f00be5af554b7e-b70ec.png&quot;
@@ -555,13 +1215,13 @@ Dialogs (Part 3)
 Auth and Microsoft Graph (Part 5)
 &lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-adscope&quot; target=&quot;_blank&quot;&gt;
-Azure CLI Azure AD registration with permission scopes
+Azure AD &amp;#x26; Microsoft Graph permission scopes, with Azure CLI
 &lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-connection&quot; target=&quot;_blank&quot;&gt;
-Azure CLI OAuth Connection to Azure AD V2
+Azure AD &amp;#x26; Microsoft Graph OAuth Connection, with Azure CLI
 &lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -756,13 +1416,13 @@ Interruptions (Part 4)
 Auth and Microsoft Graph (Part 5)
 &lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-adscope&quot; target=&quot;_blank&quot;&gt;
-Azure CLI Azure AD registration with permission scopes
+Azure AD &amp;#x26; Microsoft Graph permission scopes, with Azure CLI
 &lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-connection&quot; target=&quot;_blank&quot;&gt;
-Azure CLI OAuth Connection to Azure AD V2
+Azure AD &amp;#x26; Microsoft Graph OAuth Connection, with Azure CLI
 &lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -1603,13 +2263,13 @@ Interruptions (Part 4)
 Auth and Microsoft Graph (Part 5)
 &lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-adscope&quot; target=&quot;_blank&quot;&gt;
-Azure CLI Azure AD registration with permission scopes
+Azure AD &amp;#x26; Microsoft Graph permission scopes, with Azure CLI
 &lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-connection&quot; target=&quot;_blank&quot;&gt;
-Azure CLI OAuth Connection to Azure AD V2
+Azure AD &amp;#x26; Microsoft Graph OAuth Connection, with Azure CLI
 &lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -2796,13 +3456,13 @@ Interruptions (Part 4)
 Auth and Microsoft Graph (Part 5)
 &lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-adscope&quot; target=&quot;_blank&quot;&gt;
-Azure CLI Azure AD registration with permission scopes
+Azure AD &amp;#x26; Microsoft Graph permission scopes, with Azure CLI
 &lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;&lt;a href=&quot;https://simonagren.github.io/azcli-connection&quot; target=&quot;_blank&quot;&gt;
-Azure CLI OAuth Connection to Azure AD V2
+Azure AD &amp;#x26; Microsoft Graph OAuth Connection, with Azure CLI
 &lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;

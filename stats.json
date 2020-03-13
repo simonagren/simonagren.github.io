@@ -1,16 +1,20 @@
 {
   "assetsByChunkName": {
+    "path---azurebot-nodejs-part-5": [
+      "path---azurebot-nodejs-part-5-18d446e87b0409d6f25c.js",
+      "path---azurebot-nodejs-part-5-18d446e87b0409d6f25c.js.map"
+    ],
     "component---src-pages-index-js": [
       "component---src-pages-index-js-15519aaedb06946b2411.js",
       "component---src-pages-index-js-15519aaedb06946b2411.js.map"
     ],
     "path---tags-nodejs": [
-      "path---tags-nodejs-6191115f62d8ca071d67.js",
-      "path---tags-nodejs-6191115f62d8ca071d67.js.map"
+      "path---tags-nodejs-e644cd5fa0d3577ee6f7.js",
+      "path---tags-nodejs-e644cd5fa0d3577ee6f7.js.map"
     ],
     "path---tags": [
-      "path---tags-38e881393e89c7bb2568.js",
-      "path---tags-38e881393e89c7bb2568.js.map"
+      "path---tags-b2831c8942f68459af19.js",
+      "path---tags-b2831c8942f68459af19.js.map"
     ],
     "path---azurefunction-v-2-pnpjs": [
       "path---azurefunction-v-2-pnpjs-876a07b01bbe5b9b7f17.js",
@@ -21,8 +25,8 @@
       "path----10af29650361dfde501a.js.map"
     ],
     "path---tags-msteams": [
-      "path---tags-msteams-de71368f5cc26f0431e3.js",
-      "path---tags-msteams-de71368f5cc26f0431e3.js.map"
+      "path---tags-msteams-66669acc9b11a15d06a4.js",
+      "path---tags-msteams-66669acc9b11a15d06a4.js.map"
     ],
     "component---src-pages-contact-js": [
       "component---src-pages-contact-js-d58c2cb3f0cb03914d20.js",
@@ -49,8 +53,8 @@
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "path---tags-msgraph": [
-      "path---tags-msgraph-87c2ba534853ab39b269.js",
-      "path---tags-msgraph-87c2ba534853ab39b269.js.map"
+      "path---tags-msgraph-4fe4ccd571823987fcbd.js",
+      "path---tags-msgraph-4fe4ccd571823987fcbd.js.map"
     ],
     "path---tags-sharepoint": [
       "path---tags-sharepoint-6e41e3fce46580002f9e.js",
@@ -61,28 +65,28 @@
       "component---src-layouts-index-js-5c89e0c1300bb14357e2.js.map"
     ],
     "path---category": [
-      "path---category-3cea34e99f079b8aa990.js",
-      "path---category-3cea34e99f079b8aa990.js.map"
+      "path---category-7889eeb48a90bcfd806e.js",
+      "path---category-7889eeb48a90bcfd806e.js.map"
     ],
     "component---src-pages-category-js": [
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js",
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js.map"
     ],
     "path---azurebot-nodejs-part-3": [
-      "path---azurebot-nodejs-part-3-a2db10f3a51b9cb68997.js",
-      "path---azurebot-nodejs-part-3-a2db10f3a51b9cb68997.js.map"
+      "path---azurebot-nodejs-part-3-93ba61a479c90f7f0de7.js",
+      "path---azurebot-nodejs-part-3-93ba61a479c90f7f0de7.js.map"
     ],
     "path---tags-azure": [
-      "path---tags-azure-b59a3e8347aa85981c7b.js",
-      "path---tags-azure-b59a3e8347aa85981c7b.js.map"
+      "path---tags-azure-e461da7084a4f768d00d.js",
+      "path---tags-azure-e461da7084a4f768d00d.js.map"
     ],
     "path---part-2-azurefunction": [
       "path---part-2-azurefunction-38cd3e419c487bf49cba.js",
       "path---part-2-azurefunction-38cd3e419c487bf49cba.js.map"
     ],
     "path---azurebot-nodejs-part-2": [
-      "path---azurebot-nodejs-part-2-3abb6e23a8bdccbea2b8.js",
-      "path---azurebot-nodejs-part-2-3abb6e23a8bdccbea2b8.js.map"
+      "path---azurebot-nodejs-part-2-82bff924860d3657b6d0.js",
+      "path---azurebot-nodejs-part-2-82bff924860d3657b6d0.js.map"
     ],
     "path---tags-gatsby": [
       "path---tags-gatsby-74044d2b80c247ab0d41.js",
@@ -93,8 +97,8 @@
       "path---tags-pnp-ed3fb881d74a15ee38be.js.map"
     ],
     "path---index": [
-      "path---index-1aa52a89958fafe2fdad.js",
-      "path---index-1aa52a89958fafe2fdad.js.map"
+      "path---index-6cef670edef517379da7.js",
+      "path---index-6cef670edef517379da7.js.map"
     ],
     "path---sp-starter-footer": [
       "path---sp-starter-footer-71193f42687cd1c30fd9.js",
@@ -109,8 +113,8 @@
       "path---hello-world-d01b5401efd8d1f62a21.js.map"
     ],
     "path---azurebot-nodejs-part-4": [
-      "path---azurebot-nodejs-part-4-5e1741340e9df0ce0039.js",
-      "path---azurebot-nodejs-part-4-5e1741340e9df0ce0039.js.map"
+      "path---azurebot-nodejs-part-4-003455cef4342f5eeb38.js",
+      "path---azurebot-nodejs-part-4-003455cef4342f5eeb38.js.map"
     ],
     "path---azfunc-migrate": [
       "path---azfunc-migrate-00ce5d0fd87cc7d36d94.js",
@@ -171,8 +175,8 @@
       "component---src-templates-post-template-js-7285b814e0ce02f756c9.js.map"
     ],
     "path---tags-botframework": [
-      "path---tags-botframework-ff4d5ff48d0a50e1fdd7.js",
-      "path---tags-botframework-ff4d5ff48d0a50e1fdd7.js.map"
+      "path---tags-botframework-77120fa90ac655f5d298.js",
+      "path---tags-botframework-77120fa90ac655f5d298.js.map"
     ],
     "path---offline-plugin-app-shell-fallback": [
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js",
@@ -187,14 +191,14 @@
       "path---create-team-site-script-d18c5410cb523575f027.js.map"
     ],
     "app": [
-      "app-8726bafc260c5611d241.js",
+      "app-1d409436b34159bd5e81.js",
       "build-js-styles.css",
-      "app-8726bafc260c5611d241.js.map",
+      "app-1d409436b34159bd5e81.js.map",
       "build-js-styles.css.map"
     ],
     "path---azurebot-nodejs-part-1": [
-      "path---azurebot-nodejs-part-1-b31c91037ed419e6fc67.js",
-      "path---azurebot-nodejs-part-1-b31c91037ed419e6fc67.js.map"
+      "path---azurebot-nodejs-part-1-9bd139cb795b2fd7ef4a.js",
+      "path---azurebot-nodejs-part-1-9bd139cb795b2fd7ef4a.js.map"
     ],
     "component---src-templates-page-template-js": [
       "component---src-templates-page-template-js-d8488bbc283385794485.js",
@@ -229,8 +233,8 @@
       "path---about-68394863fb5f83e71b29.js.map"
     ],
     "path---azcli-connection": [
-      "path---azcli-connection-5b47f0f7c7359090cc1c.js",
-      "path---azcli-connection-5b47f0f7c7359090cc1c.js.map"
+      "path---azcli-connection-4114fc461fc05ac058aa.js",
+      "path---azcli-connection-4114fc461fc05ac058aa.js.map"
     ],
     "path---azfunc-v-3": [
       "path---azfunc-v-3-4c2b7942e156d90079f1.js",
