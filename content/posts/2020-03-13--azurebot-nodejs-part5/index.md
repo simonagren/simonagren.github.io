@@ -1,11 +1,11 @@
 ---
 title: Bot Framework in Node.js - Auth and Microsoft Graph (part 5) 
 tags: ["botframework", "nodejs", "azure", "msteams", "msgraph"]
-cover: botframework4.png
+cover: botframework5.png
 author: Simon Ågren
 ---
 
-![extend](./botframework4.png)
+![extend](./botframework5.png)
 
 In the previous post, we had a look at user interruptions.
 
@@ -17,8 +17,8 @@ In this post, we will have a look at how to secure the Bot and give the user the
 | <a href="https://simonagren.github.io/azurebot-nodejs-part2" target="_blank">Microsoft Teams (Part 2)</a> |                                                                                                                             |
 | <a href="https://simonagren.github.io/azurebot-nodejs-part3" target="_blank">Dialogs (Part 3)</a>         |                                                                                                                             |
 | <a href="https://simonagren.github.io/azurebot-nodejs-part4" target="_blank">Interruptions (Part 4)</a> |                                                                                                                             |
-| Auth and Microsoft Graph (Part 5) |<a href="https://simonagren.github.io/azcli-adscope" target="_blank">Azure CLI Azure AD registration with permission scopes</a>                                                                                                                             |
-|  |<a href="https://simonagren.github.io/azcli-connection" target="_blank">Azure CLI OAuth Connection to Azure AD V2</a>                                                                                                                             |
+| Auth and Microsoft Graph (Part 5) |<a href="https://simonagren.github.io/azcli-adscope" target="_blank">Azure AD & Microsoft Graph permission scopes, with Azure CLI</a>                                                                                                                             |
+|  |<a href="https://simonagren.github.io/azcli-connection" target="_blank">Azure AD & Microsoft Graph OAuth Connection, with Azure CLI</a>                                                                                                                             |
 
 ## What we will build today
 
@@ -45,8 +45,8 @@ In this post, we will create the App registration and add the connection using t
 ## Using Azure CLI
 I did make two additional posts as a "bonus" to find the `scopes` we want to use, create the AD Application with them, and then create the `connection` from the Bot to the application - all by using `Azure CLI`.
 
-- <a href="https://simonagren.github.io/azcli-adscope" target="_blank">Azure CLI Azure AD registration with permission scopes</a>
-- <a href="https://simonagren.github.io/azcli-connection" target="_blank">Azure CLI OAuth Connection to Azure AD V2</a>                                     
+- <a href="https://simonagren.github.io/azcli-adscope" target="_blank">Azure AD & Microsoft Graph permission scopes, with Azure CLI</a>
+- <a href="https://simonagren.github.io/azcli-connection" target="_blank">Azure AD & Microsoft Graph OAuth Connection, with Azure CLI</a>                                     
 
 ## Using the portal
 
@@ -218,12 +218,12 @@ Now if you write something to the Bot in Teams, you get a similar login experien
 
 ![signinteams](./signinteams.png)
 
-If you press signin Teams will open a window and use the **Single Sign On** to get you the token.
+If you press Sign In Teams will open a window briefly, and then close it to get you the token.
 
 And we are logged in
 
 ![loggedinteams](./teamsloggedin.png)
 
 # Next step
-In the next post, we will add some helpers and enable the user to utilize the Microsoft Graph. We will create an example using both the `Microsoft Graph Client` and `PnPJs Graph` for hooking into the Azure Bot Service auth-flow.
+In the next post, we will add some helpers and enable the user to utilize the Microsoft Graph. We will create an example using both the `Microsoft Graph Client` and `PnPjs Graph` for hooking into the Azure Bot Service auth-flow.
 

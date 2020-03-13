@@ -19,8 +19,8 @@ Just for fun, we will add an **@mention** in the **echo** when the Bot is in Mic
 | Microsoft Teams (Part 2) |                                                                                                                             |
 | <a href="https://simonagren.github.io/azurebot-nodejs-part3" target="_blank">Dialogs (Part 3)</a>         |                                                                                                                             |
 | <a href="https://simonagren.github.io/azurebot-nodejs-part4" target="_blank">Interruptions (Part 4)</a> |                                                                                                                             |
-| <a href="https://simonagren.github.io/azurebot-nodejs-part5" target="_blank">Auth and Microsoft Graph (Part 5)</a> |<a href="https://simonagren.github.io/azcli-adscope" target="_blank">Azure CLI Azure AD registration with permission scopes</a>                                                                                                                             |
-|  |<a href="https://simonagren.github.io/azcli-connection" target="_blank">Azure CLI OAuth Connection to Azure AD V2</a>                                                                                                                             |
+| <a href="https://simonagren.github.io/azurebot-nodejs-part5" target="_blank">Auth and Microsoft Graph (Part 5)</a> |<a href="https://simonagren.github.io/azcli-adscope" target="_blank">Azure AD & Microsoft Graph permission scopes, with Azure CLI</a>                                                                                                                             |
+|  |<a href="https://simonagren.github.io/azcli-connection" target="_blank">Azure AD & Microsoft Graph OAuth Connection, with Azure CLI</a>                                                                                                                             |
 
 
 # Sourcecode
