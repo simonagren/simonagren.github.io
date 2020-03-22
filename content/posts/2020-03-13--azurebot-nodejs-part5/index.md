@@ -19,6 +19,7 @@ In this post, we will have a look at how to secure the Bot and give the user the
 | <a href="https://simonagren.github.io/azurebot-nodejs-part4" target="_blank">Interruptions (Part 4)</a> |                                                                                                                             |
 | Auth and Microsoft Graph (Part 5) |<a href="https://simonagren.github.io/azcli-adscope" target="_blank">Azure AD & Microsoft Graph permission scopes, with Azure CLI</a>                                                                                                                             |
 |  |<a href="https://simonagren.github.io/azcli-connection" target="_blank">Azure AD & Microsoft Graph OAuth Connection, with Azure CLI</a>                                                                                                                             |
+| <a href="https://simonagren.github.io/azurebot-nodejs-part6" target="_blank">Calling Microsoft Graph (Part 6)</a>         |                                                                                                                             |
 
 ## What we will build today
 
@@ -179,6 +180,39 @@ private async initialStep(stepContext: WaterfallStepContext): Promise<DialogTurn
     }
     await stepContext.context.sendActivity('Login was not successful please try again.');
     return await stepContext.endDialog();  
+}
+```
+
+# Adding the possibility to log out
+We add another case `logout` to the `HelperDialog` that we added in part 4 (interruptions). 
+Using the `signOutUser()` method in the BotFrameworkAdapter to sign out the user, and then cancel all the dialogs.
+
+
+```typescript
+private async interruption(dc: DialogContext): Promise<DialogTurnResult|undefined> {
+    if (dc.context.activity.text) {
+        const text = dc.context.activity.text.toLowerCase();
+
+        switch (text) {
+            case 'help':
+            case '?':
+                const helpMessageText = 'Answer the questions asked. If you want to restart use: cancel, quit or restart';
+                await dc.context.sendActivity(helpMessageText, helpMessageText, InputHints.ExpectingInput);
+                return { status: DialogTurnStatus.waiting };
+            case 'cancel':
+            case 'quit':
+            case 'restart':
+                const cancelMessageText = 'Restarting...';
+                await dc.context.sendActivity(cancelMessageText, cancelMessageText, InputHints.IgnoringInput);
+                return await dc.cancelAllDialogs();
+            case 'logout':
+                const adapter: any = dc.context.adapter;
+                await adapter.signOutUser(dc.context, this._connectionName);
+                const logoutMessageText = 'You have been signed out';
+                await dc.context.sendActivity(logoutMessageText, logoutMessageText, InputHints.IgnoringInput);
+                return await dc.cancelAllDialogs();
+        }
+    }
 }
 ```
 

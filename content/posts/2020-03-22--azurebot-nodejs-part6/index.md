@@ -1,15 +1,15 @@
 ---
-title: Bot Framework in Node.js - Calling Microsoft Graph 
+title: Bot Framework in Node.js - Calling Microsoft Graph (part 6)
 tags: ["botframework", "nodejs", "azure", "msteams", "typescript", "msgraph", "pnpjs"]
-cover: sitescript.png
+cover: botframework6.png
 author: Simon Ågren
 ---
 
-![extend](./sitescript.png)
+![extend](./botframework6.png)
 
 I the previous post we created a new Azure AD Application registration, gave it permissions to Microsoft Graph. We also added an OAuth prompt to the main dialog and made it possible for the user to log in both in the emulator as well as Microsoft Teams.
 
-In this post, we will add some helpers and enable the user to call the Microsoft Graph. We will create an example using both the `GraphClient` and `PnPJs Graph` for hooking into the Azure Bot Service auth flow. We will add some additional validation logic into the `Owner Resolver Dialog`, and also add a similar `Alias Resolver Dialog`.
+In this post, we will add some helpers and enable the user to call the Microsoft Graph. We will create an example using both the <a href="https://github.com/microsoftgraph/msgraph-sdk-javascript" target="_blank">Microsoft Graph JavaScript Client Library</a> and <a href="https://pnp.github.io/pnpjs/" target="_blank">PnPjs v2</a> for hooking into the Azure Bot Service auth flow. We will add some additional validation logic into the `Owner Resolver Dialog`, and also add a similar `Alias Resolver Dialog`.
 
 | Bot Framework in Node.js                                                                  | Complimentary post                                                                                                          |
 |-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
@@ -17,12 +17,13 @@ In this post, we will add some helpers and enable the user to call the Microsoft
 | <a href="https://simonagren.github.io/azurebot-nodejs-part2" target="_blank">Microsoft Teams (Part 2)</a> |                                                                                                                             |
 | <a href="https://simonagren.github.io/azurebot-nodejs-part3" target="_blank">Dialogs (Part 3)</a>         |                                                                                                                             |
 | <a href="https://simonagren.github.io/azurebot-nodejs-part4" target="_blank">Interruptions (Part 4)</a> |                                                                                                                             |
-| Auth and Microsoft Graph (Part 5) |<a href="https://simonagren.github.io/azcli-adscope" target="_blank">Azure AD & Microsoft Graph permission scopes, with Azure CLI</a>                                                                                                                             |
+| <a href="https://simonagren.github.io/azurebot-nodejs-part4" target="_blank">Auth and Microsoft Graph (Part 5)</a> |<a href="https://simonagren.github.io/azcli-adscope" target="_blank">Azure AD & Microsoft Graph permission scopes, with Azure CLI</a>                                                                                                                             |
 |  |<a href="https://simonagren.github.io/azcli-connection" target="_blank">Azure AD & Microsoft Graph OAuth Connection, with Azure CLI</a>                                                                                                                             |
+| Calling Microsoft Graph (Part 6)         |                                                                                                                             |
 
 ## What we will build today
 
-<img src="./loginout.gif"/>
+<img src="./owneralias.gif"/>
 
 # Sourcecode
 Here is the link to the Github repository for this post: [https://github.com/simonagren/simon-blog-bot-v6](https://github.com/simonagren/simon-blog-bot-v6)
@@ -40,7 +41,7 @@ Here is the link to the Github repository for this post: [https://github.com/sim
 
 In the previous post, we saw that the `OAuthPrompt` gives us a token after the user logs in. We will not store the token locally (which I explained more in the last post), instead call the OAuth prompt again whenever we need a token.
 
-Normally you would have to add `MSAL` or `ADAL` settings that the `GraphClient` or `PnPJs` would use to fetch a token, and then use to call Microsoft Graph.
+Normally you would have to add `MSAL` or `ADAL` settings that the `GraphClient` or `PnPjs` would use to fetch a token, and then use to call Microsoft Graph.
 
 In the Bot, we already have a token and we will work with that in the clients.
 
@@ -69,17 +70,18 @@ We will install these packages:
 In the `src` folder we create an additional folder `helpers`. This will in our case contain 3 new files:
 
 - **graphHelper.ts**: the Microsoft Graph helper class, that will contain examples utilizing both `simple-graph-client` and `simple-pnpjs-client` to call Microsoft Graph. 
-- **simple-graph-client.ts**: wiring up the `GraphClient` from Microsoft, with the token from the Bot. Contains methods to call the Microsoft Graph.
-- **simple-pnpjs-client.ts**: wiring up the `PnPJs` graph client from `Patterns And Practices (PnP)`, with the token from the Bot. It contains methods to call the Microsoft Graph.
+- **simple-graph-client.ts**: wiring up the `GraphClient` from Microsoft, with the token from the Bot. It contains methods to call the Microsoft Graph.
+- **simple-pnpjs-client.ts**: wiring up the `PnPjs` graph client from `Patterns And Practices (PnP)`, with the token from the Bot. It contains methods to call the Microsoft Graph.
 
 We also add another dialog in the form of:
-- **aliasResolverDialog.ts**: A dialog similar to owner resolver dialog. It will call Microsoft Graph to see if the alias is already taken.
+- **aliasResolverDialog.ts**: A dialog similar to owner resolver dialog. It will call Microsoft Graph to see if the group alias is already taken.
 
 ## graphHelper
 The graph helper imports `simple-graph-client` and `simple-pnpjs-client`, and contains two methods: `userExists()` and `aliasExists`. 
 
 The methods will be used in the Owner resolver dialog and Alias Resolver Dialog. Both methods want a `TokenResponse` and a `string`. 
 
+### userExists
 This method instantiates a new `client` using the `SimpleGraphClient` based in the Microsoft Graph SDK, by sending in the token. Then we run the `userExists()` with the string input, to see if the user (owner) exists in the tenant.
 
 ```typescript
@@ -91,7 +93,7 @@ public static async userExists(tokenResponse: any, emailAddress: string): Promis
     return await client.userExists(emailAddress);   
 }
 ```
-
+### Alias exists
 This method instantiates a new `client` using the `SimplePnPJsClient` based on PnPjs V2, by sending in the token. Then we run the `aliasExists()` with the string input, to see if the group alias is already taken in the tenant.
 
 ```typescript
@@ -104,7 +106,7 @@ public static async aliasExists(tokenResponse: any, alias: string): Promise<bool
 }
 ```
 
-## Simple graph client
+## Simple Graph Client
 In this case, we first import the `Client` and the `User` type.
 
 ```typescript
@@ -130,7 +132,6 @@ constructor(token: any) {
 
 Then we call the Microsoft Graph to see if the user exists.
 ```typescript
-
 public async userExists(emailAddress: string): Promise<boolean> {
     if (!emailAddress || !emailAddress.trim()) {
         throw new Error('SimpleGraphClient.userExists(): Invalid `emailAddress` parameter received.');
@@ -148,7 +149,7 @@ public async userExists(emailAddress: string): Promise<boolean> {
 }
 ```
 
-## simple PnPjs Client
+## Simple PnPjs Client
 We import the Microsoft Graph types for `Group`, `graph` from the PnPjs Graph package (with an alias) and also `BearerTokenFetchClient` from the PnPjs Nodejs package.
 
 If you have seen some more of my posts I usually use the `AdalTokenFetchClient`, where you supply the `clientId` and `clientSecret` of your Azure AD application. But this time we already have a token so the `BearerTokenFetchClient` is perfect in this scenario. 

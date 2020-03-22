@@ -18,7 +18,7 @@ I will take you on a journey where we begin with the most simple concepts, and i
 | <a href="https://simonagren.github.io/azurebot-nodejs-part4" target="_blank">Interruptions (Part 4)</a> |                                                                                                                             |
 | <a href="https://simonagren.github.io/azurebot-nodejs-part5" target="_blank">Auth and Microsoft Graph (Part 5)</a> |<a href="https://simonagren.github.io/azcli-adscope" target="_blank">Azure AD & Microsoft Graph permission scopes, with Azure CLI</a>                                                                                                                             |
 |  |<a href="https://simonagren.github.io/azcli-connection" target="_blank">Azure AD & Microsoft Graph OAuth Connection, with Azure CLI</a>                                                                                                                             |
-
+| <a href="https://simonagren.github.io/azurebot-nodejs-part6" target="_blank">Calling Microsoft Graph (Part 6)</a>         |                                                                                                                             |
 
 # Planned topics
 
