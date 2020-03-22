@@ -2,10 +2,6 @@ import React from "react";
 import { ThemeContext } from "../../layouts";
 const _ = require("lodash");
 import Img from "gatsby-image";
-// import avatar from "../../images/jpg/avatar.jpg";
-// import admin from "../../images/jpg/admin.jpg";
-
-// import azDev from "../../images/png/azure-devops.png";
 
 const Badges = props => {
   const { badges } = props;
@@ -15,6 +11,9 @@ const Badges = props => {
         {theme => (
           <div id={"badges"}>
             <div className="badges-btns">
+              <a className="btn" href="#" target="_blank" rel="noopener">
+                <Img sizes={badges.developer} />
+              </a>
               <a className="btn" href="#" target="_blank" rel="noopener">
                 <Img sizes={badges.devops} />
               </a>

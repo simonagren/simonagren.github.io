@@ -20,6 +20,7 @@ class IndexPage extends React.Component {
     const {
       data: {
         posts: { edges: posts = [], group: groups },
+        m365Dev: { sizes: developer },
         azDevOps: { sizes: devops },
         azAdmin: { sizes: admin },
         azure: { sizes: azure },
@@ -47,12 +48,13 @@ class IndexPage extends React.Component {
     };
 
     const badges = {
+      developer,
       devops,
       admin,
       azure,
       mcsd,
       mcsa
-    }
+    };
     return (
       <React.Fragment>
         <ThemeContext.Consumer>
@@ -191,6 +193,11 @@ export const guery = graphql`
         facebook {
           appId
         }
+      }
+    }
+    m365Dev: imageSharp(id: { regex: "/developer/" }) {
+      sizes(maxWidth: 100) {
+        ...GatsbyImageSharpSizes_withWebp
       }
     }
     azDevOps: imageSharp(id: { regex: "/devops/" }) {
