@@ -1,4 +1,300 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Sun, 22 Mar 2020 13:58:04 GMT</lastBuildDate><item><title><![CDATA[Bot Framework in Node.js - Calling Microsoft Graph (part 6)]]></title><description><![CDATA[I the previous post we created a new Azure AD Application registration, gave it permissions to Microsoft Graph. We also added an OAuth…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part6/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part6/</guid><content:encoded>&lt;p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[AgrenPoint - A dev blog]]></title><description><![CDATA[AgrenPoint is development with Simon Ågren.]]></description><link>https://simonagren.github.io</link><generator>RSS for Node</generator><lastBuildDate>Mon, 06 Apr 2020 11:47:21 GMT</lastBuildDate><item><title><![CDATA[Microsoft Graph Presence API - top of mind scenarios]]></title><description><![CDATA[The new presence API in Microsoft Graph is very popular. We’ve seen a lot of blog post where people create their own “Busy lights”, that…]]></description><link>https://simonagren.github.io/graph-presence/</link><guid isPermaLink="false">https://simonagren.github.io/graph-presence/</guid><content:encoded>&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/presence-9349ac165f3b22a5d70d0a19c66bd235-f6ead.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 46.916666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAABJ0AAASdAHeZh94AAAB70lEQVQoz4WRXUhTYRzGdxmLiiAo1xopCRE0K0qDzY+ZzDm7KFAqCLGuCiQCiRC6zQrxoqtW90UM0juVYkOhfbPvj0gWKBiMJjiquc3tnF/nvGu4IOqB9/zfj+f98bz/o5EkiVAoRCaTIZvNkkmnicfjpJWaSCRIplLIkoyqyclpzOd6uXG5n7vXzjMyaGF0aJTV1TVxrrI06sflcuH1egkEAng8HsLhMEtLi7jdbgFW5fVF0Ol76TENM/9qgqr/Ou8c9zlrvMTY+JTwyLKMplarEYvF8Pl8AhqJREgmEwr4I9vbJWHc2alis99Gu/8MekMfc8/H2FoZxzl7iyO6Hg4e6mJu/r3walSqCq1UKmKUSiXK5bLYKxaLyl5ZacU6umMmJWE3Rw0DXOnvZmF2AKvJTGv7MNp9HTycmtkFqj1U00WjUZE0qDzd71dqMMjy8gqbm3mmn75kz97TtJ4YxNBm4/EdK23K/HCLhZOnbGx8zdWBjbervWyW3KhyfVYofOdC1wjaA50MmS28eWTFaLTTcvwiDodTeKrVWj0hTZeb1w2pRlWv337gap+J4AsbCzN2bj5p58GinrV8rP6X5dpuwv8NAVb6mt/4wo9vn9nKreNM3eNZoIPcz0+/A0l14L/UgP0tuaQAipXCH+e/AFD0S1Cjp+BpAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;extend&quot;
+        title=&quot;&quot;
+        src=&quot;/static/presence-9349ac165f3b22a5d70d0a19c66bd235-48538.png&quot;
+        srcset=&quot;/static/presence-9349ac165f3b22a5d70d0a19c66bd235-bed0f.png 200w,
+/static/presence-9349ac165f3b22a5d70d0a19c66bd235-5fd34.png 400w,
+/static/presence-9349ac165f3b22a5d70d0a19c66bd235-48538.png 800w,
+/static/presence-9349ac165f3b22a5d70d0a19c66bd235-b70ec.png 1200w,
+/static/presence-9349ac165f3b22a5d70d0a19c66bd235-d134a.png 1600w,
+/static/presence-9349ac165f3b22a5d70d0a19c66bd235-f6ead.png 2400w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;The new presence API in Microsoft Graph is very popular. We’ve seen a lot of blog post where people create their own “Busy lights”, that displays a different color based on your presence, in many creative ways.&lt;/p&gt;
+&lt;p&gt;I this post I will show you some other “top of mind” use cases, that you could build upon and make it work in more business scenarios.&lt;/p&gt;
+&lt;h1&gt;The different presence APIs&lt;/h1&gt;
+&lt;p&gt;First off all, you need to realize that these APIs are currently under &lt;code class=&quot;language-text&quot;&gt;/beta&lt;/code&gt;. It’s not recommended to use beta APIs in production scenarios. &lt;/p&gt;
+&lt;p&gt;There, disclaimer done. Let’s have fun…&lt;/p&gt;
+&lt;h2&gt;Get presence&lt;/h2&gt;
+&lt;p&gt;You can read more here: &lt;a href=&quot;https://docs.microsoft.com/en-us/graph/api/presence-get?view=graph-rest-beta&amp;tabs=http&quot; target=&quot;_blank&quot;&gt;documentation&lt;/a&gt; to learn about the APIs, the permissions they require etc.&lt;/p&gt;
+&lt;p&gt;We use these to get the presence of a single user, either you or someone else in your tenant. And we use it like this:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;https&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;graph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;microsoft&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;com&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;beta&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;me&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;presence
+
+or
+
+https&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;graph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;microsoft&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;com&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;beta&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;me&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;presence&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h2&gt;Get presence for multiple users&lt;/h2&gt;
+&lt;p&gt;You can read more here: &lt;a href=&quot;https://docs.microsoft.com/en-us/graph/api/cloudcommunications-getpresencesbyuserid?view=graph-rest-beta&amp;tabs=http&quot; target=&quot;_blank&quot;&gt;documentation&lt;/a&gt; to learn about the APIs, the permissions they require etc.&lt;/p&gt;
+&lt;p&gt;We use these to get the presences of multiple user, by supplying the ids of multiple users in the request body of our POST operation.&lt;/p&gt;
+&lt;p&gt;This is an example of a request body:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;token string&quot;&gt;&quot;ids&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;fa8bf3dc-eca7-46b7-bad1-db199b62afc3&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;66825e03-7ef5-42da-9069-724602c31f6b&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;That we use with this:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;https&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;graph&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;microsoft&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;com&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;beta&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;communications&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;getPresencesByUserId&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;h1&gt;Scenario 1: Redirection in a process&lt;/h1&gt;
+&lt;p&gt;Let’s say we have a process that involves a very time-critical task at hand. It is very important that we get hold of someone that is available.&lt;/p&gt;
+&lt;p&gt;For instance we could have a primary contact/document owner and secondary contacts/document owners. &lt;/p&gt;
+&lt;p&gt;If you look at the following image, we first: &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check to see if the &lt;code class=&quot;language-text&quot;&gt;primary user&lt;/code&gt; is &lt;code class=&quot;language-text&quot;&gt;Available&lt;/code&gt; via the &lt;code class=&quot;language-text&quot;&gt;Get presence&lt;/code&gt; API.&lt;/li&gt;
+&lt;li&gt;If available, we continue the process with that user&lt;/li&gt;
+&lt;li&gt;Otherwise we take the ids of the &lt;code class=&quot;language-text&quot;&gt;secondary users&lt;/code&gt; and check their availability via the &lt;code class=&quot;language-text&quot;&gt;Get presence for multiple users&lt;/code&gt; API.&lt;/li&gt;
+&lt;li&gt;And then we continue with one of the available ones.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/flowchart-ee7c5d4494be121415348f0eb87d8c8b-c80e4.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 54.89296636085626%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABJ0AAASdAHeZh94AAACQklEQVQoz32T70tTURjH7/8U9KIXJhgRKphRL8SoIEMIIjNq+TMs1JxWRo0sI4sUi34Y0QvzRSlq+2nOOdM275bK5nBTd93mdNu9n+69TgukPfDlHJ5znu/z43yPoCgymfUgmdVFZHVFlglEkviX4yoSOn5n12g8hWaKovA/E+TkBusPSlm7W0zi0XHcdgeFtXbKb9k41+qg/Ladsy0O8i+P0vxqTg+S5VyEmxJrLYdZvVNA3JjP0MfP5FWZKWuyUmH8QWXHJGeaHRy6OEy1yaUHZXIRKqkksfeNSH3VbH6oYzW4TEOPB8NjF/XPXNR2u6h54qbq4RRvvi5lCWW97d3W/x2BQA7bjEYITFtyXdk3T0GbRyYjs72dQhR9zPycxWqx4l0KERh6TuReCT5RZHbOg9liw+Od55fHq9/d2krp7afVeA0a+V6FSipOYMG7lykWCRG8f4qVhgOEvnRnvWmtYX23srxIXArvn+GIM4yx30tb7ww3n9rpfOejZ3CJZEwiueAi7p9GifgYcoRp7fPQ+Xaerk8LtLx0YuydxjTgp/21h/Z+jy4toenFLAcrv1F8w0xxjYW8SyMUGcZZi+1UImczG7rcHLs2rsvofNsEFe1OLnQ4dUlpvsLr4wzaQgimAZGCK6OUqbo7rR4UGb6r+ptgI5HS6dLptE6oJT5SPcaJeguldZasRm2U1Jo52Wjl6NUxhifDCJKqfjEQxxf8i6D6U3ZfcPcVNd+kdx2XGNUx45dw+ySm5qM7UH2JZJo/Pd37wFuiyRYAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;simpleflow&quot;
+        title=&quot;&quot;
+        src=&quot;/static/flowchart-ee7c5d4494be121415348f0eb87d8c8b-48538.png&quot;
+        srcset=&quot;/static/flowchart-ee7c5d4494be121415348f0eb87d8c8b-bed0f.png 200w,
+/static/flowchart-ee7c5d4494be121415348f0eb87d8c8b-5fd34.png 400w,
+/static/flowchart-ee7c5d4494be121415348f0eb87d8c8b-48538.png 800w,
+/static/flowchart-ee7c5d4494be121415348f0eb87d8c8b-b70ec.png 1200w,
+/static/flowchart-ee7c5d4494be121415348f0eb87d8c8b-c80e4.png 1308w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Simple enough. Let’s visualize this… &lt;/p&gt;
+&lt;h2&gt;Example: Toilet Paper request&lt;/h2&gt;
+&lt;p&gt;In this fictional scenario we have run out of toilet paper (too soon?) and we need to make sure that the &lt;code class=&quot;language-text&quot;&gt;primary TP responsible&lt;/code&gt; (the father in the family) buys some more, from whatever source may be these days.&lt;/p&gt;
+&lt;p&gt;We also have an &lt;code class=&quot;language-text&quot;&gt;Office 365 Group&lt;/code&gt; (family), where the &lt;code class=&quot;language-text&quot;&gt;Owners&lt;/code&gt; are &lt;code class=&quot;language-text&quot;&gt;secondary TP responsible&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I quickly created a custom connector with delegated permission to Microsoft Graph, just to make it a little more readable. This post is not about how to create the Power Automate Flow itself.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/flow1-3e221c7a3ea2a4963a343be9eaa325ec-efc7d.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 97.52941176470587%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAABJ0AAASdAHeZh94AAADN0lEQVQ4y42TS44jRRCG+zBsOQLHQMAJ2M0KcQMWiB0XQKiZBY2EWIBAQmg0s2gYdbvbdjceux52+VGuqqz3IzOrXHb/RGbZjafHSJT0KaLyEflHROZZ74cQX39gwXodwrljRARnGGHa9+EZFUJbglkSodXZp6h53xCIlhx1LXE2u8rwx1e02c4QLFIE80zjOwmSNUceNIhdTr5A7tfIfPkOqSeRR5IC1jjLGIc7KsCLGpI3EBXZqtE+LyVEWcNzA2Rxrv2qEI/wI8urfcC/vmX44j0Db176MHtrmNcBzCsP1rVPBGBGg2BC6U3q0xh04BtK3RGoG0q5iAV8q6RTSE31L1XBURKS1whZjDwtIMhXqpWat1CZ8L1C41WKnz5bwR1T3WYp1TLF2qb6rag2bq1RY9GCa1+NH5O6EvGSahmILuDdLzG++dCB00+wnERYjmLMRyHCmUDsyD01okf/CXNKdyp10+qGAiqpRcrR1A02zaZj00JKSkN0p7KAIc9z7QshIU9B66VS+Pq7AF++P4FxGWI2ZLBvQmqMR50vEZqq6BLemCMgy8zTeGNSOd8rjKYNJr/S/QrUXeLIQqpVUKKIqTEJXZ10Q/8V8lBoX42dgud1d7HvR0P8+PP3cNdLMBbADzywMNAEzEcYMUxnNs27CENGY4Fe98h+XZzEXVMuLi7w8Uef4M/LSwwGA/R6PbJD2LYNy7JhmiZZepqmpf2nqLnxxMB8sUTTNKopnE5iaNsWh+/qeYzRCwa2ytDIDdptq+f/i81mo4NphYdA2+0W25bYtSjoXZapek5CL1YL1YbD5lOoedXpszTNsFiuUBQFqqpCWVYQNYeQHJzUq6vjeR6SJEFJ82pdUZbvoPZqhb/9/gKfPvscvds+hvd/Y3B3j5vbgf7vUy17N33ckh0bJuyZA2s6ews1NrGmWKzcroZrz8f1zQArGkizTJPRJc73SvK8s0odJ7UVqT7AudBUvBvXCrv6tTg/P8dkMobjOLomKlWV3m6306jmJXGkVTw8POiaH3+73baroYqqAqjNqtsqkCq+2nCwWwp4/H84RAXWUEA1pwMen6gGDgv/z3cIiKOA/wAz0t9oh6cA2AAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;simpleflow&quot;
+        title=&quot;&quot;
+        src=&quot;/static/flow1-3e221c7a3ea2a4963a343be9eaa325ec-48538.png&quot;
+        srcset=&quot;/static/flow1-3e221c7a3ea2a4963a343be9eaa325ec-bed0f.png 200w,
+/static/flow1-3e221c7a3ea2a4963a343be9eaa325ec-5fd34.png 400w,
+/static/flow1-3e221c7a3ea2a4963a343be9eaa325ec-48538.png 800w,
+/static/flow1-3e221c7a3ea2a4963a343be9eaa325ec-efc7d.png 850w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;First I set up a few variables and then use the &lt;code class=&quot;language-text&quot;&gt;Get User Presence&lt;/code&gt; action from my custom connector along with the &lt;code class=&quot;language-text&quot;&gt;UserId&lt;/code&gt; of the &lt;code class=&quot;language-text&quot;&gt;primary TP responsible&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Then we check to see if that user is Available.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/flow2-613aae8472c48399e9b79a3116a2233d-89faa.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 51.405371642723296%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAABmUlEQVQoz42Sa2vbMBSG/f//UmEfVspIU/ahu0GyZmNZHF8kS7LutuR3x0rpWjroDA+Sju2H90iqbvkGg+cws8E4jdCzLmMhqsvoBeLdBolzLMZgGUfkf6JQ3X102H+3YMyi7Ry6zkLIBKkypMwYxIwYgZvrd9jefkDTnHE6HdG1Ddr2/AjNqc5Yj0qKDGsz/ZQQQoJ1M0JcME0XIs3X59s9w2E3QAmLgZkCZ9SNDFDSU91DjwHVssz0ecayZGTChglhSmVeajmX94evHj/3miQjWGcIDcE9rM4wYypYnVB57/GcGAIlDU9r5xyJgffXV9hsb55aXls91Uc0bU21GufmhJ51qMKj4LmkUNaX2pwCHr5MOD4EatFDMA/WUlrab6cX2HFNmeFMfil8hb9I5+RJmPD7MEOrCDlMtIe+YEm4ygwdon1L+Dehx4/PlHBP6TgdSO9eJbSrUP+P0JEQEbsrgV9bBUUSeXaw/QzVBJh+gu4idBth+fS20JEw0R5+uo/Y7xw4t3RXHR2EQV2PkCJBUTpFd1ZTwj9pr/5A/mjWwgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;simpleflow&quot;
+        title=&quot;&quot;
+        src=&quot;/static/flow2-613aae8472c48399e9b79a3116a2233d-48538.png&quot;
+        srcset=&quot;/static/flow2-613aae8472c48399e9b79a3116a2233d-bed0f.png 200w,
+/static/flow2-613aae8472c48399e9b79a3116a2233d-5fd34.png 400w,
+/static/flow2-613aae8472c48399e9b79a3116a2233d-48538.png 800w,
+/static/flow2-613aae8472c48399e9b79a3116a2233d-b70ec.png 1200w,
+/static/flow2-613aae8472c48399e9b79a3116a2233d-d134a.png 1600w,
+/static/flow2-613aae8472c48399e9b79a3116a2233d-89faa.png 1601w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;If the user is available we, in this case, start an approval with the instruction to get more toilet paper.&lt;/p&gt;
+&lt;p&gt;If the user isn’t available we use the &lt;code class=&quot;language-text&quot;&gt;Get Owners from groups&lt;/code&gt; action along with the &lt;code class=&quot;language-text&quot;&gt;GroupId&lt;/code&gt; of the &lt;code class=&quot;language-text&quot;&gt;secondary TP responsible&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;A good practice to remember when querying REST APIs is to only select the properties you need, which you could see in the &lt;code class=&quot;language-text&quot;&gt;$select&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/flow3-3fa07c07f98170c7a8cf2b1c8efa7b01-9b0b4.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 800px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 99.87937273823884%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAABJ0AAASdAHeZh94AAADF0lEQVQ4y4WUy2/TQBDG/R/3hOiJEz30jLhw44ZAQpVyIEUqIFVIiEcr2ubpJE4T20ns2E4dv/fxMbtu+qApbPTTbNb7mJ2Zb41ms4n9/X1YloXLy0uMx2NMpooJHNeB4/yf6XSKMAyRJAmMg4MD7OzsoNVqod1uo9Pp4OTbOS5+t2GNxvqADerAbQxHFjzPR57nMKSUyLMMguymfX8dwfoVYmZFqHIOST8hFAKc860wxpCmKQzGONbrBJwmqz0FffQXS7jujE714NPJS9/DfD7HVRyjqhjKsiSqO5Q0XtUb0hbkE1M+QPWV5bwCIzZ2leaoWEUe0jzJ6Ta3yDvoDf0Zw+CiQrSsEPo1gVdqG/n1uDkI9Vikv5c38xRLGg+8CnFEHma04af3JV4+BUbdAKNeiH7bx3SUYDJcY2zGsHoR3MscwRxYzuQDhhbDwpE0p6yzPJ+WcCy6WiVQlXRluvnHwyOcnpxhsQhQFhwFJUbZx1DrQr+gDcnDJC4ooBnFT14DvH33Bp+/HCEIfR03xksdy7+pY6wSkmMV5ojjNYzAK7AKSiodgSyh9JfA1+MfaF2YiK8KpAmrWW8nWVP8VoWOp+u4MAQHOAO5Lcl9QdcT2ktKmr5qkXHYiwRZxur/j8BovVKN0Wx+wN7ecwyHA5LfSDMcmto6jq3pm2bdd+2bsQ0ujSmZRqsVZjPysNFoYHd3F71eD91uj6TXJQl26H8fk8lES2tjtzOhw8cIAlKW69bSk+JWdqp1fkqY5xm8+RXFll9LTmh7FyU5ZYuCEktqcdWGgoJYZ4xpPSqbJlSkSUFxy7Ws9AKS1jbUmlpFFGvbhsGZ1An5VwvDSOtc3eQe8ravmu/7ML4dCrx6xkkVoUapxTIjjPqqH2DQ9mAS9jgltSh1iHsEcwHP4VSHjJ6vDIZnS/ROVQ0yTV1f1b06C5dUNqkqIbmVPK1LTj8OwULCagtdbwUVt0pCft2vxzgWs1DXZ5nXdfqArJZtph6H44bAiydCX3VAD8RQQ/3OEibRb3nonM2wsNnWByIg1OOwCtW7GuMPaNTqISRHSz8AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;simpleflow&quot;
+        title=&quot;&quot;
+        src=&quot;/static/flow3-3fa07c07f98170c7a8cf2b1c8efa7b01-48538.png&quot;
+        srcset=&quot;/static/flow3-3fa07c07f98170c7a8cf2b1c8efa7b01-bed0f.png 200w,
+/static/flow3-3fa07c07f98170c7a8cf2b1c8efa7b01-5fd34.png 400w,
+/static/flow3-3fa07c07f98170c7a8cf2b1c8efa7b01-48538.png 800w,
+/static/flow3-3fa07c07f98170c7a8cf2b1c8efa7b01-9b0b4.png 829w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;I then map only the ids, of the fetched &lt;code class=&quot;language-text&quot;&gt;Owners&lt;/code&gt; from the group, to an array. And the use that array as input in the &lt;code class=&quot;language-text&quot;&gt;Get Presences By UserId&lt;/code&gt; actions.&lt;/p&gt;
+&lt;p&gt;I then filter the result to get the Available ones, select one of them and get that specific user.&lt;/p&gt;
+&lt;p&gt;And then creates the approval with an available user.&lt;/p&gt;
+&lt;h1&gt;Scenario 2: Directly route to someone available&lt;/h1&gt;
+&lt;p&gt;In this case we also have a time-critical question that needs to be answered. It could be important to get a hold of someone that’s currently available.&lt;/p&gt;
+&lt;p&gt;In this scenario we might know where to look for that user, in a specific Office 365 group, or based on department, skills etc.&lt;/p&gt;
+&lt;h2&gt;Example: Microsoft Teams Bot&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/hrbot-bcc06a6f77aba6d07e85a9f64520569f.gif&quot; alt=&quot;gif&quot;&gt;&lt;/p&gt;
+&lt;p&gt;In this fictional scenario we have a simple Bot in Microsoft Teams. The user needs help with a question, selects which department and asks the question. &lt;/p&gt;
+&lt;p&gt;Behind the scenes the Bot calls Microsoft Graph to first get the people from the &lt;code class=&quot;language-text&quot;&gt;Office 365 Group&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getGroupOwners&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;groupId&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;User&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;groupId &lt;span class=&quot;token operator&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;groupId&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;trim&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;SimpleGraphClient.getGroupOwnerPresence(): Invalid `groupId` parameter received.&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token comment&quot;&gt;// Get userIds&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; users &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;graphClient&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`/groups/&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;groupId&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;/owners`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;mail&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;userPrincipalName&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;id&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;displayName&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; 
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; users&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;value&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; Promise&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;reject&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;error&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;Then checks to see if anyone is &lt;code class=&quot;language-text&quot;&gt;Available&lt;/code&gt; using the &lt;code class=&quot;language-text&quot;&gt;Get presence for multiple users&lt;/code&gt; API.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;typescript&quot;&gt;
+      &lt;pre class=&quot;language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;getPresencesById&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;idStr&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; Promise&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token builtin&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;idStr&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;SimpleGraphClient.getPresencesById(): Invalid `ids` parameter received.&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; presences &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;graphClient&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;/communications/getPresencesByUserId&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;beta&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; ids&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; idStr &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; 
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; presences&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;value&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; Promise&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;reject&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;error&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+&lt;p&gt;Then the Bot selects one of the available, and returns an Adaptive Card (inspired by Icebreaker Bot), with the possibility to start a chat (with the question) or schedule a meeting (with the topic and meeting body already set). &lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/bot-5ed170da1bdffd54ffc7630e21573f8d-c51d4.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 754px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 51.9893899204244%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAABGklEQVQoz61S23aEIAzc//9O67peuLoqKKaZoHuwtW/NOSMhyGSS8Phqe6r6hryzVFUVtW1LSikyxpDWWnzvPTnnJGatlT38M4Y1hkDOGnp4Z+g9WhrH8XMY+HDfd0opUdo22kqsq6wrVsZ67Jd5zoT4jN4R7PxxWRbBNE0SgyHBHWBIjAovhCBqmkaAMlEuyofak/AvQ1JwXAiRBWWjP/BLy2rKfaH4ntCLwufzSXVd0zAM3HxDQ9+LWvgpbbmnB8qSQeh/KkTw9Wq5zI4v7KJU6zxpDEspfZly2YZbQliMiS9OrPBNSk9MNgl5CBt1Hb8CO5M2DD1fWiDt+q0wP4EY47Hm/QnEM9gP8Xg+xxPiuHcFIUb+HwDXNx3cCFYwN4n6AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px transparent;&quot;
+        alt=&quot;bot&quot;
+        title=&quot;&quot;
+        src=&quot;/static/bot-5ed170da1bdffd54ffc7630e21573f8d-c51d4.png&quot;
+        srcset=&quot;/static/bot-5ed170da1bdffd54ffc7630e21573f8d-221a8.png 200w,
+/static/bot-5ed170da1bdffd54ffc7630e21573f8d-884fa.png 400w,
+/static/bot-5ed170da1bdffd54ffc7630e21573f8d-c51d4.png 754w&quot;
+        sizes=&quot;(max-width: 754px) 100vw, 754px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h1&gt;Finishing up&lt;/h1&gt;
+&lt;p&gt;Hopefully you got some ideas from this. Make sure to follow the evolving of these APIs. And please let me know if you have any cool ideas.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Bot Framework in Node.js - Calling Microsoft Graph (part 6)]]></title><description><![CDATA[I the previous post we created a new Azure AD Application registration, gave it permissions to Microsoft Graph. We also added an OAuth…]]></description><link>https://simonagren.github.io/azurebot-nodejs-part6/</link><guid isPermaLink="false">https://simonagren.github.io/azurebot-nodejs-part6/</guid><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/botframework6-fb02b1615213cb512da7d1c78b9ad995-b70ec.png&quot;

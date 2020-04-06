@@ -4,6 +4,10 @@
       "path---azurebot-nodejs-part-5-f3ac7616b0e5fb9e8685.js",
       "path---azurebot-nodejs-part-5-f3ac7616b0e5fb9e8685.js.map"
     ],
+    "path---graph-presence": [
+      "path---graph-presence-a4b82733a385bb6138d6.js",
+      "path---graph-presence-a4b82733a385bb6138d6.js.map"
+    ],
     "component---src-pages-index-js": [
       "component---src-pages-index-js-3d66bebca58a5c74075f.js",
       "component---src-pages-index-js-3d66bebca58a5c74075f.js.map"
@@ -17,8 +21,8 @@
       "path---tags-typescript-f4e56cd0be63413be897.js.map"
     ],
     "path---tags": [
-      "path---tags-604c230cdfaf0d598de2.js",
-      "path---tags-604c230cdfaf0d598de2.js.map"
+      "path---tags-f9a6bb36ffd97c4f7e3e.js",
+      "path---tags-f9a6bb36ffd97c4f7e3e.js.map"
     ],
     "path---azurefunction-v-2-pnpjs": [
       "path---azurefunction-v-2-pnpjs-876a07b01bbe5b9b7f17.js",
@@ -33,8 +37,8 @@
       "path---tags-pnpjs-e7dd4e8d6ddaa82a2e6f.js.map"
     ],
     "path---tags-msteams": [
-      "path---tags-msteams-d88704724ba9ad8db1e0.js",
-      "path---tags-msteams-d88704724ba9ad8db1e0.js.map"
+      "path---tags-msteams-2c6afed81982698e1f28.js",
+      "path---tags-msteams-2c6afed81982698e1f28.js.map"
     ],
     "component---src-pages-contact-js": [
       "component---src-pages-contact-js-d58c2cb3f0cb03914d20.js",
@@ -45,8 +49,8 @@
       "path---tags-azurefunctions-574942bcb84523a6c131.js.map"
     ],
     "path---azurebot-nodejs-part-6": [
-      "path---azurebot-nodejs-part-6-e571c31af94c094495e1.js",
-      "path---azurebot-nodejs-part-6-e571c31af94c094495e1.js.map"
+      "path---azurebot-nodejs-part-6-0c247654b5fe6c148bb7.js",
+      "path---azurebot-nodejs-part-6-0c247654b5fe6c148bb7.js.map"
     ],
     "component---src-templates-category-template-js": [
       "component---src-templates-category-template-js-ccbdb357ea067077af6d.js",
@@ -65,8 +69,8 @@
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
     "path---tags-msgraph": [
-      "path---tags-msgraph-6da9b79a983ba5bef2e2.js",
-      "path---tags-msgraph-6da9b79a983ba5bef2e2.js.map"
+      "path---tags-msgraph-2743d9f3fa6adf50681e.js",
+      "path---tags-msgraph-2743d9f3fa6adf50681e.js.map"
     ],
     "path---tags-sharepoint": [
       "path---tags-sharepoint-6e41e3fce46580002f9e.js",
@@ -77,8 +81,8 @@
       "component---src-layouts-index-js-5c89e0c1300bb14357e2.js.map"
     ],
     "path---category": [
-      "path---category-9719bd2ba22220136c56.js",
-      "path---category-9719bd2ba22220136c56.js.map"
+      "path---category-bbcdfb24e3c206c48d9a.js",
+      "path---category-bbcdfb24e3c206c48d9a.js.map"
     ],
     "component---src-pages-category-js": [
       "component---src-pages-category-js-bbb34571e9395b2ce79b.js",
@@ -109,8 +113,8 @@
       "path---tags-pnp-ed3fb881d74a15ee38be.js.map"
     ],
     "path---index": [
-      "path---index-6091dd08d23d316d8ee7.js",
-      "path---index-6091dd08d23d316d8ee7.js.map"
+      "path---index-10d9be4e664f74b9615e.js",
+      "path---index-10d9be4e664f74b9615e.js.map"
     ],
     "path---sp-starter-footer": [
       "path---sp-starter-footer-71193f42687cd1c30fd9.js",
@@ -187,8 +191,8 @@
       "component---src-templates-post-template-js-7285b814e0ce02f756c9.js.map"
     ],
     "path---tags-botframework": [
-      "path---tags-botframework-99c8038f463e6da79932.js",
-      "path---tags-botframework-99c8038f463e6da79932.js.map"
+      "path---tags-botframework-d922da0101523e52c898.js",
+      "path---tags-botframework-d922da0101523e52c898.js.map"
     ],
     "path---offline-plugin-app-shell-fallback": [
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js",
@@ -203,9 +207,9 @@
       "path---create-team-site-script-d18c5410cb523575f027.js.map"
     ],
     "app": [
-      "app-b57e521571da7a0d59b4.js",
+      "app-df5bdf540f46ad982910.js",
       "build-js-styles.css",
-      "app-b57e521571da7a0d59b4.js.map",
+      "app-df5bdf540f46ad982910.js.map",
       "build-js-styles.css.map"
     ],
     "path---azurebot-nodejs-part-1": [
