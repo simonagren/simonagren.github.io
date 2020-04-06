@@ -13,9 +13,9 @@ I this post I will show you some other "top of mind" use cases, that you could b
 
 
 # The different presence APIs
-First off all, you need to realize that these APIs are currently under `/beta`. It's not recommended to use beta APIs in production scenarios. 
+First off, you need to realize that these APIs are currently under `/beta`. It's not recommended to use beta APIs in production scenarios. 
 
-There, disclaimer done. Let's have fun...
+There, disclaimer finished. Let's have fun...
 
 ## Get presence 
 
@@ -34,7 +34,7 @@ https://graph.microsoft.com/beta/me/presence
 
 You can read more here: <a href="https://docs.microsoft.com/en-us/graph/api/cloudcommunications-getpresencesbyuserid?view=graph-rest-beta&tabs=http" target="_blank">documentation</a> to learn about the APIs, the permissions they require etc.
 
-We use these to get the presences of multiple user, by supplying the ids of multiple users in the request body of our POST operation.
+We use these to get the presences of multiple users, by supplying the ids of multiple users in the request body of our POST operation.
 
 This is an example of a request body:
 ```typescript
@@ -49,14 +49,14 @@ That we use with this:
 https://graph.microsoft.com/beta/communications/getPresencesByUserId
 ```
 # Scenario 1: Redirection in a process
-Let’s say we have a process that involves a very time-critical task at hand. It is very important that we get hold of someone that is available.
+Let’s say we have a process that involves a very time-critical task at hand. We need to get hold of someone that's available.
 
-For instance we could have a primary contact/document owner and secondary contacts/document owners. 
+For instance, we could have a primary contact/document owner and secondary contacts/document owners. 
 
 If you look at the following image, we first: 
 - Check to see if the `primary user` is `Available` via the `Get presence` API.
 - If available, we continue the process with that user
-- Otherwise we take the ids of the `secondary users` and check their availability via the `Get presence for multiple users` API.
+- Otherwise, we take the ids of the `secondary users` and check their availability via the `Get presence for multiple users` API.
 - And then we continue with one of the available ones.
 
 ![simpleflow](./flowchart.png)
@@ -64,7 +64,7 @@ If you look at the following image, we first:
 Simple enough. Let's visualize this... 
 
 ## Example: Toilet Paper request
-In this fictional scenario we have run out of toilet paper (too soon?) and we need to make sure that the `primary TP responsible` (the father in the family) buys some more, from whatever source may be these days.
+In this fictional scenario, we have run out of toilet paper (too soon?) and we need to make sure that the `primary TP responsible` (the father in the family) buys some more, from whatever source available these days.
 
 We also have an `Office 365 Group` (family), where the `Owners` are `secondary TP responsible`.
 
@@ -96,15 +96,15 @@ And then creates the approval with an available user.
 # Scenario 2: Directly route to someone available
 In this case we also have a time-critical question that needs to be answered. It could be important to get a hold of someone that's currently available.
 
-In this scenario we might know where to look for that user, in a specific Office 365 group, or based on department, skills etc.
+In this scenario, we might know where to look for that user, in a specific Office 365 group, or based on department, skills, etc.
 
 ## Example: Microsoft Teams Bot
 
 ![gif](./hrbot.gif)
 
-In this fictional scenario we have a simple Bot in Microsoft Teams. The user needs help with a question, selects which department and asks the question. 
+In this fictional scenario, we have a simple Bot in Microsoft Teams. The user needs help with a question, selects which department and asks the question. 
 
-Behind the scenes the Bot calls Microsoft Graph to first get the people from the `Office 365 Group`.
+Behind the scenes, the Bot calls Microsoft Graph to first get the people from the `Office 365 Group`.
 
 ```typescript
 public async getGroupOwners(groupId: string): Promise<User[]> {
@@ -144,4 +144,4 @@ Then the Bot selects one of the available, and returns an Adaptive Card (inspire
 
 # Finishing up
 
-Hopefully you got some ideas from this. Make sure to follow the evolving of these APIs. And please let me know if you have any cool ideas.
+Hopefully, you got some ideas from this. Make sure to follow the evolving of these APIs. And please let me know if you have any cool ideas.

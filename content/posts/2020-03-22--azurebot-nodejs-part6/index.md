@@ -1,6 +1,6 @@
 ---
 title: Bot Framework in Node.js - Calling Microsoft Graph (part 6)
-tags: ["botframework", "nodejs", "azure", "msteams", "typescript", "msgraph", "pnpjs"]
+tags: ["botframework", "nodejs", "azure", "msteams", "msgraph", "pnp"]
 cover: botframework6.png
 author: Simon Ågren
 ---
