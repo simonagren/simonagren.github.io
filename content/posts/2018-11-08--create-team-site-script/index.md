@@ -1,13 +1,13 @@
 ---
 title: Create a Microsoft Team using site designs, Flow and Hub Sites 
-tags: ["flow","sharepoint", "sitedesigns", "pnp"]
+tags: ["powerplatform","sharepoint", "pnp"]
 cover: success.jpg
 author: Simon Ågren
 ---
 
 ![](./success.jpg)
 
-I was asked a few days ago if we could automate `Microsoft Teams` creation when a Modern Team Site is created in SharePoint Online. I got to think about it and came up with one way at least. This is using an `Graph Beta endpoint` for the Team creation, so it's not advisable to use this in production scenarios before it's in `v1.0`
+I was asked a few days ago if we could automate `Microsoft Teams` creation when a Modern Team Site is created in SharePoint Online. I got to think about it and came up with one way. This is using an `Graph Beta endpoint` for the Team creation, so it's not advisable to use this in production scenarios before it's in `v1.0`
 
 * We are going to create a Site Script that calls a Flow
 * The Flow utilizes the Office365 Group(Unified) after the site is created and creates a Team via the Graph.
