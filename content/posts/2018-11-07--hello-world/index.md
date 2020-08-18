@@ -10,7 +10,7 @@ author: Simon Ågren
 ![](./photo-1465070845512-2b2dbdc6df66.jpg)
 
 ### A new start
-So this is my first blog post. Hello world! 
+This is my first blog post. Hello world! 
 
 I have worked some with a starter template and it is built in `GatsbyJS`. So this is static pages composed with markdown, and some `React` involved as well.
 
