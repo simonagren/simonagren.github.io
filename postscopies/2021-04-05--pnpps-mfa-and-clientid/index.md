@@ -1,11 +1,11 @@
 ---
 title: PnP PowerShell - MFA account and your own Client Id 
 tags: ["azure", "pnp", "msgraph"]
-cover: default-front-page-contoso.png
+cover: pnppsmfa.png
 author: Simon Ågren
 ---
 
-![spstarter](./default-front-page-contoso.png)
+![pnppsmfa](./pnppsmfa.png)
 The background of this post is that I got a question from a friend of mine. He was in a situation where they were not allowed to utilize the PnP Management Shell, so they had created an application registration. 
 
 He wanted to use an MFA account and connect using their application registration. He didn't quite understand how to adapt the application registration, and couldn't find an exact example in the documentation on how to connect. 
