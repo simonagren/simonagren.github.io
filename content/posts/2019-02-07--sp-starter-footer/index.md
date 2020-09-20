@@ -7,7 +7,7 @@ author: Simon Ågren
 
 ![spstarter](./default-front-page-contoso.png)
 
-I have been getting some questions about how to resolve some of the issues with the footer and links in the SharePoint Starter Kit, so I decided to quickly document some of the findings here in a post. That way it's easily accessible to others.
+I have been getting some questions about how to resolve some of the issues with the footer and links in the SharePoint Starter Kit, so I decided to quickly document some of the findings here in a post. That way it is easily accessible to others.
 
 If you haven't checked out the SharePoint Starter Kit, I suggest you do that. It's basically a joint effort by representatives from Microsoft, the PnP core team and the community to make a really nice base for a modern intranet solution.
 
