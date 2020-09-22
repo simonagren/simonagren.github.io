@@ -9,7 +9,7 @@ author: Simon Ågren
 
 I made two posts at once and here is the previous: [Findings from issues with SharePoint Starter Kit](https://simonagren.github.io/sp-starter-footer/)
 
-Another post about SharePoint Starter Kit. This time it's a small post about saving links to the "my links". As I see it the starter kit has been created to showcase a lot of best practices and creative ways of doing things. But it's also quite generic, which is good because it suits so many purposes, but it also means that we might have to adjust it in some cases.
+Another post about SharePoint Starter Kit. This time it's a small post about saving links to the "my links". As I see it, the starter kit has been created to showcase a lot of best practices and creative ways of doing things. But it's also quite generic, which is good because it suits so many purposes, but it also means that we might have to adjust it in some cases.
 
 A colleague of mine asked me how we could save more "complex" urls containing querystrings etc. If you remove the validation and try to save whatever URL you will get errors, since the special characters needs to be encoded.
 
