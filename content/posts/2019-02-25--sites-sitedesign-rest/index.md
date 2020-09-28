@@ -1,6 +1,6 @@
 ---
 title: Modern SharePoint site creation with site designs and REST 
-tags: ["sharepoint", "sitedesigns", "flow"]
+tags: ["sharepoint", "sitedesigns", "powerplatform"]
 cover: sitescript.png
 author: Simon Ågren
 ---
