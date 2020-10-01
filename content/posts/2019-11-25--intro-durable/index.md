@@ -1,6 +1,6 @@
 ---
 title: Intro to Durable Functions in Node.js with PnPJs 
-tags: ["sharepoint", "pnp", "azurefunctions", "nodejs"]
+tags: ["sharepoint", "pnp", "azure", "nodejs"]
 cover: architecture.jpg
 author: Simon Ågren
 ---
