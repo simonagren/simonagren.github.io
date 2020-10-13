@@ -8,7 +8,7 @@ author: Simon Ågren
 ![extend](./botframework1.png)
 
 This is the first of a series of blog-posts regarding Bot Framework 4, Node.js and TypeScript. There's a lot of material out there and it might seem redundant to start with the basics. 
-I will take you on a journey where we begin with the most simple concepts, and in each post, we develop the Bot a bit further while introducing some new concepts. And it's going to be my ways of doing things, with workarounds and both simple and creative ways to get things done.
+I will take you on a journey where we begin with the most simple concepts, and in each post, we develop the Bot a bit further while introducing some new concepts. And it's going to be my ways of doing things, with workarounds and both simple and creative ways.
 
 | Bot Framework in Node.js                                                                  | Complimentary post                                                                                                          |
 |-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
