@@ -1,6 +1,6 @@
 ---
 title: A brief introduction to Azure Functions 3.x
-tags: ["azure", "azurefunctions"]
+tags: ["azure"]
 cover: azfunc3.png
 author: Simon Ågren
 ---
