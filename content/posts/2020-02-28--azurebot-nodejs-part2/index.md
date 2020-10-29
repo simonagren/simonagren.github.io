@@ -9,7 +9,7 @@ author: Simon Ågren
 
 In the <a href="https://simonagren.github.io/azurebot-nodejs-part1" target="_blank">previous post</a>, we built the Bot, tested it locally in the emulator, created all resources in Azure and also deployed the Bot to the web service in Azure using ARM templates and Key Vault (<a href="https://simonagren.github.io/azurebot-armtemplate-keyvault" target="_blank">separate post</a>).
 
-In this second post, we will continue with the Bot and run it from within **Microsoft Teams**. From localhost with the help of **ngrok** and, from the **Azure deployment**. 
+In this second post, we will continue with the Bot and run it from within **Microsoft Teams**. From localhost with the help of **ngrok** and from the **Azure deployment**. 
 
 Just for fun, we will add an **@mention** in the **echo** when the Bot is in Microsoft Teams.
 
