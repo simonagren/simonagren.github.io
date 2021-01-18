@@ -9,7 +9,7 @@ author: Simon Ågren
 
 In the previous post, we tried the Bot in Microsoft Teams using **ngrok**, and we also added a **@mention**. 
 
-This post will be a bit code-heavy. A lot needed to be explained and a lot going on behind the scenes. Hopefully, this put things a bit into context. 
+This post will be a bit code-heavy. A lot needed to be explained and a lot going on behind the scenes. Hopefully, this puts things a bit into context. 
 
 Dialogs are powerful in Bot Framework 4, and we could utilize them in very structured ways, and complicated branched conditional situations. 
 
