@@ -9,7 +9,7 @@ author: Simon Ågren
 
 Last time we visited Azure Functions, I did a brief introduction of Azure Functions 3.0 that now supports `Node 12`. The function app runtime you select gives you different options when it comes to platform versions. Go and check out that post if you want to know more.
 
-I have created a **Function App and** a **Function** with version 2.x. And today we are going to have a look at the different options when it comes to migrating from 2.x to 3.x. There's not a lot of steps, I will give you a few options and try to clarify a few things.
+I have created a **Function App and** a **Function** with version 2.x. And today we are going to have a look at the different options when it comes to migrating from 2.x to 3.x. There's not a lot of steps. I will give you a few options and try to clarify a few things.
 
 # Prerequisites 
 - [Azure Cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
