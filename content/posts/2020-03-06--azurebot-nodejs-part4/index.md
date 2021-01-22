@@ -9,7 +9,7 @@ author: Simon Ågren
 
 The last post was long. It was a lot of explaining regarding the code, and hopefully, that put things a bit into context. 
 
-This post will be shorter and focus on how to handle user interruptions. Currently, the only option in the Bot is to follow the conversation step by step, there is no way to get help and restart the Bot.
+This post will be shorter and focus on how to handle user interruptions. Currently, the only option in the Bot is to follow the conversation step by step. There is no way to get help and restart the Bot.
 
 | Bot Framework in Node.js                                                                  | Complimentary post                                                                                                          |
 |-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
