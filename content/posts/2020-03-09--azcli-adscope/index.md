@@ -9,7 +9,7 @@ author: Simon Ågren
 
 In this small post, we will look at a scenario where we want to register an Azure AD Application using specific scopes. When adding scopes for service principals using the Azure CLI we need to use the internal Ids. 
 
-And one way would be to manually create one registration, get that app and then print out the scopes and then just copy and paste. 
+And one way would be to manually create one registration, get that app and then print out the scopes and then copy and paste. 
 
 I will show you another way
 
