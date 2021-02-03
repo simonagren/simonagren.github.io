@@ -9,7 +9,7 @@ author: Simon Ågren
 
 In the previous post <a href="https://simonagren.github.io/azcli-adscope" target="_blank">Azure AD & Microsoft Graph permission scopes, with Azure CLI</a>, we registered an Azure AD Application using specific scopes to the service principal `Microsoft Graph`. We also prepared it with a reply-URL that works for Bot Framework auth.
 
-In this post we will create an `OAuth connection` from the Bot Channels Registration to the Azure AD Registration, giving the Bot the possibility to get a token to call Microsoft Graph.
+In this post, we will create an `OAuth connection` from the Bot Channels Registration to the Azure AD Registration, giving the Bot the possibility to get a token to call Microsoft Graph.
 
 # Prerequisites 
 - [Azure Cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
