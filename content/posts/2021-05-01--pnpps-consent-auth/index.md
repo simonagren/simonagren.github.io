@@ -7,21 +7,21 @@ author: Simon Ågren
 
 ![pnppsauth](./pnppsauth.png)
 
-When it comes to PnP PowerShell and authentication, the team have done great work providing a variety of options. The authentication has changed a little, and now requires an Azure AD Application registration. You could always create your own application registration, but in order to make life easier for you, PnP PowerShell (and Microsoft CLI) defaults to using `PnP Management Shell`. What is PnP Management Shell?
+When it comes to authentication in PnP Powershell, the team have done great work providing a variety of options. The authentication has changed a little and now requires an Azure AD Application registration. You could either create an application registration on use the built in option. In order to make life easier for you, PnP PowerShell (and Microsoft CLI) defaults to using `PnP Management Shell`. What is PnP Management Shell?
 
 > IMPORTANT!: If you haven't already upgraded from the legacy PnP PowerShell module you can follow  <a href="https://pnp.github.io/powershell/articles/installation.html" target="_blank">this instruction</a>
 
 # PnP Management Shell
-It's a "multi-tenant" Azure AD application, registered in "the PnP" tenant. If you decide to consent and allow people in your organization to use `PnP Management Shell`, you are not creating a new application registration. It will be added to your `enterprise applications` in the Azure AD of your tenant. PnP Management Shell will only use delegated permission and has been prepared with all of the scopes you would need to utilize every cmdlet in PnP PowerShell. 
-Since it's a lot of scopes, not all organizations are keen to consent to all of them. 
+It's a multi-tenant Azure AD application, registered in "the PnP" tenant. If you decide to consent and allow people in your organization to use `PnP Management Shell`, you are not creating a new application registration. It is added to `enterprise applications` in the Azure AD of your tenant. PnP Management Shell only uses delegated permission and is prepared with all the necessary scopes to utilize every cmdlet in PnP PowerShell. 
+Not all organizations are keen to consent to all of the scopes. 
 
-You basically have three options:
+You have three options:
 - Consent to PnP Management Shell and all of the scopes
 - Create your own Azure AD Application registration
 - Consent to PnP Management Shell and the specific scopes you want
 
 # Consent to PnP Management Shell and all of the scopes
-This is the most convenient option for you as a user. Since PnP PowerShell default to using `PnP Management Shell` if not else specified. If you fully consent you are free to PnP PowerShell away. It's not an option for some organizations that always think "least privileges needed".
+This is the most convenient option for you as a user. Since PnP PowerShell default to using `PnP Management Shell` if not else specified. If you fully consent you are free to "PnP PowerShell away". It's not an option for some organizations that always think "least privileges needed".
 
 If you want to consent to all of the scopes you could log in as an administrator using:
 ```powershell
@@ -31,7 +31,7 @@ or you could run this cmdlet:
 ```powershell
 Register-PnPManagementShellAccess
 ```
-Then you will be presented by a large dialog where you are able to consent. If you are an admin you can consent for your organization.
+Then you will be presented with a large dialog where you can consent. If you are an admin you can consent for your organization.
 
 ![large consent](./bigconsent.png)
 
@@ -49,15 +49,15 @@ The PnP team has made it easy to create an Azure AD app using the command `Regis
 
 
 # Selected PnP Management Shell scopes
-PnP Management is an "enterprise application" and we can't just go to application registrations and add permissions via the UI. But, since we are working with delegated permissions, we could utilize some of the normal ways of granting permissions - just like you would with an application registration in your tenant:
+PnP Management is an "enterprise application" and we can't just go to application registrations and add permissions via the UI. Since we are working with delegated permissions, we could utilize some of the normal ways of granting permissions - just like you would with an application registration in your tenant:
  - Using the browser
  - Using Azure CLI
 
 > NOTE:
-> If we were working with application permissions. We would need to address the service principal itself. We will look at this in another post using managed identity 
+> If we were working with application permissions. We would need to address the service principal itself. We will look at this in another post regarding managed identity 
 
 ## Using the browser
-If we think of a normal consent flow in an application, we usually do `individual consent`. This is actually what's happening when we are presented with the "normal" consent dialog in PnP PowerShell. If we happen to be an Admin, we could also admin consent for the organization.
+In a normal application consent flow, we usually do `individual consent`. This is what's happening when we are presented with the consent dialog in PnP PowerShell. If we happen to be an Admin, we could also admin consent for the organization.
 
 We could also resort to `admin consent` right away in the browser.
 
@@ -81,7 +81,7 @@ client_id=31359c7f-bd7e-475c-86db-fdb8c937548e
 ```
 
 ### Azure CLI
-When it comes to granting `delegated` permissions, we could utilize Azure CLI and grant permissions right away. One thing that is a bit confusing is that we are using the command `application` instead of `sp`, even when we are working with the service principal. And the application is hosted in another tenant. 
+When it comes to granting `delegated` permissions, we could utilize Azure CLI and grant permissions right away. I might be confusing that we are using the command `application` instead of `sp`, even when we are working with the service principal. And the application is hosted in another tenant. 
 
 We need to create the service principal (using the client id) in our tenant, if it doesn't already exist. Then, we utilize the `application grant` to grant the scopes. We don't need additional admin consent after this.
 
@@ -103,5 +103,5 @@ az ad app permission grant --id $pnpmsId --api $graphId --scope Group.ReadWrite.
 
 
 # Conclusion
-PnP PowerShell is extremely powerful and has been for a very long time. There has been a few authentication changes, and I advice you to read the documentation in order to decide what fits your scenario best. 
-The PnP team has made it easy for you to admin consent and then use the default PnP Management Shell. If your/your clients organization doesn't allow for that, you could create your own application registration. And a third option is to consent to a subset of scopes for the PnP Management Shell. And I hope you now have the tools you need to make it for your scenario.
+PnP PowerShell is extremely powerful and has been for a very long time. There has been a few authentication changes, and I advice you to read the documentation in order to decide what best fits your scenario. 
+The PnP team has made it easy for you to admin consent and then use the default PnP Management Shell. If your organization doesn't allow for that, you could create your own application registration. And a third option is to consent to a subset of scopes for the PnP Management Shell. I hope you now have the tools you need to make it fit your scenario.
