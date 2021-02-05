@@ -9,7 +9,7 @@ author: Simon Ågren
 
 In the previous post, we had a look at user interruptions.
 
-In this post, we will have a look at how to secure the Bot and give the user the ability to log in (and out) and then call Microsoft Graph. We will utilize the Azure Bot service built-in authentication abilities.
+In this post, we will look at how to secure the Bot and give the user the ability to log in (and out) and then call Microsoft Graph. We will utilize the Azure Bot service built-in authentication abilities.
 
 | Bot Framework in Node.js                                                                  | Complimentary post                                                                                                          |
 |-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
