@@ -7,7 +7,7 @@ author: Simon Ågren
 
 ![extend](./botframework6.png)
 
-I the previous post we created a new Azure AD Application registration, gave it permissions to Microsoft Graph. We also added an OAuth prompt to the main dialog and made it possible for the user to log in both in the emulator as well as Microsoft Teams.
+I the previous post, we created a new Azure AD Application registration, gave it permissions to Microsoft Graph. We also added an OAuth prompt to the main dialog and made it possible for the user to log in both in the emulator and Microsoft Teams.
 
 In this post, we will add some helpers and enable the user to call the Microsoft Graph. We will create an example using both the <a href="https://github.com/microsoftgraph/msgraph-sdk-javascript" target="_blank">Microsoft Graph JavaScript Client Library</a> and <a href="https://pnp.github.io/pnpjs/" target="_blank">PnPjs v2</a> for hooking into the Azure Bot Service auth flow. We will add some additional validation logic into the `Owner Resolver Dialog`, and also add a similar `Alias Resolver Dialog`.
 
