@@ -1,11 +1,11 @@
 ---
 title: PnP PowerShell - Consent and Authentication 
 tags: ["azure", "pnp", "msgraph"]
-cover: default-front-page-contoso.png
+cover: pnppsauth.png
 author: Simon Ågren
 ---
 
-![spstarter](./default-front-page-contoso.png)
+![pnppsauth](./pnppsauth.png)
 
 When it comes to PnP PowerShell and authentication, the team have done great work providing a variety of options. The authentication has changed a little, and now requires an Azure AD Application registration. You could always create your own application registration, but in order to make life easier for you, PnP PowerShell (and Microsoft CLI) defaults to using `PnP Management Shell`. What is PnP Management Shell?
 
