@@ -1,11 +1,11 @@
 ---
 title: Bot Framework in Node.js - Adaptive Cards (part 7)
 tags: ["botframework", "nodejs", "azure", "msteams", "msgraph", "pnp"]
-cover: botframework6.png
+cover: botframework7.png
 author: Simon Ågren
 ---
 
-![extend](./botframework6.png)
+![extend](./botframework7.png)
 
 In the previous post, we added some helpers and enabled the user to call Microsoft Graph. We used examples with `GraphClient` and `PnPJs Graph` for hooking into the Azure Bot Service auth flow. And we also added some validation to the dialog using Microsoft Graph.
 
