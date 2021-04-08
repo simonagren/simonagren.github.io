@@ -13,26 +13,26 @@ I this post I will show you some other "top of mind" use cases, that you could b
 
 
 # The different presence APIs
-First off, you need to realize that these APIs are currently under `/beta`. It's not recommended to use beta APIs in production scenarios. 
+<strike>First off, you need to realize that these APIs are currently under `/beta`. It's not recommended to use beta APIs in production scenarios.</strike> 
 
 There, disclaimer finished. Let's have fun...
 
 ## Get presence 
 
-You can read more here: <a href="https://docs.microsoft.com/en-us/graph/api/presence-get?view=graph-rest-beta&tabs=http" target="_blank">documentation</a> to learn about the APIs, the permissions they require etc.
+You can read more here: <a href="https://docs.microsoft.com/en-us/graph/api/resources/presence?view=graph-rest-1.0" target="_blank">documentation</a> to learn about the APIs, the permissions they require etc.
 
 We use these to get the presence of a single user, either you or someone else in your tenant. And we use it like this:
 ```typescript
-https://graph.microsoft.com/beta/me/presence
+https://graph.microsoft.com/v1.0/me/presence
 
 or
 
-https://graph.microsoft.com/beta/me/presence
+https://graph.microsoft.com/v1.0/users/{id}/presence
 ```
 
 ## Get presence for multiple users
 
-You can read more here: <a href="https://docs.microsoft.com/en-us/graph/api/cloudcommunications-getpresencesbyuserid?view=graph-rest-beta&tabs=http" target="_blank">documentation</a> to learn about the APIs, the permissions they require etc.
+You can read more here: <a href="https://docs.microsoft.com/en-us/graph/api/cloudcommunications-getpresencesbyuserid?view=graph-rest-1.0&tabs=http" target="_blank">documentation</a> to learn about the APIs, the permissions they require etc.
 
 We use these to get the presences of multiple users, by supplying the ids of multiple users in the request body of our POST operation.
 
@@ -46,7 +46,7 @@ This is an example of a request body:
 That we use with this:
 
 ```typescript
-https://graph.microsoft.com/beta/communications/getPresencesByUserId
+https://graph.microsoft.com/v1.0/communications/getPresencesByUserId
 ```
 # Scenario 1: Redirection in a process
 Let’s say we have a process that involves a very time-critical task at hand. We need to get hold of someone that's available.
@@ -129,7 +129,7 @@ public async getPresencesById(idStr: string[]): Promise<any> {
         throw new Error('SimpleGraphClient.getPresencesById(): Invalid `ids` parameter received.');
     }
     try {
-        const presences = await this.graphClient.api('/communications/getPresencesByUserId').version('beta').post({ ids: idStr }); 
+        const presences = await this.graphClient.api('/communications/getPresencesByUserId').post({ ids: idStr }); 
         return presences.value;
     } catch (error) {
         return Promise.reject(error);
