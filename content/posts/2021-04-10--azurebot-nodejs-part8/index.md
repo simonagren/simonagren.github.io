@@ -1,13 +1,13 @@
 ---
 title: Bot Framework in Node.js - Proactive messages and token validation 
 tags: ["botframework", "nodejs", "azure", "msteams", "typescript", "msgraph"]
-cover: sitescript.png
+cover: botframework8.png
 author: Simon Ågren
 ---
 
-![extend](./sitescript.png)
+![botframework8](./botframework8.png)
 
-In the last we got a little fancy using Adaptive cards in the Bot. We talked about workarounds to allow AC usage in `prompts`, how to collect the user input, especially when it comes to `Microsoft Teams`.
+In the last post we got a little fancy using Adaptive cards in the Bot. We talked about workarounds to allow AC usage in `prompts`, how to collect the user input, especially when it comes to `Microsoft Teams`.
 
 In this post we will have a high level look at proactive messages, and also get a little creative with them. We will validate the token, with the purpose of making sure the messages are coming from a trusted source.
 
