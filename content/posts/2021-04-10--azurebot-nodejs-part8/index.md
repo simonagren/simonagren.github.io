@@ -175,12 +175,12 @@ $header = @{
   "Authorization"=$msgHash
   "Content-Type"="application/json"
  }
-
 Invoke-WebRequest -Uri "http://localhost:3978/api/notify" -Method POST -Headers $header -Body $message
 ```
 
 ### In the Bot
 We will generate the HMAC token from the request body of the message using Crypto. See the comments in the code. Since we in PowerShell based the hash on the same message we receive and the shared key, the result of the hash we create here should be the same.
+
 
 ```typescript
 server.post('/api/notify', async (req, res) => {
