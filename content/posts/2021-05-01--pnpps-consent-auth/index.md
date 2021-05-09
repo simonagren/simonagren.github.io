@@ -7,7 +7,7 @@ author: Simon Ågren
 
 ![pnppsauth](./pnppsauth.png)
 
-When it comes to authentication in PnP Powershell, the team have done great work providing a variety of options. The authentication has changed a little and now requires an Azure AD Application registration. You could either create an application registration on use the built in option. In order to make life easier for you, PnP PowerShell (and Microsoft CLI) defaults to using `PnP Management Shell`. What is PnP Management Shell?
+When it comes to authentication in PnP Powershell, the team have done great work providing a variety of options. The authentication has changed a little and now requires an Azure AD Application registration. You could either create an application registration or use the default option. In order to make life easier for you, PnP PowerShell (and Microsoft CLI) defaults to using `PnP Management Shell`. What is PnP Management Shell?
 
 > IMPORTANT!: If you haven't already upgraded from the legacy PnP PowerShell module you can follow  <a href="https://pnp.github.io/powershell/articles/installation.html" target="_blank">this instruction</a>
 
