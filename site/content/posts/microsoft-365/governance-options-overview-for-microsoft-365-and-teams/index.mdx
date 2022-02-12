@@ -1,0 +1,85 @@
+---
+title: Governance options overview for Microsoft 365 and Teams
+category: Microsoft 365
+author: Simon Ågren
+tags: ['#governance', '#teams']
+date: 2021-10-08
+thumbnail: image.jpg
+---
+
+I introduced some high-level thoughts on a governance strategy and its importance in the previous post. 
+First, I want to establish the current governance options available out of the box. 
+We will not dive deeply into these options right now; I'd instead set some of these into context in individual posts at a later time.
+
+# What happens when you create a team?
+Every time you create a new Team, you create a Microsoft 365-group in the backend. A Microsoft 365-group lives in Azure Active Directory, and the group is the membership service for the associated services. 
+It doesn't matter how or where you create the group, you always get a set of associated services, a SharePoint site, OneNote, Planner, Email, and calendar. With groups being at the center of collaboration, Microsoft Teams governance has a lot to do with managing Microsoft 365-groups.
+
+# Where do the settings live?
+In a way, almost all the backend settings affect the end-user experience in Microsoft Teams. 
+However, some settings are more in scope for teams-specific governance.
+
+1. **Azure AD:** 
+Here we mostly care about the Group settings, such as Naming Policies and Expiration Policies. 
+However, Azure AD is enormous, and this is also where you could manage:
+- Who can create groups
+- Guest access in the tenant.  
+- Conditional Access
+- Identity Governance
+- Identity Protection etc
+
+2. **Teams Admin Center:**
+Here we implement global Teams settings and usage of policies that could be global-, group-, or used-scoped. 
+
+3. **Compliance Center:**
+These are settings that protect the organizations' data and ensure compliance. 
+- Information protection (Sensitivity Labels, Auto-label policies)
+- Information governance (Retention)
+- Data Loss Prevention
+
+Some other places to take into considering while setting all the workloads are:
+- Microsoft 365 Admin Center
+- SharePoint
+- OneDrive
+- Stream
+- Planner
+
+# Governance options
+My way of looking at Teams governance differs slightly from Microsoft's view. They mainly try to base decisions and recommendations on out-of-the-box features only. Unfortunately, not everything is currently in place from Microsoft. The most common thing I see out there are custom provisioning solutions, whether third-party or created on their own. I have drawn some inspiration from Jasper Oosterveld over the years, so I should probably mention him <3.
+
+I will talk about these topics individually in other posts. For now, we will only skim them.
+
+1. **Collaboration templates**
+The first thing we should do is to define templates. To begin with, these are abstract and not tied to Teams Templates necessarily. For example, most companies use more than one type of collaboration surface. It might be an organizational structure such as departments, but it could also be process-based that are cross-organizational.
+
+1. **Naming convention**
+Then we need to decide if we want naming conventions for our Teams. Naming conventions and a healthy amount of acronyms help understand the team's purpose. And whenever needed, we could make use of locations as well. Technically, we can use Naming Policies, and Custom Blocked words if we have Azure AD P1. We can also leave it up to the users during creation or tie naming to the templates in a custom provisioning solution. More on this another time.
+
+1. **Guest access**
+Do we allow guests in our Teams in general? I hope your answer is yes. First and foremost, we need to allow guests in the tenant (Azure AD), then in Microsoft 365 groups (M365 Admin center). It's better to limit at the actual Team-specific level. We can decide this by using Sensitivity Labels at the container level. More on this another time.
+
+1. **Expiration policies**
+Most Teams should have a start and a beginning. Expiration policies are really about making sure we catch the vacant teams. You should enable at least a general expiration policy for M365 groups. But, make sure you have Retention in place so you don't accidentally remove anything required for compliance.
+
+1. **Compliance**
+It's essential to classify data and definite Retention in a separate project. It is not something that IT can determine. Instead, input from the business is required. Since Microsoft 365 underpins Microsoft Teams, we can use the same Retention and DLP security mechanisms as SharePoint and Exchange. 
+
+1. **Provisioning**
+In a way, it can be about who can create Microsoft 365 groups. The options we have are Self-service for everyone in Microsoft Teams, self-service for a limited set of users via Microsoft Teams, or a custom provisioning solution. As mentioned earlier, not everything is in place from Microsoft. Unfortunately, there is no way to enforce certain policies to a specific template out of the box. So, we need to go for a custom provisioning solution if we need naming, labels, and expiration tied to a specific template.
+
+1. **Configuration**
+Configuration means both Teams-specific setting and configuring workloads such as Planner, Stream, OneDrive, and SharePoint. Which apps do we enable and which are disabled for the users? Should users be able to create private channels? Meeting policies, messaging policies. Wh are the members of a team allowed to do? This and much more.
+
+1. **Monitoring**
+From my point of view, monitoring has multiple purposes. It can involve quantitative monitoring and measuring against KPIs, service health, etc. It could also mean qualitative measuring via workshops and surveys to measure user satisfaction. We have many technical options to measure in the Microsoft 365 suite. We should probably dive into establishing a baseline and continuously measuring progress in another post.
+
+1. **Communication & education**
+I'm no real expert when it comes to adoption. My involvement has been remediation or governance setup of Teams rollouts. I like the 70/20/10 approach where 10% is technical training of champions, 20% is the champions teaching others, 70% is learning by doing. The 70% could also involve exercises for the users to try in Teams etc. More on this another time.
+Make sure someone owns new features in the tenant. Making decisions around them and communicating this to the users before rolling this out is essential for change management.
+
+
+# Next steps
+In the next post, we will look at Microsoft Teams settings and policies.
+
+Thanks for reading
+/Simon

@@ -1,0 +1,21 @@
+{
+    "name": "Simon Ågren",
+    "title": "CTA & Microsoft MVP",
+    "description": "Solving business problems with tech",
+    "thumbnail": "simon-agren.png",
+    "social": [
+      {
+        "name": "Github",
+        "url": "https://github.com/simonagren"
+      },
+      {
+        "name": "Twitter",
+        "url": "https://twitter.com/agrenpoint"
+      },
+      {
+        "name": "Website",
+        "url": "https://agrenpoint.com"
+      }
+    ],
+    "skills": ["Microsoft 365", "Azure"]
+  }

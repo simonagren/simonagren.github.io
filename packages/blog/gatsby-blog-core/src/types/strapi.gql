@@ -1,0 +1,78 @@
+############################################
+## Article
+############################################
+
+type StrapiArticleProxy implements Node & Article
+  @dontInfer
+  @childOf(types: ["StrapiArticle"])
+  @proxyOf(type: "StrapiArticle") {
+  title: String! @proxyField
+  slug: String! @link(from: "parent", on: "StrapiArticle") @makeSlug
+  date: Date @proxyField @dateformat
+  featured: Boolean @proxyField
+  private: Boolean @proxyField
+  protected: Boolean @proxyField
+  author: StrapiAuthorProxy
+    @proxyField(from: "parent.author.name")
+    @link(by: "name")
+  category: StrapiCategoryProxy
+    @proxyField(from: "parent.category.name")
+    @link(by: "name")
+  tags: [ArticleTag] @proxyField @link(by: "name")
+  keywords: [String] @proxyField
+  link: String @proxyField
+  body: String
+    @link(from: "parent", on: "StrapiArticle")
+    @proxyResolver(on: "Mdx")
+  excerpt(pruneLength: Int = 100): String
+    @link(from: "parent", on: "StrapiArticle")
+    @proxyResolver(on: "Mdx")
+  timeToRead: Int
+    @link(from: "parent", on: "StrapiArticle")
+    @proxyResolver(on: "Mdx")
+  thumbnailText: String @proxyField
+  thumbnail: ImageSharp
+    @proxyField(from: "parent.thumbnail.localFile___NODE")
+    @link(by: "parent.id")
+  tableOfContents(maxDepth: Int = 6): JSON
+    @link(from: "parent", on: "StrapiArticle")
+    @proxyResolver(on: "Mdx")
+  draft: Boolean
+}
+
+############################################
+## Category
+############################################
+
+type StrapiCategoryProxy implements Node & ArticleCategory
+  @dontInfer
+  @childOf(types: ["StrapiCategory"])
+  @proxyOf(type: "StrapiCategory") {
+  name: String! @proxyField
+  slug: String! @link(from: "parent", on: "StrapiCategory") @makeSlug
+  description: String @proxyField
+  color: String @proxyField
+  icon: String
+    @proxyField(from: "parent.icon.localFile___NODE")
+    @link(on: "File")
+    @proxyResolver(on: "File", to: "publicURL")
+}
+
+############################################
+## Author
+############################################
+
+type StrapiAuthorProxy implements Node & ArticleAuthor
+  @dontInfer
+  @childOf(types: ["StrapiAuthor"])
+  @proxyOf(type: "StrapiAuthor") {
+  name: String! @proxyField
+  slug: String! @link(from: "parent", on: "StrapiAuthor") @makeSlug
+  description: String @proxyField
+  title: String @proxyField
+  social: [SocialMedia] @proxyField @normalizeSocial
+  skills: [String] @proxyField
+  thumbnail: ImageSharp
+    @proxyField(from: "parent.thumbnail.localFile___NODE")
+    @link(by: "parent.id")
+}

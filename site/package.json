@@ -1,0 +1,31 @@
+{
+	"name": "@elegantstack/gatsby-starter-flexiblog-personal",
+	"private": true,
+	"version": "3.8.0",
+	"scripts": {
+		"develop": "gatsby develop",
+		"start": "gatsby develop",
+		"build": "gatsby build",
+		"clean": "gatsby clean",
+		"serve": "gatsby serve"
+	},
+	"dependencies": {
+		"@elegantstack/gatsby-theme-flexiblog-personal": "*",
+		"gatsby": "^4.1.4",
+		"gatsby-plugin-algolia": "^0.26.0",
+		"gatsby-plugin-disqus": "^1.2.3",
+		"gatsby-plugin-gdpr-cookies": "^2.0.8",
+		"gatsby-plugin-manifest": "^4.7.0",
+		"mdx-utils": "^0.2.0",
+		"prism-react-renderer": "^1.3.1",
+		"prismjs": "^1.26.0",
+		"react": "^17.0.2",
+		"react-cookie-consent": "^7.3.0",
+		"react-dom": "^17.0.2",
+		"react-dom-confetti": "^0.2.0",
+		"react-live": "^2.4.1"
+	},
+	"devDependencies": {
+		"prettier": "^2.3.2"
+	}
+}
